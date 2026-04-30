@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "shop": "Shop",
+    "athletes": "Atleten",
+    "about": "Over ons",
+    "contact": "Contact",
+    "account": "Account",
+    "cart": "Winkelmand",
+    "login": "Inloggen",
+    "logout": "Uitloggen",
+    "language": "Taal"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Vers · Hoog eiwit · Maastricht",
+      "title": "Eet als een atleet, zonder te koken.",
+      "subtitle": "AMIS Meals levert vers bereide, hoog-eiwit maaltijden — afgestemd op je doel. Cut, bulk, performance. Wij koken, jij traint.",
+      "ctaShop": "Bekijk het menu",
+      "ctaTryout": "Try-out box · €34,95"
+    },
+    "standard": {
+      "title": "De AMIS standaard",
+      "subtitle": "Wat elke maaltijd belooft",
+      "items": {
+        "fresh": { "title": "Vers bereid", "body": "Maximaal 5 dagen vers, nooit ingevroren. Op donderdag bezorgd voor de week." },
+        "macros": { "title": "Macros op maat", "body": "Elke maaltijd labelled met kcal, eiwit, koolhydraten, vet. Geen ruis." },
+        "quality": { "title": "Eerlijke ingrediënten", "body": "Geen bewaarmiddelen. Lokaal waar mogelijk. Vlees met SKAL-keurmerk." },
+        "delivery": { "title": "Maastricht & verder", "body": "Lokale bezorging in Maastricht-Limburg. Daarbuiten via PostNL met track & trace." }
+      }
+    },
+    "menu": {
+      "title": "Hot deze week",
+      "subtitle": "Drie signature maaltijden",
+      "viewAll": "Alle maaltijden bekijken"
+    },
+    "athletes": {
+      "title": "Eet wat zij eten",
+      "subtitle": "AMIS-atleten en hun weekmenu",
+      "viewAll": "Alle atleten"
+    },
+    "testimonials": {
+      "title": "Wat klanten zeggen"
+    }
+  },
+  "shop": {
+    "title": "Het AMIS menu",
+    "filters": {
+      "all": "Alles",
+      "category": "Categorie",
+      "type": "Type",
+      "meal": "Losse maaltijd",
+      "package": "Pakket",
+      "tryout": "Try-out box",
+      "price": "Prijs",
+      "sort": "Sorteren",
+      "sortFeatured": "Aanbevolen",
+      "sortPriceAsc": "Prijs laag → hoog",
+      "sortPriceDesc": "Prijs hoog → laag"
+    },
+    "card": {
+      "addToCart": "In winkelmand",
+      "outOfStock": "Uitverkocht",
+      "perMeal": "per maaltijd"
+    }
+  },
+  "product": {
+    "addToCart": "In winkelmand",
+    "outOfStock": "Uitverkocht",
+    "stock": "{count, plural, =0 {Uitverkocht} =1 {Nog 1 op voorraad} other {Nog # op voorraad}}",
+    "macros": "Macros",
+    "kcal": "Calorieën",
+    "protein": "Eiwit",
+    "carbs": "Koolhydraten",
+    "fat": "Vet",
+    "fiber": "Vezels",
+    "salt": "Zout",
+    "ingredients": "Ingrediënten",
+    "allergens": "Allergenen",
+    "noAllergens": "Geen van de hoofdallergenen",
+    "reviews": "Reviews",
+    "writeReview": "Schrijf een review",
+    "vatNote": "Inclusief 9% BTW",
+    "perMeal": "per maaltijd"
+  },
+  "allergens": {
+    "gluten": "Gluten",
+    "lactose": "Lactose",
+    "nuts": "Noten",
+    "eggs": "Eieren",
+    "soy": "Soja",
+    "fish": "Vis",
+    "shellfish": "Schaaldieren",
+    "sesame": "Sesam",
+    "celery": "Selderij",
+    "mustard": "Mosterd",
+    "lupine": "Lupine",
+    "sulfite": "Sulfiet",
+    "mollusks": "Weekdieren"
+  },
+  "cart": {
+    "title": "Winkelmand",
+    "empty": "Je winkelmand is leeg.",
+    "continueShopping": "Verder winkelen",
+    "subtotal": "Subtotaal",
+    "shipping": "Verzending",
+    "discount": "Korting",
+    "total": "Totaal",
+    "checkout": "Afrekenen",
+    "remove": "Verwijderen",
+    "increase": "Meer",
+    "decrease": "Minder"
+  },
+  "footer": {
+    "tagline": "Vers bereide hoog-eiwit maaltijden uit Maastricht",
+    "shop": "Shop",
+    "company": "AMIS",
+    "support": "Support",
+    "newsletter": "Nieuwsbrief",
+    "newsletterCopy": "Maandelijkse menu-updates en aanbiedingen.",
+    "subscribe": "Abonneren",
+    "rights": "Alle rechten voorbehouden",
+    "terms": "Algemene voorwaarden",
+    "privacy": "Privacy",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "about": "Over ons"
+  }
+}

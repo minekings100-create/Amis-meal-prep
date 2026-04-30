@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "shop": "Shop",
+    "athletes": "Athletes",
+    "about": "About",
+    "contact": "Contact",
+    "account": "Account",
+    "cart": "Cart",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "language": "Language"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Fresh · High protein · Maastricht",
+      "title": "Eat like an athlete, without cooking.",
+      "subtitle": "AMIS Meals delivers freshly cooked, high-protein meals — built around your goal. Cut, bulk, performance. We cook, you train.",
+      "ctaShop": "View the menu",
+      "ctaTryout": "Try-out box · €34.95"
+    },
+    "standard": {
+      "title": "The AMIS standard",
+      "subtitle": "What every meal promises",
+      "items": {
+        "fresh": { "title": "Freshly cooked", "body": "Up to 5 days fresh, never frozen. Delivered Thursdays for the week ahead." },
+        "macros": { "title": "Macros on point", "body": "Every meal labelled with kcal, protein, carbs, fat. Zero noise." },
+        "quality": { "title": "Honest ingredients", "body": "No preservatives. Local where we can. SKAL-certified meat." },
+        "delivery": { "title": "Maastricht & beyond", "body": "Local delivery in Maastricht-Limburg. Outside that area via PostNL with track & trace." }
+      }
+    },
+    "menu": {
+      "title": "Hot this week",
+      "subtitle": "Three signature meals",
+      "viewAll": "View all meals"
+    },
+    "athletes": {
+      "title": "Eat what they eat",
+      "subtitle": "AMIS athletes and their weekly menu",
+      "viewAll": "All athletes"
+    },
+    "testimonials": {
+      "title": "What customers say"
+    }
+  },
+  "shop": {
+    "title": "The AMIS menu",
+    "filters": {
+      "all": "All",
+      "category": "Category",
+      "type": "Type",
+      "meal": "Single meal",
+      "package": "Package",
+      "tryout": "Try-out box",
+      "price": "Price",
+      "sort": "Sort by",
+      "sortFeatured": "Featured",
+      "sortPriceAsc": "Price low → high",
+      "sortPriceDesc": "Price high → low"
+    },
+    "card": {
+      "addToCart": "Add to cart",
+      "outOfStock": "Sold out",
+      "perMeal": "per meal"
+    }
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "outOfStock": "Sold out",
+    "stock": "{count, plural, =0 {Sold out} =1 {1 left in stock} other {# left in stock}}",
+    "macros": "Macros",
+    "kcal": "Calories",
+    "protein": "Protein",
+    "carbs": "Carbs",
+    "fat": "Fat",
+    "fiber": "Fiber",
+    "salt": "Salt",
+    "ingredients": "Ingredients",
+    "allergens": "Allergens",
+    "noAllergens": "None of the major allergens",
+    "reviews": "Reviews",
+    "writeReview": "Write a review",
+    "vatNote": "Includes 9% VAT",
+    "perMeal": "per meal"
+  },
+  "allergens": {
+    "gluten": "Gluten",
+    "lactose": "Lactose",
+    "nuts": "Nuts",
+    "eggs": "Eggs",
+    "soy": "Soy",
+    "fish": "Fish",
+    "shellfish": "Shellfish",
+    "sesame": "Sesame",
+    "celery": "Celery",
+    "mustard": "Mustard",
+    "lupine": "Lupin",
+    "sulfite": "Sulphites",
+    "mollusks": "Molluscs"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty.",
+    "continueShopping": "Continue shopping",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "discount": "Discount",
+    "total": "Total",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "increase": "Increase",
+    "decrease": "Decrease"
+  },
+  "footer": {
+    "tagline": "Freshly cooked high-protein meals from Maastricht",
+    "shop": "Shop",
+    "company": "AMIS",
+    "support": "Support",
+    "newsletter": "Newsletter",
+    "newsletterCopy": "Monthly menu updates and offers.",
+    "subscribe": "Subscribe",
+    "rights": "All rights reserved",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "about": "About"
+  }
+}

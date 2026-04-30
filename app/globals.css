@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Brand palette */
+  --color-bg: #ffffff;
+  --color-bg-soft: #f7f7f5;
+  --color-ink: #131613;
+  --color-ink-soft: #4a4d49;
+  --color-accent: #4a8a3c;
+  --color-accent-bright: #7cc24f;
+  --color-line: #e8e8e3;
+  --color-gray: #707370;
+
+  --font-sans:
+    var(--font-sora), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, 'JetBrains Mono', monospace;
+
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius: 0.75rem;
+  --radius-lg: 1.25rem;
+
+  --shadow-soft: 0 1px 2px rgba(19, 22, 19, 0.04), 0 8px 24px -12px rgba(19, 22, 19, 0.08);
+  --shadow-glow: 0 1px 0 rgba(124, 194, 79, 0.15), 0 12px 40px -16px rgba(74, 138, 60, 0.25);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-line);
+  }
+
+  html {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-ink);
+    background: var(--color-bg);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    line-height: 1.1;
+  }
+
+  h1 {
+    letter-spacing: -0.035em;
+    font-weight: 700;
+  }
+
+  ::selection {
+    background: var(--color-accent-bright);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Subtle brand stripe at top of every page */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-accent-bright);
+    z-index: 100;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+  }
+
+  .container-amis {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-amis {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.35;
+  }
+}
