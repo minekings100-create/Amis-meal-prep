@@ -77,25 +77,43 @@ export async function getProductListing(
   ]);
 
   const sales30d = new Map<string, number>();
-  for (const r of salesRes.data ?? []) {
+  type SalesRow = { product_id: string | null; quantity: number };
+  for (const r of (salesRes.data as unknown as SalesRow[]) ?? []) {
     if (!r.product_id) continue;
     sales30d.set(r.product_id, (sales30d.get(r.product_id) ?? 0) + r.quantity);
   }
 
-  let rows: ProductListRow[] = (productsRes.data ?? []).map((p) => ({
-    id: p.id,
-    slug: p.slug,
-    name: p.name_nl,
-    imageUrl: p.image_url,
-    type: p.type,
-    categoryName: (p.categories as { name_nl: string } | null)?.name_nl ?? '—',
-    priceCents: p.price_cents,
-    vatRate: typeof p.vat_rate === 'number' ? p.vat_rate : Number(p.vat_rate ?? 9),
-    stock: p.stock,
-    isActive: p.is_active,
-    isFeatured: p.is_featured,
-    sales30d: sales30d.get(p.id) ?? 0,
-  }));
+  type ProductRow = {
+    id: string;
+    slug: string;
+    name_nl: string;
+    image_url: string | null;
+    type: ProductType;
+    category_id: string | null;
+    price_cents: number;
+    vat_rate: number | string;
+    stock: number;
+    is_active: boolean;
+    is_featured: boolean;
+    categories: { name_nl: string } | { name_nl: string }[] | null;
+  };
+  let rows: ProductListRow[] = ((productsRes.data as unknown as ProductRow[]) ?? []).map((p) => {
+    const cat = Array.isArray(p.categories) ? p.categories[0] ?? null : p.categories;
+    return {
+      id: p.id,
+      slug: p.slug,
+      name: p.name_nl,
+      imageUrl: p.image_url,
+      type: p.type,
+      categoryName: cat?.name_nl ?? '—',
+      priceCents: p.price_cents,
+      vatRate: typeof p.vat_rate === 'number' ? p.vat_rate : Number(p.vat_rate ?? 9),
+      stock: p.stock,
+      isActive: p.is_active,
+      isFeatured: p.is_featured,
+      sales30d: sales30d.get(p.id) ?? 0,
+    };
+  });
 
   rows = applyFilters(rows, params);
   rows = sortRows(rows, params);
@@ -137,8 +155,9 @@ export async function getProductForEdit(id: string): Promise<ProductFull | null>
   if (!isSupabaseConfigured()) return mockedFull(id);
 
   const sb = createServiceRoleClient();
-  const { data: product } = await sb.from('products').select('*').eq('id', id).maybeSingle();
-  if (!product) return null;
+  const { data: productRaw } = await sb.from('products').select('*').eq('id', id).maybeSingle();
+  if (!productRaw) return null;
+  const product = productRaw as unknown as Product;
 
   let packageItems: ProductFull['packageItems'] = [];
   if (product.type === 'package') {
@@ -147,8 +166,18 @@ export async function getProductForEdit(id: string): Promise<ProductFull | null>
       .select('id,meal_id,quantity,sort_order,products(name_nl,image_url,kcal,protein_g,carbs_g,fat_g)')
       .eq('package_id', id)
       .order('sort_order', { ascending: true });
-    packageItems = (items ?? []).map((it) => {
-      const p = (it as { products: { name_nl: string; image_url: string | null; kcal: number | null; protein_g: number | null; carbs_g: number | null; fat_g: number | null } | null }).products;
+    type PackageItemRow = {
+      id: string;
+      meal_id: string;
+      quantity: number;
+      sort_order: number;
+      products:
+        | { name_nl: string; image_url: string | null; kcal: number | null; protein_g: number | null; carbs_g: number | null; fat_g: number | null }
+        | { name_nl: string; image_url: string | null; kcal: number | null; protein_g: number | null; carbs_g: number | null; fat_g: number | null }[]
+        | null;
+    };
+    packageItems = ((items as unknown as PackageItemRow[]) ?? []).map((it) => {
+      const p = Array.isArray(it.products) ? it.products[0] ?? null : it.products;
       return {
         id: it.id,
         mealId: it.meal_id,
@@ -165,7 +194,7 @@ export async function getProductForEdit(id: string): Promise<ProductFull | null>
   }
 
   return {
-    ...(product as Product),
+    ...product,
     packageItems,
     isMocked: false,
   };
@@ -187,7 +216,16 @@ export async function listMealsForPackagePicker(): Promise<Array<{ id: string; n
     .eq('type', 'meal')
     .eq('is_active', true)
     .order('name_nl');
-  return (data ?? []).map((m) => ({
+  type MealRow = {
+    id: string;
+    name_nl: string;
+    image_url: string | null;
+    kcal: number | null;
+    protein_g: number | null;
+    carbs_g: number | null;
+    fat_g: number | null;
+  };
+  return ((data as unknown as MealRow[]) ?? []).map((m) => ({
     id: m.id,
     name: m.name_nl,
     imageUrl: m.image_url,

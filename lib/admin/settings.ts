@@ -75,7 +75,8 @@ export async function getAllSettings(): Promise<{ settings: AllSettings; isMocke
   const sb = createServiceRoleClient();
   const { data } = await sb.from('settings').select('key,value');
   const merged: AllSettings = JSON.parse(JSON.stringify(DEFAULTS));
-  for (const row of data ?? []) {
+  type SettingRow = { key: string; value: Record<string, unknown> };
+  for (const row of (data as unknown as SettingRow[]) ?? []) {
     if (row.key === 'shipping') merged.shipping = { ...merged.shipping, ...(row.value as object) };
     else if (row.key === 'company') merged.company = { ...merged.company, ...(row.value as object) };
     else if (row.key === 'email') merged.email = { ...merged.email, ...(row.value as object) };

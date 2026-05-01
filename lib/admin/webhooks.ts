@@ -53,18 +53,33 @@ export async function getWebhookListing(params: WebhookListParams): Promise<Webh
   }
 
   const { data } = await q;
-  const rows: WebhookLogEntry[] = (data ?? []).map((row) => ({
-    id: row.id,
-    source: row.source,
-    eventType: row.event_type,
-    status: row.status,
-    payload: row.payload,
-    errorMessage: row.error_message,
-    relatedOrderId: row.related_order_id,
-    relatedOrderNumber: (row as { orders: { order_number: string } | null }).orders?.order_number ?? null,
-    receivedAt: row.received_at,
-    processedAt: row.processed_at,
-  }));
+  type WebhookRow = {
+    id: string;
+    source: WebhookSource;
+    event_type: string | null;
+    status: WebhookStatus;
+    payload: Json | null;
+    error_message: string | null;
+    related_order_id: string | null;
+    received_at: string;
+    processed_at: string | null;
+    orders: { order_number: string } | { order_number: string }[] | null;
+  };
+  const rows: WebhookLogEntry[] = ((data as unknown as WebhookRow[]) ?? []).map((row) => {
+    const order = Array.isArray(row.orders) ? row.orders[0] ?? null : row.orders;
+    return {
+      id: row.id,
+      source: row.source,
+      eventType: row.event_type,
+      status: row.status,
+      payload: row.payload,
+      errorMessage: row.error_message,
+      relatedOrderId: row.related_order_id,
+      relatedOrderNumber: order?.order_number ?? null,
+      receivedAt: row.received_at,
+      processedAt: row.processed_at,
+    };
+  });
 
   return { rows, isMocked: false };
 }

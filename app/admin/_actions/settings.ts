@@ -17,7 +17,7 @@ export interface SettingsResult {
 
 export async function saveSettingAction(
   key: 'shipping' | 'company' | 'email' | 'general',
-  value: Record<string, unknown>,
+  value: unknown,
 ): Promise<SettingsResult> {
   const ctx = await checkAdminAccess('owner');
   if (!isSupabaseConfigured()) return { ok: true, message: 'Mocked: zou opslaan in Supabase.' };

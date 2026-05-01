@@ -211,8 +211,16 @@ export const mockProducts: Product[] = [
   },
 ];
 
+const baseReview = {
+  is_deleted: false,
+  deleted_reason: null,
+  deleted_at: null,
+  deleted_by: null,
+} as const;
+
 export const mockReviews: Review[] = [
   {
+    ...baseReview,
     id: 'rev-1',
     product_id: 'prod-korean-beef',
     user_id: 'user-mock-1',
@@ -224,6 +232,7 @@ export const mockReviews: Review[] = [
     created_at: '2026-04-12T10:00:00Z',
   },
   {
+    ...baseReview,
     id: 'rev-2',
     product_id: 'prod-korean-beef',
     user_id: 'user-mock-2',

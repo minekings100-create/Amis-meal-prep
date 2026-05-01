@@ -20,14 +20,23 @@ export async function listAdminUsers(): Promise<{ rows: AdminUserRow[]; isMocked
   if (!isSupabaseConfigured()) return { rows: mockedUsers(), isMocked: true };
   const sb = createServiceRoleClient();
 
-  const { data: profiles } = await sb
+  type AdminProfileRow = {
+    id: string;
+    email: string;
+    first_name: string | null;
+    last_name: string | null;
+    role: UserRole;
+    created_at: string;
+  };
+  const { data: profilesRaw } = await sb
     .from('profiles')
     .select('id,email,first_name,last_name,role,created_at')
     .in('role', ['staff', 'owner'])
     .order('created_at', { ascending: false });
+  const profiles = (profilesRaw as unknown as AdminProfileRow[]) ?? [];
 
   // last_sign_in_at lives in auth.users (admin API). Fetch in batch.
-  const ids = (profiles ?? []).map((p) => p.id);
+  const ids = profiles.map((p) => p.id);
   const lastSignInById = new Map<string, string | null>();
   for (const id of ids) {
     try {
@@ -38,7 +47,7 @@ export async function listAdminUsers(): Promise<{ rows: AdminUserRow[]; isMocked
     }
   }
 
-  const rows: AdminUserRow[] = (profiles ?? []).map((p) => ({
+  const rows: AdminUserRow[] = profiles.map((p) => ({
     userId: p.id,
     email: p.email,
     name: `${p.first_name ?? ''} ${p.last_name ?? ''}`.trim() || p.email,

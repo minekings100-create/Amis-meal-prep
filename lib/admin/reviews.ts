@@ -66,10 +66,31 @@ export async function getReviewsListing(params: ReviewsListParams): Promise<Revi
   if (params.dateFrom) q = q.gte('created_at', params.dateFrom);
 
   const { data } = await q;
+  type ReviewRow = {
+    id: string;
+    rating: number;
+    title: string | null;
+    body: string | null;
+    is_published: boolean;
+    is_deleted: boolean;
+    deleted_reason: string | null;
+    created_at: string;
+    order_id: string | null;
+    user_id: string;
+    product_id: string;
+    products:
+      | { name_nl: string; image_url: string | null; slug: string }
+      | { name_nl: string; image_url: string | null; slug: string }[]
+      | null;
+    profiles:
+      | { first_name: string | null; last_name: string | null; email: string }
+      | { first_name: string | null; last_name: string | null; email: string }[]
+      | null;
+  };
 
-  const rows: AdminReview[] = (data ?? []).map((r) => {
-    const product = (r as { products: { name_nl: string; image_url: string | null; slug: string } | null }).products;
-    const profile = (r as { profiles: { first_name: string | null; last_name: string | null; email: string } | null }).profiles;
+  const rows: AdminReview[] = ((data as unknown as ReviewRow[]) ?? []).map((r) => {
+    const product = Array.isArray(r.products) ? r.products[0] ?? null : r.products;
+    const profile = Array.isArray(r.profiles) ? r.profiles[0] ?? null : r.profiles;
     return {
       id: r.id,
       rating: r.rating,

@@ -60,30 +60,47 @@ export async function getStockListing(params: StockListParams): Promise<StockLis
   ]);
 
   const sales7dByProduct = new Map<string, number>();
-  for (const row of salesRes.data ?? []) {
+  type SalesRow = { product_id: string | null; quantity: number };
+  for (const row of (salesRes.data as unknown as SalesRow[]) ?? []) {
     if (!row.product_id) continue;
     sales7dByProduct.set(row.product_id, (sales7dByProduct.get(row.product_id) ?? 0) + row.quantity);
   }
 
-  let rows: StockRow[] = (productsRes.data ?? []).map((p) => ({
-    id: p.id,
-    slug: p.slug,
-    name: p.name_nl,
-    imageUrl: p.image_url,
-    categoryId: p.category_id,
-    categoryName: (p.categories as { name_nl: string } | null)?.name_nl ?? 'Geen',
-    type: p.type,
-    stock: p.stock,
-    isActive: p.is_active,
-    priceCents: p.price_cents,
-    sales7d: sales7dByProduct.get(p.id) ?? 0,
-  }));
+  type ProductStockRow = {
+    id: string;
+    slug: string;
+    name_nl: string;
+    image_url: string | null;
+    category_id: string | null;
+    type: ProductType;
+    stock: number;
+    is_active: boolean;
+    price_cents: number;
+    categories: { name_nl: string } | { name_nl: string }[] | null;
+  };
+  let rows: StockRow[] = ((productsRes.data as unknown as ProductStockRow[]) ?? []).map((p) => {
+    const cat = Array.isArray(p.categories) ? p.categories[0] ?? null : p.categories;
+    return {
+      id: p.id,
+      slug: p.slug,
+      name: p.name_nl,
+      imageUrl: p.image_url,
+      categoryId: p.category_id,
+      categoryName: cat?.name_nl ?? 'Geen',
+      type: p.type,
+      stock: p.stock,
+      isActive: p.is_active,
+      priceCents: p.price_cents,
+      sales7d: sales7dByProduct.get(p.id) ?? 0,
+    };
+  });
 
   rows = applyFilters(rows, params);
 
+  type CategoryRow = { id: string; name_nl: string };
   return {
     rows,
-    categories: (categoriesRes.data ?? []).map((c) => ({ id: c.id, name: c.name_nl })),
+    categories: ((categoriesRes.data as unknown as CategoryRow[]) ?? []).map((c) => ({ id: c.id, name: c.name_nl })),
     isMocked: false,
   };
 }

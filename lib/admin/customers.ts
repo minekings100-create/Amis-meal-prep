@@ -67,8 +67,10 @@ export async function getCustomersListing(params: CustomerListParams): Promise<C
   ]);
 
   type Agg = { total: number; ltv: number; first: string | null; last: string | null };
+  type OrderAggRow = { user_id: string | null; total_cents: number; created_at: string; status: string };
+  type ProfileListRow = { id: string; email: string; first_name: string | null; last_name: string | null; role: string };
   const agg = new Map<string, Agg>();
-  for (const o of ordersRes.data ?? []) {
+  for (const o of (ordersRes.data as unknown as OrderAggRow[]) ?? []) {
     if (!o.user_id) continue;
     const a = agg.get(o.user_id) ?? { total: 0, ltv: 0, first: null, last: null };
     a.total += 1;
@@ -78,7 +80,7 @@ export async function getCustomersListing(params: CustomerListParams): Promise<C
     agg.set(o.user_id, a);
   }
 
-  let rows: CustomerRow[] = (profilesRes.data ?? []).map((p) => {
+  let rows: CustomerRow[] = ((profilesRes.data as unknown as ProfileListRow[]) ?? []).map((p) => {
     const a = agg.get(p.id) ?? { total: 0, ltv: 0, first: null, last: null };
     const base = {
       userId: p.id,
@@ -164,7 +166,18 @@ export async function getCustomerDetail(userId: string): Promise<CustomerDetail 
       .order('created_at', { ascending: false }),
   ]);
 
-  const orders = ordersRes.data ?? [];
+  type OrderHistoryRow = { id: string; order_number: string; total_cents: number; status: string; created_at: string };
+  type ProfileRow = { id: string; email: string; first_name: string | null; last_name: string | null; phone: string | null };
+  type CustomerReviewRow = {
+    id: string;
+    rating: number;
+    title: string | null;
+    created_at: string;
+    product_id: string;
+    products: { name_nl: string } | { name_nl: string }[] | null;
+  };
+  const p = profile as unknown as ProfileRow;
+  const orders = (ordersRes.data as unknown as OrderHistoryRow[]) ?? [];
   const ltv = orders.filter((o) => ['paid', 'preparing', 'shipped', 'delivered'].includes(o.status)).reduce((acc, o) => acc + o.total_cents, 0);
   const totalOrders = orders.length;
   const avg = totalOrders > 0 ? Math.round(ltv / totalOrders) : 0;
@@ -173,11 +186,11 @@ export async function getCustomerDetail(userId: string): Promise<CustomerDetail 
 
   return {
     customer: {
-      userId: profile.id,
-      firstName: profile.first_name,
-      lastName: profile.last_name,
-      email: profile.email,
-      phone: profile.phone,
+      userId: p.id,
+      firstName: p.first_name,
+      lastName: p.last_name,
+      email: p.email,
+      phone: p.phone,
       firstOrderAt,
       lastOrderAt,
       totalOrders,
@@ -187,13 +200,16 @@ export async function getCustomerDetail(userId: string): Promise<CustomerDetail 
     },
     averageOrderCents: avg,
     orders: orders.map((o) => ({ id: o.id, orderNumber: o.order_number, createdAt: o.created_at, totalCents: o.total_cents, status: o.status })),
-    reviews: (reviewsRes.data ?? []).map((r) => ({
-      id: r.id,
-      rating: r.rating,
-      title: r.title,
-      productName: (r as { products: { name_nl: string } | null }).products?.name_nl ?? '—',
-      createdAt: r.created_at,
-    })),
+    reviews: ((reviewsRes.data as unknown as CustomerReviewRow[]) ?? []).map((r) => {
+      const prod = Array.isArray(r.products) ? r.products[0] ?? null : r.products;
+      return {
+        id: r.id,
+        rating: r.rating,
+        title: r.title,
+        productName: prod?.name_nl ?? '—',
+        createdAt: r.created_at,
+      };
+    }),
     isMocked: false,
   };
 }

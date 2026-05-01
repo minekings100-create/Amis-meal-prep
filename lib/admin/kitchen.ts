@@ -68,7 +68,7 @@ export async function getProductionPlanning(date: string): Promise<KitchenPlanni
       product_id: string | null;
       product_name: string;
       quantity: number;
-      products: { image_url: string | null } | null;
+      products: { image_url: string | null } | { image_url: string | null }[] | null;
     }> | null;
   };
 
@@ -76,15 +76,16 @@ export async function getProductionPlanning(date: string): Promise<KitchenPlanni
   let totalUnits = 0;
   const orderIds = new Set<string>();
 
-  for (const o of (orders ?? []) as OrderRow[]) {
+  for (const o of ((orders as unknown as OrderRow[]) ?? [])) {
     orderIds.add(o.id);
     const customer = `${o.shipping_first_name ?? ''} ${o.shipping_last_name ?? ''}`.trim() || '—';
     for (const it of o.order_items ?? []) {
+      const products = Array.isArray(it.products) ? it.products[0] ?? null : it.products;
       const key = it.product_id ?? `name:${it.product_name}`;
       const existing = byProduct.get(key) ?? {
         productId: it.product_id ?? '',
         name: it.product_name,
-        imageUrl: it.products?.image_url ?? null,
+        imageUrl: products?.image_url ?? null,
         totalUnits: 0,
         orderCount: 0,
         notesCount: 0,

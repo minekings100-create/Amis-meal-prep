@@ -38,16 +38,12 @@ export function StatCard({
   hint,
 }: StatCardProps) {
   const styles = toneStyles[value > 0 ? tone : 'default'];
-  const Wrapper = href ? Link : 'div';
-
-  return (
-    <Wrapper
-      {...(href ? { href } : {})}
-      className={cn(
-        'group block rounded-2xl border border-stone-200 bg-white p-5 transition-all',
-        href && 'hover:border-stone-300 hover:shadow-[0_8px_24px_-12px_rgba(19,22,19,0.12)]',
-      )}
-    >
+  const className = cn(
+    'group block rounded-2xl border border-stone-200 bg-white p-5 transition-all',
+    href && 'hover:border-stone-300 hover:shadow-[0_8px_24px_-12px_rgba(19,22,19,0.12)]',
+  );
+  const inner = (
+    <>
       <div className="flex items-start justify-between">
         {Icon && (
           <div className={cn('h-9 w-9 rounded-lg inline-flex items-center justify-center', styles.iconBg)}>
@@ -67,6 +63,14 @@ export function StatCard({
         <p className="mt-1 text-sm text-stone-600">{label}</p>
         {hint && <p className="mt-0.5 text-xs text-stone-400">{hint}</p>}
       </div>
-    </Wrapper>
+    </>
+  );
+
+  return href ? (
+    <Link href={href} className={className}>
+      {inner}
+    </Link>
+  ) : (
+    <div className={className}>{inner}</div>
   );
 }

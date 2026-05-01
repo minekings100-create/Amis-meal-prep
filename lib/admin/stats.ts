@@ -95,7 +95,8 @@ export async function getDashboardStats(): Promise<DashboardStats> {
       .limit(5),
   ]);
 
-  const revenueRows = revenueRes.data ?? [];
+  type RevenueRow = { total_cents: number; paid_at: string | null; created_at: string; status: OrderStatus };
+  const revenueRows = (revenueRes.data as unknown as RevenueRow[]) ?? [];
   const trendMap = new Map<string, { orders: number; revenueCents: number }>();
   for (let i = 29; i >= 0; i--) {
     const d = new Date(startOfDay);
@@ -127,7 +128,16 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     revenueCents: v.revenueCents,
   }));
 
-  const recentOrders: RecentOrder[] = (recentOrdersRes.data ?? []).map((o) => ({
+  type RecentOrderRow = {
+    id: string;
+    order_number: string;
+    total_cents: number;
+    status: OrderStatus;
+    created_at: string;
+    shipping_first_name: string;
+    shipping_last_name: string;
+  };
+  const recentOrders: RecentOrder[] = ((recentOrdersRes.data as unknown as RecentOrderRow[]) ?? []).map((o) => ({
     id: o.id,
     orderNumber: o.order_number,
     customerName: `${o.shipping_first_name ?? ''} ${o.shipping_last_name ?? ''}`.trim() || '—',

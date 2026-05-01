@@ -85,23 +85,55 @@ export async function getOrderDetail(id: string): Promise<OrderDetail | null> {
   if (!isSupabaseConfigured()) return mockedDetail(id);
 
   const sb = createServiceRoleClient();
-  const { data: order } = await sb
+  const { data: orderRaw } = await sb
     .from('orders')
-    .select(
-      'id,order_number,status,created_at,paid_at,shipped_at,delivered_at,' +
-        'subtotal_cents,discount_cents,shipping_cents,tax_cents,total_cents,' +
-        'shipping_method,shipping_first_name,shipping_last_name,shipping_street,shipping_house_number,' +
-        'shipping_postal_code,shipping_city,shipping_country,shipping_phone,' +
-        'sendcloud_parcel_id,tracking_number,tracking_url,' +
-        'customer_note,internal_note,' +
-        'mollie_payment_id,mollie_payment_status,' +
-        'user_id,guest_email,' +
-        'order_items(id,product_id,product_name,quantity,unit_price_cents,total_cents,products(image_url))',
-    )
+    .select('*, order_items(id,product_id,product_name,quantity,unit_price_cents,total_cents,products(image_url))')
     .eq('id', id)
     .maybeSingle();
 
-  if (!order) return null;
+  if (!orderRaw) return null;
+  type OrderRow = {
+    id: string;
+    order_number: string;
+    status: OrderStatus;
+    created_at: string;
+    paid_at: string | null;
+    shipped_at: string | null;
+    delivered_at: string | null;
+    subtotal_cents: number;
+    discount_cents: number;
+    shipping_cents: number;
+    tax_cents: number;
+    total_cents: number;
+    shipping_method: ShippingMethod;
+    shipping_first_name: string;
+    shipping_last_name: string;
+    shipping_street: string;
+    shipping_house_number: string;
+    shipping_postal_code: string;
+    shipping_city: string;
+    shipping_country: string;
+    shipping_phone: string | null;
+    sendcloud_parcel_id: string | null;
+    tracking_number: string | null;
+    tracking_url: string | null;
+    customer_note: string | null;
+    internal_note: string | null;
+    mollie_payment_id: string | null;
+    mollie_payment_status: string | null;
+    user_id: string | null;
+    guest_email: string | null;
+    order_items: Array<{
+      id: string;
+      product_id: string | null;
+      product_name: string;
+      quantity: number;
+      unit_price_cents: number;
+      total_cents: number;
+      products: { image_url: string | null } | { image_url: string | null }[] | null;
+    }> | null;
+  };
+  const order = orderRaw as unknown as OrderRow;
 
   let customerEmail = order.guest_email ?? '';
   let customerPhone: string | null = order.shipping_phone ?? null;
@@ -112,9 +144,10 @@ export async function getOrderDetail(id: string): Promise<OrderDetail | null> {
       .select('email,phone')
       .eq('id', order.user_id)
       .maybeSingle();
-    if (profile) {
-      customerEmail = profile.email;
-      customerPhone = profile.phone ?? customerPhone;
+    const p = profile as unknown as { email: string; phone: string | null } | null;
+    if (p) {
+      customerEmail = p.email;
+      customerPhone = p.phone ?? customerPhone;
     }
     const { count } = await sb
       .from('orders')
@@ -129,39 +162,43 @@ export async function getOrderDetail(id: string): Promise<OrderDetail | null> {
     .eq('order_id', id)
     .order('created_at', { ascending: false });
 
-  const activity: ActivityEntry[] = (activityRows ?? []).map((a) => {
-    const profile = (a as unknown as {
-      profiles: { first_name: string | null; lastName?: string; last_name: string | null; email: string } | null;
-    }).profiles;
+  type ActivityRow = {
+    id: string;
+    action: string;
+    details: Record<string, unknown> | null;
+    created_at: string;
+    user_id: string | null;
+    profiles:
+      | { first_name: string | null; last_name: string | null; email: string }
+      | { first_name: string | null; last_name: string | null; email: string }[]
+      | null;
+  };
+  const activity: ActivityEntry[] = ((activityRows as unknown as ActivityRow[]) ?? []).map((a) => {
+    const profile = Array.isArray(a.profiles) ? a.profiles[0] ?? null : a.profiles;
     const actorName = profile
       ? `${profile.first_name ?? ''} ${profile.last_name ?? ''}`.trim() || profile.email
       : 'Systeem';
     return {
       id: a.id,
       action: a.action,
-      details: (a.details ?? null) as Record<string, unknown> | null,
+      details: a.details ?? null,
       actorName,
       createdAt: a.created_at,
     };
   });
 
-  const items = (order.order_items ?? []).map((it: {
-    id: string;
-    product_id: string | null;
-    product_name: string;
-    quantity: number;
-    unit_price_cents: number;
-    total_cents: number;
-    products: { image_url: string | null } | null;
-  }) => ({
-    id: it.id,
-    productId: it.product_id,
-    name: it.product_name,
-    quantity: it.quantity,
-    unitPriceCents: it.unit_price_cents,
-    totalCents: it.total_cents,
-    imageUrl: it.products?.image_url ?? null,
-  }));
+  const items = (order.order_items ?? []).map((it) => {
+    const products = Array.isArray(it.products) ? it.products[0] ?? null : it.products;
+    return {
+      id: it.id,
+      productId: it.product_id,
+      name: it.product_name,
+      quantity: it.quantity,
+      unitPriceCents: it.unit_price_cents,
+      totalCents: it.total_cents,
+      imageUrl: products?.image_url ?? null,
+    };
+  });
 
   return {
     id: order.id,

@@ -179,14 +179,34 @@ export async function getOrdersListing(params: OrdersListParams): Promise<Orders
 
   const { data, count } = await q;
 
-  const rows: OrdersListRow[] = (data ?? []).map((o) => {
-    const items = (o.order_items ?? []) as Array<{
+  type OrderRow = {
+    id: string;
+    order_number: string;
+    created_at: string;
+    total_cents: number;
+    status: OrderStatus;
+    mollie_payment_status: string | null;
+    shipping_first_name: string;
+    shipping_last_name: string;
+    shipping_postal_code: string;
+    shipping_city: string;
+    shipping_method: ShippingMethod;
+    guest_email: string | null;
+    user_id: string | null;
+    order_items: Array<{
+      product_id: string | null;
       product_name: string;
       quantity: number;
-      products: { image_url: string | null } | null;
-    }>;
+      products: { image_url: string | null } | { image_url: string | null }[] | null;
+    }> | null;
+  };
+  const rows: OrdersListRow[] = ((data as unknown as OrderRow[]) ?? []).map((o) => {
+    const items = o.order_items ?? [];
     const thumbs = items
-      .map((it) => it.products?.image_url ?? null)
+      .map((it) => {
+        const prod = Array.isArray(it.products) ? it.products[0] ?? null : it.products;
+        return prod?.image_url ?? null;
+      })
       .filter((u): u is string => Boolean(u))
       .slice(0, 4);
     const totalItems = items.reduce((acc, it) => acc + (it.quantity ?? 0), 0);
