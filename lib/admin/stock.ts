@@ -1,5 +1,8 @@
 import { createServiceRoleClient } from '@/lib/supabase/server';
 import type { ProductType } from '@/types/database';
+import { LOW_STOCK_THRESHOLD } from '@/lib/admin/shared';
+
+export { LOW_STOCK_THRESHOLD };
 
 export interface StockRow {
   id: string;
@@ -32,7 +35,6 @@ export interface StockListParams {
   lowOnly: boolean;
 }
 
-export const LOW_STOCK_THRESHOLD = 10;
 
 function isSupabaseConfigured(): boolean {
   return Boolean(

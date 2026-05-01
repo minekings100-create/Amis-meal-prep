@@ -6,7 +6,8 @@ import { Check, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 import { formatMoneyCents } from '@/lib/utils/money';
 import { updateStockAction, toggleProductActiveAction } from '@/app/admin/_actions/stock';
-import { LOW_STOCK_THRESHOLD, type StockRow } from '@/lib/admin/stock';
+import { LOW_STOCK_THRESHOLD } from '@/lib/admin/shared';
+import type { StockRow } from '@/lib/admin/stock';
 
 type RealtimeStatus = 'idle' | 'connecting' | 'live' | 'off';
 

@@ -15,7 +15,7 @@ import {
   softDeleteProductAction,
   type ProductFormPayload,
 } from '@/app/admin/_actions/products';
-import { ATTRIBUTE_TAGS, GOAL_TAGS, ALLERGEN_FIELDS } from '@/lib/admin/products';
+import { ATTRIBUTE_TAGS, GOAL_TAGS, ALLERGEN_FIELDS } from '@/lib/admin/shared';
 import type { Category } from '@/types/database';
 
 const GOAL_COLORS: Record<(typeof GOAL_TAGS)[number], string> = {

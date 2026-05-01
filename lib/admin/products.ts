@@ -1,11 +1,5 @@
 import { createServiceRoleClient } from '@/lib/supabase/server';
-import type {
-  Product,
-  ProductType,
-  GoalTag,
-  AttributeTag,
-  Category,
-} from '@/types/database';
+import type { Product, ProductType, Category } from '@/types/database';
 
 export interface ProductListRow {
   id: string;
@@ -236,34 +230,10 @@ export async function listMealsForPackagePicker(): Promise<Array<{ id: string; n
   }));
 }
 
-export const ATTRIBUTE_TAGS: AttributeTag[] = [
-  'new',
-  'bestseller',
-  'limited',
-  'spicy',
-  'high-protein',
-  'vegetarian',
-  'gluten-free',
-  'lactose-free',
-];
-
-export const GOAL_TAGS: GoalTag[] = ['cut', 'bulk', 'performance', 'maintenance', 'hybrid'];
-
-export const ALLERGEN_FIELDS = [
-  { key: 'contains_gluten', label: 'Gluten' },
-  { key: 'contains_lactose', label: 'Lactose' },
-  { key: 'contains_nuts', label: 'Noten' },
-  { key: 'contains_eggs', label: 'Eieren' },
-  { key: 'contains_soy', label: 'Soja' },
-  { key: 'contains_fish', label: 'Vis' },
-  { key: 'contains_shellfish', label: 'Schaaldieren' },
-  { key: 'contains_sesame', label: 'Sesam' },
-  { key: 'contains_celery', label: 'Selderij' },
-  { key: 'contains_mustard', label: 'Mosterd' },
-  { key: 'contains_lupine', label: 'Lupine' },
-  { key: 'contains_sulfite', label: 'Sulfiet' },
-  { key: 'contains_mollusks', label: 'Weekdieren' },
-] as const;
+// Constants moved to lib/admin/shared.ts so client components can import them
+// without pulling in the server-only Supabase client. Re-export from here for
+// existing server-side imports.
+export { ATTRIBUTE_TAGS, GOAL_TAGS, ALLERGEN_FIELDS } from '@/lib/admin/shared';
 
 // ============================================================
 // Mocked
