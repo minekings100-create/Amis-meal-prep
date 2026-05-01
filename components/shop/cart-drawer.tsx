@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion, type PanInfo } from 'framer-motion';
 import { X, Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
 import { useCart, cartSubtotalCents } from '@/lib/cart/store';
@@ -16,6 +16,20 @@ export function CartDrawer() {
   const setQuantity = useCart((s) => s.setQuantity);
   const remove = useCart((s) => s.remove);
   const reduce = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(max-width: 767px)');
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
+
+  function handleDragEnd(_e: unknown, info: PanInfo) {
+    if (info.offset.y > 80 || info.velocity.y > 500) close();
+  }
 
   // Lock scroll + Esc-to-close while open. Pointer-events on container handled by AnimatePresence.
   useEffect(() => {
@@ -68,6 +82,11 @@ export function CartDrawer() {
                 : { opacity: 0, scale: 0.95, x: 24, y: 24 }
             }
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            // Mobile only: enable vertical drag-to-close (skip if user prefers reduced motion).
+            drag={isMobile && !reduce ? 'y' : false}
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0, bottom: 0.4 }}
+            onDragEnd={handleDragEnd}
             className={[
               'absolute',
               // Desktop: vertically centered against right edge.
@@ -84,6 +103,11 @@ export function CartDrawer() {
               'overflow-hidden flex flex-col',
             ].join(' ')}
           >
+            {/* Mobile drag handle — visual affordance for swipe-down-to-close */}
+            <div className="md:hidden flex justify-center pt-2 pb-1 cursor-grab active:cursor-grabbing">
+              <span className="h-1 w-10 rounded-full bg-stone-300" aria-hidden />
+            </div>
+
             <Header title={t('title')} count={lines.length} onClose={close} />
 
             <div className="flex-1 overflow-y-auto cart-scroll">
