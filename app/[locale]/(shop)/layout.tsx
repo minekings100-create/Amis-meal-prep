@@ -5,6 +5,7 @@ import { CompareBar } from '@/components/shop/compare-bar';
 import { CompareModal } from '@/components/shop/compare-modal';
 import { Toaster } from '@/components/ui/toaster';
 import { PageTransition } from '@/components/layout/page-transition';
+import { CookieConsent } from '@/components/legal/cookie-consent';
 
 export default function ShopLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,6 +18,7 @@ export default function ShopLayout({ children }: { children: React.ReactNode }) 
       <CartDrawer />
       <CompareBar />
       <CompareModal />
+      <CookieConsent />
       <Toaster />
     </>
   );
