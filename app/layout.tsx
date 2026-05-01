@@ -16,19 +16,50 @@ const jetbrains = JetBrains_Mono({
   display: 'swap',
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://amismeals.nl';
+const SITE_DESCRIPTION =
+  'Vers bereide hoog-eiwit maaltijden vanuit Maastricht. Cut, bulk, performance — wij koken, jij traint.';
+
 export const metadata: Metadata = {
-  title: { default: 'AMIS Meals — Vers, hoog-eiwit, uit Maastricht', template: '%s · AMIS Meals' },
-  description:
-    'Vers bereide hoog-eiwit maaltijden uit Maastricht. Cut, bulk en performance — wij koken, jij traint.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://amismeals.nl'),
+  title: { default: 'AMIS Meals — Vers, hoog-eiwit, uit Maastricht', template: '%s — AMIS Meals' },
+  description: SITE_DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
+  applicationName: 'AMIS Meals',
+  alternates: {
+    canonical: '/',
+    languages: { nl: '/', en: '/en' },
+  },
   openGraph: {
     title: 'AMIS Meals',
-    description: 'Vers bereide hoog-eiwit maaltijden uit Maastricht.',
+    description: SITE_DESCRIPTION,
     siteName: 'AMIS Meals',
     type: 'website',
     locale: 'nl_NL',
+    alternateLocale: ['en_US'],
+    url: SITE_URL,
+    images: [
+      {
+        url: `${SITE_URL}/og?title=AMIS%20Meals&subtitle=Vers,%20hoog-eiwit,%20uit%20Maastricht`,
+        width: 1200,
+        height: 630,
+        alt: 'AMIS Meals',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AMIS Meals',
+    description: SITE_DESCRIPTION,
+    images: [`${SITE_URL}/og?title=AMIS%20Meals&subtitle=Vers,%20hoog-eiwit,%20uit%20Maastricht`],
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: '/apple-icon.png',
+  },
 };
 
 export const viewport: Viewport = {

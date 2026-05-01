@@ -52,8 +52,32 @@ export default async function HomePage({
       ? 'AMIS meal — high-protein, freshly cooked'
       : 'AMIS maaltijd — vers bereid, hoog eiwit';
 
+  const orgJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AMIS Meals',
+    url: process.env.NEXT_PUBLIC_APP_URL ?? 'https://amismeals.nl',
+    logo: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://amismeals.nl'}/icon.png`,
+    description: 'Vers bereide hoog-eiwit maaltijden vanuit Maastricht.',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Maastricht',
+      addressCountry: 'NL',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      email: 'hallo@amismeals.nl',
+      availableLanguage: ['nl', 'en'],
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
       {/* HERO — full-bleed photo with text overlay (MegaFit style, text-left) */}
       <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh] flex items-center overflow-hidden bg-stone-900">
         {/* Photo with subtle parallax (desktop only) */}

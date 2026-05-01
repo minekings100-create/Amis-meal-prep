@@ -25,13 +25,29 @@ export async function generateMetadata({
   if (!product) return {};
   const name = locale === 'en' ? product.name_en : product.name_nl;
   const description = locale === 'en' ? product.description_en : product.description_nl;
+  const ogParams = new URLSearchParams({
+    title: name,
+    subtitle: description ?? 'AMIS Meals',
+    eyebrow:
+      product.type === 'meal' ? (locale === 'en' ? 'Meal' : 'Maaltijd') :
+      product.type === 'package' ? (locale === 'en' ? 'Package' : 'Pakket') : 'Try-out',
+    ...(product.image_url ? { image: product.image_url } : {}),
+  });
   return {
     title: name,
     description: description ?? undefined,
+    alternates: { canonical: `/shop/${slug}` },
     openGraph: {
       title: name,
       description: description ?? undefined,
-      images: product.image_url ? [{ url: product.image_url }] : undefined,
+      type: 'website',
+      images: [{ url: `/og?${ogParams.toString()}`, width: 1200, height: 630, alt: name }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: name,
+      description: description ?? undefined,
+      images: [`/og?${ogParams.toString()}`],
     },
   };
 }
@@ -79,6 +95,11 @@ async function ProductDetail({
   const ingredients = locale === 'en' ? product.ingredients_en : product.ingredients_nl;
   const stockText = t('stock', { count: product.stock });
 
+  const avgRating =
+    reviews.length > 0
+      ? reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length
+      : null;
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -86,6 +107,7 @@ async function ProductDetail({
     description,
     image: product.image_url,
     sku: product.id,
+    brand: { '@type': 'Brand', name: 'AMIS Meals' },
     offers: {
       '@type': 'Offer',
       priceCurrency: 'EUR',
@@ -102,6 +124,16 @@ async function ProductDetail({
           fatContent: product.fat_g ? `${product.fat_g} g` : undefined,
         }
       : undefined,
+    aggregateRating:
+      avgRating !== null
+        ? {
+            '@type': 'AggregateRating',
+            ratingValue: avgRating.toFixed(1),
+            reviewCount: reviews.length,
+            bestRating: '5',
+            worstRating: '1',
+          }
+        : undefined,
   };
 
   return (
