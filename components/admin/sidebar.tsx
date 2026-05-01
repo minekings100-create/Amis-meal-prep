@@ -5,14 +5,15 @@ import Link from 'next/link';
 import {
   LayoutDashboard,
   ShoppingCart,
+  ChefHat,
   Package,
   Boxes,
-  Trophy,
   Star,
   Tag,
   Users,
   Settings,
   Shield,
+  Webhook,
   LogOut,
   type LucideIcon,
 } from 'lucide-react';
@@ -31,13 +32,14 @@ interface NavItem {
 const NAV: NavItem[] = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
   { href: '/admin/orders', label: 'Bestellingen', icon: ShoppingCart },
+  { href: '/admin/kitchen', label: 'Productie', icon: ChefHat },
   { href: '/admin/products', label: 'Producten', icon: Package },
   { href: '/admin/stock', label: 'Voorraad', icon: Boxes },
-  { href: '/admin/athletes', label: 'Atleten', icon: Trophy },
   { href: '/admin/reviews', label: 'Reviews', icon: Star },
   { href: '/admin/discount-codes', label: 'Kortingscodes', icon: Tag, ownerOnly: true },
   { href: '/admin/customers', label: 'Klanten', icon: Users },
   { href: '/admin/settings', label: 'Instellingen', icon: Settings, ownerOnly: true },
+  { href: '/admin/webhooks', label: 'Webhooks', icon: Webhook, ownerOnly: true },
   { href: '/admin/users', label: 'Gebruikers', icon: Shield, ownerOnly: true },
 ];
 

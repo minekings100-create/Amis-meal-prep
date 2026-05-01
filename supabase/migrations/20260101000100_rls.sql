@@ -5,7 +5,6 @@ alter table public.addresses enable row level security;
 alter table public.categories enable row level security;
 alter table public.products enable row level security;
 alter table public.package_items enable row level security;
-alter table public.athletes enable row level security;
 alter table public.discount_codes enable row level security;
 alter table public.orders enable row level security;
 alter table public.order_items enable row level security;
@@ -56,15 +55,6 @@ create policy "package_items_public_read" on public.package_items
   for select using (true);
 
 create policy "package_items_admin_write" on public.package_items
-  for all using (public.is_admin()) with check (public.is_admin());
-
--- ============================================================
--- ATHLETES — public read (active), admin write
--- ============================================================
-create policy "athletes_public_read" on public.athletes
-  for select using (is_active = true or public.is_admin());
-
-create policy "athletes_admin_write" on public.athletes
   for all using (public.is_admin()) with check (public.is_admin());
 
 -- ============================================================

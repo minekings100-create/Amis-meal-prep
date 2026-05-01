@@ -66,18 +66,7 @@ async function shootHomeScroll(browser, viewport) {
   await page.screenshot({ path: `${OUT}/anim-home-standard-${viewport}.png` });
   console.log(`  ✓ anim-home-standard-${viewport}.png`);
 
-  // Frame 5 — Athletes section
-  await page.evaluate(() => {
-    const el = Array.from(document.querySelectorAll('h2')).find((h) =>
-      /eet wat zij|eat what they/i.test(h.textContent ?? ''),
-    );
-    if (el) el.scrollIntoView({ block: 'start', behavior: 'instant' });
-  });
-  await page.waitForTimeout(700);
-  await page.screenshot({ path: `${OUT}/anim-home-athletes-${viewport}.png` });
-  console.log(`  ✓ anim-home-athletes-${viewport}.png`);
-
-  // Frame 6 — bottom (testimonials)
+  // Frame 5 — bottom (testimonials)
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await page.waitForTimeout(800);
   await page.screenshot({ path: `${OUT}/anim-home-bottom-${viewport}.png` });

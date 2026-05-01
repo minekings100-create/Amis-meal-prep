@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowRight, Leaf, ChefHat, Truck, Activity } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
@@ -6,7 +5,7 @@ import { ProductCard } from '@/components/shop/product-card';
 import { RevealSection } from '@/components/layout/reveal-section';
 import { HeroParallaxImage } from '@/components/layout/hero-parallax-image';
 import { CountUp } from '@/components/layout/count-up';
-import { listProducts, listAthletes } from '@/lib/data/products';
+import { listProducts } from '@/lib/data/products';
 import type { Locale } from '@/lib/i18n/config';
 
 // Two hero photos — the server picks one randomly per request, so the homepage
@@ -37,10 +36,7 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   const t = await getTranslations('home');
-  const [featured, athletes] = await Promise.all([
-    listProducts({ featuredOnly: true, type: 'meal' }),
-    listAthletes(),
-  ]);
+  const featured = await listProducts({ featuredOnly: true, type: 'meal' });
 
   const standardItems = ['fresh', 'macros', 'quality', 'delivery'] as const;
   const standardIcons = {
@@ -197,54 +193,6 @@ export default async function HomePage({
           </div>
         </div>
       </section>
-
-      {/* ATHLETES */}
-      {athletes.length > 0 && (
-        <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 md:py-28">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[--color-accent] mb-3">
-                {t('athletes.subtitle')}
-              </p>
-              <h2 className="text-3xl md:text-4xl tracking-[-0.03em] font-semibold">
-                {t('athletes.title')}
-              </h2>
-            </div>
-            <Link
-              href="/atleten"
-              className="inline-flex items-center gap-1 text-sm text-stone-700 hover:text-[--color-accent] transition-colors font-medium"
-            >
-              {t('athletes.viewAll')} <ArrowRight className="h-3 w-3" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {athletes.slice(0, 3).map((a, i) => (
-              <RevealSection key={a.id} delay={i * 0.1}>
-                <Link href={`/atleten/${a.slug}`} className="group block">
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-stone-100">
-                    {a.portrait_url && (
-                      <Image
-                        src={a.portrait_url}
-                        alt={a.name}
-                        fill
-                        sizes="(min-width: 768px) 33vw, 100vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/85 via-stone-900/20 to-transparent" />
-                    <div className="absolute bottom-6 left-6 right-6 text-white">
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-[--color-accent-bright]">
-                        {a.sport}
-                      </p>
-                      <h3 className="text-2xl font-semibold mt-1 tracking-[-0.02em]">{a.name}</h3>
-                    </div>
-                  </div>
-                </Link>
-              </RevealSection>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* TESTIMONIALS */}
       <section className="bg-stone-900 text-white">

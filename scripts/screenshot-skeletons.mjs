@@ -87,17 +87,6 @@ async function main() {
       viewport: 'mobile',
     });
 
-    // ATHLETES — skeleton + real, desktop
-    await shootSkeleton(browser, {
-      name: 'athletes-skeleton-desktop',
-      path: '/atleten',
-      viewport: 'desktop',
-    });
-    await shootReal(browser, {
-      name: 'athletes-real-desktop',
-      path: '/atleten',
-      viewport: 'desktop',
-    });
   } finally {
     await browser.close();
   }

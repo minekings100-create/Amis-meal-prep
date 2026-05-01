@@ -10,7 +10,7 @@
  * de fotoshoot is gedaan.
  */
 
-import type { Product, Category, Athlete, Review } from '@/types/database';
+import type { Product, Category, Review } from '@/types/database';
 
 // Unsplash photo IDs picked for moody / clean / athletic vibe (no smiling-people-at-table cliché)
 const IMG = {
@@ -21,9 +21,6 @@ const IMG = {
   tryout: 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=1200&h=1200&fit=crop&q=80',
   bulkPackage: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=1200&h=1200&fit=crop&q=80',
   hero: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&h=1600&fit=crop&q=85',
-  athletePieter: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&h=1200&fit=crop&q=80',
-  athleteSandra: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=900&h=1200&fit=crop&q=80',
-  athleteTijn: 'https://images.unsplash.com/photo-1502904550040-7534597429ae?w=900&h=1200&fit=crop&q=80',
 } as const;
 
 export const mockCategories: Category[] = [
@@ -210,57 +207,6 @@ export const mockProducts: Product[] = [
     is_active: true,
     is_featured: false,
     image_url: IMG.bulkPackage,
-  },
-];
-
-export const mockAthletes: Athlete[] = [
-  {
-    id: 'ath-pieter',
-    slug: 'pieter-de-vries',
-    name: 'Pieter de Vries',
-    sport: 'Powerlifting',
-    goal: 'bulk',
-    bio_nl:
-      'Pieter is een Limburgse krachtsporter die werkt aan zijn volgende squat-PR. Zijn weekmenu is opgebouwd voor een gecontroleerd growth-traject — hoog in eiwit en complexe koolhydraten.',
-    bio_en:
-      'Pieter is a Limburg-based powerlifter chasing his next squat PR. His weekly menu is built for controlled growth — high in protein and complex carbs.',
-    portrait_url: IMG.athletePieter,
-    package_id: 'prod-bulk-pkg',
-    is_active: true,
-    sort_order: 1,
-    created_at: '2026-01-01T00:00:00Z',
-  },
-  {
-    id: 'ath-sandra',
-    slug: 'sandra-jacobs',
-    name: 'Sandra Jacobs',
-    sport: 'CrossFit',
-    goal: 'performance',
-    bio_nl:
-      'Sandra traint vijf keer per week en heeft een drukke baan. Haar weekmenu is afgestemd op consistentie — eiwit op peil, smaak voorop.',
-    bio_en:
-      'Sandra trains five times a week and has a demanding job. Her menu is built for consistency — protein dialled in, flavour first.',
-    portrait_url: IMG.athleteSandra,
-    package_id: 'prod-cut-pkg',
-    is_active: true,
-    sort_order: 2,
-    created_at: '2026-01-01T00:00:00Z',
-  },
-  {
-    id: 'ath-tijn',
-    slug: 'tijn-van-roosmalen',
-    name: 'Tijn van Roosmalen',
-    sport: 'Hardlopen',
-    goal: 'performance',
-    bio_nl:
-      'Tijn loopt halve marathons en is in opbouw naar zijn eerste hele. Zijn AMIS-week heeft de juiste mix van koolhydraten en eiwit voor lange runs.',
-    bio_en:
-      'Tijn runs half marathons and is building up to his first full. His AMIS week has the right carb-to-protein mix for long runs.',
-    portrait_url: IMG.athleteTijn,
-    package_id: 'prod-cut-pkg',
-    is_active: true,
-    sort_order: 3,
-    created_at: '2026-01-01T00:00:00Z',
   },
 ];
 

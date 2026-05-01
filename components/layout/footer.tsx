@@ -45,11 +45,6 @@ export function Footer() {
                 {tn('shop')}
               </Link>
             </li>
-            <li>
-              <Link href="/atleten" className="text-white/80 hover:text-white transition-colors">
-                {tn('athletes')}
-              </Link>
-            </li>
           </ul>
         </div>
 

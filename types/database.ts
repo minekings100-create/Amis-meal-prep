@@ -150,27 +150,6 @@ export interface Database {
         };
         Update: Partial<Database['public']['Tables']['package_items']['Row']>;
       };
-      athletes: {
-        Row: {
-          id: string;
-          slug: string;
-          name: string;
-          sport: string | null;
-          goal: 'cut' | 'bulk' | 'maintenance' | 'performance' | null;
-          bio_nl: string | null;
-          bio_en: string | null;
-          portrait_url: string | null;
-          package_id: string | null;
-          is_active: boolean;
-          sort_order: number;
-          created_at: string;
-        };
-        Insert: Partial<Database['public']['Tables']['athletes']['Row']> & {
-          slug: string;
-          name: string;
-        };
-        Update: Partial<Database['public']['Tables']['athletes']['Row']>;
-      };
       discount_codes: {
         Row: {
           id: string;
@@ -326,7 +305,6 @@ export interface Database {
 // Convenience aliases
 export type Product = Database['public']['Tables']['products']['Row'];
 export type Category = Database['public']['Tables']['categories']['Row'];
-export type Athlete = Database['public']['Tables']['athletes']['Row'];
 export type Order = Database['public']['Tables']['orders']['Row'];
 export type OrderItem = Database['public']['Tables']['order_items']['Row'];
 export type Profile = Database['public']['Tables']['profiles']['Row'];

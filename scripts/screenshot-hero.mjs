@@ -3,7 +3,7 @@
  * Hero review screenshots:
  *   - Homepage at-top (transparent header) on desktop / tablet / mobile (viewport only)
  *   - Homepage scrolled 300px (header should be solid white) on desktop
- *   - /shop and /atleten on desktop (header should be solid white from start)
+ *   - /shop on desktop (header should be solid white from start)
  */
 import { chromium } from 'playwright';
 import { mkdir } from 'node:fs/promises';
@@ -58,7 +58,6 @@ async function main() {
 
     // Other pages — header should be solid white from the start
     await shoot(browser, { name: 'shop-header-desktop', path: '/shop', viewport: 'desktop' });
-    await shoot(browser, { name: 'atleten-header-desktop', path: '/atleten', viewport: 'desktop' });
     await shoot(browser, { name: 'contact-header-desktop', path: '/contact', viewport: 'desktop' });
   } finally {
     await browser.close();

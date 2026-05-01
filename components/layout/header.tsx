@@ -62,7 +62,6 @@ export function Header() {
             {(
               [
                 { href: '/shop', key: 'shop' },
-                { href: '/atleten', key: 'athletes' },
                 { href: '/over-ons', key: 'about' },
                 { href: '/contact', key: 'contact' },
               ] as const

@@ -2,7 +2,7 @@
 -- Run after migrations: npx supabase db seed
 --
 -- TODO: Vervang Unsplash placeholder foto's door eigen productfotografie zodra
--- de fotoshoot is gedaan. /products/* → echte AMIS productfoto's, /athletes/* → echte portretten.
+-- de fotoshoot is gedaan. /products/* → echte AMIS productfoto's.
 
 -- Categories
 insert into public.categories (id, slug, name_nl, name_en, sort_order) values
@@ -112,46 +112,6 @@ insert into public.package_items (package_id, meal_id, quantity, sort_order) val
   ('33333333-3333-3333-3333-333333333303', '22222222-2222-2222-2222-222222222202', 2, 2),
   ('33333333-3333-3333-3333-333333333303', '22222222-2222-2222-2222-222222222203', 2, 3)
 on conflict do nothing;
-
--- Athletes
-insert into public.athletes (id, slug, name, sport, goal, bio_nl, bio_en, portrait_url, package_id, is_active, sort_order) values
-  (
-    '44444444-4444-4444-4444-444444444401',
-    'pieter-de-vries',
-    'Pieter de Vries',
-    'Powerlifting',
-    'bulk',
-    'Pieter is een Limburgse krachtsporter die werkt aan zijn volgende squat-PR. Zijn weekmenu is opgebouwd voor een gecontroleerd growth-traject — hoog in eiwit en complexe koolhydraten.',
-    'Pieter is a Limburg-based powerlifter chasing his next squat PR. His weekly menu is built for controlled growth — high in protein and complex carbs.',
-    'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&h=1200&fit=crop&q=80',
-    '33333333-3333-3333-3333-333333333303',
-    true, 1
-  ),
-  (
-    '44444444-4444-4444-4444-444444444402',
-    'sandra-jacobs',
-    'Sandra Jacobs',
-    'CrossFit',
-    'performance',
-    'Sandra traint vijf keer per week en heeft een drukke baan. Haar weekmenu is afgestemd op consistentie — eiwit op peil, smaak voorop.',
-    'Sandra trains five times a week and has a demanding job. Her menu is built for consistency — protein dialled in, flavour first.',
-    'https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=900&h=1200&fit=crop&q=80',
-    '33333333-3333-3333-3333-333333333301',
-    true, 2
-  ),
-  (
-    '44444444-4444-4444-4444-444444444403',
-    'tijn-van-roosmalen',
-    'Tijn van Roosmalen',
-    'Hardlopen',
-    'performance',
-    'Tijn loopt halve marathons en is in opbouw naar zijn eerste hele. Zijn AMIS-week heeft de juiste mix van koolhydraten en eiwit voor lange runs.',
-    'Tijn runs half marathons and is building up to his first full. His AMIS week has the right carb-to-protein mix for long runs.',
-    'https://images.unsplash.com/photo-1502904550040-7534597429ae?w=900&h=1200&fit=crop&q=80',
-    '33333333-3333-3333-3333-333333333301',
-    true, 3
-  )
-on conflict (slug) do nothing;
 
 -- Sample discount code (10% off, min order €30)
 insert into public.discount_codes (code, type, value_cents, value_percent, min_order_cents, max_uses_per_customer, is_active) values

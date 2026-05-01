@@ -45,7 +45,7 @@ lib/
 messages/                     # nl.json, en.json
 supabase/
 ├── migrations/               # SQL migrations (run via Supabase CLI)
-└── seed.sql                  # Categories, products, athlete, admin
+└── seed.sql                  # Categories, products, admin
 types/database.ts             # Supabase generated types
 ```
 

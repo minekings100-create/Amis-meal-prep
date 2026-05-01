@@ -161,26 +161,6 @@ create table public.package_items (
 create index package_items_package_idx on public.package_items(package_id);
 
 -- ============================================================
--- ATHLETES
--- ============================================================
-create table public.athletes (
-  id uuid primary key default uuid_generate_v4(),
-  slug text not null unique,
-  name text not null,
-  sport text,
-  goal text check (goal in ('cut','bulk','maintenance','performance')),
-  bio_nl text,
-  bio_en text,
-  portrait_url text,
-  package_id uuid references public.products(id) on delete set null,
-  is_active boolean not null default true,
-  sort_order int not null default 0,
-  created_at timestamptz not null default now()
-);
-
-create index athletes_active_idx on public.athletes(is_active);
-
--- ============================================================
 -- DISCOUNTS
 -- ============================================================
 create table public.discount_codes (

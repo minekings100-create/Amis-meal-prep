@@ -25,8 +25,6 @@ const DEFAULT_TARGETS = [
   { path: '/', name: 'home' },
   { path: '/shop', name: 'shop' },
   { path: '/shop/korean-beef-bowl', name: 'product' },
-  { path: '/atleten', name: 'athletes' },
-  { path: '/atleten/pieter-de-vries', name: 'athlete-detail' },
   { path: '/cart', name: 'cart' },
 ];
 

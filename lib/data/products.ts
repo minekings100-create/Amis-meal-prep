@@ -1,13 +1,13 @@
 /**
- * Product / category / athlete / review accessors.
+ * Product / category / review accessors.
  *
  * Switches between Supabase and mock data based on whether
  * NEXT_PUBLIC_SUPABASE_URL is configured. This lets the site render during
  * local development before Supabase is connected.
  */
 
-import { mockProducts, mockCategories, mockAthletes, mockReviews } from './mock';
-import type { Product, Category, Athlete, Review, GoalTag } from '@/types/database';
+import { mockProducts, mockCategories, mockReviews } from './mock';
+import type { Product, Category, Review, GoalTag } from '@/types/database';
 import { ALLERGEN_KEYS, type AllergenKey, type SortKey, type ProductFilters } from '@/lib/shop/types';
 
 // Re-export for backwards-compat with code that imported from this file.
@@ -146,36 +146,6 @@ export async function listCategories(): Promise<Category[]> {
   const { data, error } = await supabase.from('categories').select('*').order('sort_order');
   if (error) throw error;
   return data ?? [];
-}
-
-export async function listAthletes(): Promise<Athlete[]> {
-  if (!isSupabaseConfigured()) {
-    return [...mockAthletes].filter((a) => a.is_active).sort((a, b) => a.sort_order - b.sort_order);
-  }
-  const { createClient } = await import('@/lib/supabase/server');
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from('athletes')
-    .select('*')
-    .eq('is_active', true)
-    .order('sort_order');
-  if (error) throw error;
-  return data ?? [];
-}
-
-export async function getAthleteBySlug(slug: string): Promise<Athlete | null> {
-  if (!isSupabaseConfigured()) {
-    return mockAthletes.find((a) => a.slug === slug) ?? null;
-  }
-  const { createClient } = await import('@/lib/supabase/server');
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from('athletes')
-    .select('*')
-    .eq('slug', slug)
-    .maybeSingle();
-  if (error) throw error;
-  return data;
 }
 
 export async function listPublishedReviews(productId: string): Promise<Review[]> {
