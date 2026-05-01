@@ -5,9 +5,26 @@
  * the functions in lib/data/products.ts switch to real DB queries.
  *
  * Keep this in sync with supabase/seed.sql.
+ *
+ * TODO: Vervang Unsplash placeholder foto's door eigen productfotografie zodra
+ * de fotoshoot is gedaan.
  */
 
 import type { Product, Category, Athlete, Review } from '@/types/database';
+
+// Unsplash photo IDs picked for moody / clean / athletic vibe (no smiling-people-at-table cliché)
+const IMG = {
+  koreanBeef: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&h=1200&fit=crop&q=80',
+  salmon: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1200&h=1200&fit=crop&q=80',
+  mexicanChicken: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&h=1200&fit=crop&q=80',
+  cutPackage: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=1200&h=1200&fit=crop&q=80',
+  tryout: 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=1200&h=1200&fit=crop&q=80',
+  bulkPackage: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=1200&h=1200&fit=crop&q=80',
+  hero: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&h=1600&fit=crop&q=85',
+  athletePieter: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&h=1200&fit=crop&q=80',
+  athleteSandra: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=900&h=1200&fit=crop&q=80',
+  athleteTijn: 'https://images.unsplash.com/photo-1502904550040-7534597429ae?w=900&h=1200&fit=crop&q=80',
+} as const;
 
 export const mockCategories: Category[] = [
   { id: 'cat-cut', slug: 'cut', name_nl: 'Cut', name_en: 'Cut', sort_order: 1, created_at: '2026-01-01T00:00:00Z' },
@@ -30,6 +47,8 @@ const baseProduct = {
   fat_g: null,
   fiber_g: null,
   salt_g: null,
+  goal_tag: null,
+  attribute_tags: [],
   contains_gluten: false,
   contains_lactose: false,
   contains_nuts: false,
@@ -60,10 +79,12 @@ export const mockProducts: Product[] = [
     price_cents: 1095,
     category_id: 'cat-maint',
     tags: ['high-protein', 'spicy'],
+    goal_tag: 'maintenance',
+    attribute_tags: ['bestseller', 'spicy', 'high-protein'],
     stock: 50,
     is_active: true,
     is_featured: true,
-    image_url: 'https://placehold.co/800x800/4a8a3c/ffffff/png?text=Korean+Beef',
+    image_url: IMG.koreanBeef,
     ingredients_nl: 'Rundvlees, basmati rijst, edamame, kimchi, sojasaus, knoflook, gember, sesamolie',
     ingredients_en: 'Beef, basmati rice, edamame, kimchi, soy sauce, garlic, ginger, sesame oil',
     kcal: 580,
@@ -88,10 +109,12 @@ export const mockProducts: Product[] = [
     price_cents: 1250,
     category_id: 'cat-perf',
     tags: ['high-protein', 'omega-3', 'glutenvrij'],
+    goal_tag: 'performance',
+    attribute_tags: ['high-protein', 'gluten-free'],
     stock: 40,
     is_active: true,
     is_featured: true,
-    image_url: 'https://placehold.co/800x800/7cc24f/ffffff/png?text=Salmon',
+    image_url: IMG.salmon,
     ingredients_nl: 'Zalm, zoete aardappel, broccolini, citroen, dille, olijfolie, knoflook',
     ingredients_en: 'Salmon, sweet potato, broccolini, lemon, dill, olive oil, garlic',
     kcal: 620,
@@ -114,10 +137,12 @@ export const mockProducts: Product[] = [
     price_cents: 1095,
     category_id: 'cat-cut',
     tags: ['high-protein', 'spicy'],
+    goal_tag: 'cut',
+    attribute_tags: ['new', 'spicy', 'high-protein'],
     stock: 60,
     is_active: true,
     is_featured: true,
-    image_url: 'https://placehold.co/800x800/4a8a3c/ffffff/png?text=Mexican+Chicken',
+    image_url: IMG.mexicanChicken,
     ingredients_nl: 'Kipfilet, zwarte bonen, mais, paprika, bruine rijst, chipotle, koriander, limoen',
     ingredients_en: 'Chicken breast, black beans, corn, bell pepper, brown rice, chipotle, cilantro, lime',
     kcal: 540,
@@ -140,10 +165,12 @@ export const mockProducts: Product[] = [
     compare_at_price_cents: 7665,
     category_id: 'cat-cut',
     tags: ['cut', 'high-protein', '7-meals'],
+    goal_tag: 'cut',
+    attribute_tags: ['bestseller', 'high-protein'],
     stock: 25,
     is_active: true,
     is_featured: true,
-    image_url: 'https://placehold.co/800x800/131613/ffffff/png?text=Cut+Pakket',
+    image_url: IMG.cutPackage,
   },
   {
     ...baseProduct,
@@ -158,10 +185,12 @@ export const mockProducts: Product[] = [
     compare_at_price_cents: 3935,
     category_id: 'cat-maint',
     tags: ['tryout', '3-meals'],
+    goal_tag: 'maintenance',
+    attribute_tags: ['new', 'limited'],
     stock: 100,
     is_active: true,
     is_featured: true,
-    image_url: 'https://placehold.co/800x800/4a8a3c/ffffff/png?text=Tryout+Box',
+    image_url: IMG.tryout,
   },
   {
     ...baseProduct,
@@ -175,10 +204,12 @@ export const mockProducts: Product[] = [
     price_cents: 7950,
     category_id: 'cat-bulk',
     tags: ['bulk', 'high-protein', '7-meals'],
+    goal_tag: 'bulk',
+    attribute_tags: ['high-protein'],
     stock: 20,
     is_active: true,
     is_featured: false,
-    image_url: 'https://placehold.co/800x800/131613/ffffff/png?text=Bulk+Pakket',
+    image_url: IMG.bulkPackage,
   },
 ];
 
@@ -193,10 +224,42 @@ export const mockAthletes: Athlete[] = [
       'Pieter is een Limburgse krachtsporter die werkt aan zijn volgende squat-PR. Zijn weekmenu is opgebouwd voor een gecontroleerd growth-traject — hoog in eiwit en complexe koolhydraten.',
     bio_en:
       'Pieter is a Limburg-based powerlifter chasing his next squat PR. His weekly menu is built for controlled growth — high in protein and complex carbs.',
-    portrait_url: 'https://placehold.co/800x1000/131613/ffffff/png?text=Pieter',
+    portrait_url: IMG.athletePieter,
     package_id: 'prod-bulk-pkg',
     is_active: true,
     sort_order: 1,
+    created_at: '2026-01-01T00:00:00Z',
+  },
+  {
+    id: 'ath-sandra',
+    slug: 'sandra-jacobs',
+    name: 'Sandra Jacobs',
+    sport: 'CrossFit',
+    goal: 'performance',
+    bio_nl:
+      'Sandra traint vijf keer per week en heeft een drukke baan. Haar weekmenu is afgestemd op consistentie — eiwit op peil, smaak voorop.',
+    bio_en:
+      'Sandra trains five times a week and has a demanding job. Her menu is built for consistency — protein dialled in, flavour first.',
+    portrait_url: IMG.athleteSandra,
+    package_id: 'prod-cut-pkg',
+    is_active: true,
+    sort_order: 2,
+    created_at: '2026-01-01T00:00:00Z',
+  },
+  {
+    id: 'ath-tijn',
+    slug: 'tijn-van-roosmalen',
+    name: 'Tijn van Roosmalen',
+    sport: 'Hardlopen',
+    goal: 'performance',
+    bio_nl:
+      'Tijn loopt halve marathons en is in opbouw naar zijn eerste hele. Zijn AMIS-week heeft de juiste mix van koolhydraten en eiwit voor lange runs.',
+    bio_en:
+      'Tijn runs half marathons and is building up to his first full. His AMIS week has the right carb-to-protein mix for long runs.',
+    portrait_url: IMG.athleteTijn,
+    package_id: 'prod-cut-pkg',
+    is_active: true,
+    sort_order: 3,
     created_at: '2026-01-01T00:00:00Z',
   },
 ];
@@ -225,3 +288,5 @@ export const mockReviews: Review[] = [
     created_at: '2026-04-08T14:30:00Z',
   },
 ];
+
+export const heroImage = IMG.hero;

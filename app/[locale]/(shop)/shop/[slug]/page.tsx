@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
@@ -8,6 +9,8 @@ import { AddToCartButton } from '@/components/shop/add-to-cart-button';
 import { MacrosGrid } from '@/components/shop/macros-grid';
 import { AllergensList } from '@/components/shop/allergens-list';
 import { ReviewsSection } from '@/components/shop/reviews-section';
+import { ProductDetailSkeleton } from '@/components/shop/product-detail-skeleton';
+import { maybeSlow } from '@/lib/utils/slow-mode';
 import type { Locale } from '@/lib/i18n/config';
 
 export async function generateMetadata({
@@ -33,11 +36,32 @@ export async function generateMetadata({
 
 export default async function ProductDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string; locale: Locale }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { slug, locale } = await params;
+  const sp = await searchParams;
   setRequestLocale(locale);
+
+  return (
+    <Suspense fallback={<ProductDetailSkeleton />}>
+      <ProductDetail slug={slug} locale={locale} searchParams={sp} />
+    </Suspense>
+  );
+}
+
+async function ProductDetail({
+  slug,
+  locale,
+  searchParams,
+}: {
+  slug: string;
+  locale: Locale;
+  searchParams: Record<string, string | string[] | undefined>;
+}) {
+  await maybeSlow(searchParams);
 
   const product = await getProductBySlug(slug);
   if (!product) notFound();
@@ -50,7 +74,6 @@ export default async function ProductDetailPage({
   const ingredients = locale === 'en' ? product.ingredients_en : product.ingredients_nl;
   const stockText = t('stock', { count: product.stock });
 
-  // Schema.org Product structured data
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -82,11 +105,10 @@ export default async function ProductDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="container-amis py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Image plate */}
           <div className="sticky top-24 self-start">
-            <div className="relative aspect-square rounded-full bg-[--color-bg-soft] overflow-hidden ring-1 ring-[--color-line]">
+            <div className="relative aspect-square rounded-full bg-stone-50 overflow-hidden ring-1 ring-stone-100">
               {product.image_url && (
                 <Image
                   src={product.image_url}
@@ -100,7 +122,6 @@ export default async function ProductDetailPage({
             </div>
           </div>
 
-          {/* Right column */}
           <div>
             <p className="text-[10px] uppercase tracking-[0.24em] text-[--color-accent] mb-3">
               {product.type === 'meal'
@@ -111,9 +132,11 @@ export default async function ProductDetailPage({
                   ? 'Pakket'
                   : 'Try-out'}
             </p>
-            <h1 className="text-4xl md:text-5xl tracking-[-0.035em]">{name}</h1>
+            <h1 className="text-4xl md:text-5xl tracking-[-0.035em] font-bold text-stone-900">
+              {name}
+            </h1>
             {description && (
-              <p className="mt-4 text-lg text-[--color-ink-soft] leading-relaxed">{description}</p>
+              <p className="mt-4 text-lg text-stone-600 leading-relaxed">{description}</p>
             )}
 
             <div className="mt-8 flex items-baseline gap-4">
@@ -122,17 +145,17 @@ export default async function ProductDetailPage({
               </span>
               {product.compare_at_price_cents &&
                 product.compare_at_price_cents > product.price_cents && (
-                  <span className="font-mono text-base text-[--color-gray] line-through">
+                  <span className="font-mono text-base text-stone-400 line-through">
                     {formatMoneyCents(product.compare_at_price_cents)}
                   </span>
                 )}
-              <span className="text-xs text-[--color-gray]">{t('vatNote')}</span>
+              <span className="text-xs text-stone-500">{t('vatNote')}</span>
             </div>
 
             <p
               className={
                 'mt-2 text-xs font-mono uppercase tracking-[0.16em] ' +
-                (product.stock > 0 ? 'text-[--color-accent]' : 'text-[--color-gray]')
+                (product.stock > 0 ? 'text-[--color-accent]' : 'text-stone-500')
               }
             >
               {stockText}
@@ -142,27 +165,24 @@ export default async function ProductDetailPage({
               <AddToCartButton product={product} displayName={name} />
             </div>
 
-            {/* Macros */}
             <div className="mt-12">
-              <h2 className="text-xs uppercase tracking-[0.18em] text-[--color-gray] mb-4">
+              <h2 className="text-xs uppercase tracking-[0.18em] text-stone-500 mb-4">
                 {t('macros')}
               </h2>
               <MacrosGrid product={product} />
             </div>
 
-            {/* Ingredients */}
             {ingredients && (
               <div className="mt-12">
-                <h2 className="text-xs uppercase tracking-[0.18em] text-[--color-gray] mb-3">
+                <h2 className="text-xs uppercase tracking-[0.18em] text-stone-500 mb-3">
                   {t('ingredients')}
                 </h2>
-                <p className="text-sm text-[--color-ink-soft] leading-relaxed">{ingredients}</p>
+                <p className="text-sm text-stone-600 leading-relaxed">{ingredients}</p>
               </div>
             )}
 
-            {/* Allergens */}
             <div className="mt-12">
-              <h2 className="text-xs uppercase tracking-[0.18em] text-[--color-gray] mb-4">
+              <h2 className="text-xs uppercase tracking-[0.18em] text-stone-500 mb-4">
                 {t('allergens')}
               </h2>
               <AllergensList product={product} />

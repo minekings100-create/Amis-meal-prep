@@ -7,6 +7,7 @@ import { Link } from '@/lib/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { useCart, cartSubtotalCents } from '@/lib/cart/store';
 import { formatMoneyCents } from '@/lib/utils/money';
+import { CartItemsSkeleton } from '@/components/shop/cart-item-skeleton';
 
 export default function CartPage() {
   const t = useTranslations('cart');
@@ -26,7 +27,7 @@ export default function CartPage() {
       <h1 className="text-4xl md:text-5xl tracking-[-0.035em] mb-12">{t('title')}</h1>
 
       {!mounted ? (
-        <p className="text-[--color-ink-soft]">…</p>
+        <CartItemsSkeleton size="page" count={2} />
       ) : lines.length === 0 ? (
         <div className="text-center py-16">
           <p className="text-[--color-ink-soft] mb-6">{t('empty')}</p>

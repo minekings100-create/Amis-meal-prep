@@ -12,11 +12,21 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Vers · Hoog eiwit · Maastricht",
-      "title": "Eet als een atleet, zonder te koken.",
-      "subtitle": "AMIS Meals levert vers bereide, hoog-eiwit maaltijden — afgestemd op je doel. Cut, bulk, performance. Wij koken, jij traint.",
-      "ctaShop": "Bekijk het menu",
-      "ctaTryout": "Try-out box · €34,95"
+      "eyebrow": "Performance fuel · Maastricht",
+      "title": "Welkom bij <em>beter</em> eten.",
+      "subtitle": "Vers bereide, hoog-eiwit maaltijden afgestemd op je doel. Cut, bulk, performance — wij koken, jij traint.",
+      "ctaShop": "Shop nu",
+      "ctaHowItWorks": "Hoe het werkt"
+    },
+    "stats": {
+      "proteinValue": "42g",
+      "proteinLabel": "Eiwit gem.",
+      "scoreValue": "9,2/10",
+      "scoreLabel": "Klantscore",
+      "deliveryValue": "4-7",
+      "deliveryLabel": "Bezorgdagen/wk",
+      "mealsValue": "150k+",
+      "mealsLabel": "Maaltijden geleverd"
     },
     "standard": {
       "title": "De AMIS standaard",
@@ -45,22 +55,61 @@
   "shop": {
     "title": "Het AMIS menu",
     "filters": {
+      "title": "Filters",
+      "openOnMobile": "Filters",
+      "withCount": "Filters ({count})",
       "all": "Alles",
       "category": "Categorie",
       "type": "Type",
       "meal": "Losse maaltijd",
       "package": "Pakket",
       "tryout": "Try-out box",
+      "goal": "Doel",
+      "attributes": "Eigenschappen",
+      "allergensAvoid": "Allergenen vermijden",
+      "showAllAllergens": "Toon alle 13 →",
+      "showFewerAllergens": "Toon minder",
+      "priceRange": "Prijsrange",
+      "clearAll": "Wis alle filters",
+      "applyFilters": "Filters toepassen",
+      "showResults": "Toon resultaten",
+      "close": "Sluiten",
       "price": "Prijs",
       "sort": "Sorteren",
       "sortFeatured": "Aanbevolen",
-      "sortPriceAsc": "Prijs laag → hoog",
-      "sortPriceDesc": "Prijs hoog → laag"
+      "sortNew": "Nieuw",
+      "sortPriceAsc": "Prijs ↑",
+      "sortPriceDesc": "Prijs ↓",
+      "sortProteinPerEuro": "Eiwit per €"
+    },
+    "intro": {
+      "default": "Vers bereide maaltijden, klaar in 4 minuten. Kies losse maaltijden of een compleet weekpakket.",
+      "package": "Onze weekpakketten — 5 of 7 dagen voeding voor jouw doel, in één keer geleverd.",
+      "tryout": "Maak kennis met AMIS — drie maaltijden uit ons menu, eenmalig per klant.",
+      "meal": "Onze losse maaltijden — kies wat je deze week wil eten.",
+      "goal": {
+        "cut": "Cut maaltijden — laag-calorisch, hoog in eiwit, om vet te verliezen zonder spiermassa op te geven.",
+        "bulk": "Bulk maaltijden — calorierijk, gericht op gecontroleerde groei en kracht.",
+        "performance": "Performance maaltijden — getuned voor herstel en presteren op trainings­dagen.",
+        "maintenance": "Onderhoud maaltijden — uitgebalanceerd voor consistente macro's en smaak.",
+        "hybrid": "Hybride maaltijden — flexibel inzetbaar voor wie meerdere doelen combineert."
+      }
+    },
+    "results": {
+      "count": "{count, plural, =0 {geen producten} =1 {1 product} other {# producten}}",
+      "noMatch": "Geen producten gevonden voor deze filters."
     },
     "card": {
-      "addToCart": "In winkelmand",
+      "addToCart": "Toevoegen",
       "outOfStock": "Uitverkocht",
-      "perMeal": "per maaltijd"
+      "perMeal": "per maaltijd",
+      "macroProtein": "Eiwit",
+      "macroCarbs": "Koolh",
+      "macroFat": "Vet",
+      "macroKcal": "Kcal",
+      "typePackage": "Pakket",
+      "typeTryout": "Try-out",
+      "addedToCart": "{name} toegevoegd aan je mand"
     }
   },
   "product": {
@@ -81,6 +130,30 @@
     "writeReview": "Schrijf een review",
     "vatNote": "Inclusief 9% BTW",
     "perMeal": "per maaltijd"
+  },
+  "compare": {
+    "addAria": "Toevoegen aan vergelijking",
+    "removeAria": "Uit vergelijking halen",
+    "added": "Toegevoegd aan vergelijking ({count}/3)",
+    "removed": "{name} uit vergelijking",
+    "full": "Vergelijken vol — verwijder eerst een product",
+    "title": "Vergelijking",
+    "compare": "Vergelijken",
+    "itemCount": "{count, plural, =1 {1 product} other {# producten}}",
+    "clearAll": "Leegmaken",
+    "calories": "Calorieën",
+    "protein": "Eiwit",
+    "carbs": "Koolhydraten",
+    "fat": "Vet",
+    "fiber": "Vezels",
+    "salt": "Zout",
+    "proteinPerEuro": "Eiwit per €",
+    "viewProduct": "Bekijk",
+    "addToCart": "Toevoegen",
+    "remove": "Verwijderen",
+    "hint": "Selecteer nog één of twee producten om te vergelijken",
+    "highest": "Hoogste",
+    "lowest": "Laagste"
   },
   "allergens": {
     "gluten": "Gluten",

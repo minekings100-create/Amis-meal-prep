@@ -12,11 +12,21 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Fresh · High protein · Maastricht",
-      "title": "Eat like an athlete, without cooking.",
-      "subtitle": "AMIS Meals delivers freshly cooked, high-protein meals — built around your goal. Cut, bulk, performance. We cook, you train.",
-      "ctaShop": "View the menu",
-      "ctaTryout": "Try-out box · €34.95"
+      "eyebrow": "Performance fuel · Maastricht",
+      "title": "Welcome to <em>better</em> eating.",
+      "subtitle": "Freshly cooked, high-protein meals built around your goal. Cut, bulk, performance — we cook, you train.",
+      "ctaShop": "Shop now",
+      "ctaHowItWorks": "How it works"
+    },
+    "stats": {
+      "proteinValue": "42g",
+      "proteinLabel": "Avg. protein",
+      "scoreValue": "9.2/10",
+      "scoreLabel": "Customer score",
+      "deliveryValue": "4-7",
+      "deliveryLabel": "Delivery days/wk",
+      "mealsValue": "150k+",
+      "mealsLabel": "Meals delivered"
     },
     "standard": {
       "title": "The AMIS standard",
@@ -45,22 +55,61 @@
   "shop": {
     "title": "The AMIS menu",
     "filters": {
+      "title": "Filters",
+      "openOnMobile": "Filters",
+      "withCount": "Filters ({count})",
       "all": "All",
       "category": "Category",
       "type": "Type",
       "meal": "Single meal",
       "package": "Package",
       "tryout": "Try-out box",
+      "goal": "Goal",
+      "attributes": "Attributes",
+      "allergensAvoid": "Allergens to avoid",
+      "showAllAllergens": "Show all 13 →",
+      "showFewerAllergens": "Show fewer",
+      "priceRange": "Price range",
+      "clearAll": "Clear all filters",
+      "applyFilters": "Apply filters",
+      "showResults": "Show results",
+      "close": "Close",
       "price": "Price",
       "sort": "Sort by",
       "sortFeatured": "Featured",
-      "sortPriceAsc": "Price low → high",
-      "sortPriceDesc": "Price high → low"
+      "sortNew": "New",
+      "sortPriceAsc": "Price ↑",
+      "sortPriceDesc": "Price ↓",
+      "sortProteinPerEuro": "Protein per €"
+    },
+    "intro": {
+      "default": "Freshly cooked meals, ready in 4 minutes. Single meals or a full weekly package — your call.",
+      "package": "Our weekly packages — 5 or 7 days of food for your goal, delivered in one drop.",
+      "tryout": "Get to know AMIS — three meals from our menu, one per customer.",
+      "meal": "Our single meals — pick what you want to eat this week.",
+      "goal": {
+        "cut": "Cut meals — low calorie, high protein, built to lose fat without losing muscle.",
+        "bulk": "Bulk meals — calorie-dense, focused on controlled growth and strength.",
+        "performance": "Performance meals — dialled in for recovery and training-day output.",
+        "maintenance": "Maintenance meals — balanced for consistent macros and flavour.",
+        "hybrid": "Hybrid meals — flexible options if you mix multiple goals."
+      }
+    },
+    "results": {
+      "count": "{count, plural, =0 {no products} =1 {1 product} other {# products}}",
+      "noMatch": "No products match these filters."
     },
     "card": {
-      "addToCart": "Add to cart",
+      "addToCart": "Add",
       "outOfStock": "Sold out",
-      "perMeal": "per meal"
+      "perMeal": "per meal",
+      "macroProtein": "Protein",
+      "macroCarbs": "Carbs",
+      "macroFat": "Fat",
+      "macroKcal": "Kcal",
+      "typePackage": "Package",
+      "typeTryout": "Try-out",
+      "addedToCart": "{name} added to your cart"
     }
   },
   "product": {
@@ -81,6 +130,30 @@
     "writeReview": "Write a review",
     "vatNote": "Includes 9% VAT",
     "perMeal": "per meal"
+  },
+  "compare": {
+    "addAria": "Add to compare",
+    "removeAria": "Remove from compare",
+    "added": "Added to compare ({count}/3)",
+    "removed": "{name} removed from compare",
+    "full": "Compare is full — remove a product first",
+    "title": "Compare",
+    "compare": "Compare",
+    "itemCount": "{count, plural, =1 {1 product} other {# products}}",
+    "clearAll": "Clear",
+    "calories": "Calories",
+    "protein": "Protein",
+    "carbs": "Carbs",
+    "fat": "Fat",
+    "fiber": "Fiber",
+    "salt": "Salt",
+    "proteinPerEuro": "Protein per €",
+    "viewProduct": "View",
+    "addToCart": "Add",
+    "remove": "Remove",
+    "hint": "Pick one or two more products to compare",
+    "highest": "Highest",
+    "lowest": "Lowest"
   },
   "allergens": {
     "gluten": "Gluten",

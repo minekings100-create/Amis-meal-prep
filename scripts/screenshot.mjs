@@ -46,18 +46,25 @@ async function nextIndex(prefix) {
   }
 }
 
-async function shoot(browser, target, viewportName) {
+async function shoot(browser, target, viewportName, opts = {}) {
   const viewport = VIEWPORTS[viewportName];
   const context = await browser.newContext({ viewport, deviceScaleFactor: 2 });
   const page = await context.newPage();
   const url = `${BASE}${target.path}`;
-  console.log(`→ ${viewportName.padEnd(7)} ${url}`);
+  console.log(`→ ${viewportName.padEnd(7)} ${url}${opts.scrollY ? ` (scrolled ${opts.scrollY}px)` : ''}`);
   await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
-  await page.waitForTimeout(400); // tiny settle for fonts/images
-  const prefix = `${target.name}-${viewportName}`;
+  await page.waitForTimeout(400);
+  if (opts.scrollY) {
+    await page.evaluate((y) => window.scrollTo(0, y), opts.scrollY);
+    await page.waitForTimeout(500); // let scroll-driven transitions finish
+  }
+  const suffix = opts.label ? `-${opts.label}` : '';
+  const prefix = `${target.name}-${viewportName}${suffix}`;
   const idx = await nextIndex(prefix);
   const file = path.join(OUT_DIR, `${prefix}-${idx}.png`);
-  await page.screenshot({ path: file, fullPage: true });
+  // Viewport-only screenshots show the hero accurately; full-page for non-hero ones.
+  const fullPage = opts.fullPage !== false && !opts.scrollY;
+  await page.screenshot({ path: file, fullPage });
   await context.close();
   console.log(`  ✓ ${file}`);
 }

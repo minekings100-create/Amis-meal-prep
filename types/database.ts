@@ -6,6 +6,16 @@
 export type Json = string | number | boolean | null | { [key: string]: Json } | Json[];
 
 export type ProductType = 'meal' | 'package' | 'tryout';
+export type GoalTag = 'cut' | 'bulk' | 'performance' | 'maintenance' | 'hybrid';
+export type AttributeTag =
+  | 'new'
+  | 'bestseller'
+  | 'limited'
+  | 'spicy'
+  | 'high-protein'
+  | 'vegetarian'
+  | 'gluten-free'
+  | 'lactose-free';
 export type OrderStatus =
   | 'pending'
   | 'paid'
@@ -85,6 +95,8 @@ export interface Database {
           compare_at_price_cents: number | null;
           category_id: string | null;
           tags: string[];
+          goal_tag: GoalTag | null;
+          attribute_tags: AttributeTag[];
           stock: number;
           is_active: boolean;
           is_featured: boolean;

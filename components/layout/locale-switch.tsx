@@ -4,8 +4,9 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from '@/lib/i18n/navigation';
 import { locales, type Locale } from '@/lib/i18n/config';
 import { useTransition } from 'react';
+import { cn } from '@/lib/utils/cn';
 
-export function LocaleSwitch() {
+export function LocaleSwitch({ transparent = false }: { transparent?: boolean }) {
   const t = useTranslations('nav');
   const locale = useLocale() as Locale;
   const router = useRouter();
@@ -27,13 +28,17 @@ export function LocaleSwitch() {
           type="button"
           onClick={() => handleChange(l)}
           disabled={isPending}
-          className={
-            'px-2 py-1 transition-colors ' +
-            (l === locale
-              ? 'text-[--color-ink]'
-              : 'text-[--color-gray] hover:text-[--color-ink]') +
-            (i > 0 ? ' border-l border-[--color-line]' : '')
-          }
+          className={cn(
+            'px-2 py-1 transition-colors',
+            i > 0 && (transparent ? 'border-l border-white/20' : 'border-l border-stone-200'),
+            l === locale
+              ? transparent
+                ? 'text-white'
+                : 'text-stone-900'
+              : transparent
+                ? 'text-white/60 hover:text-white'
+                : 'text-stone-500 hover:text-stone-900',
+          )}
         >
           {l.toUpperCase()}
         </button>

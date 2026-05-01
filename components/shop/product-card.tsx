@@ -7,97 +7,204 @@ import { Link } from '@/lib/i18n/navigation';
 import type { Product } from '@/types/database';
 import { formatMoneyCents } from '@/lib/utils/money';
 import { useCart } from '@/lib/cart/store';
+import { toast } from '@/lib/toast/store';
+import { GoalBadge } from './goal-badge';
+import { AttributeBadges } from './attribute-badges';
+import { CompareButton } from './compare-button';
 
 export function ProductCard({ product }: { product: Product }) {
   const t = useTranslations('shop.card');
-  const tp = useTranslations('product');
-  const locale = useLocale();
+  const locale = useLocale() as 'nl' | 'en';
   const add = useCart((s) => s.add);
 
   const name = locale === 'en' ? product.name_en : product.name_nl;
   const outOfStock = product.stock <= 0;
-  const isPackage = product.type !== 'meal';
+  const onSale =
+    product.compare_at_price_cents !== null &&
+    product.compare_at_price_cents > product.price_cents;
+  const showTypePill = product.type === 'package' || product.type === 'tryout';
+  const typeLabel = product.type === 'package' ? t('typePackage') : t('typeTryout');
+
+  function handleAdd(e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    add(
+      {
+        productId: product.id,
+        slug: product.slug,
+        name,
+        imageUrl: product.image_url,
+        unitPriceCents: product.price_cents,
+      },
+      1,
+      { silent: true },
+    );
+    toast(t('addedToCart', { name }));
+  }
 
   return (
     <article className="group relative">
-      <Link href={`/shop/${product.slug}`} className="block focus:outline-none">
-        {/* Plate-on-circle image, MegaFit style */}
-        <div className="relative aspect-square rounded-full bg-[--color-bg-soft] overflow-hidden ring-1 ring-[--color-line] transition-transform duration-300 ease-out group-hover:scale-[1.02] group-hover:ring-[--color-accent-bright]/40">
-          {product.image_url && (
-            <Image
-              src={product.image_url}
-              alt={name}
-              fill
-              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-              className="object-cover"
-            />
+      <Link
+        href={`/shop/${product.slug}`}
+        className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-accent] focus-visible:ring-offset-2 rounded-2xl"
+      >
+        <div className="relative bg-white border border-stone-200 rounded-2xl p-5 md:p-6 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_18px_44px_-20px_rgba(19,22,19,0.18)] group-hover:border-[--color-accent-bright]/40">
+          {showTypePill && (
+            <span className="absolute top-4 left-4 z-10 inline-flex items-center px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] rounded-full bg-stone-100 text-stone-700 border border-stone-200">
+              {typeLabel}
+            </span>
           )}
-          {outOfStock && (
-            <div className="absolute inset-0 bg-white/70 flex items-center justify-center">
-              <span className="text-xs uppercase tracking-[0.18em] text-[--color-ink-soft]">
-                {t('outOfStock')}
-              </span>
-            </div>
-          )}
-          {product.compare_at_price_cents && product.compare_at_price_cents > product.price_cents && (
-            <span className="absolute top-3 left-3 inline-flex items-center px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] rounded-full bg-[--color-accent] text-white">
+
+          {/* Compare toggle — top-right, sits in card padding outside the plate circle */}
+          <CompareButton
+            className="absolute top-3 right-3 z-10"
+            item={{
+              id: product.id,
+              slug: product.slug,
+              nameNl: product.name_nl,
+              nameEn: product.name_en,
+              imageUrl: product.image_url,
+              priceCents: product.price_cents,
+              kcal: product.kcal,
+              proteinG: product.protein_g,
+              carbsG: product.carbs_g,
+              fatG: product.fat_g,
+              fiberG: product.fiber_g,
+              saltG: product.salt_g,
+              goalTag: product.goal_tag,
+            }}
+          />
+
+          {onSale && (
+            <span
+              className={
+                'absolute z-10 inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] rounded-full bg-[--color-ink] text-white ' +
+                (showTypePill ? 'top-12 left-4' : 'top-4 left-4')
+              }
+            >
               −
               {Math.round(
-                ((product.compare_at_price_cents - product.price_cents) /
-                  product.compare_at_price_cents) *
+                ((product.compare_at_price_cents! - product.price_cents) /
+                  product.compare_at_price_cents!) *
                   100,
               )}
               %
             </span>
           )}
-        </div>
 
-        <div className="mt-5 px-1">
-          <h3 className="font-medium text-[--color-ink] group-hover:text-[--color-accent] transition-colors">
+          {/* Plate-circle: visual element inside the rectangular card */}
+          <div className="relative aspect-square w-full max-w-[300px] mx-auto rounded-full overflow-hidden bg-stone-50 ring-1 ring-stone-100">
+            {product.image_url && (
+              <Image
+                src={product.image_url}
+                alt={name}
+                fill
+                sizes="(min-width: 1024px) 320px, (min-width: 640px) 40vw, 80vw"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
+              />
+            )}
+            {outOfStock && (
+              <div className="absolute inset-0 bg-white/75 flex items-center justify-center">
+                <span className="text-xs uppercase tracking-[0.18em] text-stone-700">
+                  {t('outOfStock')}
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Badges row — IN the card, BELOW the plate, never clipped */}
+          <div className="mt-5 flex flex-wrap items-center gap-2">
+            {product.goal_tag && (
+              <GoalBadge tag={product.goal_tag} locale={locale} variant="solid" size="md" />
+            )}
+            {product.attribute_tags.length > 0 && (
+              <AttributeBadges tags={product.attribute_tags} locale={locale} max={3} size="sm" />
+            )}
+          </div>
+
+          {/* Product name */}
+          <h3 className="mt-4 font-semibold text-lg tracking-tight text-stone-900 line-clamp-2 group-hover:text-[--color-accent] transition-colors">
             {name}
           </h3>
-          {product.kcal && (
-            <p className="font-mono text-[11px] text-[--color-gray] mt-1 tracking-wide">
-              {product.kcal} kcal · {product.protein_g}g {tp('protein').toLowerCase()}
-            </p>
+
+          {/* Macros grid — full labels, mono numbers */}
+          {product.kcal !== null && (
+            <div className="mt-4 grid grid-cols-4 border border-stone-200 rounded-xl overflow-hidden">
+              <MacroCell
+                label={t('macroProtein')}
+                value={product.protein_g}
+                unit="g"
+                accent
+              />
+              <MacroCell label={t('macroCarbs')} value={product.carbs_g} unit="g" />
+              <MacroCell label={t('macroFat')} value={product.fat_g} unit="g" />
+              <MacroCell label={t('macroKcal')} value={product.kcal} />
+            </div>
           )}
-          <div className="mt-3 flex items-baseline gap-2">
-            <span className="font-mono font-semibold tabular-nums">
-              {formatMoneyCents(product.price_cents)}
-            </span>
-            {product.compare_at_price_cents &&
-              product.compare_at_price_cents > product.price_cents && (
-                <span className="font-mono text-xs text-[--color-gray] line-through">
-                  {formatMoneyCents(product.compare_at_price_cents)}
+
+          {/* Price + CTA */}
+          <div className="mt-5 flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xl font-semibold tabular-nums">
+                  {formatMoneyCents(product.price_cents)}
+                </span>
+                {onSale && (
+                  <span className="font-mono text-xs text-stone-400 line-through tabular-nums">
+                    {formatMoneyCents(product.compare_at_price_cents!)}
+                  </span>
+                )}
+              </div>
+              {product.kcal === null && product.type !== 'meal' && (
+                <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500">
+                  {t('perMeal')}
                 </span>
               )}
-            {isPackage && (
-              <span className="text-[10px] uppercase tracking-[0.16em] text-[--color-gray]">
-                {product.type === 'package' ? 'pakket' : 'try-out'}
-              </span>
-            )}
+            </div>
+            <button
+              type="button"
+              onClick={handleAdd}
+              disabled={outOfStock}
+              aria-label={`${t('addToCart')} — ${name}`}
+              className="shrink-0 inline-flex items-center gap-1.5 px-4 h-10 rounded-full bg-[--color-accent-bright] text-[--color-ink] font-semibold text-sm hover:bg-[--color-accent] hover:text-white active:scale-95 transition-all duration-200 ease-out disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--color-accent] focus-visible:ring-offset-2"
+            >
+              <Plus className="h-4 w-4" strokeWidth={2.5} />
+              <span>{t('addToCart')}</span>
+            </button>
           </div>
         </div>
       </Link>
-
-      <button
-        type="button"
-        disabled={outOfStock}
-        onClick={(e) => {
-          e.preventDefault();
-          add({
-            productId: product.id,
-            slug: product.slug,
-            name,
-            imageUrl: product.image_url,
-            unitPriceCents: product.price_cents,
-          });
-        }}
-        aria-label={t('addToCart')}
-        className="absolute top-3 right-3 h-10 w-10 inline-flex items-center justify-center rounded-full bg-[--color-ink] text-white opacity-0 group-hover:opacity-100 hover:bg-[--color-accent] transition-all duration-200 ease-out disabled:opacity-40"
-      >
-        <Plus className="h-4 w-4" />
-      </button>
     </article>
+  );
+}
+
+function MacroCell({
+  label,
+  value,
+  unit,
+  accent = false,
+}: {
+  label: string;
+  value: number | null;
+  unit?: string;
+  accent?: boolean;
+}) {
+  return (
+    <div className="px-2 py-2.5 text-center border-r border-stone-200 last:border-r-0">
+      <div className="text-[9px] font-semibold uppercase tracking-[0.14em] text-stone-500">
+        {label}
+      </div>
+      <div
+        className={
+          'font-mono text-sm font-semibold tabular-nums mt-0.5 ' +
+          (accent ? 'text-[--color-accent]' : 'text-stone-900')
+        }
+      >
+        {value ?? '–'}
+        {unit && value !== null && (
+          <span className="text-[10px] text-stone-500 font-medium ml-0.5">{unit}</span>
+        )}
+      </div>
+    </div>
   );
 }

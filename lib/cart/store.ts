@@ -15,7 +15,9 @@ export interface CartLine {
 interface CartState {
   lines: CartLine[];
   isOpen: boolean;
-  add: (line: Omit<CartLine, 'quantity'>, quantity?: number) => void;
+  /** Increments on every add — CartIcon listens to it to trigger the bump animation. */
+  bumpToken: number;
+  add: (line: Omit<CartLine, 'quantity'>, quantity?: number, options?: { silent?: boolean }) => void;
   setQuantity: (productId: string, quantity: number) => void;
   remove: (productId: string) => void;
   clear: () => void;
@@ -29,18 +31,24 @@ export const useCart = create<CartState>()(
     (set) => ({
       lines: [],
       isOpen: false,
-      add: (line, quantity = 1) =>
+      bumpToken: 0,
+      add: (line, quantity = 1, options) =>
         set((state) => {
           const existing = state.lines.find((l) => l.productId === line.productId);
+          const bumpToken = state.bumpToken + 1;
+          // From product cards we don't auto-open the drawer; we toast + bump instead.
+          // From product detail we still auto-open for clearer feedback.
+          const isOpen = options?.silent ? state.isOpen : true;
           if (existing) {
             return {
               lines: state.lines.map((l) =>
                 l.productId === line.productId ? { ...l, quantity: l.quantity + quantity } : l,
               ),
-              isOpen: true,
+              isOpen,
+              bumpToken,
             };
           }
-          return { lines: [...state.lines, { ...line, quantity }], isOpen: true };
+          return { lines: [...state.lines, { ...line, quantity }], isOpen, bumpToken };
         }),
       setQuantity: (productId, quantity) =>
         set((state) => ({

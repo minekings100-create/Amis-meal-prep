@@ -1,14 +1,23 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { CartDrawer } from '@/components/shop/cart-drawer';
+import { CompareBar } from '@/components/shop/compare-bar';
+import { CompareModal } from '@/components/shop/compare-modal';
+import { Toaster } from '@/components/ui/toaster';
+import { PageTransition } from '@/components/layout/page-transition';
 
 export default function ShopLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1">
+        <PageTransition>{children}</PageTransition>
+      </main>
       <Footer />
       <CartDrawer />
+      <CompareBar />
+      <CompareModal />
+      <Toaster />
     </>
   );
 }
