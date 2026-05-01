@@ -40,8 +40,9 @@ export function ProductionUpdateDialog({ rows }: { rows: StockRow[] }) {
   function setAddition(id: string, value: string) {
     setAdditions((curr) => {
       if (!value || value === '0') {
-        const { [id]: _omit, ...rest } = curr;
-        return rest;
+        const next = { ...curr };
+        delete next[id];
+        return next;
       }
       return { ...curr, [id]: value };
     });

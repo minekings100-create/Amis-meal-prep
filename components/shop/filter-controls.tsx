@@ -4,7 +4,7 @@ import { useMemo, useState, useTransition } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/lib/i18n/navigation';
 import { useSearchParams } from 'next/navigation';
-import { Check, X } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { ALLERGEN_KEYS, type ProductFilters } from '@/lib/shop/types';
 import {
   buildFilterURL,

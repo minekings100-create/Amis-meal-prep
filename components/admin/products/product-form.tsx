@@ -7,7 +7,7 @@ import { Save, Trash2, Copy, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 import { centsFromEuros } from '@/lib/utils/money';
 import { MainImageUpload, GalleryUpload } from './image-upload';
-import { PackageItemsSection, type PackageItem, type MealOption } from './package-items';
+import { PackageItemsSection, type MealOption } from './package-items';
 import {
   createProductAction,
   updateProductAction,
@@ -45,7 +45,7 @@ const ATTR_LABELS: Record<string, string> = {
   'lactose-free': 'Lactosevrij',
 };
 
-interface FormState extends ProductFormPayload {}
+type FormState = ProductFormPayload;
 
 function defaultState(): FormState {
   return {

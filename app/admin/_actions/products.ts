@@ -147,15 +147,16 @@ export async function duplicateProductAction(productId: string): Promise<Product
     .maybeSingle();
   if (fetchErr || !src) return { ok: false, message: fetchErr?.message ?? 'Niet gevonden' };
 
-  const { id: _id, created_at: _c, updated_at: _u, ...rest } = src as Database['public']['Tables']['products']['Row'];
-  const dup = {
-    ...rest,
-    slug: `${src.slug}-kopie-${Date.now().toString(36).slice(-4)}`,
-    name_nl: `${src.name_nl} (kopie)`,
-    name_en: `${src.name_en} (copy)`,
-    is_active: false,
-    is_featured: false,
-  };
+  const srcRow = src as Database['public']['Tables']['products']['Row'];
+  const dup: Record<string, unknown> = { ...srcRow };
+  delete dup.id;
+  delete dup.created_at;
+  delete dup.updated_at;
+  dup.slug = `${srcRow.slug}-kopie-${Date.now().toString(36).slice(-4)}`;
+  dup.name_nl = `${srcRow.name_nl} (kopie)`;
+  dup.name_en = `${srcRow.name_en} (copy)`;
+  dup.is_active = false;
+  dup.is_featured = false;
   const { data: created, error } = await sb.from('products').insert(dup).select('id').single();
   if (error) return { ok: false, message: error.message };
 

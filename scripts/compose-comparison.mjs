@@ -5,7 +5,6 @@
  */
 import { chromium } from 'playwright';
 import { readFile } from 'node:fs/promises';
-import path from 'node:path';
 
 const args = process.argv.slice(2);
 if (args.length < 3) {
