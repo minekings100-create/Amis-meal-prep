@@ -159,24 +159,16 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* HOT MENU */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 md:py-28">
+      {/* HOT MENU — quick teaser, intentionally subtler than a hero moment */}
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-12 md:py-16">
         <RevealSection>
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--color-accent) mb-3">
-                {t('menu.subtitle')}
-              </p>
-              <h2 className="text-3xl md:text-4xl tracking-[-0.03em] font-semibold">
-                {t('menu.title')}
-              </h2>
-            </div>
-            <Link
-              href="/shop"
-              className="inline-flex items-center gap-1 text-sm text-stone-700 hover:text-(--color-accent) transition-colors font-medium"
-            >
-              {t('menu.viewAll')} <ArrowRight className="h-3 w-3" />
-            </Link>
+          <div className="mb-8 md:mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-stone-500 mb-2">
+              {t('menu.subtitle')}
+            </p>
+            <h2 className="text-2xl md:text-3xl tracking-[-0.025em] font-semibold">
+              {t('menu.title')}
+            </h2>
           </div>
         </RevealSection>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
@@ -185,6 +177,14 @@ export default async function HomePage({
               <ProductCard product={p} />
             </RevealSection>
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Link
+            href="/shop"
+            className="inline-flex items-center gap-1.5 text-sm text-stone-700 hover:text-(--color-accent) transition-colors font-medium underline-offset-4 hover:underline"
+          >
+            {t('menu.viewAll')} <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </section>
 
