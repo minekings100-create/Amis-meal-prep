@@ -263,6 +263,10 @@ export interface Database {
           title: string | null;
           body: string | null;
           is_published: boolean;
+          is_deleted: boolean;
+          deleted_reason: string | null;
+          deleted_at: string | null;
+          deleted_by: string | null;
           created_at: string;
         };
         Insert: Partial<Database['public']['Tables']['reviews']['Row']> & {
