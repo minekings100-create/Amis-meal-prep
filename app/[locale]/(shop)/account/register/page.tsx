@@ -106,7 +106,7 @@ export default function RegisterPage() {
                 algemene voorwaarden
               </Link>{' '}
               en het{' '}
-              <Link href="/privacy" className="text-(--color-accent) hover:underline" target="_blank">
+              <Link href="/privacybeleid" className="text-(--color-accent) hover:underline" target="_blank">
                 privacybeleid
               </Link>
               .

@@ -121,6 +121,56 @@
   .animate-sheet-up  { animation: sheet-up 0.32s cubic-bezier(0.16, 1, 0.3, 1); }
   .animate-fade-in   { animation: fade-in 0.2s ease-out; }
 
+  /* Legal/prose long-form content */
+  .prose-amis {
+    color: var(--color-ink);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+  .prose-amis h2 {
+    font-size: 1.4rem;
+    margin-top: 2.4rem;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    scroll-margin-top: 7rem;
+  }
+  .prose-amis h2:first-child {
+    margin-top: 0;
+  }
+  .prose-amis h3 {
+    font-size: 1.05rem;
+    margin-top: 1.4rem;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+  .prose-amis p {
+    margin-bottom: 1rem;
+    color: var(--color-ink-soft);
+  }
+  .prose-amis ul {
+    list-style: disc;
+    padding-left: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--color-ink-soft);
+  }
+  .prose-amis ul li {
+    margin-bottom: 0.4rem;
+  }
+  .prose-amis a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .prose-amis a:hover {
+    color: var(--color-accent-bright);
+  }
+  .prose-amis strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
   /* Cart drawer scrollbar — slim, only on hover */
   .cart-scroll {
     scrollbar-width: thin;

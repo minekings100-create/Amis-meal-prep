@@ -115,5 +115,5 @@ on conflict do nothing;
 
 -- Sample discount code (10% off, min order €30)
 insert into public.discount_codes (code, type, value_cents, value_percent, min_order_cents, max_uses_per_customer, is_active) values
-  ('WELCOME10', 'percentage', 0, 10, 3000, 1, true)
+  ('WELKOM10', 'percentage', 0, 10, 0, 1, true)
 on conflict (code) do nothing;
