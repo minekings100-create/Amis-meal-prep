@@ -78,8 +78,8 @@ export default async function HomePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
       />
-      {/* HERO — full-bleed photo with text overlay (MegaFit style, text-left) */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh] flex items-center overflow-hidden bg-stone-900">
+      {/* HERO — full-screen photo with text overlay + stats overlay at bottom */}
+      <section className="relative w-full min-h-[88vh] md:min-h-screen flex flex-col overflow-hidden bg-stone-900">
         {/* Photo with subtle parallax (desktop only) */}
         <HeroParallaxImage src={heroPhoto.src} alt={heroAlt} />
         {/* Left-darker → right-lighter overlay so text on left stays readable */}
@@ -92,65 +92,69 @@ export default async function HomePage({
           aria-hidden
           className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-stone-950/40 to-transparent pointer-events-none"
         />
+        {/* Bottom gradient — fades to near-black so the stats overlay reads clearly */}
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-stone-950/70 to-transparent pointer-events-none"
+        />
 
-        {/* Text overlay */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-12 lg:pb-20">
-          <div className="max-w-2xl">
-            <p className="text-xs sm:text-sm uppercase tracking-[0.22em] text-white/80 font-medium mb-6">
-              {t('hero.eyebrow')}
-            </p>
-            <h1 className="font-sans text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-bold text-white leading-[0.95] tracking-[-0.035em] mb-6">
-              {t.rich('hero.title', {
-                em: (chunks) => (
-                  <span className="relative inline-block not-italic">
-                    {chunks}
-                    <span
-                      aria-hidden
-                      className="absolute -bottom-1 left-0 right-0 h-[6px] bg-(--color-accent-bright)"
-                    />
-                  </span>
-                ),
-              })}
-            </h1>
-            <p className="text-lg sm:text-xl text-white/90 max-w-md mb-10 leading-relaxed">
-              {t('hero.subtitle')}
-            </p>
-            <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/shop"
-                className="inline-flex items-center gap-2 rounded-full bg-(--color-accent-bright) px-7 h-12 font-semibold text-stone-900 transition-all duration-200 hover:bg-white hover:gap-3 active:scale-95"
-              >
-                {t('hero.ctaShop')}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/over-ons"
-                className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/5 backdrop-blur px-7 h-12 font-semibold text-white transition-all duration-200 hover:bg-white hover:text-stone-900 active:scale-95"
-              >
-                {t('hero.ctaHowItWorks')}
-              </Link>
+        {/* Text overlay — vertically centered with subtle upward bias to make room for stats */}
+        <div className="relative z-10 flex-1 flex items-center w-full">
+          <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-32 md:pb-40 lg:translate-y-[-24px]">
+            <div className="max-w-2xl">
+              <p className="text-xs sm:text-sm uppercase tracking-[0.22em] text-white/80 font-medium mb-6">
+                {t('hero.eyebrow')}
+              </p>
+              <h1 className="font-sans text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-bold text-white leading-[0.95] tracking-[-0.035em] mb-6">
+                {t.rich('hero.title', {
+                  em: (chunks) => (
+                    <span className="relative inline-block not-italic">
+                      {chunks}
+                      <span
+                        aria-hidden
+                        className="absolute -bottom-1 left-0 right-0 h-[6px] bg-(--color-accent-bright)"
+                      />
+                    </span>
+                  ),
+                })}
+              </h1>
+              <p className="text-lg sm:text-xl text-white/90 max-w-md mb-10 leading-relaxed">
+                {t('hero.subtitle')}
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href="/shop"
+                  className="inline-flex items-center gap-2 rounded-full bg-(--color-accent-bright) px-7 h-12 font-semibold text-stone-900 transition-all duration-200 hover:bg-white hover:gap-3 active:scale-95"
+                >
+                  {t('hero.ctaShop')}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/over-ons"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/5 backdrop-blur px-7 h-12 font-semibold text-white transition-all duration-200 hover:bg-white hover:text-stone-900 active:scale-95"
+                >
+                  {t('hero.ctaHowItWorks')}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* STATS row — full-width band under hero */}
-      <section className="border-y border-stone-200 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-          <dl className="grid grid-cols-2 lg:grid-cols-4 gap-y-4 gap-x-6">
-            <Stat label={t('stats.proteinLabel')}>
+        {/* STATS overlay — glass band at the bottom of the hero, full-bleed */}
+        <div className="relative z-10 bg-white/10 backdrop-blur-md border-t border-white/20">
+          <dl className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-white/15">
+            <HeroStat label={t('stats.proteinLabel')}>
               <CountUp end={42} suffix="g" />
-            </Stat>
-            <Stat label={t('stats.scoreLabel')}>
+            </HeroStat>
+            <HeroStat label={t('stats.scoreLabel')}>
               <CountUp end={9.2} decimals={1} suffix="/10" />
-            </Stat>
-            <Stat label={t('stats.deliveryLabel')}>
-              {/* Range — kept static, can't aggregate. */}
+            </HeroStat>
+            <HeroStat label={t('stats.deliveryLabel')}>
               <span>{t('stats.deliveryValue')}</span>
-            </Stat>
-            <Stat label={t('stats.mealsLabel')}>
+            </HeroStat>
+            <HeroStat label={t('stats.mealsLabel')}>
               <CountUp end={150} suffix="k+" />
-            </Stat>
+            </HeroStat>
           </dl>
         </div>
       </section>
@@ -267,13 +271,13 @@ export default async function HomePage({
   );
 }
 
-function Stat({ label, children }: { label: string; children: React.ReactNode }) {
+function HeroStat({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col">
-      <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-500 order-2">
+    <div className="flex flex-col items-start justify-center px-6 lg:px-8 py-5 md:py-6">
+      <dt className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-white/70 order-2 mt-1">
         {label}
       </dt>
-      <dd className="font-mono text-2xl lg:text-3xl font-semibold tabular-nums text-stone-900 leading-tight order-1">
+      <dd className="font-mono text-2xl sm:text-3xl font-bold tabular-nums text-white leading-tight order-1">
         {children}
       </dd>
     </div>
