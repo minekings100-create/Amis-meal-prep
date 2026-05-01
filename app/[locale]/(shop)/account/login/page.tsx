@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { Suspense, useState, useTransition } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Link, useRouter } from '@/lib/i18n/navigation';
 import { Mail, Lock, ArrowRight, Sparkles } from 'lucide-react';
@@ -11,6 +11,14 @@ import {
 } from '@/app/_actions/account';
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginInner />
+    </Suspense>
+  );
+}
+
+function LoginInner() {
   const router = useRouter();
   const sp = useSearchParams();
   const next = sp.get('next') ?? '/account';

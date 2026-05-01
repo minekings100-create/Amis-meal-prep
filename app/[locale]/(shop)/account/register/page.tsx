@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { Suspense, useState, useTransition } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Link, useRouter } from '@/lib/i18n/navigation';
 import { Mail, Lock, User, ArrowRight, Check, X } from 'lucide-react';
@@ -8,6 +8,14 @@ import { cn } from '@/lib/utils/cn';
 import { registerAction } from '@/app/_actions/account';
 
 export default function RegisterPage() {
+  return (
+    <Suspense fallback={null}>
+      <RegisterInner />
+    </Suspense>
+  );
+}
+
+function RegisterInner() {
   const router = useRouter();
   const sp = useSearchParams();
   const prefilledEmail = sp.get('email') ?? '';
