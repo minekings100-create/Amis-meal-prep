@@ -51,7 +51,7 @@ export function ReviewsList({ rows, tab }: { rows: AdminReview[]; tab: ReviewsTa
             type="button"
             onClick={bulkPublish}
             disabled={bulkPending}
-            className="inline-flex items-center gap-1.5 h-8 px-3 rounded-md bg-[--color-accent] text-white text-xs font-medium hover:bg-[--color-accent]/90 disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 h-8 px-3 rounded-md bg-(--color-accent) text-white text-xs font-medium hover:bg-(--color-accent)/90 disabled:opacity-60"
           >
             <Sparkles className="h-3 w-3" />
             {bulkPending ? 'Bezig…' : 'Publiceer alle 5★ reviews'}
@@ -104,7 +104,7 @@ function ReviewCard({ review, tab }: { review: AdminReview; tab: ReviewsTab }) {
           <Stars rating={review.rating} />
           <span className="text-xs font-mono text-stone-500">{dateFmt.format(new Date(review.createdAt))}</span>
           {review.isVerifiedPurchase && (
-            <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider text-[--color-accent]">
+            <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider text-(--color-accent)">
               <ShieldCheck className="h-3 w-3" /> Verified
             </span>
           )}
@@ -120,7 +120,7 @@ function ReviewCard({ review, tab }: { review: AdminReview; tab: ReviewsTab }) {
           </span>
           <span>
             Product:{' '}
-            <Link href={`/admin/products?q=${encodeURIComponent(review.productSlug)}`} className="text-stone-700 hover:text-[--color-accent]">
+            <Link href={`/admin/products?q=${encodeURIComponent(review.productSlug)}`} className="text-stone-700 hover:text-(--color-accent)">
               {review.productName}
             </Link>
           </span>
@@ -139,7 +139,7 @@ function ReviewCard({ review, tab }: { review: AdminReview; tab: ReviewsTab }) {
             type="button"
             onClick={publish}
             disabled={pending}
-            className="inline-flex items-center justify-center gap-1.5 h-9 px-4 rounded-md bg-[--color-accent] text-white text-sm font-medium hover:bg-[--color-accent]/90 disabled:opacity-60"
+            className="inline-flex items-center justify-center gap-1.5 h-9 px-4 rounded-md bg-(--color-accent) text-white text-sm font-medium hover:bg-(--color-accent)/90 disabled:opacity-60"
           >
             <Check className="h-3.5 w-3.5" /> Publiceer
           </button>
@@ -170,7 +170,7 @@ function ReviewCard({ review, tab }: { review: AdminReview; tab: ReviewsTab }) {
                   onChange={(e) => setReason(e.target.value)}
                   rows={3}
                   placeholder="Bijv. spam, niet productrelevant, scheldwoorden…"
-                  className="w-full px-3 py-2 rounded-md border border-stone-200 text-sm focus:outline-none focus:border-[--color-accent]"
+                  className="w-full px-3 py-2 rounded-md border border-stone-200 text-sm focus:outline-none focus:border-(--color-accent)"
                 />
                 <div className="flex justify-end gap-2 mt-4">
                   <Dialog.Close asChild>

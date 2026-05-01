@@ -204,7 +204,7 @@ function IntegrationRow({
     <li className="flex items-center justify-between gap-4 px-3 py-2 rounded-md bg-stone-50/60 border border-stone-100">
       <div className="flex items-center gap-3">
         {configured ? (
-          <CheckCircle2 className="h-4 w-4 text-[--color-accent]" />
+          <CheckCircle2 className="h-4 w-4 text-(--color-accent)" />
         ) : (
           <XCircle className="h-4 w-4 text-stone-400" />
         )}
@@ -246,7 +246,7 @@ function SectionCard({
       <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-between">
         <div className="text-xs text-stone-500">
           {saved && (
-            <span className="text-[--color-accent] font-medium inline-flex items-center gap-1">
+            <span className="text-(--color-accent) font-medium inline-flex items-center gap-1">
               <CheckCircle2 className="h-3.5 w-3.5" /> Opgeslagen
             </span>
           )}
@@ -295,7 +295,7 @@ function Text({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={cn(
-        'h-10 w-full px-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-[--color-accent]',
+        'h-10 w-full px-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-accent)',
         mono && 'font-mono',
       )}
     />

@@ -84,7 +84,7 @@ export default async function ReviewsPage({
                 className={cn(
                   'flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors border-b-2',
                   active
-                    ? 'text-stone-900 border-[--color-accent]'
+                    ? 'text-stone-900 border-(--color-accent)'
                     : 'text-stone-500 border-transparent hover:text-stone-900',
                 )}
               >
@@ -92,7 +92,7 @@ export default async function ReviewsPage({
                 <span
                   className={cn(
                     'inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-[10px] font-mono tabular-nums',
-                    active ? 'bg-[--color-accent-bright]/20 text-[--color-accent]' : 'bg-stone-100 text-stone-600',
+                    active ? 'bg-(--color-accent-bright)/20 text-(--color-accent)' : 'bg-stone-100 text-stone-600',
                   )}
                 >
                   {listing.counts[t.key]}

@@ -62,7 +62,7 @@ export function KitchenDatePicker({ date }: { date: string }) {
         <button
           type="button"
           onClick={goToday}
-          className="h-8 px-2 rounded-md text-xs font-medium text-[--color-accent] hover:bg-[--color-accent-bright]/15"
+          className="h-8 px-2 rounded-md text-xs font-medium text-(--color-accent) hover:bg-(--color-accent-bright)/15"
         >
           Vandaag
         </button>

@@ -25,7 +25,7 @@ export function AllergensList({ product }: { product: Product }) {
   const present = ALLERGEN_KEYS.filter(([flag]) => product[flag]);
 
   if (present.length === 0) {
-    return <p className="text-sm text-[--color-ink-soft]">{tp('noAllergens')}</p>;
+    return <p className="text-sm text-(--color-ink-soft)">{tp('noAllergens')}</p>;
   }
 
   return (

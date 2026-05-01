@@ -33,7 +33,7 @@ const ACTIONS: Record<
 
 const toneClass = {
   default: 'bg-stone-100 text-stone-600',
-  success: 'bg-[--color-accent-bright]/15 text-[--color-accent]',
+  success: 'bg-(--color-accent-bright)/15 text-(--color-accent)',
   warn: 'bg-amber-100 text-amber-700',
   danger: 'bg-red-100 text-red-700',
 };

@@ -7,7 +7,7 @@ const buttonVariants = cva(
   [
     'inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium',
     'transition duration-200 ease-out will-change-transform',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--color-accent] focus-visible:ring-offset-2',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent) focus-visible:ring-offset-2',
     'disabled:pointer-events-none disabled:opacity-50',
     'active:scale-[0.98]',
   ].join(' '),
@@ -15,13 +15,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-[--color-accent-bright] text-[--color-ink] hover:bg-[--color-accent] hover:text-white shadow-[var(--shadow-glow)]',
+          'bg-(--color-accent-bright) text-(--color-ink) hover:bg-(--color-accent) hover:text-white shadow-[var(--shadow-glow)]',
         secondary:
-          'bg-[--color-ink] text-white hover:bg-[#000]',
+          'bg-(--color-ink) text-white hover:bg-[#000]',
         outline:
-          'border border-[--color-line] bg-transparent text-[--color-ink] hover:bg-[--color-bg-soft]',
-        ghost: 'bg-transparent text-[--color-ink] hover:bg-[--color-bg-soft]',
-        link: 'text-[--color-accent] underline-offset-4 hover:underline',
+          'border border-(--color-line) bg-transparent text-(--color-ink) hover:bg-(--color-bg-soft)',
+        ghost: 'bg-transparent text-(--color-ink) hover:bg-(--color-bg-soft)',
+        link: 'text-(--color-accent) underline-offset-4 hover:underline',
       },
       size: {
         sm: 'h-9 px-4 text-sm rounded-[--radius-sm]',

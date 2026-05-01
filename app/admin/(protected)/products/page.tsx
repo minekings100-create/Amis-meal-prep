@@ -70,7 +70,7 @@ export default async function ProductsListPage({
           </button>
           <Link
             href="/admin/products/new"
-            className="inline-flex items-center gap-2 h-10 px-4 rounded-md bg-[--color-accent] text-white text-sm font-medium hover:bg-[--color-accent]/90"
+            className="inline-flex items-center gap-2 h-10 px-4 rounded-md bg-(--color-accent) text-white text-sm font-medium hover:bg-(--color-accent)/90"
           >
             <Plus className="h-4 w-4" />
             Nieuw product
@@ -115,11 +115,11 @@ export default async function ProductsListPage({
                       <div className="min-w-0">
                         <Link
                           href={`/admin/products/${row.id}/edit`}
-                          className="font-medium text-stone-900 hover:text-[--color-accent] truncate block"
+                          className="font-medium text-stone-900 hover:text-(--color-accent) truncate block"
                         >
                           {row.name}
                           {row.isFeatured && (
-                            <span className="ml-2 text-[9px] uppercase tracking-wider text-[--color-accent]">★ Featured</span>
+                            <span className="ml-2 text-[9px] uppercase tracking-wider text-(--color-accent)">★ Featured</span>
                           )}
                         </Link>
                         <p className="text-[11px] text-stone-400 font-mono truncate">{row.slug}</p>
@@ -188,7 +188,7 @@ function TypePill({ type }: { type: 'meal' | 'package' | 'tryout' }) {
   const styles = {
     meal: 'bg-stone-100 text-stone-700 border-stone-200',
     package: 'bg-blue-50 text-blue-700 border-blue-200',
-    tryout: 'bg-[--color-accent-bright]/15 text-[--color-accent] border-[--color-accent-bright]/30',
+    tryout: 'bg-(--color-accent-bright)/15 text-(--color-accent) border-(--color-accent-bright)/30',
   };
   const label = { meal: 'Maaltijd', package: 'Pakket', tryout: 'Tryout' };
   return (

@@ -133,7 +133,7 @@ function ProductRow({
           <div className="min-w-0">
             <Link
               href={`/admin/products/${row.id}/edit`}
-              className="font-medium text-stone-900 hover:text-[--color-accent] truncate block"
+              className="font-medium text-stone-900 hover:text-(--color-accent) truncate block"
             >
               {row.name}
             </Link>
@@ -245,8 +245,8 @@ function StockEditor({
           onBlur={() => commit()}
           min={0}
           className={cn(
-            'h-8 w-20 px-2 rounded-md border bg-white text-sm font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-[--color-accent-bright]/40',
-            error ? 'border-red-300' : 'border-[--color-accent]',
+            'h-8 w-20 px-2 rounded-md border bg-white text-sm font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-(--color-accent-bright)/40',
+            error ? 'border-red-300' : 'border-(--color-accent)',
           )}
         />
         {pending && <Loader2 className="h-3.5 w-3.5 animate-spin text-stone-400" />}
@@ -262,13 +262,13 @@ function StockEditor({
       className={cn(
         'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-mono tabular-nums text-sm transition-all',
         'hover:bg-stone-100 hover:ring-1 hover:ring-stone-200',
-        flash && 'bg-[--color-accent-bright]/30 ring-2 ring-[--color-accent]',
+        flash && 'bg-(--color-accent-bright)/30 ring-2 ring-(--color-accent)',
       )}
     >
       <span className={cn(stock === 0 && 'text-red-600', stock > 0 && stock < 10 && 'text-amber-700')}>
         {stock}
       </span>
-      {flash && <Check className="h-3 w-3 text-[--color-accent]" />}
+      {flash && <Check className="h-3 w-3 text-(--color-accent)" />}
     </button>
   );
 }
@@ -296,7 +296,7 @@ function StockStatusPill({ stock, isActive }: { stock: number; isActive: boolean
     );
   }
   return (
-    <span className="inline-flex items-center px-2 py-0.5 rounded-full border border-[--color-accent-bright]/30 bg-[--color-accent-bright]/15 text-[--color-accent] text-[10px] font-semibold uppercase tracking-wider">
+    <span className="inline-flex items-center px-2 py-0.5 rounded-full border border-(--color-accent-bright)/30 bg-(--color-accent-bright)/15 text-(--color-accent) text-[10px] font-semibold uppercase tracking-wider">
       In voorraad
     </span>
   );
@@ -338,7 +338,7 @@ function ActiveToggle({
       aria-checked={active}
       className={cn(
         'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors disabled:opacity-50',
-        active ? 'bg-[--color-accent]' : 'bg-stone-300',
+        active ? 'bg-(--color-accent)' : 'bg-stone-300',
       )}
     >
       <span
@@ -355,7 +355,7 @@ function RealtimeIndicator({ status }: { status: RealtimeStatus }) {
   const cfg = {
     idle: { label: 'Initialiseren…', dot: 'bg-stone-300' },
     connecting: { label: 'Verbinden…', dot: 'bg-amber-400 animate-pulse' },
-    live: { label: 'Live — wijzigingen worden direct gedeeld', dot: 'bg-[--color-accent-bright] animate-pulse' },
+    live: { label: 'Live — wijzigingen worden direct gedeeld', dot: 'bg-(--color-accent-bright) animate-pulse' },
     off: { label: 'Offline modus (geen Supabase)', dot: 'bg-stone-300' },
   } as const;
   const c = cfg[status];

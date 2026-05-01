@@ -73,12 +73,12 @@ export default async function LoginPage({
             type="email"
             required
             placeholder="you@example.com"
-            className="w-full h-11 rounded-md border border-stone-300 px-4 text-sm focus:outline-none focus:border-[--color-accent]"
+            className="w-full h-11 rounded-md border border-stone-300 px-4 text-sm focus:outline-none focus:border-(--color-accent)"
           />
           <button
             type="submit"
             disabled
-            className="w-full h-11 rounded-full bg-[--color-accent-bright] text-stone-900 font-semibold disabled:opacity-50"
+            className="w-full h-11 rounded-full bg-(--color-accent-bright) text-stone-900 font-semibold disabled:opacity-50"
           >
             Stuur magic link (Phase 2)
           </button>

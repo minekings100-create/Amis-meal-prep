@@ -32,7 +32,7 @@ export function ProductActiveSwitch({
       aria-checked={active}
       className={cn(
         'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors disabled:opacity-50',
-        active ? 'bg-[--color-accent]' : 'bg-stone-300',
+        active ? 'bg-(--color-accent)' : 'bg-stone-300',
       )}
     >
       <span

@@ -13,9 +13,9 @@ interface StatCardProps {
 
 const toneStyles = {
   default: {
-    accent: 'text-[--color-accent]',
-    iconBg: 'bg-[--color-accent-bright]/12 text-[--color-accent]',
-    chip: 'bg-[--color-accent-bright]/15 text-[--color-accent]',
+    accent: 'text-(--color-accent)',
+    iconBg: 'bg-(--color-accent-bright)/12 text-(--color-accent)',
+    chip: 'bg-(--color-accent-bright)/15 text-(--color-accent)',
   },
   warn: {
     accent: 'text-amber-700',

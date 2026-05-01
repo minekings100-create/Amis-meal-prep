@@ -209,7 +209,7 @@ function ProductCol({
             <button
               type="button"
               onClick={() => onAddToCart(item)}
-              className="inline-flex items-center gap-1 h-8 px-3 rounded-full bg-[--color-accent-bright] text-stone-900 text-xs font-semibold hover:bg-[--color-accent] hover:text-white transition-colors"
+              className="inline-flex items-center gap-1 h-8 px-3 rounded-full bg-(--color-accent-bright) text-stone-900 text-xs font-semibold hover:bg-(--color-accent) hover:text-white transition-colors"
             >
               <ShoppingBag className="h-3 w-3" />
               {t('addToCart')}
@@ -289,12 +289,12 @@ function DesktopTable({
                   key={it.id}
                   className={cn(
                     'flex items-center justify-center gap-1.5 font-mono text-base tabular-nums',
-                    isWinner ? 'text-[--color-accent] font-semibold' : 'text-stone-800',
+                    isWinner ? 'text-(--color-accent) font-semibold' : 'text-stone-800',
                   )}
                 >
                   {isWinner && (
                     <Star
-                      className="h-3.5 w-3.5 fill-[--color-accent-bright] text-[--color-accent-bright]"
+                      className="h-3.5 w-3.5 fill-(--color-accent-bright) text-(--color-accent-bright)"
                       aria-label={row.winner === 'higher' ? t('highest') : t('lowest')}
                     />
                   )}
@@ -363,17 +363,17 @@ function MobileStack({
                     key={it.id}
                     className={cn(
                       'p-3 text-center border-r border-stone-200 last:border-r-0',
-                      isWinner ? 'bg-[--color-accent-bright]/10' : 'bg-white',
+                      isWinner ? 'bg-(--color-accent-bright)/10' : 'bg-white',
                     )}
                   >
                     <div
                       className={cn(
                         'inline-flex items-center justify-center gap-1 font-mono text-sm font-semibold tabular-nums',
-                        isWinner ? 'text-[--color-accent]' : 'text-stone-800',
+                        isWinner ? 'text-(--color-accent)' : 'text-stone-800',
                       )}
                     >
                       {isWinner && (
-                        <Star className="h-3 w-3 fill-[--color-accent-bright] text-[--color-accent-bright]" />
+                        <Star className="h-3 w-3 fill-(--color-accent-bright) text-(--color-accent-bright)" />
                       )}
                       <span>{formatValue(v, row)}</span>
                     </div>
@@ -394,7 +394,7 @@ function MobileStack({
               key={it.id}
               type="button"
               onClick={() => onAddToCart(it)}
-              className="inline-flex items-center justify-center gap-1.5 h-10 px-3 rounded-full bg-[--color-accent-bright] text-stone-900 text-xs font-semibold hover:bg-[--color-accent] hover:text-white transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 h-10 px-3 rounded-full bg-(--color-accent-bright) text-stone-900 text-xs font-semibold hover:bg-(--color-accent) hover:text-white transition-colors"
             >
               <ShoppingBag className="h-3.5 w-3.5" />
               {t('addToCart')}

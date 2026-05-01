@@ -54,7 +54,7 @@ export function StatusTimeline({ order }: { order: OrderDetail }) {
                     aria-hidden
                     className={cn(
                       'absolute left-[11px] top-6 bottom-0 w-px',
-                      completed ? 'bg-[--color-accent]' : 'bg-stone-200',
+                      completed ? 'bg-(--color-accent)' : 'bg-stone-200',
                     )}
                   />
                 )}
@@ -63,9 +63,9 @@ export function StatusTimeline({ order }: { order: OrderDetail }) {
                   className={cn(
                     'relative z-10 flex h-6 w-6 items-center justify-center rounded-full shrink-0 ring-4 ring-white',
                     completed
-                      ? 'bg-[--color-accent] text-white'
+                      ? 'bg-(--color-accent) text-white'
                       : isCurrent
-                        ? 'bg-[--color-accent-bright]/20 text-[--color-accent] border-2 border-[--color-accent-bright]'
+                        ? 'bg-(--color-accent-bright)/20 text-(--color-accent) border-2 border-(--color-accent-bright)'
                         : 'bg-stone-100 text-stone-400',
                   )}
                 >
@@ -84,7 +84,7 @@ export function StatusTimeline({ order }: { order: OrderDetail }) {
                       completed
                         ? 'font-semibold text-stone-900'
                         : isCurrent
-                          ? 'font-semibold text-[--color-accent]'
+                          ? 'font-semibold text-(--color-accent)'
                           : 'text-stone-400',
                     )}
                   >

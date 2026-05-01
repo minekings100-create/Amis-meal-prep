@@ -100,7 +100,7 @@ function RevenueStat({
     <div
       className={
         accent
-          ? 'rounded-xl bg-[--color-accent-bright]/10 border border-[--color-accent-bright]/30 px-4 py-3'
+          ? 'rounded-xl bg-(--color-accent-bright)/10 border border-(--color-accent-bright)/30 px-4 py-3'
           : 'rounded-xl bg-stone-50 border border-stone-100 px-4 py-3'
       }
     >
@@ -108,7 +108,7 @@ function RevenueStat({
       <p
         className={
           accent
-            ? 'mt-1 font-mono text-2xl tabular-nums tracking-[-0.03em] text-[--color-accent]'
+            ? 'mt-1 font-mono text-2xl tabular-nums tracking-[-0.03em] text-(--color-accent)'
             : 'mt-1 font-mono text-2xl tabular-nums tracking-[-0.03em] text-stone-900'
         }
       >

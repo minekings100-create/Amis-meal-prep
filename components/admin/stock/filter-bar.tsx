@@ -50,7 +50,7 @@ export function StockFilterBar({ categories }: { categories: StockCategory[] }) 
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Zoek op productnaam of slug…"
-          className="w-full h-10 pl-9 pr-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-[--color-accent] focus:ring-2 focus:ring-[--color-accent-bright]/30"
+          className="w-full h-10 pl-9 pr-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent-bright)/30"
         />
       </div>
       <select
@@ -61,7 +61,7 @@ export function StockFilterBar({ categories }: { categories: StockCategory[] }) 
             else sp.delete('category');
           })
         }
-        className="h-10 px-3 rounded-md border border-stone-200 bg-white text-sm min-w-[160px] focus:outline-none focus:border-[--color-accent]"
+        className="h-10 px-3 rounded-md border border-stone-200 bg-white text-sm min-w-[160px] focus:outline-none focus:border-(--color-accent)"
       >
         <option value="">Alle categorieën</option>
         {categories.map((c) => (

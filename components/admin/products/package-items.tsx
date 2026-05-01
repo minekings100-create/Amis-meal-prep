@@ -161,7 +161,7 @@ export function PackageItemsSection({
       </ul>
 
       {searchOpen ? (
-        <div className="rounded-lg border border-[--color-accent] bg-white p-3 space-y-2">
+        <div className="rounded-lg border border-(--color-accent) bg-white p-3 space-y-2">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400" />
             <input
@@ -170,7 +170,7 @@ export function PackageItemsSection({
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Zoek een maaltijd…"
-              className="w-full h-9 pl-9 pr-3 rounded-md border border-stone-200 text-sm focus:outline-none focus:border-[--color-accent]"
+              className="w-full h-9 pl-9 pr-3 rounded-md border border-stone-200 text-sm focus:outline-none focus:border-(--color-accent)"
             />
           </div>
           <ul className="max-h-56 overflow-y-auto divide-y divide-stone-100">
@@ -235,7 +235,7 @@ export function PackageItemsSection({
 
 function SummaryStat({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
-    <div className={cn('rounded-md px-3 py-2 border', accent ? 'border-[--color-accent-bright]/30 bg-[--color-accent-bright]/10' : 'border-stone-200 bg-stone-50')}>
+    <div className={cn('rounded-md px-3 py-2 border', accent ? 'border-(--color-accent-bright)/30 bg-(--color-accent-bright)/10' : 'border-stone-200 bg-stone-50')}>
       <p className="text-[10px] uppercase tracking-wider text-stone-500">{label}</p>
       <p className="font-mono text-base tabular-nums text-stone-900 mt-0.5">{value}</p>
     </div>

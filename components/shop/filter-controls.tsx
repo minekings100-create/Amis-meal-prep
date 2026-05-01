@@ -134,7 +134,7 @@ export function FilterControls({
           <button
             type="button"
             onClick={() => setAllergensExpanded((v) => !v)}
-            className="mt-2 text-xs font-medium text-[--color-accent] hover:text-[--color-ink] transition-colors"
+            className="mt-2 text-xs font-medium text-(--color-accent) hover:text-(--color-ink) transition-colors"
           >
             {allergensExpanded ? t('showFewerAllergens') : t('showAllAllergens')}
           </button>
@@ -192,7 +192,7 @@ function RadioRow({
         className={cn(
           'h-4 w-4 rounded-full border-2 inline-flex items-center justify-center shrink-0 transition-colors',
           checked
-            ? 'border-[--color-accent] bg-[--color-accent]'
+            ? 'border-(--color-accent) bg-(--color-accent)'
             : 'border-stone-300 bg-white',
         )}
       >
@@ -224,7 +224,7 @@ function CheckboxRow({
         className={cn(
           'h-4 w-4 rounded border-2 inline-flex items-center justify-center shrink-0 transition-colors',
           checked
-            ? 'border-[--color-accent] bg-[--color-accent]'
+            ? 'border-(--color-accent) bg-(--color-accent)'
             : 'border-stone-300 bg-white',
         )}
       >
@@ -267,7 +267,7 @@ function PriceRange({
       <div className="relative h-6">
         <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-1 rounded-full bg-stone-200" />
         <div
-          className="absolute top-1/2 -translate-y-1/2 h-1 rounded-full bg-[--color-accent]"
+          className="absolute top-1/2 -translate-y-1/2 h-1 rounded-full bg-(--color-accent)"
           style={{ left: `${loPct}%`, right: `${100 - hiPct}%` }}
         />
         <input

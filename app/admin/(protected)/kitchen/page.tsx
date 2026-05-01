@@ -64,7 +64,7 @@ function SummaryStat({ label, value, accent }: { label: string; value: string; a
     <div
       className={
         accent
-          ? 'rounded-2xl px-5 py-4 bg-[--color-accent-bright]/10 border border-[--color-accent-bright]/30'
+          ? 'rounded-2xl px-5 py-4 bg-(--color-accent-bright)/10 border border-(--color-accent-bright)/30'
           : 'rounded-2xl px-5 py-4 bg-white border border-stone-200'
       }
     >
@@ -72,7 +72,7 @@ function SummaryStat({ label, value, accent }: { label: string; value: string; a
       <p
         className={
           accent
-            ? 'mt-1 font-mono text-3xl tabular-nums text-[--color-accent] font-bold'
+            ? 'mt-1 font-mono text-3xl tabular-nums text-(--color-accent) font-bold'
             : 'mt-1 font-mono text-3xl tabular-nums text-stone-900 font-semibold'
         }
       >

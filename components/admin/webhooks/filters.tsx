@@ -52,7 +52,7 @@ export function WebhooksFilters() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Zoek op event_type, error of order…"
-          className="w-full h-10 pl-9 pr-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-[--color-accent]"
+          className="w-full h-10 pl-9 pr-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-accent)"
         />
       </div>
       <select
@@ -84,7 +84,7 @@ export function WebhooksFilters() {
                 ? s === 'failed'
                   ? 'bg-red-600 text-white border-red-600'
                   : s === 'processed'
-                    ? 'bg-[--color-accent] text-white border-[--color-accent]'
+                    ? 'bg-(--color-accent) text-white border-(--color-accent)'
                     : 'bg-stone-900 text-white border-stone-900'
                 : 'bg-white text-stone-700 border-stone-200',
             )}

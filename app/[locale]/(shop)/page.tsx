@@ -82,7 +82,7 @@ export default async function HomePage({
                     {chunks}
                     <span
                       aria-hidden
-                      className="absolute -bottom-1 left-0 right-0 h-[6px] bg-[--color-accent-bright]"
+                      className="absolute -bottom-1 left-0 right-0 h-[6px] bg-(--color-accent-bright)"
                     />
                   </span>
                 ),
@@ -94,7 +94,7 @@ export default async function HomePage({
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 rounded-full bg-[--color-accent-bright] px-7 h-12 font-semibold text-stone-900 transition-all duration-200 hover:bg-white hover:gap-3 active:scale-95"
+                className="inline-flex items-center gap-2 rounded-full bg-(--color-accent-bright) px-7 h-12 font-semibold text-stone-900 transition-all duration-200 hover:bg-white hover:gap-3 active:scale-95"
               >
                 {t('hero.ctaShop')}
                 <ArrowRight className="h-4 w-4" />
@@ -136,7 +136,7 @@ export default async function HomePage({
         <RevealSection>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[--color-accent] mb-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--color-accent) mb-3">
                 {t('menu.subtitle')}
               </p>
               <h2 className="text-3xl md:text-4xl tracking-[-0.03em] font-semibold">
@@ -145,7 +145,7 @@ export default async function HomePage({
             </div>
             <Link
               href="/shop"
-              className="inline-flex items-center gap-1 text-sm text-stone-700 hover:text-[--color-accent] transition-colors font-medium"
+              className="inline-flex items-center gap-1 text-sm text-stone-700 hover:text-(--color-accent) transition-colors font-medium"
             >
               {t('menu.viewAll')} <ArrowRight className="h-3 w-3" />
             </Link>
@@ -165,7 +165,7 @@ export default async function HomePage({
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 md:py-28">
           <RevealSection>
             <div className="text-center mb-16">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[--color-accent] mb-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--color-accent) mb-3">
                 {t('standard.subtitle')}
               </p>
               <h2 className="text-3xl md:text-4xl tracking-[-0.03em] font-semibold max-w-2xl mx-auto">
@@ -179,7 +179,7 @@ export default async function HomePage({
               return (
                 <RevealSection key={key} delay={i * 0.08}>
                   <div className="bg-white p-8 h-full">
-                    <div className="h-10 w-10 rounded-full bg-[--color-accent-bright]/15 inline-flex items-center justify-center text-[--color-accent] mb-5">
+                    <div className="h-10 w-10 rounded-full bg-(--color-accent-bright)/15 inline-flex items-center justify-center text-(--color-accent) mb-5">
                       <Icon className="h-4 w-4" />
                     </div>
                     <h3 className="font-semibold mb-2">{t(`standard.items.${key}.title`)}</h3>

@@ -7,7 +7,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 bg-[--color-ink] text-white">
+    <footer className="mt-24 bg-(--color-ink) text-white">
       <div className="container-amis py-16 grid grid-cols-2 md:grid-cols-5 gap-12">
         <div className="col-span-2 md:col-span-2">
           <div className="flex items-baseline gap-2">
@@ -25,11 +25,11 @@ export function Footer() {
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="flex-1 h-10 rounded-[--radius-sm] bg-white/10 border border-white/15 px-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-[--color-accent-bright]"
+                className="flex-1 h-10 rounded-[--radius-sm] bg-white/10 border border-white/15 px-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-(--color-accent-bright)"
               />
               <button
                 type="submit"
-                className="h-10 px-4 rounded-[--radius-sm] bg-[--color-accent-bright] text-[--color-ink] text-sm font-medium hover:bg-white transition-colors"
+                className="h-10 px-4 rounded-[--radius-sm] bg-(--color-accent-bright) text-(--color-ink) text-sm font-medium hover:bg-white transition-colors"
               >
                 {t('subscribe')}
               </button>

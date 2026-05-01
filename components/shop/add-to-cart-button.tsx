@@ -22,12 +22,12 @@ export function AddToCartButton({
 
   return (
     <div className="flex gap-3 items-stretch">
-      <div className="inline-flex items-center border border-[--color-line] rounded-[--radius-sm]">
+      <div className="inline-flex items-center border border-(--color-line) rounded-[--radius-sm]">
         <button
           type="button"
           onClick={() => setQty(Math.max(1, qty - 1))}
           aria-label={tc('decrease')}
-          className="h-12 w-11 inline-flex items-center justify-center text-[--color-ink-soft] hover:text-[--color-ink]"
+          className="h-12 w-11 inline-flex items-center justify-center text-(--color-ink-soft) hover:text-(--color-ink)"
         >
           <Minus className="h-3 w-3" />
         </button>
@@ -36,7 +36,7 @@ export function AddToCartButton({
           type="button"
           onClick={() => setQty(Math.min(product.stock || 99, qty + 1))}
           aria-label={tc('increase')}
-          className="h-12 w-11 inline-flex items-center justify-center text-[--color-ink-soft] hover:text-[--color-ink]"
+          className="h-12 w-11 inline-flex items-center justify-center text-(--color-ink-soft) hover:text-(--color-ink)"
         >
           <Plus className="h-3 w-3" />
         </button>

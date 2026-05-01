@@ -11,7 +11,7 @@ export const metadata = { title: 'Klanten' };
 
 const statusStyles = {
   vip: 'bg-amber-100 text-amber-800 border-amber-200',
-  active: 'bg-[--color-accent-bright]/15 text-[--color-accent] border-[--color-accent-bright]/30',
+  active: 'bg-(--color-accent-bright)/15 text-(--color-accent) border-(--color-accent-bright)/30',
   new: 'bg-blue-50 text-blue-700 border-blue-200',
   risk: 'bg-red-50 text-red-700 border-red-200',
   inactive: 'bg-stone-100 text-stone-600 border-stone-200',

@@ -7,9 +7,9 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
 
   if (reviews.length === 0) {
     return (
-      <section className="py-12 border-t border-[--color-line]">
+      <section className="py-12 border-t border-(--color-line)">
         <h2 className="text-2xl tracking-[-0.02em] mb-6">{t('reviews')}</h2>
-        <p className="text-[--color-ink-soft] text-sm">Nog geen reviews voor deze maaltijd.</p>
+        <p className="text-(--color-ink-soft) text-sm">Nog geen reviews voor deze maaltijd.</p>
       </section>
     );
   }
@@ -17,7 +17,7 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
   const avg = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
 
   return (
-    <section className="py-12 border-t border-[--color-line]">
+    <section className="py-12 border-t border-(--color-line)">
       <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
         <h2 className="text-2xl tracking-[-0.02em]">{t('reviews')}</h2>
         <div className="flex items-center gap-3">
@@ -28,20 +28,20 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
                 className={
                   'h-4 w-4 ' +
                   (n <= Math.round(avg)
-                    ? 'fill-[--color-accent-bright] text-[--color-accent-bright]'
-                    : 'text-[--color-line]')
+                    ? 'fill-(--color-accent-bright) text-(--color-accent-bright)'
+                    : 'text-(--color-line)')
                 }
               />
             ))}
           </div>
           <span className="font-mono text-sm tabular-nums">
-            {avg.toFixed(1)} <span className="text-[--color-gray]">/ {reviews.length}</span>
+            {avg.toFixed(1)} <span className="text-(--color-gray)">/ {reviews.length}</span>
           </span>
         </div>
       </div>
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
         {reviews.map((r) => (
-          <li key={r.id} className="border-t border-[--color-line] pt-6">
+          <li key={r.id} className="border-t border-(--color-line) pt-6">
             <div className="flex items-center gap-2 mb-2">
               {[1, 2, 3, 4, 5].map((n) => (
                 <Star
@@ -49,12 +49,12 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
                   className={
                     'h-3.5 w-3.5 ' +
                     (n <= r.rating
-                      ? 'fill-[--color-accent-bright] text-[--color-accent-bright]'
-                      : 'text-[--color-line]')
+                      ? 'fill-(--color-accent-bright) text-(--color-accent-bright)'
+                      : 'text-(--color-line)')
                   }
                 />
               ))}
-              <span className="text-xs font-mono text-[--color-gray] ml-1">
+              <span className="text-xs font-mono text-(--color-gray) ml-1">
                 {new Date(r.created_at).toLocaleDateString('nl-NL', {
                   year: 'numeric',
                   month: 'short',
@@ -64,7 +64,7 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
             </div>
             {r.title && <h3 className="font-semibold mb-1">{r.title}</h3>}
             {r.body && (
-              <p className="text-sm text-[--color-ink-soft] leading-relaxed">{r.body}</p>
+              <p className="text-sm text-(--color-ink-soft) leading-relaxed">{r.body}</p>
             )}
           </li>
         ))}

@@ -39,7 +39,7 @@ export function CartDrawer() {
       <div
         onClick={close}
         className={
-          'absolute inset-0 bg-[--color-ink]/40 transition-opacity duration-300 ' +
+          'absolute inset-0 bg-(--color-ink)/40 transition-opacity duration-300 ' +
           (isOpen ? 'opacity-100' : 'opacity-0')
         }
       />
@@ -47,17 +47,17 @@ export function CartDrawer() {
         role="dialog"
         aria-label={t('title')}
         className={
-          'absolute right-0 top-0 h-full w-full max-w-md bg-white border-l border-[--color-line] flex flex-col transition-transform duration-300 ease-out ' +
+          'absolute right-0 top-0 h-full w-full max-w-md bg-white border-l border-(--color-line) flex flex-col transition-transform duration-300 ease-out ' +
           (isOpen ? 'translate-x-0' : 'translate-x-full')
         }
       >
-        <header className="flex items-center justify-between px-6 h-16 border-b border-[--color-line]">
+        <header className="flex items-center justify-between px-6 h-16 border-b border-(--color-line)">
           <h2 className="text-lg font-semibold tracking-tight">{t('title')}</h2>
           <button
             type="button"
             onClick={close}
             aria-label="Close"
-            className="h-9 w-9 inline-flex items-center justify-center rounded-full text-[--color-ink-soft] hover:bg-[--color-bg-soft]"
+            className="h-9 w-9 inline-flex items-center justify-center rounded-full text-(--color-ink-soft) hover:bg-(--color-bg-soft)"
           >
             <X className="h-4 w-4" />
           </button>
@@ -66,7 +66,7 @@ export function CartDrawer() {
         <div className="flex-1 overflow-y-auto">
           {lines.length === 0 ? (
             <div className="p-8 text-center">
-              <p className="text-[--color-ink-soft]">{t('empty')}</p>
+              <p className="text-(--color-ink-soft)">{t('empty')}</p>
               <Button asChild variant="outline" size="sm" className="mt-6">
                 <Link href="/shop" onClick={close}>
                   {t('continueShopping')}
@@ -74,10 +74,10 @@ export function CartDrawer() {
               </Button>
             </div>
           ) : (
-            <ul className="divide-y divide-[--color-line]">
+            <ul className="divide-y divide-(--color-line)">
               {lines.map((line) => (
                 <li key={line.productId} className="flex gap-4 p-6">
-                  <div className="h-20 w-20 shrink-0 rounded-[--radius-sm] bg-[--color-bg-soft] overflow-hidden">
+                  <div className="h-20 w-20 shrink-0 rounded-[--radius-sm] bg-(--color-bg-soft) overflow-hidden">
                     {line.imageUrl && (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
@@ -95,16 +95,16 @@ export function CartDrawer() {
                     >
                       {line.name}
                     </Link>
-                    <p className="font-mono text-xs text-[--color-ink-soft] mt-1">
+                    <p className="font-mono text-xs text-(--color-ink-soft) mt-1">
                       {formatMoneyCents(line.unitPriceCents)}
                     </p>
                     <div className="mt-3 flex items-center justify-between">
-                      <div className="inline-flex items-center border border-[--color-line] rounded-full">
+                      <div className="inline-flex items-center border border-(--color-line) rounded-full">
                         <button
                           type="button"
                           onClick={() => setQuantity(line.productId, line.quantity - 1)}
                           aria-label={t('decrease')}
-                          className="h-8 w-8 inline-flex items-center justify-center text-[--color-ink-soft] hover:text-[--color-ink]"
+                          className="h-8 w-8 inline-flex items-center justify-center text-(--color-ink-soft) hover:text-(--color-ink)"
                         >
                           <Minus className="h-3 w-3" />
                         </button>
@@ -113,7 +113,7 @@ export function CartDrawer() {
                           type="button"
                           onClick={() => setQuantity(line.productId, line.quantity + 1)}
                           aria-label={t('increase')}
-                          className="h-8 w-8 inline-flex items-center justify-center text-[--color-ink-soft] hover:text-[--color-ink]"
+                          className="h-8 w-8 inline-flex items-center justify-center text-(--color-ink-soft) hover:text-(--color-ink)"
                         >
                           <Plus className="h-3 w-3" />
                         </button>
@@ -122,7 +122,7 @@ export function CartDrawer() {
                         type="button"
                         onClick={() => remove(line.productId)}
                         aria-label={t('remove')}
-                        className="text-[--color-gray] hover:text-[--color-ink] transition-colors"
+                        className="text-(--color-gray) hover:text-(--color-ink) transition-colors"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>
@@ -135,9 +135,9 @@ export function CartDrawer() {
         </div>
 
         {lines.length > 0 && (
-          <footer className="border-t border-[--color-line] p-6 space-y-4">
+          <footer className="border-t border-(--color-line) p-6 space-y-4">
             <div className="flex justify-between text-sm">
-              <span className="text-[--color-ink-soft]">{t('subtotal')}</span>
+              <span className="text-(--color-ink-soft)">{t('subtotal')}</span>
               <span className="font-mono font-medium">{formatMoneyCents(subtotal)}</span>
             </div>
             <Button asChild size="lg" className="w-full">

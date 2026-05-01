@@ -17,9 +17,9 @@ export function Toaster() {
         <div
           key={t.id}
           role="status"
-          className="pointer-events-auto flex items-start gap-3 max-w-sm bg-[--color-ink] text-white pl-4 pr-3 py-3 rounded-2xl shadow-[0_12px_40px_-16px_rgba(19,22,19,0.4)] animate-toast-in"
+          className="pointer-events-auto flex items-start gap-3 max-w-sm bg-(--color-ink) text-white pl-4 pr-3 py-3 rounded-2xl shadow-[0_12px_40px_-16px_rgba(19,22,19,0.4)] animate-toast-in"
         >
-          <span className="mt-0.5 h-6 w-6 inline-flex items-center justify-center rounded-full bg-[--color-accent-bright] text-[--color-ink] shrink-0">
+          <span className="mt-0.5 h-6 w-6 inline-flex items-center justify-center rounded-full bg-(--color-accent-bright) text-(--color-ink) shrink-0">
             <Check className="h-3.5 w-3.5" strokeWidth={3} />
           </span>
           <div className="flex-1 min-w-0 text-sm">

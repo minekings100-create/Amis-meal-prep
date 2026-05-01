@@ -23,7 +23,7 @@ const GOAL_COLORS: Record<(typeof GOAL_TAGS)[number], string> = {
   bulk: 'bg-orange-50 text-orange-800 border-orange-200',
   performance: 'bg-purple-50 text-purple-800 border-purple-200',
   maintenance: 'bg-stone-50 text-stone-800 border-stone-200',
-  hybrid: 'bg-[--color-accent-bright]/15 text-[--color-accent] border-[--color-accent-bright]/30',
+  hybrid: 'bg-(--color-accent-bright)/15 text-(--color-accent) border-(--color-accent-bright)/30',
 };
 
 const GOAL_LABELS: Record<(typeof GOAL_TAGS)[number], string> = {
@@ -269,7 +269,7 @@ export function ProductForm({
                     key={t}
                     className={cn(
                       'flex-1 inline-flex items-center justify-center gap-1.5 h-10 px-3 rounded-md border cursor-pointer text-sm capitalize transition-colors',
-                      state.type === t ? 'border-[--color-accent] bg-[--color-accent-bright]/10 text-[--color-accent] font-medium' : 'border-stone-200 bg-white hover:bg-stone-50',
+                      state.type === t ? 'border-(--color-accent) bg-(--color-accent-bright)/10 text-(--color-accent) font-medium' : 'border-stone-200 bg-white hover:bg-stone-50',
                     )}
                   >
                     <input
@@ -372,7 +372,7 @@ export function ProductForm({
                       className={cn(
                         'inline-flex items-center gap-1.5 h-8 px-3 rounded-full border text-xs font-medium',
                         checked
-                          ? 'border-[--color-accent] bg-[--color-accent-bright]/15 text-[--color-accent]'
+                          ? 'border-(--color-accent) bg-(--color-accent-bright)/15 text-(--color-accent)'
                           : 'border-stone-200 bg-white text-stone-700 hover:bg-stone-50',
                       )}
                     >
@@ -421,7 +421,7 @@ export function ProductForm({
                   type="checkbox"
                   checked={state[a.key as keyof FormState] as boolean}
                   onChange={(e) => patch(a.key as keyof FormState, e.target.checked as never)}
-                  className="h-4 w-4 rounded border-stone-300 text-[--color-accent]"
+                  className="h-4 w-4 rounded border-stone-300 text-(--color-accent)"
                 />
                 <span className="text-sm text-stone-700">{a.label}</span>
               </label>
@@ -518,7 +518,7 @@ export function ProductForm({
               type="button"
               onClick={submit}
               disabled={pending}
-              className="inline-flex items-center gap-1.5 h-10 px-5 rounded-md bg-[--color-accent] text-white font-semibold text-sm hover:bg-[--color-accent]/90 disabled:opacity-60"
+              className="inline-flex items-center gap-1.5 h-10 px-5 rounded-md bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90 disabled:opacity-60"
             >
               <Save className="h-3.5 w-3.5" />
               {pending ? 'Opslaan…' : productId ? 'Bewaar wijzigingen' : 'Product aanmaken'}
@@ -579,7 +579,7 @@ function Input({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={cn(
-        'h-10 w-full px-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-[--color-accent] focus:ring-2 focus:ring-[--color-accent-bright]/30',
+        'h-10 w-full px-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent-bright)/30',
         mono && 'font-mono tabular-nums',
       )}
     />
@@ -600,7 +600,7 @@ function Textarea({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       rows={rows}
-      className="w-full px-3 py-2 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-[--color-accent] focus:ring-2 focus:ring-[--color-accent-bright]/30"
+      className="w-full px-3 py-2 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent-bright)/30"
     />
   );
 }
@@ -615,7 +615,7 @@ function Toggle({ label, checked, onChange }: { label: string; checked: boolean;
         aria-checked={checked}
         className={cn(
           'relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors',
-          checked ? 'bg-[--color-accent]' : 'bg-stone-300',
+          checked ? 'bg-(--color-accent)' : 'bg-stone-300',
         )}
       >
         <span
@@ -647,7 +647,7 @@ function RadioPill({
       onClick={onClick}
       className={cn(
         'inline-flex items-center px-3 h-8 rounded-full border text-xs font-semibold uppercase tracking-wider transition-all',
-        active ? `${className} ring-2 ring-offset-1 ring-[--color-accent]` : 'bg-white text-stone-500 border-stone-200 hover:border-stone-300',
+        active ? `${className} ring-2 ring-offset-1 ring-(--color-accent)` : 'bg-white text-stone-500 border-stone-200 hover:border-stone-300',
       )}
     >
       {label}

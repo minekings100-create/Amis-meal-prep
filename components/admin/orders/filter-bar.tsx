@@ -90,7 +90,7 @@ export function OrdersFilterBar() {
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Zoek op ordernummer, klant of email…"
-            className="w-full h-10 pl-9 pr-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-[--color-accent] focus:ring-2 focus:ring-[--color-accent-bright]/30"
+            className="w-full h-10 pl-9 pr-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent-bright)/30"
           />
           {pending && (
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-stone-400">
@@ -128,7 +128,7 @@ export function OrdersFilterBar() {
                 else sp.delete('method');
               })
             }
-            className="w-full h-10 px-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-[--color-accent]"
+            className="w-full h-10 px-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-accent)"
           >
             <option value="">Alle methodes</option>
             <option value="local">Lokaal</option>
@@ -148,7 +148,7 @@ export function OrdersFilterBar() {
               })
             }
             placeholder="€ min"
-            className="w-full h-10 px-2.5 rounded-md border border-stone-200 bg-white text-sm font-mono tabular-nums focus:outline-none focus:border-[--color-accent]"
+            className="w-full h-10 px-2.5 rounded-md border border-stone-200 bg-white text-sm font-mono tabular-nums focus:outline-none focus:border-(--color-accent)"
           />
           <input
             type="number"
@@ -160,7 +160,7 @@ export function OrdersFilterBar() {
               })
             }
             placeholder="€ max"
-            className="w-full h-10 px-2.5 rounded-md border border-stone-200 bg-white text-sm font-mono tabular-nums focus:outline-none focus:border-[--color-accent]"
+            className="w-full h-10 px-2.5 rounded-md border border-stone-200 bg-white text-sm font-mono tabular-nums focus:outline-none focus:border-(--color-accent)"
           />
         </div>
       </div>
@@ -208,7 +208,7 @@ function TrackingNumberSearch() {
           }}
           onKeyDown={(e) => e.key === 'Enter' && submit()}
           placeholder="Zoek tracking nummer…"
-          className="h-8 w-64 pl-8 pr-3 rounded-md border border-stone-200 text-xs font-mono focus:outline-none focus:border-[--color-accent]"
+          className="h-8 w-64 pl-8 pr-3 rounded-md border border-stone-200 text-xs font-mono focus:outline-none focus:border-(--color-accent)"
         />
       </div>
       <button

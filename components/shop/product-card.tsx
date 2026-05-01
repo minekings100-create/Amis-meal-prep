@@ -46,9 +46,9 @@ export function ProductCard({ product }: { product: Product }) {
     <article className="group relative">
       <Link
         href={`/shop/${product.slug}`}
-        className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-accent] focus-visible:ring-offset-2 rounded-2xl"
+        className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent) focus-visible:ring-offset-2 rounded-2xl"
       >
-        <div className="relative bg-white border border-stone-200 rounded-2xl p-5 md:p-6 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_18px_44px_-20px_rgba(19,22,19,0.18)] group-hover:border-[--color-accent-bright]/40">
+        <div className="relative bg-white border border-stone-200 rounded-2xl p-5 md:p-6 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_18px_44px_-20px_rgba(19,22,19,0.18)] group-hover:border-(--color-accent-bright)/40">
           {showTypePill && (
             <span className="absolute top-4 left-4 z-10 inline-flex items-center px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] rounded-full bg-stone-100 text-stone-700 border border-stone-200">
               {typeLabel}
@@ -78,7 +78,7 @@ export function ProductCard({ product }: { product: Product }) {
           {onSale && (
             <span
               className={
-                'absolute z-10 inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] rounded-full bg-[--color-ink] text-white ' +
+                'absolute z-10 inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] rounded-full bg-(--color-ink) text-white ' +
                 (showTypePill ? 'top-12 left-4' : 'top-4 left-4')
               }
             >
@@ -123,7 +123,7 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
 
           {/* Product name */}
-          <h3 className="mt-4 font-semibold text-lg tracking-tight text-stone-900 line-clamp-2 group-hover:text-[--color-accent] transition-colors">
+          <h3 className="mt-4 font-semibold text-lg tracking-tight text-stone-900 line-clamp-2 group-hover:text-(--color-accent) transition-colors">
             {name}
           </h3>
 
@@ -166,7 +166,7 @@ export function ProductCard({ product }: { product: Product }) {
               onClick={handleAdd}
               disabled={outOfStock}
               aria-label={`${t('addToCart')} — ${name}`}
-              className="shrink-0 inline-flex items-center gap-1.5 px-4 h-10 rounded-full bg-[--color-accent-bright] text-[--color-ink] font-semibold text-sm hover:bg-[--color-accent] hover:text-white active:scale-95 transition-all duration-200 ease-out disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--color-accent] focus-visible:ring-offset-2"
+              className="shrink-0 inline-flex items-center gap-1.5 px-4 h-10 rounded-full bg-(--color-accent-bright) text-(--color-ink) font-semibold text-sm hover:bg-(--color-accent) hover:text-white active:scale-95 transition-all duration-200 ease-out disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent) focus-visible:ring-offset-2"
             >
               <Plus className="h-4 w-4" strokeWidth={2.5} />
               <span>{t('addToCart')}</span>
@@ -197,7 +197,7 @@ function MacroCell({
       <div
         className={
           'font-mono text-sm font-semibold tabular-nums mt-0.5 ' +
-          (accent ? 'text-[--color-accent]' : 'text-stone-900')
+          (accent ? 'text-(--color-accent)' : 'text-stone-900')
         }
       >
         {value ?? '–'}

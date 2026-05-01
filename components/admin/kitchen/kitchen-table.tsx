@@ -107,7 +107,7 @@ export function KitchenTable({ rows }: { rows: KitchenMealRow[] }) {
                       <div className="flex-1 min-w-0">
                         <Link
                           href={`/admin/orders/${o.orderId}`}
-                          className="font-mono text-sm font-medium text-stone-900 hover:text-[--color-accent]"
+                          className="font-mono text-sm font-medium text-stone-900 hover:text-(--color-accent)"
                         >
                           {o.orderNumber}
                         </Link>

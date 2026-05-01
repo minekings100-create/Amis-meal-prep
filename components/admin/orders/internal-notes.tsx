@@ -39,7 +39,7 @@ export function InternalNotes({
         onChange={(e) => setValue(e.target.value)}
         placeholder="Notities voor je team — niet zichtbaar voor klant…"
         rows={4}
-        className="w-full rounded-md border border-stone-200 bg-stone-50/50 px-3 py-2 text-sm focus:outline-none focus:border-[--color-accent] focus:bg-white focus:ring-2 focus:ring-[--color-accent-bright]/30"
+        className="w-full rounded-md border border-stone-200 bg-stone-50/50 px-3 py-2 text-sm focus:outline-none focus:border-(--color-accent) focus:bg-white focus:ring-2 focus:ring-(--color-accent-bright)/30"
       />
       <div className="mt-3 flex justify-end">
         <button
