@@ -9,6 +9,8 @@ import { AddToCartButton } from '@/components/shop/add-to-cart-button';
 import { MacrosGrid } from '@/components/shop/macros-grid';
 import { AllergensList } from '@/components/shop/allergens-list';
 import { ReviewsSection } from '@/components/shop/reviews-section';
+import { ReviewSubmit } from '@/components/shop/review-submit';
+import { getReviewEligibility } from '@/app/_actions/reviews';
 import { ProductDetailSkeleton } from '@/components/shop/product-detail-skeleton';
 import { maybeSlow } from '@/lib/utils/slow-mode';
 import type { Locale } from '@/lib/i18n/config';
@@ -66,8 +68,11 @@ async function ProductDetail({
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const reviews = await listPublishedReviews(product.id);
-  const t = await getTranslations('product');
+  const [reviews, t, eligibility] = await Promise.all([
+    listPublishedReviews(product.id),
+    getTranslations('product'),
+    getReviewEligibility(product.id),
+  ]);
 
   const name = locale === 'en' ? product.name_en : product.name_nl;
   const description = locale === 'en' ? product.description_en : product.description_nl;
@@ -191,6 +196,7 @@ async function ProductDetail({
         </div>
 
         <ReviewsSection reviews={reviews} />
+        <ReviewSubmit productId={product.id} productSlug={slug} eligibility={eligibility} />
       </div>
     </>
   );
