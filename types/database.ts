@@ -276,6 +276,23 @@ export interface Database {
         };
         Update: Partial<Database['public']['Tables']['reviews']['Row']>;
       };
+      webhook_log: {
+        Row: {
+          id: string;
+          source: 'mollie' | 'sendcloud' | 'resend';
+          event_type: string | null;
+          payload: Json | null;
+          status: 'received' | 'processed' | 'failed';
+          error_message: string | null;
+          related_order_id: string | null;
+          received_at: string;
+          processed_at: string | null;
+        };
+        Insert: Partial<Database['public']['Tables']['webhook_log']['Row']> & {
+          source: 'mollie' | 'sendcloud' | 'resend';
+        };
+        Update: Partial<Database['public']['Tables']['webhook_log']['Row']>;
+      };
       subscriptions: {
         Row: {
           id: string;
