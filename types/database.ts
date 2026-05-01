@@ -123,6 +123,7 @@ export interface Database {
           contains_lupine: boolean;
           contains_sulfite: boolean;
           contains_mollusks: boolean;
+          vat_rate: number;
           created_at: string;
           updated_at: string;
         };
@@ -229,6 +230,7 @@ export interface Database {
           quantity: number;
           unit_price_cents: number;
           total_cents: number;
+          vat_rate: number;
           created_at: string;
         };
         Insert: Omit<Database['public']['Tables']['order_items']['Row'], 'id' | 'created_at'> & {

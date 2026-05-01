@@ -2,8 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState, useTransition } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { Search, X } from 'lucide-react';
+import { Search, X, Truck } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
+import { findOrderByTrackingNumberAction } from '@/app/admin/_actions/tracking-search';
 
 type DateRange = 'today' | '7d' | '30d' | 'custom' | 'all';
 
@@ -164,8 +165,9 @@ export function OrdersFilterBar() {
         </div>
       </div>
 
-      {activeCount > 0 && (
-        <div className="flex items-center justify-end mt-3">
+      <div className="flex items-center justify-between mt-3 gap-3">
+        <TrackingNumberSearch />
+        {activeCount > 0 && (
           <button
             onClick={clearAll}
             className="inline-flex items-center gap-1 text-xs text-stone-500 hover:text-stone-900"
@@ -173,8 +175,51 @@ export function OrdersFilterBar() {
             <X className="h-3 w-3" />
             Wis filters ({activeCount})
           </button>
-        </div>
-      )}
+        )}
+      </div>
+    </div>
+  );
+}
+
+function TrackingNumberSearch() {
+  const [tn, setTn] = useState('');
+  const [pending, start] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+
+  function submit() {
+    setError(null);
+    if (!tn.trim()) return;
+    start(async () => {
+      const res = await findOrderByTrackingNumberAction(tn.trim());
+      if (!res.ok && res.message) setError(res.message);
+    });
+  }
+
+  return (
+    <div className="flex items-center gap-2">
+      <div className="relative">
+        <Truck className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-stone-400" />
+        <input
+          type="text"
+          value={tn}
+          onChange={(e) => {
+            setTn(e.target.value);
+            setError(null);
+          }}
+          onKeyDown={(e) => e.key === 'Enter' && submit()}
+          placeholder="Zoek tracking nummer…"
+          className="h-8 w-64 pl-8 pr-3 rounded-md border border-stone-200 text-xs font-mono focus:outline-none focus:border-[--color-accent]"
+        />
+      </div>
+      <button
+        type="button"
+        onClick={submit}
+        disabled={pending || !tn.trim()}
+        className="h-8 px-3 rounded-md bg-stone-900 text-white text-xs font-medium hover:bg-black disabled:opacity-50"
+      >
+        {pending ? 'Zoeken…' : 'Zoek'}
+      </button>
+      {error && <span className="text-xs text-red-600">{error}</span>}
     </div>
   );
 }

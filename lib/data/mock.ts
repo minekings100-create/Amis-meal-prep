@@ -59,6 +59,7 @@ const baseProduct = {
   contains_lupine: false,
   contains_sulfite: false,
   contains_mollusks: false,
+  vat_rate: 9,
   created_at: '2026-01-01T00:00:00Z',
   updated_at: '2026-01-01T00:00:00Z',
 } as const;
