@@ -53,10 +53,10 @@ export const GOAL_TAGS: Record<GoalTag, GoalTagConfig> = {
   maintenance: {
     labelNl: 'Onderhoud',
     labelEn: 'Maintenance',
-    bg: 'bg-stone-200',
-    text: 'text-stone-900',
-    border: 'border-stone-400',
-    solidBg: 'bg-stone-800',
+    bg: 'bg-emerald-100',
+    text: 'text-emerald-900',
+    border: 'border-emerald-200',
+    solidBg: 'bg-emerald-700',
     solidText: 'text-white',
   },
   hybrid: {

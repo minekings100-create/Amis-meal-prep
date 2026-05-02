@@ -20,11 +20,11 @@ import { ATTRIBUTE_TAGS, GOAL_TAGS, ALLERGEN_FIELDS } from '@/lib/admin/shared';
 import type { Category } from '@/types/database';
 
 const GOAL_COLORS: Record<(typeof GOAL_TAGS)[number], string> = {
-  cut: 'bg-blue-50 text-blue-800 border-blue-200',
-  bulk: 'bg-orange-50 text-orange-800 border-orange-200',
-  performance: 'bg-purple-50 text-purple-800 border-purple-200',
-  maintenance: 'bg-stone-50 text-stone-800 border-stone-200',
-  hybrid: 'bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border-(--color-brand-yellow-bright)/30',
+  cut: 'bg-blue-100 text-blue-900 border-blue-200',
+  bulk: 'bg-orange-100 text-orange-900 border-orange-200',
+  performance: 'bg-(--color-brand-black) text-white border-(--color-brand-black)',
+  maintenance: 'bg-emerald-100 text-emerald-900 border-emerald-200',
+  hybrid: 'bg-purple-100 text-purple-900 border-purple-200',
 };
 
 const GOAL_LABELS: Record<(typeof GOAL_TAGS)[number], string> = {
