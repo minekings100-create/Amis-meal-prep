@@ -81,14 +81,19 @@ export default function CheckoutDetailsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 lg:gap-12">
         <div>
-          <div className="flex items-baseline justify-between mb-6">
-            <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em]">Bezorggegevens</h1>
-            <Link
-              href={`/account/login?next=${encodeURIComponent('/checkout/details')}`}
-              className="text-sm text-(--color-accent) hover:underline"
-            >
-              Heb je al een account?
-            </Link>
+          <div className="mb-6">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500 mb-2">
+              Stap 1 van 3
+            </p>
+            <div className="flex items-baseline justify-between gap-4 flex-wrap">
+              <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em]">Bezorggegevens</h1>
+              <Link
+                href={`/account/login?next=${encodeURIComponent('/checkout/details')}`}
+                className="text-sm text-(--color-accent) hover:underline whitespace-nowrap"
+              >
+                Heb je al een account?
+              </Link>
+            </div>
           </div>
 
           <div className="rounded-2xl border border-stone-200 bg-white p-6 space-y-4">
@@ -126,8 +131,8 @@ export default function CheckoutDetailsPage() {
               />
             </Field>
 
-            <div className="grid grid-cols-[1fr_120px_120px] gap-4">
-              <Field label="Straat" error={errors.street}>
+            <div className="grid grid-cols-2 sm:grid-cols-[1fr_110px_110px] gap-3 sm:gap-4">
+              <Field label="Straat" error={errors.street} className="col-span-2 sm:col-span-1">
                 <Input
                   value={shipping.street}
                   onChange={(v) => setShipping({ street: v })}
@@ -150,7 +155,7 @@ export default function CheckoutDetailsPage() {
               </Field>
             </div>
 
-            <div className="grid grid-cols-[140px_1fr_100px] gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-[130px_1fr_90px] gap-3 sm:gap-4">
               <Field label="Postcode" error={errors.postal_code}>
                 <Input
                   value={shipping.postal_code}
@@ -167,7 +172,7 @@ export default function CheckoutDetailsPage() {
                   autoComplete="address-level2"
                 />
               </Field>
-              <Field label="Land">
+              <Field label="Land" className="col-span-2 sm:col-span-1">
                 <select
                   value={shipping.country}
                   onChange={(e) => setShipping({ country: e.target.value })}
@@ -283,8 +288,8 @@ function GiftAddressSection({
               <Input value={billing.last_name} onChange={(v) => setBilling({ last_name: v })} />
             </Field>
           </div>
-          <div className="grid grid-cols-[1fr_120px_120px] gap-4">
-            <Field label="Straat" error={errors.b_street}>
+          <div className="grid grid-cols-2 sm:grid-cols-[1fr_110px_110px] gap-3 sm:gap-4">
+            <Field label="Straat" error={errors.b_street} className="col-span-2 sm:col-span-1">
               <Input value={billing.street} onChange={(v) => setBilling({ street: v })} />
             </Field>
             <Field label="Huisnr." error={errors.b_house_number}>
@@ -294,14 +299,14 @@ function GiftAddressSection({
               <Input value={billing.house_number_addition} onChange={(v) => setBilling({ house_number_addition: v })} mono />
             </Field>
           </div>
-          <div className="grid grid-cols-[140px_1fr_100px] gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-[130px_1fr_90px] gap-3 sm:gap-4">
             <Field label="Postcode" error={errors.b_postal_code}>
               <Input value={billing.postal_code} onChange={(v) => setBilling({ postal_code: v.toUpperCase() })} mono placeholder="1234 AB" />
             </Field>
             <Field label="Plaats" error={errors.b_city}>
               <Input value={billing.city} onChange={(v) => setBilling({ city: v })} />
             </Field>
-            <Field label="Land">
+            <Field label="Land" className="col-span-2 sm:col-span-1">
               <select
                 value={billing.country}
                 onChange={(e) => setBilling({ country: e.target.value })}
@@ -323,14 +328,16 @@ function Field({
   hint,
   error,
   children,
+  className,
 }: {
   label: string;
   hint?: string;
   error?: string;
   children: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <label className="block">
+    <label className={cn('block', className)}>
       <span className="block text-xs font-medium text-stone-700 mb-1">
         {label}
         {hint && <span className="text-stone-400 font-normal ml-1.5">— {hint}</span>}

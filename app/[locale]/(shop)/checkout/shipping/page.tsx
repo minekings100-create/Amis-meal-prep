@@ -72,6 +72,9 @@ export default function CheckoutShippingPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 lg:gap-12">
         <div>
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500 mb-2">
+            Stap 2 van 3
+          </p>
           <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em] mb-6">Verzending</h1>
 
           {/* Address summary */}
