@@ -285,7 +285,7 @@ export default async function CustomerOrderDetailPage({
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl bg-white border border-stone-200 p-5">
+    <div className="rounded-2xl bg-white border border-stone-200 dark:bg-(--color-bg-elevated) dark:border-(--color-border) p-5">
       <h2 className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-4">{title}</h2>
       {children}
     </div>

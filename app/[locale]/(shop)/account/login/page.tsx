@@ -86,7 +86,7 @@ function LoginInner() {
         </div>
       )}
 
-      <div className="rounded-2xl bg-white border border-stone-200/80 p-6 md:p-7 shadow-[0_2px_24px_-12px_rgba(0,0,0,0.08)]">
+      <div className="rounded-2xl bg-white border border-stone-200 dark:bg-(--color-bg-elevated) dark:border-(--color-border)/80 p-6 md:p-7 shadow-[0_2px_24px_-12px_rgba(0,0,0,0.08)]">
         <div className="grid grid-cols-2 gap-1 p-1 bg-stone-100 rounded-xl mb-5">
           <button
             type="button"

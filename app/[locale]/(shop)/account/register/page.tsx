@@ -81,7 +81,7 @@ function RegisterInner() {
           <p className="text-sm text-stone-600 mt-2">Sneller bestellen + bestelhistorie</p>
         </div>
 
-      <div className="rounded-2xl bg-white border border-stone-200/80 p-6 md:p-7 shadow-[0_2px_24px_-12px_rgba(0,0,0,0.08)]">
+      <div className="rounded-2xl bg-white border border-stone-200 dark:bg-(--color-bg-elevated) dark:border-(--color-border)/80 p-6 md:p-7 shadow-[0_2px_24px_-12px_rgba(0,0,0,0.08)]">
         <form
           onSubmit={(e) => {
             e.preventDefault();

@@ -97,9 +97,9 @@ export function CartDrawer() {
               'w-auto md:w-[420px] max-w-[420px] mx-auto md:mx-0',
               'max-h-[80vh] md:max-h-[80vh]',
               // Glass card.
-              'rounded-3xl bg-white/85 backdrop-blur-xl',
-              'border border-white/40',
-              'shadow-[0_24px_64px_-16px_rgba(19,22,19,0.32),0_0_0_1px_rgba(19,22,19,0.04)]',
+              'rounded-3xl bg-white/85 dark:bg-(--color-bg-soft)/85 backdrop-blur-xl',
+              'border border-white/40 dark:border-white/10',
+              'shadow-[0_24px_64px_-16px_rgba(19,22,19,0.32),0_0_0_1px_rgba(19,22,19,0.04)] dark:shadow-[0_24px_64px_-16px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.04)]',
               'overflow-hidden flex flex-col',
             ].join(' ')}
           >

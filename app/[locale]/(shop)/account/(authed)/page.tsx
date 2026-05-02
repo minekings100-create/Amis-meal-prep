@@ -115,7 +115,7 @@ export default async function AccountDashboardPage() {
 
 function StatCard({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
-    <div className="rounded-2xl bg-white border border-stone-200 px-5 py-4">
+    <div className="rounded-2xl bg-white border border-stone-200 dark:bg-(--color-bg-elevated) dark:border-(--color-border) px-5 py-4">
       <p className="text-[11px] font-semibold uppercase tracking-wider text-stone-500">{label}</p>
       <p
         className={cn(

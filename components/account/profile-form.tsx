@@ -83,7 +83,7 @@ export function ProfileForm({ customer }: { customer: CustomerProfile }) {
         </div>
       </Card>
 
-      <div className="rounded-2xl bg-white border border-stone-200">
+      <div className="rounded-2xl bg-white border border-stone-200 dark:bg-(--color-bg-elevated) dark:border-(--color-border)">
         <button
           type="button"
           onClick={() => setPwOpen((v) => !v)}

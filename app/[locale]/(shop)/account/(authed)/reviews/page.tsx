@@ -87,7 +87,7 @@ export default async function CustomerReviewsPage() {
           {reviews.map((r) => (
             <li
               key={r.id}
-              className="rounded-2xl bg-white border border-stone-200 p-5"
+              className="rounded-2xl bg-white border border-stone-200 dark:bg-(--color-bg-elevated) dark:border-(--color-border) p-5"
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div>
