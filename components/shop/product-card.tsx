@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Plus } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
 import type { Product } from '@/types/database';
-import { formatMoneyCents } from '@/lib/utils/money';
+import { formatMoneyTight } from '@/lib/utils/money';
 import { useCart } from '@/lib/cart/store';
 import { toast } from '@/lib/toast/store';
 import { GoalBadge } from './goal-badge';
@@ -158,23 +158,23 @@ export function ProductCard({ product }: { product: Product }) {
               </div>
             )}
 
-            {/* Footer: pinned to the bottom via mt-auto. Two rows so the strikethrough
-                "compare-at" price gets its own breathing room and never collides with
-                the Add button on package cards. */}
-            <div className="mt-auto pt-5 space-y-3">
+            {/* Footer: pinned to the bottom via mt-auto. Sora light for the
+                price (was JetBrains Mono — too technical for premium food).
+                Two rows: price on top, eyebrow + Toevoegen on the bottom. */}
+            <div className="mt-auto pt-4 border-t border-stone-100 space-y-3">
               <div className="flex items-baseline gap-2 flex-wrap">
-                <span className="font-mono text-2xl font-semibold tabular-nums text-stone-900">
-                  {formatMoneyCents(product.price_cents)}
+                <span className="text-2xl font-light tabular-nums tracking-tight text-stone-900">
+                  {formatMoneyTight(product.price_cents)}
                 </span>
                 {onSale && (
-                  <span className="font-mono text-base text-stone-400 line-through tabular-nums">
-                    {formatMoneyCents(product.compare_at_price_cents!)}
+                  <span className="text-base font-light text-stone-400 line-through tabular-nums ml-2">
+                    {formatMoneyTight(product.compare_at_price_cents!)}
                   </span>
                 )}
               </div>
               <div className="flex items-center justify-between gap-3">
                 {product.kcal === null && product.type !== 'meal' ? (
-                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500">
+                  <span className="text-[10px] uppercase tracking-[0.18em] text-stone-500 font-semibold">
                     {t('perMeal')}
                   </span>
                 ) : (
