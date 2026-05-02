@@ -45,10 +45,10 @@ export const GOAL_TAGS: Record<GoalTag, GoalTagConfig> = {
   performance: {
     labelNl: 'Performance',
     labelEn: 'Performance',
-    bg: 'bg-[#e8f3e1]',
-    text: 'text-[#2d5524]',
-    border: 'border-[#7cc24f]',
-    solidBg: 'bg-[#4a8a3c]',
+    bg: 'bg-(--color-brand-black)',
+    text: 'text-white',
+    border: 'border-(--color-brand-black)',
+    solidBg: 'bg-(--color-brand-black)',
     solidText: 'text-white',
   },
   maintenance: {
