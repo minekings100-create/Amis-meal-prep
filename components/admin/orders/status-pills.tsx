@@ -2,18 +2,21 @@ import { cn } from '@/lib/utils/cn';
 import type { PaymentStatus, ShippingStatus } from '@/lib/admin/orders';
 
 const paymentStyles: Record<PaymentStatus, { label: string; className: string }> = {
-  pending: { label: 'In wacht', className: 'bg-amber-100 text-amber-800 border-amber-200' },
-  paid: { label: 'Betaald', className: 'bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border-(--color-brand-yellow-bright)/30' },
-  failed: { label: 'Mislukt', className: 'bg-red-100 text-red-700 border-red-200' },
+  pending: {
+    label: 'In wacht',
+    className: 'bg-(--color-brand-yellow-soft) text-(--color-brand-yellow-deep) border-(--color-brand-yellow)',
+  },
+  paid: { label: 'Betaald', className: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+  failed: { label: 'Mislukt', className: 'bg-red-50 text-red-800 border-red-200' },
   refunded: { label: 'Refund', className: 'bg-stone-100 text-stone-700 border-stone-200' },
 };
 
 const shippingStyles: Record<ShippingStatus, { label: string; className: string }> = {
   new: { label: 'Nieuw', className: 'bg-stone-100 text-stone-700 border-stone-200' },
   preparing: { label: 'Preparing', className: 'bg-blue-50 text-blue-800 border-blue-200' },
-  shipped: { label: 'Verzonden', className: 'bg-[#0f1410] text-white border-[#0f1410]' },
-  delivered: { label: 'Geleverd', className: 'bg-(--color-brand-black) text-white border-(--color-brand-yellow)' },
-  cancelled: { label: 'Geannuleerd', className: 'bg-stone-200 text-stone-600 border-stone-300' },
+  shipped: { label: 'Verzonden', className: 'bg-blue-50 text-blue-800 border-blue-200' },
+  delivered: { label: 'Geleverd', className: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+  cancelled: { label: 'Geannuleerd', className: 'bg-red-50 text-red-800 border-red-200' },
 };
 
 const pillBase =

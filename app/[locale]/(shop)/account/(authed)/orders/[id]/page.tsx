@@ -20,11 +20,13 @@ const STATUS_LABEL: Record<OrderStatus, string> = {
 };
 
 function statusPillStyle(s: OrderStatus): string {
-  if (s === 'paid' || s === 'preparing') return 'bg-blue-50 text-blue-700 border-blue-200';
-  if (s === 'shipped') return 'bg-amber-50 text-amber-800 border-amber-200';
-  if (s === 'delivered')
-    return 'bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border-(--color-brand-yellow-bright)/30';
-  if (s === 'cancelled' || s === 'refunded') return 'bg-stone-100 text-stone-600 border-stone-200';
+  if (s === 'pending') {
+    return 'bg-(--color-brand-yellow-soft) text-(--color-brand-yellow-deep) border-(--color-brand-yellow)';
+  }
+  if (s === 'paid' || s === 'delivered') return 'bg-emerald-50 text-emerald-800 border-emerald-200';
+  if (s === 'preparing' || s === 'shipped') return 'bg-blue-50 text-blue-800 border-blue-200';
+  if (s === 'cancelled') return 'bg-red-50 text-red-800 border-red-200';
+  if (s === 'refunded') return 'bg-stone-100 text-stone-700 border-stone-200';
   return 'bg-stone-100 text-stone-700 border-stone-200';
 }
 
