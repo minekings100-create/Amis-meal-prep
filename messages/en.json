@@ -46,6 +46,20 @@
       "title": "What customers say"
     }
   },
+  "amisStandard": {
+    "lineMuted": "THE AMIS STANDARD",
+    "lineDark": "WE DO THINGS DIFFERENTLY.",
+    "value1Title": "Family-owned excellence",
+    "value1Body": "From Maastricht, with a passion for food and sport. Every meal is freshly prepared in our own kitchen — no middlemen.",
+    "value2Title": "Proven & trusted",
+    "value2Body": "Customers from top athletes to busy parents — we feed people who take their goals seriously, day in day out.",
+    "value3Title": "Unmatched quality",
+    "value3Body": "Fresh ingredients from local suppliers where possible. Macros measured by weight — not estimated.",
+    "value4Title": "Flexibility, redefined",
+    "value4Body": "No mandatory subscription. Order whenever you like, in any combination. Packages, individual meals or a try-out box.",
+    "value5Title": "Service that actually cares",
+    "value5Body": "Questions, complaints, suggestions? Reach us via WhatsApp, email or phone. No queue, no bot."
+  },
   "shop": {
     "title": "The AMIS menu",
     "filters": {

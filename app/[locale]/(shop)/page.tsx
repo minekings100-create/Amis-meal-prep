@@ -1,11 +1,12 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { ArrowRight, Leaf, ChefHat, Truck, Activity } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
 import { ProductCard } from '@/components/shop/product-card';
 import { RevealSection } from '@/components/layout/reveal-section';
 import { HeroParallaxImage } from '@/components/layout/hero-parallax-image';
 import { CountUp } from '@/components/layout/count-up';
 import { listProducts } from '@/lib/data/products';
+import { AmisStandard } from '@/components/home/amis-standard';
 import type { Locale } from '@/lib/i18n/config';
 
 // Two hero photos — the server picks one randomly per request, so the homepage
@@ -37,14 +38,6 @@ export default async function HomePage({
 
   const t = await getTranslations('home');
   const featured = await listProducts({ featuredOnly: true, type: 'meal' });
-
-  const standardItems = ['fresh', 'macros', 'quality', 'delivery'] as const;
-  const standardIcons = {
-    fresh: Leaf,
-    macros: Activity,
-    quality: ChefHat,
-    delivery: Truck,
-  } as const;
 
   const heroPhoto = pickHeroPhoto();
   const heroAlt =
@@ -188,39 +181,8 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* AMIS STANDARD */}
-      <section className="bg-stone-50 border-y border-stone-200">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 md:py-28">
-          <RevealSection>
-            <div className="text-center mb-16">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--color-accent) mb-3">
-                {t('standard.subtitle')}
-              </p>
-              <h2 className="text-3xl md:text-4xl tracking-[-0.03em] font-semibold max-w-2xl mx-auto">
-                {t('standard.title')}
-              </h2>
-            </div>
-          </RevealSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-stone-200 border border-stone-200 rounded-2xl overflow-hidden">
-            {standardItems.map((key, i) => {
-              const Icon = standardIcons[key];
-              return (
-                <RevealSection key={key} delay={i * 0.08}>
-                  <div className="bg-white p-8 h-full">
-                    <div className="h-10 w-10 rounded-full bg-(--color-accent-bright)/15 inline-flex items-center justify-center text-(--color-accent) mb-5">
-                      <Icon className="h-4 w-4" />
-                    </div>
-                    <h3 className="font-semibold mb-2">{t(`standard.items.${key}.title`)}</h3>
-                    <p className="text-sm text-stone-600 leading-relaxed">
-                      {t(`standard.items.${key}.body`)}
-                    </p>
-                  </div>
-                </RevealSection>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* AMIS STANDARD — MegaFit-style values band */}
+      <AmisStandard />
 
       {/* TESTIMONIALS */}
       <section className="bg-stone-900 text-white">

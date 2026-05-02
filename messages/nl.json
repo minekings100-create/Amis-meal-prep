@@ -46,6 +46,20 @@
       "title": "Wat klanten zeggen"
     }
   },
+  "amisStandard": {
+    "lineMuted": "DE AMIS STANDAARD",
+    "lineDark": "WIJ DOEN HET ANDERS.",
+    "value1Title": "Familiebedrijf uit het hart",
+    "value1Body": "Vanuit Maastricht, met passie voor eten en sport. Elke maaltijd wordt vers bereid in onze eigen keuken — geen tussenpartijen.",
+    "value2Title": "Bewezen & vertrouwd",
+    "value2Body": "Klanten van topsporters tot drukke ouders — we voeden mensen die hun doelen serieus nemen, dag in dag uit.",
+    "value3Title": "Ongeëvenaarde kwaliteit",
+    "value3Body": "Verse ingrediënten van lokale leveranciers waar mogelijk. Macro's afgemeten op gewicht — niet geschat.",
+    "value4Title": "Flexibiliteit, opnieuw uitgevonden",
+    "value4Body": "Geen verplicht abonnement. Bestel wanneer jij wil, in elke combinatie. Pakketten, losse maaltijden of een try-out box.",
+    "value5Title": "Service die echt geeft",
+    "value5Body": "Vragen, klachten, suggesties? We zijn bereikbaar via WhatsApp, mail of telefoon. Geen wachtrij, geen bot."
+  },
   "shop": {
     "title": "Het AMIS menu",
     "filters": {
