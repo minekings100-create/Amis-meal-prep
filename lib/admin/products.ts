@@ -194,26 +194,39 @@ export async function getProductForEdit(id: string): Promise<ProductFull | null>
   };
 }
 
-export async function listMealsForPackagePicker(): Promise<Array<{ id: string; name: string; imageUrl: string | null; kcal: number | null; protein_g: number | null; carbs_g: number | null; fat_g: number | null }>> {
+export async function listMealsForPackagePicker(): Promise<
+  Array<{
+    id: string;
+    name: string;
+    imageUrl: string | null;
+    priceCents: number;
+    kcal: number | null;
+    protein_g: number | null;
+    carbs_g: number | null;
+    fat_g: number | null;
+  }>
+> {
   if (!isSupabaseConfigured()) {
     return [
-      { id: 'p1', name: 'Kip Teriyaki Bowl', imageUrl: null, kcal: 540, protein_g: 42, carbs_g: 56, fat_g: 14 },
-      { id: 'p2', name: 'Zalm met Quinoa', imageUrl: null, kcal: 620, protein_g: 38, carbs_g: 52, fat_g: 24 },
-      { id: 'p3', name: 'Pulled Beef Bowl', imageUrl: null, kcal: 580, protein_g: 45, carbs_g: 48, fat_g: 16 },
-      { id: 'p4', name: 'Vegan Curry', imageUrl: null, kcal: 460, protein_g: 22, carbs_g: 64, fat_g: 12 },
+      { id: 'p1', name: 'Kip Teriyaki Bowl', imageUrl: null, priceCents: 1095, kcal: 540, protein_g: 42, carbs_g: 56, fat_g: 14 },
+      { id: 'p2', name: 'Zalm met Quinoa', imageUrl: null, priceCents: 1250, kcal: 620, protein_g: 38, carbs_g: 52, fat_g: 24 },
+      { id: 'p3', name: 'Pulled Beef Bowl', imageUrl: null, priceCents: 1095, kcal: 580, protein_g: 45, carbs_g: 48, fat_g: 16 },
+      { id: 'p4', name: 'Vegan Curry', imageUrl: null, priceCents: 950, kcal: 460, protein_g: 22, carbs_g: 64, fat_g: 12 },
     ];
   }
   const sb = createServiceRoleClient();
   const { data } = await sb
     .from('products')
-    .select('id,name_nl,image_url,kcal,protein_g,carbs_g,fat_g')
+    .select('id,name_nl,image_url,price_cents,kcal,protein_g,carbs_g,fat_g,stock,is_active')
     .eq('type', 'meal')
     .eq('is_active', true)
+    .gt('stock', 0)
     .order('name_nl');
   type MealRow = {
     id: string;
     name_nl: string;
     image_url: string | null;
+    price_cents: number;
     kcal: number | null;
     protein_g: number | null;
     carbs_g: number | null;
@@ -223,6 +236,7 @@ export async function listMealsForPackagePicker(): Promise<Array<{ id: string; n
     id: m.id,
     name: m.name_nl,
     imageUrl: m.image_url,
+    priceCents: m.price_cents,
     kcal: m.kcal,
     protein_g: m.protein_g,
     carbs_g: m.carbs_g,

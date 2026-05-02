@@ -458,6 +458,7 @@ export function ProductForm({
               items={state.package_items ?? []}
               onChange={(items) => patch('package_items', items)}
               meals={meals}
+              packagePriceCents={state.price_cents}
             />
           </Section>
         )}
