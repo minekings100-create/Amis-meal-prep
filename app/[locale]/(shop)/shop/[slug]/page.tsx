@@ -8,6 +8,8 @@ import { formatMoneyCents } from '@/lib/utils/money';
 import { AddToCartButton } from '@/components/shop/add-to-cart-button';
 import { MacrosGrid } from '@/components/shop/macros-grid';
 import { AllergensList } from '@/components/shop/allergens-list';
+import { GoalBadge } from '@/components/shop/goal-badge';
+import { AttributeBadges } from '@/components/shop/attribute-badges';
 import { ReviewsSection } from '@/components/shop/reviews-section';
 import { ReviewSubmit } from '@/components/shop/review-submit';
 import { getReviewEligibility } from '@/app/_actions/reviews';
@@ -172,8 +174,25 @@ async function ProductDetail({
             <h1 className="text-4xl md:text-5xl tracking-[-0.035em] font-bold text-stone-900">
               {name}
             </h1>
+
+            {(product.goal_tag || product.attribute_tags.length > 0) && (
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                {product.goal_tag && (
+                  <GoalBadge tag={product.goal_tag} locale={locale} variant="solid" size="md" />
+                )}
+                {product.attribute_tags.length > 0 && (
+                  <AttributeBadges
+                    tags={product.attribute_tags}
+                    locale={locale}
+                    max={4}
+                    size="sm"
+                  />
+                )}
+              </div>
+            )}
+
             {description && (
-              <p className="mt-4 text-lg text-stone-600 leading-relaxed">{description}</p>
+              <p className="mt-5 text-lg text-stone-600 leading-relaxed">{description}</p>
             )}
 
             <div className="mt-8 flex items-baseline gap-4">
@@ -192,7 +211,11 @@ async function ProductDetail({
             <p
               className={
                 'mt-2 text-xs font-mono uppercase tracking-[0.16em] ' +
-                (product.stock > 0 ? 'text-(--color-accent)' : 'text-stone-500')
+                (product.stock === 0
+                  ? 'text-red-600'
+                  : product.stock < 10
+                    ? 'text-amber-700'
+                    : 'text-stone-500')
               }
             >
               {stockText}

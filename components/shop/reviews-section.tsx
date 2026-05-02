@@ -8,7 +8,12 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
   if (reviews.length === 0) {
     return (
       <section className="py-12 border-t border-(--color-line)">
-        <h2 className="text-2xl tracking-[-0.02em] mb-6">{t('reviews')}</h2>
+        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500 mb-2">
+          Productervaringen
+        </p>
+        <h2 className="text-2xl md:text-3xl tracking-[-0.025em] font-semibold mb-4">
+          {t('reviews')}
+        </h2>
         <p className="text-(--color-ink-soft) text-sm">Nog geen reviews voor deze maaltijd.</p>
       </section>
     );
@@ -18,8 +23,13 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
 
   return (
     <section className="py-12 border-t border-(--color-line)">
-      <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
-        <h2 className="text-2xl tracking-[-0.02em]">{t('reviews')}</h2>
+      <div className="flex items-end justify-between mb-8 flex-wrap gap-3">
+        <div>
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500 mb-2">
+            Productervaringen
+          </p>
+          <h2 className="text-2xl md:text-3xl tracking-[-0.025em] font-semibold">{t('reviews')}</h2>
+        </div>
         <div className="flex items-center gap-3">
           <div className="flex" aria-label={`${avg.toFixed(1)} / 5`}>
             {[1, 2, 3, 4, 5].map((n) => (
@@ -39,10 +49,13 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
           </span>
         </div>
       </div>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
         {reviews.map((r) => (
-          <li key={r.id} className="border-t border-(--color-line) pt-6">
-            <div className="flex items-center gap-2 mb-2">
+          <li
+            key={r.id}
+            className="rounded-2xl bg-stone-50 border border-stone-200/60 p-5 md:p-6"
+          >
+            <div className="flex items-center gap-2 mb-3">
               {[1, 2, 3, 4, 5].map((n) => (
                 <Star
                   key={n}
@@ -62,7 +75,7 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
                 })}
               </span>
             </div>
-            {r.title && <h3 className="font-semibold mb-1">{r.title}</h3>}
+            {r.title && <h3 className="font-semibold mb-1 text-stone-900">{r.title}</h3>}
             {r.body && (
               <p className="text-sm text-(--color-ink-soft) leading-relaxed">{r.body}</p>
             )}
