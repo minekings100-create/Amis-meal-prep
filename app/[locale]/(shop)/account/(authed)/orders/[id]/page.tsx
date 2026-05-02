@@ -9,6 +9,25 @@ import type { OrderStatus } from '@/types/database';
 import type { PublicOrder } from '@/lib/admin/public-order';
 import { getPublicOrderByNumber } from '@/lib/admin/public-order';
 
+const STATUS_LABEL: Record<OrderStatus, string> = {
+  pending: 'In wacht',
+  paid: 'Betaald',
+  preparing: 'Wordt bereid',
+  shipped: 'Onderweg',
+  delivered: 'Geleverd',
+  cancelled: 'Geannuleerd',
+  refunded: 'Refund',
+};
+
+function statusPillStyle(s: OrderStatus): string {
+  if (s === 'paid' || s === 'preparing') return 'bg-blue-50 text-blue-700 border-blue-200';
+  if (s === 'shipped') return 'bg-amber-50 text-amber-800 border-amber-200';
+  if (s === 'delivered')
+    return 'bg-(--color-accent-bright)/15 text-(--color-accent) border-(--color-accent-bright)/30';
+  if (s === 'cancelled' || s === 'refunded') return 'bg-stone-100 text-stone-600 border-stone-200';
+  return 'bg-stone-100 text-stone-700 border-stone-200';
+}
+
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Bestelling' };
 
@@ -72,9 +91,19 @@ export default async function CustomerOrderDetailPage({
       </Link>
 
       <header className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em] font-mono">
-          {order.orderNumber}
-        </h1>
+        <div className="flex flex-wrap items-center gap-3">
+          <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em] font-mono">
+            {order.orderNumber}
+          </h1>
+          <span
+            className={cn(
+              'inline-flex items-center px-2.5 py-1 rounded-full border text-[10px] font-semibold uppercase tracking-wider',
+              statusPillStyle(order.status),
+            )}
+          >
+            {STATUS_LABEL[order.status]}
+          </span>
+        </div>
         <p className="text-stone-600 mt-1 text-sm">
           Geplaatst op {dateFmt.format(new Date(order.createdAt))}
         </p>
@@ -201,9 +230,11 @@ export default async function CustomerOrderDetailPage({
                 <dt className="text-stone-600">Verzending</dt>
                 <dd className="font-mono">{formatMoneyCents(order.totals.shippingCents)}</dd>
               </div>
-              <div className="flex justify-between pt-2 border-t border-stone-200 mt-2 font-semibold">
+              <div className="flex justify-between pt-3 border-t border-stone-200 mt-3 font-semibold text-base">
                 <dt>Totaal</dt>
-                <dd className="font-mono">{formatMoneyCents(order.totals.totalCents)}</dd>
+                <dd className="font-mono tabular-nums">
+                  {formatMoneyCents(order.totals.totalCents)}
+                </dd>
               </div>
             </dl>
           </Card>
