@@ -121,14 +121,20 @@ export function ProductCard({ product }: { product: Product }) {
           {/* Content column — flex-1 so the footer can sit on mt-auto and align across
               cards in the same grid row. */}
           <div className="mt-5 flex flex-1 flex-col">
-            {/* Badges row — fixed min-height so cards without attribute tags stay
-                vertically aligned with cards that have them. */}
-            <div className="flex min-h-[28px] flex-wrap items-center gap-2">
+            {/* Badges row — single flex-wrap container so the goal badge and
+                attribute pills sit on the same baseline at the same height. */}
+            <div className="flex min-h-[28px] flex-wrap items-center gap-1.5">
               {product.goal_tag && (
                 <GoalBadge tag={product.goal_tag} locale={locale} variant="solid" size="md" />
               )}
               {visibleAttributeTags.length > 0 && (
-                <AttributeBadges tags={visibleAttributeTags} locale={locale} max={3} size="sm" />
+                <AttributeBadges
+                  tags={visibleAttributeTags}
+                  locale={locale}
+                  max={3}
+                  size="sm"
+                  inline
+                />
               )}
             </div>
 

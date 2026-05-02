@@ -6,7 +6,9 @@ type Size = 'xs' | 'sm';
 
 const sizeClasses: Record<Size, { base: string; icon: string }> = {
   xs: { base: 'px-1.5 py-0.5 text-[10px] gap-0.5', icon: 'h-2.5 w-2.5' },
-  sm: { base: 'px-2 py-0.5 text-[11px] gap-1', icon: 'h-3 w-3' },
+  // sm bumped from py-0.5 to py-1 so the pills line up with a GoalBadge
+  // size="md" (same py-1) when both render in the same flex row.
+  sm: { base: 'px-2.5 py-1 text-[11px] gap-1', icon: 'h-3 w-3' },
 };
 
 export function AttributeBadges({
@@ -16,6 +18,7 @@ export function AttributeBadges({
   size = 'sm',
   className,
   showOverflow = true,
+  inline = false,
 }: {
   tags: AttributeTag[];
   locale: 'nl' | 'en';
@@ -23,6 +26,10 @@ export function AttributeBadges({
   size?: Size;
   className?: string;
   showOverflow?: boolean;
+  /** When true, render pills as fragment siblings (no wrapping div). Lets
+   *  the parent control the flex layout so attribute pills can sit on the
+   *  same baseline as a GoalBadge. */
+  inline?: boolean;
 }) {
   if (!tags?.length) return null;
   const sorted = sortAttributesByPriority(tags);
@@ -30,8 +37,8 @@ export function AttributeBadges({
   const overflow = sorted.length - visible.length;
   const sz = sizeClasses[size];
 
-  return (
-    <div className={cn('flex flex-wrap items-center gap-1.5', className)}>
+  const pills = (
+    <>
       {visible.map((tag) => {
         const cfg = ATTRIBUTE_TAGS[tag];
         const Icon = cfg.icon;
@@ -61,6 +68,12 @@ export function AttributeBadges({
           +{overflow}
         </span>
       )}
-    </div>
+    </>
+  );
+
+  if (inline) return pills;
+
+  return (
+    <div className={cn('flex flex-wrap items-center gap-1.5', className)}>{pills}</div>
   );
 }
