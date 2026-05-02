@@ -148,21 +148,30 @@ export function ProductCard({
           {/* Content column — flex-1 so the footer can sit on mt-auto and align across
               cards in the same grid row. */}
           <div className="mt-5 flex flex-1 flex-col">
-            {/* Badges row — single flex-wrap container so the goal badge and
-                attribute pills sit on the same baseline at the same height. */}
-            <div className="flex min-h-[28px] flex-wrap items-center gap-1.5">
-              {product.goal_tag && (
-                <GoalBadge tag={product.goal_tag} locale={locale} variant="solid" size="md" />
-              )}
-              {visibleAttributeTags.length > 0 && (
-                <AttributeBadges
-                  tags={visibleAttributeTags}
-                  locale={locale}
-                  max={3}
-                  size="sm"
-                  inline
-                />
-              )}
+            {/* Badge zone — fixed two-row stack so the H3 baseline stays
+                consistent across cards regardless of attribute count. */}
+            <div className="space-y-2">
+              {/* Goal-badge row — own line, fixed height. */}
+              <div className="min-h-[28px] flex items-center">
+                {product.goal_tag && (
+                  <GoalBadge tag={product.goal_tag} locale={locale} variant="solid" size="md" />
+                )}
+              </div>
+
+              {/* Attribute-pills row — own line, capped to one row visually.
+                  Reserves min-h-[28px] even when empty so cards without
+                  attributes don't shift the product title up. */}
+              <div className="min-h-[28px] flex flex-wrap items-center gap-1.5 overflow-hidden">
+                {visibleAttributeTags.length > 0 && (
+                  <AttributeBadges
+                    tags={visibleAttributeTags}
+                    locale={locale}
+                    max={3}
+                    size="sm"
+                    inline
+                  />
+                )}
+              </div>
             </div>
 
             {/* Product name */}
