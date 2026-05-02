@@ -109,7 +109,7 @@ async function ShopMain({
           <p className="text-stone-500">{t('results.noMatch')}</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 auto-rows-fr">
           {products.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

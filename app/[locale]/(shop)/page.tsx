@@ -164,9 +164,9 @@ export default async function HomePage({
             </h2>
           </div>
         </RevealSection>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 auto-rows-fr">
           {featured.slice(0, 3).map((p, i) => (
-            <RevealSection key={p.id} delay={i * 0.1}>
+            <RevealSection key={p.id} delay={i * 0.1} className="h-full">
               <ProductCard product={p} />
             </RevealSection>
           ))}

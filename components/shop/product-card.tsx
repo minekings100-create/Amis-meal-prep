@@ -43,12 +43,12 @@ export function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <article className="group relative">
+    <article className="group relative h-full">
       <Link
         href={`/shop/${product.slug}`}
-        className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2 rounded-2xl"
+        className="flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2 rounded-2xl"
       >
-        <div className="relative bg-white border border-stone-200 rounded-2xl p-5 md:p-6 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_18px_44px_-20px_rgba(19,22,19,0.18)] group-hover:border-(--color-brand-yellow-bright)/40">
+        <div className="relative flex flex-1 flex-col bg-white border border-stone-200 rounded-2xl p-5 md:p-6 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_18px_44px_-20px_rgba(19,22,19,0.18)] group-hover:border-(--color-brand-yellow-bright)/40">
           {showTypePill && (
             <span className="absolute top-4 left-4 z-10 inline-flex items-center px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] rounded-full bg-stone-100 text-stone-700 border border-stone-200">
               {typeLabel}
@@ -92,7 +92,8 @@ export function ProductCard({ product }: { product: Product }) {
             </span>
           )}
 
-          {/* Plate-circle: visual element inside the rectangular card */}
+          {/* Plate-circle: visual element inside the rectangular card. Aspect-square so
+              the plate height stays identical regardless of badge / name length. */}
           <div className="relative aspect-square w-full max-w-[300px] mx-auto rounded-full overflow-hidden bg-stone-50 ring-1 ring-stone-100">
             {product.image_url && (
               <Image
@@ -112,65 +113,74 @@ export function ProductCard({ product }: { product: Product }) {
             )}
           </div>
 
-          {/* Badges row — IN the card, BELOW the plate, never clipped */}
-          <div className="mt-5 flex flex-wrap items-center gap-2">
-            {product.goal_tag && (
-              <GoalBadge tag={product.goal_tag} locale={locale} variant="solid" size="md" />
-            )}
-            {product.attribute_tags.length > 0 && (
-              <AttributeBadges tags={product.attribute_tags} locale={locale} max={3} size="sm" />
-            )}
-          </div>
-
-          {/* Product name */}
-          <h3 className="mt-4 font-semibold text-lg tracking-tight text-stone-900 line-clamp-2 group-hover:text-(--color-brand-black) transition-colors">
-            {name}
-          </h3>
-
-          {/* Macros grid — full labels, mono numbers */}
-          {product.kcal !== null && (
-            <div className="mt-4 grid grid-cols-4 border border-stone-200 rounded-xl overflow-hidden">
-              <MacroCell
-                label={t('macroProtein')}
-                value={product.protein_g}
-                unit="g"
-                accent
-              />
-              <MacroCell label={t('macroCarbs')} value={product.carbs_g} unit="g" />
-              <MacroCell label={t('macroFat')} value={product.fat_g} unit="g" />
-              <MacroCell label={t('macroKcal')} value={product.kcal} />
+          {/* Content column — flex-1 so the footer can sit on mt-auto and align across
+              cards in the same grid row. */}
+          <div className="mt-5 flex flex-1 flex-col">
+            {/* Badges row — fixed min-height so cards without attribute tags stay
+                vertically aligned with cards that have them. */}
+            <div className="flex min-h-[28px] flex-wrap items-center gap-2">
+              {product.goal_tag && (
+                <GoalBadge tag={product.goal_tag} locale={locale} variant="solid" size="md" />
+              )}
+              {product.attribute_tags.length > 0 && (
+                <AttributeBadges tags={product.attribute_tags} locale={locale} max={3} size="sm" />
+              )}
             </div>
-          )}
 
-          {/* Price + CTA */}
-          <div className="mt-5 flex items-center justify-between gap-3">
-            <div className="min-w-0">
-              <div className="flex items-baseline gap-2">
+            {/* Product name */}
+            <h3 className="mt-4 font-semibold text-lg tracking-tight text-stone-900 line-clamp-2 group-hover:text-(--color-brand-black) transition-colors">
+              {name}
+            </h3>
+
+            {/* Macros grid — full labels, mono numbers */}
+            {product.kcal !== null && (
+              <div className="mt-4 grid grid-cols-4 border border-stone-200 rounded-xl overflow-hidden">
+                <MacroCell
+                  label={t('macroProtein')}
+                  value={product.protein_g}
+                  unit="g"
+                  accent
+                />
+                <MacroCell label={t('macroCarbs')} value={product.carbs_g} unit="g" />
+                <MacroCell label={t('macroFat')} value={product.fat_g} unit="g" />
+                <MacroCell label={t('macroKcal')} value={product.kcal} />
+              </div>
+            )}
+
+            {/* Footer: pinned to the bottom via mt-auto. Two rows so the strikethrough
+                "compare-at" price gets its own breathing room and never collides with
+                the Add button on package cards. */}
+            <div className="mt-auto pt-5 space-y-3">
+              <div className="flex items-baseline gap-2 flex-wrap">
                 <span className="font-mono text-xl font-semibold tabular-nums">
                   {formatMoneyCents(product.price_cents)}
                 </span>
                 {onSale && (
-                  <span className="font-mono text-xs text-stone-400 line-through tabular-nums">
+                  <span className="font-mono text-sm text-stone-500 line-through tabular-nums">
                     {formatMoneyCents(product.compare_at_price_cents!)}
                   </span>
                 )}
               </div>
-              {product.kcal === null && product.type !== 'meal' && (
-                <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500">
-                  {t('perMeal')}
-                </span>
-              )}
+              <div className="flex items-center justify-between gap-3">
+                {product.kcal === null && product.type !== 'meal' ? (
+                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500">
+                    {t('perMeal')}
+                  </span>
+                ) : (
+                  <span aria-hidden />
+                )}
+                <button
+                  type="button"
+                  onClick={handleAdd}
+                  disabled={outOfStock}
+                  aria-label={`${t('addToCart')} — ${name}`}
+                  className="shrink-0 inline-flex items-center gap-1.5 px-4 h-10 rounded-full bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 active:scale-95 transition-all duration-200 ease-out disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2"
+                >
+                  <Plus className="h-4 w-4" strokeWidth={2.5} />
+                  <span>{t('addToCart')}</span>
+                </button>
+              </div>
             </div>
-            <button
-              type="button"
-              onClick={handleAdd}
-              disabled={outOfStock}
-              aria-label={`${t('addToCart')} — ${name}`}
-              className="shrink-0 inline-flex items-center gap-1.5 px-4 h-10 rounded-full bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 active:scale-95 transition-all duration-200 ease-out disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2"
-            >
-              <Plus className="h-4 w-4" strokeWidth={2.5} />
-              <span>{t('addToCart')}</span>
-            </button>
           </div>
         </div>
       </Link>
