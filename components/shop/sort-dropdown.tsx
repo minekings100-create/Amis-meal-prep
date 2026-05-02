@@ -28,7 +28,7 @@ export function SortDropdown({ value }: { value: SortKey }) {
 
   return (
     <label className="inline-flex items-center gap-2">
-      <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-500">
+      <span className="hidden sm:inline text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-500">
         {t('sort')}
       </span>
       <span className="relative inline-flex">

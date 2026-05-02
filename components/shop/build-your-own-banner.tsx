@@ -46,24 +46,24 @@ export function BuildYourOwnBanner() {
   }
 
   return (
-    <aside className="rounded-2xl border border-stone-200 bg-gradient-to-br from-(--color-accent-bright)/8 to-white p-6 md:p-8 mb-8 md:mb-10 relative overflow-hidden">
-      {/* Decorative plate-circle on the right (subtle) */}
+    <aside className="rounded-2xl border border-stone-200 bg-gradient-to-br from-(--color-accent-bright)/8 to-white p-5 md:p-8 mb-6 md:mb-10 relative overflow-hidden">
+      {/* Decorative plate-circle on the right — subtle on mobile, full on desktop */}
       <div
         aria-hidden
-        className="hidden md:block absolute -right-12 top-1/2 -translate-y-1/2 h-44 w-44 rounded-full bg-(--color-accent)/10 ring-8 ring-(--color-accent-bright)/15 pointer-events-none"
+        className="absolute -right-10 md:-right-12 top-1/2 -translate-y-1/2 h-32 md:h-44 w-32 md:w-44 rounded-full bg-(--color-accent)/10 ring-4 md:ring-8 ring-(--color-accent-bright)/15 pointer-events-none"
       />
       <div
         aria-hidden
         className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 h-28 w-28 rounded-full bg-(--color-accent-bright)/30 pointer-events-none"
       />
 
-      <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
+      <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
         <div className="md:flex-[3] min-w-0">
           <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-(--color-accent) mb-2">
             <Sparkles className="h-3 w-3" />
             {c.eyebrow}
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold tracking-[-0.025em] text-stone-900">
+          <h2 className="text-xl md:text-3xl font-bold tracking-[-0.025em] text-stone-900 leading-tight">
             {c.title}
           </h2>
           <p className="mt-2 text-sm md:text-base text-stone-600 leading-relaxed max-w-xl">
@@ -80,7 +80,7 @@ export function BuildYourOwnBanner() {
             {pending ? '…' : c.cta}
             <ArrowRight className="h-4 w-4" />
           </Link>
-          <p className="mt-2 text-xs text-stone-500">{c.note}</p>
+          <p className="mt-2 text-xs text-stone-500 text-center md:text-right">{c.note}</p>
         </div>
       </div>
     </aside>

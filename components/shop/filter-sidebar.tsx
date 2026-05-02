@@ -29,9 +29,13 @@ export function FilterSidebar({ filters }: { filters: ProductFilters }) {
       className="hidden lg:block w-64 shrink-0 sticky top-24 self-start max-h-[calc(100vh-7rem)] overflow-y-auto pr-4 -mr-4"
     >
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-sm font-semibold tracking-tight text-stone-900">{t('title')}</h2>
+        <h2 className="text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500">
+          {t('title')}
+        </h2>
         {count > 0 && (
-          <span className="font-mono text-xs tabular-nums text-stone-500">{count}</span>
+          <span className="inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-(--color-accent-bright)/20 text-(--color-accent) font-mono text-[10px] tabular-nums font-semibold">
+            {count}
+          </span>
         )}
       </div>
 
