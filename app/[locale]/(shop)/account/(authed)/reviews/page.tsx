@@ -150,7 +150,7 @@ function ReviewStatus({ isPublished, isDeleted }: { isPublished: boolean; isDele
     );
   }
   return (
-    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider border bg-amber-100 text-amber-800 border-amber-200">
+    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider border bg-(--color-brand-yellow-soft) text-(--color-brand-yellow-deep) border-(--color-brand-yellow)">
       In review
     </span>
   );

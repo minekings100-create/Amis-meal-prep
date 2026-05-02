@@ -3,9 +3,8 @@ import type { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
-const BG = '#0f1410';
-const ACCENT = '#7cc24f';
-const ACCENT_DARK = '#4a8a3c';
+const BG = '#0a0a0a';
+const ACCENT = '#e8a91c';
 const INK_LIGHT = 'rgba(255,255,255,0.85)';
 
 export async function GET(request: NextRequest) {
@@ -38,7 +37,7 @@ export async function GET(request: NextRequest) {
             left: 0,
             right: 0,
             height: 6,
-            background: `linear-gradient(90deg, ${ACCENT} 0%, ${ACCENT_DARK} 50%, ${ACCENT} 100%)`,
+            background: `linear-gradient(90deg, ${BG} 0%, ${ACCENT} 50%, ${BG} 100%)`,
           }}
         />
 
