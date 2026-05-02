@@ -191,7 +191,7 @@ export default function CheckoutShippingPage() {
         <button
           type="button"
           onClick={() => router.push('/checkout/payment')}
-          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90"
+          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800"
         >
           Volgende: Betaling <ArrowRight className="h-4 w-4" />
         </button>
@@ -206,7 +206,7 @@ export default function CheckoutShippingPage() {
         <button
           type="button"
           onClick={() => router.push('/checkout/payment')}
-          className="flex-1 inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)]"
+          className="flex-1 inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(10,10,10,0.35)]"
         >
           Volgende: Betaling <ArrowRight className="h-4 w-4" />
         </button>
@@ -247,7 +247,7 @@ function ShippingOption({
     >
       <div className={cn(
         'mt-0.5 h-9 w-9 shrink-0 rounded-full inline-flex items-center justify-center',
-        selected ? 'bg-(--color-brand-yellow) text-(--color-brand-black)' : 'bg-stone-100 text-stone-600',
+        selected ? 'bg-(--color-brand-black) text-white' : 'bg-stone-100 text-stone-600',
       )}>
         {icon}
       </div>

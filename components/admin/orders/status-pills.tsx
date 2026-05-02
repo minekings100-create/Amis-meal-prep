@@ -12,7 +12,7 @@ const shippingStyles: Record<ShippingStatus, { label: string; className: string 
   new: { label: 'Nieuw', className: 'bg-stone-100 text-stone-700 border-stone-200' },
   preparing: { label: 'Preparing', className: 'bg-blue-50 text-blue-800 border-blue-200' },
   shipped: { label: 'Verzonden', className: 'bg-[#0f1410] text-white border-[#0f1410]' },
-  delivered: { label: 'Geleverd', className: 'bg-(--color-brand-yellow) text-(--color-brand-black) border-(--color-brand-yellow)' },
+  delivered: { label: 'Geleverd', className: 'bg-(--color-brand-black) text-white border-(--color-brand-yellow)' },
   cancelled: { label: 'Geannuleerd', className: 'bg-stone-200 text-stone-600 border-stone-300' },
 };
 

@@ -264,7 +264,7 @@ function Footer({
       <Link
         href="/checkout"
         onClick={onClose}
-        className="w-full inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 active:scale-[0.99] transition-all shadow-[0_8px_24px_-8px_rgba(74,138,60,0.5)]"
+        className="w-full inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 active:scale-[0.99] transition-all shadow-[0_8px_24px_-8px_rgba(10,10,10,0.35)]"
       >
         {checkoutLabel}
         <ArrowRight className="h-4 w-4" />
@@ -301,7 +301,7 @@ function EmptyState({
       <Link
         href="/shop"
         onClick={onClose}
-        className="mt-6 inline-flex items-center gap-1.5 h-11 px-6 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 active:scale-[0.99] transition-all"
+        className="mt-6 inline-flex items-center gap-1.5 h-11 px-6 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 active:scale-[0.99] transition-all"
       >
         {cta}
         <ArrowRight className="h-3.5 w-3.5" />

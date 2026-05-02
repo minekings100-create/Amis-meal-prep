@@ -57,7 +57,7 @@ export default async function LocaleNotFound() {
               </Link>
               <Link
                 href="/shop"
-                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow)/90 transition-colors"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-black) text-white text-sm font-semibold hover:bg-stone-800 transition-colors"
               >
                 <ShoppingBag className="h-4 w-4" />
                 {isEN ? 'To the shop' : 'Naar shop'}

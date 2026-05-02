@@ -220,7 +220,7 @@ export default function CheckoutPaymentPage() {
           type="button"
           onClick={placeOrder}
           disabled={pending || !termsAccepted}
-          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 disabled:opacity-50 shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)]"
+          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 disabled:opacity-50 shadow-[0_8px_24px_-6px_rgba(10,10,10,0.35)]"
         >
           {pending ? 'Bezig…' : `Bestelling plaatsen ${formatMoneyCents(totalCents)}`}
         </button>
@@ -236,7 +236,7 @@ export default function CheckoutPaymentPage() {
           type="button"
           onClick={placeOrder}
           disabled={pending || !termsAccepted}
-          className="flex-1 inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)] disabled:opacity-50"
+          className="flex-1 inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(10,10,10,0.35)] disabled:opacity-50"
         >
           {pending ? 'Bezig…' : `Plaatsen — ${formatMoneyCents(totalCents)}`}
         </button>

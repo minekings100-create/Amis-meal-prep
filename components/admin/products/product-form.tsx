@@ -518,7 +518,7 @@ export function ProductForm({
               type="button"
               onClick={submit}
               disabled={pending}
-              className="inline-flex items-center gap-1.5 h-10 px-5 rounded-md bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 disabled:opacity-60"
+              className="inline-flex items-center gap-1.5 h-10 px-5 rounded-md bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 disabled:opacity-60"
             >
               <Save className="h-3.5 w-3.5" />
               {pending ? 'Opslaan…' : productId ? 'Bewaar wijzigingen' : 'Product aanmaken'}

@@ -21,7 +21,7 @@ export default function NotFound() {
         <h1 className="text-xl font-bold tracking-[-0.025em] mb-2">Pagina niet gevonden</h1>
         <Link
           href="/"
-          className="mt-4 inline-flex items-center justify-center h-11 px-5 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow)/90 transition-colors"
+          className="mt-4 inline-flex items-center justify-center h-11 px-5 rounded-xl bg-(--color-brand-black) text-white text-sm font-semibold hover:bg-stone-800 transition-colors"
         >
           Terug naar home
         </Link>

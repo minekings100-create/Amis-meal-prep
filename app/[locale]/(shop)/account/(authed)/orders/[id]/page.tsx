@@ -154,7 +154,7 @@ export default async function CustomerOrderDetailPage({
                       className={cn(
                         'h-7 w-7 rounded-full inline-flex items-center justify-center shrink-0',
                         completed
-                          ? 'bg-(--color-brand-yellow) text-(--color-brand-black)'
+                          ? 'bg-(--color-brand-black) text-white'
                           : current
                             ? 'bg-(--color-brand-yellow-bright)/30 text-(--color-brand-yellow) border-2 border-(--color-brand-yellow)'
                             : 'bg-stone-100 text-stone-400',

@@ -63,7 +63,7 @@ export function StatusTimeline({ order }: { order: OrderDetail }) {
                   className={cn(
                     'relative z-10 flex h-6 w-6 items-center justify-center rounded-full shrink-0 ring-4 ring-white',
                     completed
-                      ? 'bg-(--color-brand-yellow) text-(--color-brand-black)'
+                      ? 'bg-(--color-brand-black) text-white'
                       : isCurrent
                         ? 'bg-(--color-brand-yellow-bright)/20 text-(--color-brand-yellow) border-2 border-(--color-brand-yellow-bright)'
                         : 'bg-stone-100 text-stone-400',

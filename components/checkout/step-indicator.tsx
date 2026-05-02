@@ -42,9 +42,9 @@ export function StepIndicator({ active }: { active: CheckoutStep }) {
                   className={cn(
                     'relative z-10 inline-flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full text-xs md:text-sm font-semibold transition-all',
                     isDone
-                      ? 'bg-(--color-brand-yellow) text-(--color-brand-black) shadow-[0_4px_16px_-4px_rgba(74,138,60,0.5)] hover:bg-(--color-brand-yellow)/90'
+                      ? 'bg-(--color-brand-black) text-white shadow-[0_4px_16px_-4px_rgba(10,10,10,0.35)] hover:bg-stone-800'
                       : isActive
-                        ? 'bg-(--color-brand-yellow) text-(--color-brand-black) ring-4 ring-(--color-brand-yellow-bright)/30 shadow-[0_4px_16px_-4px_rgba(74,138,60,0.5)]'
+                        ? 'bg-(--color-brand-black) text-white ring-4 ring-(--color-brand-yellow-bright)/30 shadow-[0_4px_16px_-4px_rgba(10,10,10,0.35)]'
                         : 'bg-white border-2 border-stone-200 text-stone-400',
                   )}
                 >

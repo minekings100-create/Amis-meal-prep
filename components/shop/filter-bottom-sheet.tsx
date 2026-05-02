@@ -100,7 +100,7 @@ export function FilterBottomSheet({
           <SlidersHorizontal className="h-4 w-4" />
           <span>{t('openOnMobile')}</span>
           {liveCount > 0 && (
-            <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) text-[10px] font-semibold px-1 tabular-nums">
+            <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-(--color-brand-black) text-white text-[10px] font-semibold px-1 tabular-nums">
               {liveCount}
             </span>
           )}

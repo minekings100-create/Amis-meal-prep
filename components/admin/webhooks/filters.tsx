@@ -84,7 +84,7 @@ export function WebhooksFilters() {
                 ? s === 'failed'
                   ? 'bg-red-600 text-white border-red-600'
                   : s === 'processed'
-                    ? 'bg-(--color-brand-yellow) text-(--color-brand-black) border-(--color-brand-yellow)'
+                    ? 'bg-(--color-brand-black) text-white border-(--color-brand-yellow)'
                     : 'bg-stone-900 text-white border-stone-900'
                 : 'bg-white text-stone-700 border-stone-200',
             )}

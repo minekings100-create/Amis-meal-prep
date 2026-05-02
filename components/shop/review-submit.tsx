@@ -28,7 +28,7 @@ export function ReviewSubmit({
         </p>
         <Link
           href={`/account/login?next=${encodeURIComponent(`/shop/${productSlug}`)}`}
-          className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow)/90"
+          className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-(--color-brand-black) text-white text-sm font-semibold hover:bg-stone-800"
         >
           <Lock className="h-3.5 w-3.5" />
           Inloggen om te reviewen
@@ -209,7 +209,7 @@ function SubmitForm({
         type="button"
         onClick={submit}
         disabled={pending || rating === 0 || !title.trim() || !body.trim()}
-        className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow)/90 disabled:opacity-50"
+        className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-(--color-brand-black) text-white text-sm font-semibold hover:bg-stone-800 disabled:opacity-50"
       >
         <Send className="h-3.5 w-3.5" />
         {pending ? 'Versturen…' : editingExisting ? 'Wijzigingen opslaan' : 'Plaats review'}

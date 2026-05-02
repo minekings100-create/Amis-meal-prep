@@ -50,7 +50,7 @@ export function NewsletterForm({ subscribeLabel }: { subscribeLabel: string }) {
         className={cn(
           'h-10 px-4 rounded-md text-sm font-medium transition-colors inline-flex items-center gap-1.5',
           success
-            ? 'bg-(--color-brand-yellow) text-(--color-brand-black)'
+            ? 'bg-(--color-brand-black) text-white'
             : 'bg-(--color-brand-yellow-bright) text-(--color-ink) hover:bg-white',
         )}
       >

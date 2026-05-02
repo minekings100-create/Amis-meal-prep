@@ -87,7 +87,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 shrink-0"
+              className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 shrink-0"
             >
               {isEN ? 'To the shop' : 'Naar de shop'} <ArrowRight className="h-4 w-4" />
             </Link>

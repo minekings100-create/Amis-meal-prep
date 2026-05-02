@@ -70,7 +70,7 @@ export default async function ProductsListPage({
           </button>
           <Link
             href="/admin/products/new"
-            className="inline-flex items-center gap-2 h-10 px-4 rounded-md bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-medium hover:bg-(--color-brand-yellow)/90"
+            className="inline-flex items-center gap-2 h-10 px-4 rounded-md bg-(--color-brand-black) text-white text-sm font-medium hover:bg-stone-800"
           >
             <Plus className="h-4 w-4" />
             Nieuw product

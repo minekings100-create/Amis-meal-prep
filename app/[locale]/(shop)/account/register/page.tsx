@@ -141,7 +141,7 @@ function RegisterInner() {
           <button
             type="submit"
             disabled={pending}
-            className="w-full h-12 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 disabled:opacity-60 inline-flex items-center justify-center gap-2 mt-4"
+            className="w-full h-12 rounded-xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 disabled:opacity-60 inline-flex items-center justify-center gap-2 mt-4"
           >
             {pending ? 'Bezig…' : 'Account aanmaken'}
             <ArrowRight className="h-4 w-4" />

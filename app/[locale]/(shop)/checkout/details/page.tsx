@@ -226,7 +226,7 @@ export default function CheckoutDetailsPage() {
         <button
           type="button"
           onClick={next}
-          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 transition-colors"
+          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 transition-colors"
         >
           Volgende: Verzending
           <ArrowRight className="h-4 w-4" />
@@ -237,7 +237,7 @@ export default function CheckoutDetailsPage() {
         <button
           type="button"
           onClick={next}
-          className="w-full inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)]"
+          className="w-full inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(10,10,10,0.35)]"
         >
           Volgende: Verzending
           <ArrowRight className="h-4 w-4" />

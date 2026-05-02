@@ -69,7 +69,7 @@ function SimpleActionButton({
   const [pending, start] = useTransition();
   const styles =
     tone === 'primary'
-      ? 'bg-(--color-brand-yellow) text-(--color-brand-black) hover:bg-(--color-brand-yellow)/90'
+      ? 'bg-(--color-brand-black) text-white hover:bg-stone-800'
       : tone === 'danger'
         ? 'bg-red-50 text-red-700 hover:bg-red-100 border border-red-200'
         : 'bg-stone-100 text-stone-800 hover:bg-stone-200';
