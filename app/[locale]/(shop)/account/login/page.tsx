@@ -50,15 +50,21 @@ function LoginInner() {
   }
 
   return (
-    <div className="container-amis py-16 md:py-24 max-w-md">
-      <div className="text-center mb-8">
-        <div className="inline-flex items-baseline gap-2 mb-6">
-          <span className="font-bold text-2xl tracking-[-0.04em]">AMIS</span>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-500">meals</span>
+    <div className="relative">
+      {/* Soft plate-circle brand backdrop */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-24 -translate-x-1/2 h-[520px] w-[520px] rounded-full bg-(--color-accent-bright)/8 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-32 -translate-x-1/2 h-[360px] w-[360px] rounded-full border border-(--color-accent-bright)/15"
+      />
+      <div className="container-amis relative py-12 md:py-16 max-w-md">
+        <div className="text-center mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-[-0.025em]">Inloggen</h1>
+          <p className="text-sm text-stone-600 mt-2">Welkom terug bij AMIS Meals</p>
         </div>
-        <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em]">Inloggen</h1>
-        <p className="text-sm text-stone-600 mt-1">Welkom terug</p>
-      </div>
 
       {!hasSupabase && adminTarget && (
         <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 mb-5 text-sm">
@@ -80,14 +86,16 @@ function LoginInner() {
         </div>
       )}
 
-      <div className="rounded-2xl bg-white border border-stone-200 p-6 md:p-7">
+      <div className="rounded-2xl bg-white border border-stone-200/80 p-6 md:p-7 shadow-[0_2px_24px_-12px_rgba(0,0,0,0.08)]">
         <div className="grid grid-cols-2 gap-1 p-1 bg-stone-100 rounded-xl mb-5">
           <button
             type="button"
             onClick={() => setMode('password')}
             className={cn(
-              'h-9 rounded-lg text-xs font-semibold transition-colors inline-flex items-center justify-center gap-1.5',
-              mode === 'password' ? 'bg-white text-stone-900 shadow-sm' : 'text-stone-500 hover:text-stone-700',
+              'h-9 rounded-lg text-xs font-semibold transition-all inline-flex items-center justify-center gap-1.5',
+              mode === 'password'
+                ? 'bg-white text-stone-900 shadow-sm ring-1 ring-stone-200/60'
+                : 'text-stone-600 hover:text-stone-900',
             )}
           >
             <Lock className="h-3 w-3" /> Wachtwoord
@@ -96,8 +104,10 @@ function LoginInner() {
             type="button"
             onClick={() => setMode('magic')}
             className={cn(
-              'h-9 rounded-lg text-xs font-semibold transition-colors inline-flex items-center justify-center gap-1.5',
-              mode === 'magic' ? 'bg-white text-stone-900 shadow-sm' : 'text-stone-500 hover:text-stone-700',
+              'h-9 rounded-lg text-xs font-semibold transition-all inline-flex items-center justify-center gap-1.5',
+              mode === 'magic'
+                ? 'bg-white text-stone-900 shadow-sm ring-1 ring-stone-200/60'
+                : 'text-stone-600 hover:text-stone-900',
             )}
           >
             <Sparkles className="h-3 w-3" /> Magic link
@@ -139,7 +149,10 @@ function LoginInner() {
           </button>
           {mode === 'password' && (
             <div className="text-center pt-1">
-              <Link href="/account/forgot-password" className="text-xs text-stone-500 hover:text-stone-900">
+              <Link
+                href="/account/forgot-password"
+                className="text-xs text-stone-500 hover:text-(--color-accent) transition-colors"
+              >
                 Wachtwoord vergeten?
               </Link>
             </div>
@@ -156,6 +169,7 @@ function LoginInner() {
           Registreren
         </Link>
       </p>
+      </div>
     </div>
   );
 }
@@ -181,7 +195,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-12 w-full pl-9 pr-3 rounded-xl border border-stone-300 text-sm focus:outline-none focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent-bright)/30"
+        className="h-12 w-full pl-9 pr-3 rounded-xl border border-stone-200 bg-stone-50/60 text-sm transition-colors hover:border-stone-300 focus:outline-none focus:border-(--color-accent) focus:bg-white focus:ring-2 focus:ring-(--color-accent-bright)/30"
       />
     </div>
   );

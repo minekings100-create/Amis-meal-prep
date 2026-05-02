@@ -4,19 +4,32 @@
  *
  *   node scripts/polish-shoot.mjs <slug> <path> [scrollY=0] [fullPage=0]
  *
- * Captures the same path at desktop 1440x900, tablet 768x1024, mobile 375x812.
+ * Captures the same path at desktop 1280x720, tablet 768x1024, mobile 375x812.
  * Sets cookie-consent so the banner doesn't intrude.
+ * Downscales the resulting PNG via sharp to max-height 1800 (fit: inside)
+ * so multi-image API calls stay within Claude's per-image limit.
  */
 import { chromium } from 'playwright';
 import { mkdir } from 'node:fs/promises';
+import sharp from 'sharp';
 
 const VIEWPORTS = [
-  { name: 'desktop', size: { width: 1440, height: 900 } },
+  { name: 'desktop', size: { width: 1280, height: 720 } },
   { name: 'tablet', size: { width: 768, height: 1024 } },
   { name: 'mobile', size: { width: 375, height: 812 } },
 ];
 
-const stripMsys = (s) => (s ?? '').replace(/^[A-Z]:[\\/].*[\\/]([^\\/]+)$/i, '/$1');
+const MAX_HEIGHT = 1800;
+
+// Git Bash on Windows mangles a leading `/foo/bar` into `C:/Program Files/Git/foo/bar`.
+// Detect that prefix and recover the original POSIX path. If the arg already looks like
+// a normal path, return it untouched.
+const stripMsys = (s) => {
+  if (!s) return s;
+  const m = s.match(/^[A-Z]:[\\/](?:Program Files(?: \(x86\))?[\\/])?Git(?:[\\/]usr)?[\\/](.*)$/i);
+  if (m) return '/' + m[1].replace(/\\/g, '/');
+  return s;
+};
 
 async function main() {
   const slug = process.argv[2];
@@ -35,7 +48,7 @@ async function main() {
     for (const v of VIEWPORTS) {
       const ctx = await browser.newContext({
         viewport: v.size,
-        deviceScaleFactor: 2,
+        deviceScaleFactor: 1,
       });
       await ctx.addCookies([
         {
@@ -60,8 +73,15 @@ async function main() {
         await page.waitForTimeout(500);
       }
       const file = `temporary screenshots/polish-${slug}-${v.name}.png`;
-      await page.screenshot({ path: file, fullPage });
-      console.log(`✓ ${file}`);
+      const raw = await page.screenshot({ fullPage });
+      const resized = await sharp(raw)
+        .resize({ height: MAX_HEIGHT, fit: 'inside', withoutEnlargement: true })
+        .png()
+        .toBuffer();
+      const { writeFile } = await import('node:fs/promises');
+      await writeFile(file, resized);
+      const meta = await sharp(resized).metadata();
+      console.log(`✓ ${file} (${meta.width}x${meta.height})`);
       await ctx.close();
     }
   } finally {
