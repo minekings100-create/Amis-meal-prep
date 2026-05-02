@@ -121,11 +121,20 @@
   to   { opacity: 1; }
 }
 
+@keyframes corner-pulse {
+  0%, 100% { opacity: 0.7; }
+  50%      { opacity: 1; }
+}
+
 @layer utilities {
   .animate-cart-bump { animation: cart-bump 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97); }
   .animate-toast-in  { animation: toast-in 0.25s ease-out; }
   .animate-sheet-up  { animation: sheet-up 0.32s cubic-bezier(0.16, 1, 0.3, 1); }
   .animate-fade-in   { animation: fade-in 0.2s ease-out; }
+  .animate-corner-pulse { animation: corner-pulse 2s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-corner-pulse { animation: none; }
+  }
 
   /* Legal/prose long-form content */
   .prose-amis {

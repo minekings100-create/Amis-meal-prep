@@ -11,6 +11,7 @@ import { toast } from '@/lib/toast/store';
 import { GoalBadge } from './goal-badge';
 import { AttributeBadges } from './attribute-badges';
 import { CompareButton } from './compare-button';
+import { CornerBadge } from './corner-badge';
 
 export function ProductCard({ product }: { product: Product }) {
   const t = useTranslations('shop.card');
@@ -49,8 +50,11 @@ export function ProductCard({ product }: { product: Product }) {
         className="flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2 rounded-2xl"
       >
         <div className="relative flex flex-1 flex-col bg-white border border-stone-200 rounded-2xl p-5 md:p-6 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_18px_44px_-20px_rgba(19,22,19,0.18)] group-hover:border-(--color-brand-yellow-bright)/40">
+          {/* Corner badge: at most one (sale > limited > new > bestseller). */}
+          <CornerBadge product={product} />
+
           {showTypePill && (
-            <span className="absolute top-4 left-4 z-10 inline-flex items-center px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] rounded-full bg-stone-100 text-stone-700 border border-stone-200">
+            <span className="absolute top-3 right-14 z-10 inline-flex items-center px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] rounded-full bg-stone-100 text-stone-700 border border-stone-200">
               {typeLabel}
             </span>
           )}
@@ -75,22 +79,6 @@ export function ProductCard({ product }: { product: Product }) {
             }}
           />
 
-          {onSale && (
-            <span
-              className={
-                'absolute z-10 inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] rounded-full bg-(--color-ink) text-white ' +
-                (showTypePill ? 'top-12 left-4' : 'top-4 left-4')
-              }
-            >
-              −
-              {Math.round(
-                ((product.compare_at_price_cents! - product.price_cents) /
-                  product.compare_at_price_cents!) *
-                  100,
-              )}
-              %
-            </span>
-          )}
 
           {/* Plate-circle: visual element inside the rectangular card. Aspect-square so
               the plate height stays identical regardless of badge / name length. */}

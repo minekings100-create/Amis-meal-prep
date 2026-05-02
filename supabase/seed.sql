@@ -41,7 +41,7 @@ insert into public.products (
     'Atlantic salmon with roasted sweet potato, broccolini and lemon-dill sauce.',
     1250, '11111111-1111-1111-1111-111111111104',
     array['high-protein','omega-3','glutenvrij'], 'performance',
-    array['high-protein','gluten-free'], 40, true, true,
+    array['limited','high-protein','gluten-free'], 40, true, true,
     'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1200&h=1200&fit=crop&q=80',
     'Zalm, zoete aardappel, broccolini, citroen, dille, olijfolie, knoflook',
     'Salmon, sweet potato, broccolini, lemon, dill, olive oil, garlic',

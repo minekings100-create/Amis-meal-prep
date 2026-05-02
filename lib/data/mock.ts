@@ -108,7 +108,7 @@ export const mockProducts: Product[] = [
     category_id: 'cat-perf',
     tags: ['high-protein', 'omega-3', 'glutenvrij'],
     goal_tag: 'performance',
-    attribute_tags: ['high-protein', 'gluten-free'],
+    attribute_tags: ['limited', 'high-protein', 'gluten-free'],
     stock: 40,
     is_active: true,
     is_featured: true,

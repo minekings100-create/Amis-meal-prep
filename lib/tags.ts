@@ -6,7 +6,6 @@ import {
   Sparkles,
   TrendingUp,
   Clock,
-  Trophy,
   type LucideIcon,
 } from 'lucide-react';
 import type { GoalTag, AttributeTag } from '@/types/database';
@@ -101,7 +100,7 @@ export const ATTRIBUTE_TAGS: Record<AttributeTag, AttributeTagConfig> = {
   bestseller: {
     labelNl: 'Bestseller',
     labelEn: 'Bestseller',
-    icon: Trophy,
+    icon: Flame,
     bg: 'bg-amber-100',
     text: 'text-amber-900',
     priority: 3,
