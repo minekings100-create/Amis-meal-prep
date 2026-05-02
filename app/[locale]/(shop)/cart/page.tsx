@@ -106,37 +106,37 @@ export default function CartPage() {
             ))}
           </ul>
 
-          <aside className="rounded-2xl border border-stone-200 bg-white p-5 md:p-6 h-fit lg:sticky lg:top-24">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500 mb-4">
+          <aside className="rounded-2xl bg-(--color-brand-black) text-white p-5 md:p-6 h-fit lg:sticky lg:top-24">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-(--color-brand-yellow) mb-4">
               {locale === 'en' ? 'Summary' : 'Overzicht'}
             </p>
             <dl className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <dt className="text-stone-600">{t('subtotal')}</dt>
-                <dd className="font-mono tabular-nums text-stone-900">{formatMoneyCents(subtotal)}</dd>
+                <dt className="text-white/70">{t('subtotal')}</dt>
+                <dd className="font-mono tabular-nums text-white">{formatMoneyCents(subtotal)}</dd>
               </div>
               <div className="flex justify-between text-xs">
-                <dt className="text-stone-500">{t('shipping')}</dt>
-                <dd className="text-stone-500">
+                <dt className="text-white/50">{t('shipping')}</dt>
+                <dd className="text-white/50">
                   {locale === 'en' ? 'calculated at checkout' : 'berekend bij checkout'}
                 </dd>
               </div>
-              <div className="border-t border-stone-100 mt-3 pt-3 flex justify-between items-baseline">
-                <dt className="text-base font-semibold text-stone-900">{t('total')}</dt>
-                <dd className="font-mono text-xl font-bold tabular-nums text-stone-900">
+              <div className="border-t border-white/15 mt-3 pt-3 flex justify-between items-baseline">
+                <dt className="text-base font-semibold text-white">{t('total')}</dt>
+                <dd className="font-mono text-2xl font-bold tabular-nums text-(--color-brand-yellow)">
                   {formatMoneyCents(subtotal)}
                 </dd>
               </div>
             </dl>
             <Link
               href="/checkout"
-              className="mt-5 w-full inline-flex items-center justify-center h-12 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) active:scale-[0.99] transition-all shadow-[0_8px_24px_-8px_rgba(10,10,10,0.35)]"
+              className="mt-5 w-full inline-flex items-center justify-center h-12 rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-white transition-colors duration-[250ms]"
             >
               {t('checkout')}
             </Link>
             <Link
               href="/shop"
-              className="mt-2 block text-center text-xs text-stone-600 hover:text-(--color-brand-black) transition-colors"
+              className="mt-2 block text-center text-xs text-white/60 hover:text-white transition-colors"
             >
               {t('continueShopping')}
             </Link>

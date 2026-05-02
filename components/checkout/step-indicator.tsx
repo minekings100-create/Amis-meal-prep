@@ -20,11 +20,11 @@ export function StepIndicator({ active }: { active: CheckoutStep }) {
     <nav aria-label="Checkout voortgang" className="mb-8 md:mb-12">
       <div className="relative max-w-2xl mx-auto">
         {/* Background track */}
-        <div className="absolute left-4 right-4 top-4 md:top-5 h-0.5 bg-stone-200 -z-0" aria-hidden />
-        {/* Progress line */}
+        <div className="absolute left-4 right-4 top-5 md:top-6 h-0.5 bg-stone-200 -z-0" aria-hidden />
+        {/* Progress line — solid black up to the active step */}
         <div
           aria-hidden
-          className="absolute left-4 top-4 md:top-5 h-0.5 bg-(--color-brand-yellow) transition-all duration-500 ease-out -z-0"
+          className="absolute left-4 top-5 md:top-6 h-0.5 bg-(--color-brand-black) transition-all duration-500 ease-out -z-0"
           style={{ width: `calc((100% - 32px) * ${progressPct / 100})` }}
         />
         <ol className="relative flex items-start justify-between">
@@ -40,15 +40,15 @@ export function StepIndicator({ active }: { active: CheckoutStep }) {
                 <Wrapper
                   {...(props as object)}
                   className={cn(
-                    'relative z-10 inline-flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full text-xs md:text-sm font-semibold transition-all',
+                    'relative z-10 inline-flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full text-sm font-semibold transition-all',
                     isDone
-                      ? 'bg-(--color-brand-yellow) text-(--color-brand-black) hover:bg-(--color-brand-yellow-bright)'
+                      ? 'bg-(--color-brand-yellow) text-(--color-brand-black) hover:scale-105'
                       : isActive
-                        ? 'bg-(--color-brand-black) text-white ring-4 ring-(--color-brand-yellow-bright)/30 shadow-[0_4px_16px_-4px_rgba(10,10,10,0.35)]'
+                        ? 'bg-(--color-brand-black) text-white scale-110 shadow-[0_8px_20px_-6px_rgba(10,10,10,0.4)]'
                         : 'bg-stone-200 text-stone-500',
                   )}
                 >
-                  {isDone ? <Check className="h-4 w-4" /> : step.index}
+                  {isDone ? <Check className="h-4 w-4" strokeWidth={3} /> : step.index}
                 </Wrapper>
                 <span
                   className={cn(
