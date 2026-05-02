@@ -4,6 +4,7 @@ import { requireCustomer } from '@/lib/account/auth';
 import { getCustomerStats } from '@/lib/account/orders';
 import { formatMoneyCents } from '@/lib/utils/money';
 import { OrderListRow } from '@/components/account/order-list-row';
+import { cn } from '@/lib/utils/cn';
 
 export const metadata = { title: 'Account' };
 export const dynamic = 'force-dynamic';
@@ -114,20 +115,13 @@ export default async function AccountDashboardPage() {
 
 function StatCard({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
-    <div
-      className={
-        accent
-          ? 'rounded-2xl bg-(--color-accent-bright)/10 border border-(--color-accent-bright)/30 px-5 py-4'
-          : 'rounded-2xl bg-white border border-stone-200 px-5 py-4'
-      }
-    >
+    <div className="rounded-2xl bg-white border border-stone-200 px-5 py-4">
       <p className="text-[11px] font-semibold uppercase tracking-wider text-stone-500">{label}</p>
       <p
-        className={
-          accent
-            ? 'mt-1 font-mono text-3xl font-bold tabular-nums text-(--color-accent)'
-            : 'mt-1 font-mono text-3xl font-semibold tabular-nums text-stone-900'
-        }
+        className={cn(
+          'mt-1 font-mono text-3xl font-semibold tabular-nums',
+          accent ? 'text-(--color-accent)' : 'text-stone-900',
+        )}
       >
         {value}
       </p>

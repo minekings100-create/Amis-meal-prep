@@ -64,6 +64,8 @@ async function main() {
           ),
           url: 'http://localhost:3000',
         },
+        // Dev-only: unlock authed /account routes when Supabase isn't configured.
+        { name: 'amis-customer-impersonate', value: '1', url: 'http://localhost:3000' },
       ]);
       const page = await ctx.newPage();
       await page.goto(`http://localhost:3000${path}`, { waitUntil: 'networkidle' });
