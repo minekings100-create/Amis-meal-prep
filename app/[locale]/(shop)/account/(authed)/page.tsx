@@ -16,11 +16,19 @@ export default async function AccountDashboardPage() {
 
   return (
     <div>
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold tracking-[-0.025em]">
-          Hoi {customer.firstName ?? 'daar'}
-        </h1>
-        <p className="text-stone-600 mt-1">Welkom terug bij AMIS Meals.</p>
+      <header className="relative overflow-hidden rounded-2xl bg-(--color-brand-black) text-white p-6 md:p-8 mb-8">
+        <div
+          aria-hidden
+          className="absolute -bottom-10 -right-12 select-none pointer-events-none text-[14rem] font-bold tracking-[-0.06em] text-white/[0.04] leading-none"
+        >
+          AMIS
+        </div>
+        <div className="relative">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-[-0.025em]">
+            Hoi <span className="text-(--color-brand-yellow)">{customer.firstName ?? 'daar'}</span>
+          </h1>
+          <p className="text-white/70 mt-1">Welkom terug bij AMIS Meals.</p>
+        </div>
       </header>
 
       {/* Welcome offer for first-time customers */}

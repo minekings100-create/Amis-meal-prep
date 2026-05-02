@@ -21,14 +21,22 @@ export function AmisStandard() {
   const t = useTranslations('amisStandard');
 
   return (
-    <section className="bg-[#f7f7f5] py-16 md:py-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="relative bg-(--color-brand-black) text-white py-16 md:py-24 overflow-hidden">
+      {/* Subtle ghost-AMIS watermark in the bottom-right, same trick as the footer */}
+      <div
+        aria-hidden
+        className="absolute -bottom-12 -right-12 select-none pointer-events-none text-[28rem] font-bold tracking-[-0.06em] text-white/[0.02] leading-none"
+      >
+        AMIS
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <RevealSection>
           <header className="mb-10 md:mb-14">
-            <h2 className="font-bold uppercase tracking-tight text-stone-300 text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
+            <h2 className="font-bold uppercase tracking-tight text-white/30 text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
               {t('lineMuted')}
             </h2>
-            <h3 className="font-bold uppercase tracking-tight text-stone-900 text-4xl md:text-5xl lg:text-6xl leading-[0.95] mt-1">
+            <h3 className="font-bold uppercase tracking-tight text-white text-4xl md:text-5xl lg:text-6xl leading-[0.95] mt-1">
               {t('lineDark')}
             </h3>
           </header>
@@ -41,10 +49,10 @@ export function AmisStandard() {
                 <div className="h-10 w-10 rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) inline-flex items-center justify-center mb-5">
                   <Check className="h-5 w-5" strokeWidth={3} />
                 </div>
-                <h4 className="font-bold uppercase tracking-wide text-sm text-stone-900 mb-3 leading-snug">
+                <h4 className="font-bold uppercase tracking-wide text-sm text-white mb-3 leading-snug">
                   {t(v.titleKey)}
                 </h4>
-                <p className="text-sm text-stone-600 leading-relaxed">{t(v.bodyKey)}</p>
+                <p className="text-sm text-white/70 leading-relaxed">{t(v.bodyKey)}</p>
               </div>
             </RevealSection>
           ))}

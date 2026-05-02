@@ -41,33 +41,41 @@ export default async function CheckoutSuccessPage({
     <div className="container-amis py-16 md:py-24 max-w-3xl">
       <ConfettiBurst orderNumber={order.orderNumber} />
 
-      {/* Hero */}
-      <div className="text-center mb-12 md:mb-14">
-        <div className="relative inline-flex h-24 w-24 items-center justify-center rounded-full bg-(--color-brand-black) mb-6 ring-8 ring-(--color-brand-yellow)/15">
-          <CheckCircle2 className="h-12 w-12 text-(--color-brand-yellow)" strokeWidth={2.5} />
+      {/* Hero — black panel anchors the moment */}
+      <div className="relative overflow-hidden rounded-2xl bg-(--color-brand-black) text-white px-6 py-10 md:py-14 mb-12 md:mb-14 text-center">
+        <div
+          aria-hidden
+          className="absolute -bottom-12 -right-12 select-none pointer-events-none text-[18rem] font-bold tracking-[-0.06em] text-white/[0.04] leading-none"
+        >
+          AMIS
         </div>
-        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-(--color-brand-yellow-deep) mb-3">
-          Bestelling geplaatst
-        </p>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-[-0.025em] mb-5">
-          Bedankt voor je bestelling!
-        </h1>
-        <div className="inline-flex items-center gap-2 rounded-full bg-stone-100 pl-4 pr-1 py-1">
-          <span className="text-sm text-stone-700">
-            Ordernummer:{' '}
-            <span className="font-mono font-semibold text-stone-900">{order.orderNumber}</span>
-          </span>
-          <CopyButton value={order.orderNumber} />
-        </div>
-        <p className="text-stone-600 mt-5">
-          We hebben een bevestigingsmail gestuurd naar{' '}
-          <span className="font-medium text-stone-900">{order.customerEmail}</span>
-        </p>
-        {order.isMocked && (
-          <p className="text-stone-400 text-[11px] font-mono mt-3">
-            demo mode — geen echte order in database
+        <div className="relative">
+          <div className="inline-flex h-24 w-24 items-center justify-center rounded-full bg-(--color-brand-yellow) mb-6 ring-8 ring-(--color-brand-yellow)/15">
+            <CheckCircle2 className="h-12 w-12 text-(--color-brand-black)" strokeWidth={2.5} />
+          </div>
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-(--color-brand-yellow) mb-3">
+            Bestelling geplaatst
           </p>
-        )}
+          <h1 className="text-3xl md:text-4xl font-bold tracking-[-0.025em] mb-5 text-white">
+            Bedankt voor je bestelling!
+          </h1>
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm pl-4 pr-1 py-1">
+            <span className="text-sm text-white/80">
+              Ordernummer:{' '}
+              <span className="font-mono font-semibold text-white">{order.orderNumber}</span>
+            </span>
+            <CopyButton value={order.orderNumber} />
+          </div>
+          <p className="text-white/70 mt-5">
+            We hebben een bevestigingsmail gestuurd naar{' '}
+            <span className="font-medium text-white">{order.customerEmail}</span>
+          </p>
+          {order.isMocked && (
+            <p className="text-white/40 text-[11px] font-mono mt-3">
+              demo mode — geen echte order in database
+            </p>
+          )}
+        </div>
       </div>
 
       {/* What happens next */}

@@ -24,25 +24,32 @@ export default async function LocaleNotFound() {
     <>
       <Header isAuthed={Boolean(customer)} />
       <main className="flex-1">
-        <div className="relative min-h-[80vh] grid place-items-center px-6 py-16 overflow-hidden bg-stone-50">
-          {/* Decorative plate-circle behind content */}
+        <div className="relative min-h-[80vh] grid place-items-center px-6 py-16 overflow-hidden bg-(--color-brand-black) text-white">
+          {/* Ghost-AMIS watermark */}
           <div
             aria-hidden
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[640px] w-[640px] rounded-full bg-(--color-brand-yellow-bright)/10 blur-2xl pointer-events-none"
+            className="absolute -bottom-12 -right-12 select-none pointer-events-none text-[36rem] font-bold tracking-[-0.06em] text-white/[0.03] leading-none"
+          >
+            AMIS
+          </div>
+          {/* Plate-circle accent */}
+          <div
+            aria-hidden
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[640px] w-[640px] rounded-full bg-(--color-brand-yellow)/8 blur-2xl pointer-events-none"
           />
           <div
             aria-hidden
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[440px] w-[440px] rounded-full border border-(--color-brand-yellow-bright)/20 pointer-events-none"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[440px] w-[440px] rounded-full border border-(--color-brand-yellow)/15 pointer-events-none"
           />
 
           <div className="relative z-10 text-center max-w-lg">
             <p className="font-mono text-7xl md:text-9xl font-bold text-(--color-brand-yellow) tracking-[-0.04em] leading-none mb-6">
               404
             </p>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em] mb-2">
+            <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em] mb-2 text-white">
               {isEN ? "This page doesn't exist" : 'Deze pagina bestaat niet'}
             </h1>
-            <p className="text-stone-600 mb-8 max-w-sm mx-auto">
+            <p className="text-white/70 mb-8 max-w-sm mx-auto">
               {isEN
                 ? 'Maybe it moved, was renamed, or never existed. No worries — our meals are still waiting for you.'
                 : 'Misschien is hij verhuisd, hernoemd of nooit bestaan. Geen zorg — onze maaltijden staan gewoon op je te wachten.'}
@@ -50,14 +57,14 @@ export default async function LocaleNotFound() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
               <Link
                 href="/"
-                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl border border-stone-300 bg-white text-sm font-medium hover:bg-stone-50 hover:border-stone-400 transition-colors"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl border border-white/30 bg-white/5 backdrop-blur text-white text-sm font-medium hover:bg-white/10 hover:border-white/50 transition-colors"
               >
                 <Home className="h-4 w-4" />
                 {isEN ? 'Back home' : 'Terug naar home'}
               </Link>
               <Link
                 href="/shop"
-                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-black) text-white text-sm font-semibold hover:bg-stone-800 transition-colors"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow-bright) transition-colors"
               >
                 <ShoppingBag className="h-4 w-4" />
                 {isEN ? 'To the shop' : 'Naar shop'}
@@ -65,17 +72,17 @@ export default async function LocaleNotFound() {
               </Link>
             </div>
 
-            <div className="flex items-center gap-2 justify-center text-xs text-stone-500">
+            <div className="flex items-center gap-2 justify-center text-xs text-white/60">
               <span>{isEN ? 'Or try:' : 'Of probeer:'}</span>
               <Link
                 href="/faq"
-                className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-stone-200 bg-white hover:border-(--color-brand-yellow-bright)/40 hover:text-(--color-brand-yellow) transition-colors"
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-white/15 bg-white/5 text-white hover:border-(--color-brand-yellow)/50 hover:text-(--color-brand-yellow) transition-colors"
               >
                 <HelpCircle className="h-3 w-3" /> FAQ
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-stone-200 bg-white hover:border-(--color-brand-yellow-bright)/40 hover:text-(--color-brand-yellow) transition-colors"
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-white/15 bg-white/5 text-white hover:border-(--color-brand-yellow)/50 hover:text-(--color-brand-yellow) transition-colors"
               >
                 <MessageCircle className="h-3 w-3" /> Contact
               </Link>

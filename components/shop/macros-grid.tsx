@@ -15,16 +15,14 @@ export function MacrosGrid({ product }: { product: Product }) {
   if (product.salt_g) items.push({ label: t('salt'), value: String(product.salt_g), unit: 'g' });
 
   return (
-    <div className="border border-(--color-line) rounded-[--radius] overflow-hidden">
-      <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-(--color-line)">
+    <div className="rounded-[--radius] overflow-hidden bg-(--color-brand-black) text-white">
+      <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-white/10">
         {items.map((it) => (
           <div key={it.label} className="p-4 text-center">
-            <p className="text-[10px] uppercase tracking-[0.18em] text-(--color-gray)">
-              {it.label}
-            </p>
-            <p className="font-mono text-2xl font-semibold mt-1 tabular-nums">
+            <p className="text-[10px] uppercase tracking-[0.18em] text-white/50">{it.label}</p>
+            <p className="font-mono text-2xl font-semibold mt-1 tabular-nums text-white">
               {it.value}
-              <span className="text-xs text-(--color-gray) ml-0.5">{it.unit}</span>
+              <span className="text-xs text-(--color-brand-yellow) ml-0.5">{it.unit}</span>
             </p>
           </div>
         ))}
