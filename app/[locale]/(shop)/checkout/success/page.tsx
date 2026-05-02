@@ -43,10 +43,10 @@ export default async function CheckoutSuccessPage({
 
       {/* Hero */}
       <div className="text-center mb-12 md:mb-14">
-        <div className="relative inline-flex h-24 w-24 items-center justify-center rounded-full bg-(--color-brand-yellow-bright)/15 mb-6 ring-8 ring-(--color-brand-yellow-bright)/8">
+        <div className="relative inline-flex h-24 w-24 items-center justify-center rounded-full bg-(--color-brand-black) mb-6 ring-8 ring-(--color-brand-yellow)/15">
           <CheckCircle2 className="h-12 w-12 text-(--color-brand-yellow)" strokeWidth={2.5} />
         </div>
-        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-(--color-brand-yellow) mb-3">
+        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-(--color-brand-yellow-deep) mb-3">
           Bestelling geplaatst
         </p>
         <h1 className="text-3xl md:text-4xl font-bold tracking-[-0.025em] mb-5">
@@ -168,8 +168,8 @@ export default async function CheckoutSuccessPage({
       </div>
 
       {/* Account CTA for guests */}
-      <div className="mt-10 rounded-2xl bg-gradient-to-br from-(--color-brand-yellow-bright)/10 to-stone-50 border border-(--color-brand-yellow-bright)/20 px-6 py-6 text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.18em] text-(--color-brand-yellow) mb-2">
+      <div className="mt-10 rounded-2xl bg-(--color-brand-yellow-soft) border border-(--color-brand-yellow) px-6 py-6 text-center">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-(--color-brand-yellow-deep) mb-2">
           Sneller volgende keer
         </p>
         <p className="text-sm text-stone-700 mb-4 max-w-md mx-auto">
@@ -202,7 +202,7 @@ function Step({
   return (
     <li className="flex gap-4">
       <div className="relative shrink-0">
-        <div className="h-9 w-9 rounded-full bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) inline-flex items-center justify-center font-semibold text-sm">
+        <div className="h-9 w-9 rounded-full bg-(--color-brand-yellow-soft) text-(--color-brand-black) inline-flex items-center justify-center font-semibold text-sm">
           {n}
         </div>
       </div>
@@ -222,7 +222,7 @@ function Row({ label, cents, accent }: { label: string; cents: number; accent?: 
     <div className="flex justify-between">
       <dt className="text-stone-600">{label}</dt>
       <dd
-        className={`font-mono tabular-nums ${accent ? 'text-(--color-brand-yellow) font-medium' : 'text-stone-900'}`}
+        className={`font-mono tabular-nums ${accent ? 'text-emerald-700 font-medium' : 'text-stone-900'}`}
       >
         {formatMoneyCents(cents)}
       </dd>

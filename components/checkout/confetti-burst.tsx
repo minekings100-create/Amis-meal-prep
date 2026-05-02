@@ -24,7 +24,7 @@ export function ConfettiBurst({ orderNumber }: { orderNumber: string }) {
       const mod = await import('canvas-confetti');
       if (cancelled) return;
       const confetti = mod.default;
-      const colors = ['#7cc24f', '#4a8a3c', '#ffffff', '#fbbf24'];
+      const colors = ['#e8a91c', '#f5b727', '#0a0a0a', '#ffffff'];
       const end = Date.now() + 2000;
 
       const tick = () => {
