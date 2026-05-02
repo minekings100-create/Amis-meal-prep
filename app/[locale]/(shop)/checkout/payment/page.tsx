@@ -220,7 +220,7 @@ export default function CheckoutPaymentPage() {
           type="button"
           onClick={placeOrder}
           disabled={pending || !termsAccepted}
-          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 disabled:opacity-50 shadow-[0_8px_24px_-6px_rgba(10,10,10,0.35)]"
+          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) disabled:opacity-50 shadow-[0_8px_24px_-6px_rgba(10,10,10,0.35)]"
         >
           {pending ? 'Bezig…' : `Bestelling plaatsen ${formatMoneyCents(totalCents)}`}
         </button>

@@ -30,7 +30,7 @@ export default async function AccountOrdersPage() {
           </p>
           <Link
             href="/shop"
-            className="mt-6 inline-flex items-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800"
+            className="mt-6 inline-flex items-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black)"
           >
             Naar shop <ArrowRight className="h-4 w-4" />
           </Link>

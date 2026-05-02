@@ -78,7 +78,7 @@ function LoginInner() {
             </Link>
             <Link
               href="/admin?as=staff"
-              className="inline-flex items-center px-3 h-8 rounded-full bg-stone-700 text-white text-xs font-semibold hover:bg-stone-800"
+              className="inline-flex items-center px-3 h-8 rounded-full bg-stone-700 text-white text-xs font-semibold hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black)"
             >
               Inloggen als staff
             </Link>
@@ -142,7 +142,7 @@ function LoginInner() {
           <button
             type="submit"
             disabled={pending}
-            className="w-full h-12 rounded-xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 disabled:opacity-60 inline-flex items-center justify-center gap-2"
+            className="w-full h-12 rounded-xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) disabled:opacity-60 inline-flex items-center justify-center gap-2"
           >
             {pending ? 'Bezig…' : mode === 'password' ? 'Inloggen' : 'Stuur magic link'}
             <ArrowRight className="h-4 w-4" />

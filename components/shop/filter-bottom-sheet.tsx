@@ -151,7 +151,7 @@ export function FilterBottomSheet({
             <button
               type="button"
               onClick={commitDraft}
-              className="ml-auto inline-flex items-center justify-center gap-1.5 h-12 px-6 rounded-full bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 active:scale-95 transition-all"
+              className="ml-auto inline-flex items-center justify-center gap-1.5 h-12 px-6 rounded-full bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) active:scale-95 transition-all"
             >
               {t('showResults')}{' '}
               <span className="font-mono tabular-nums">({resultCount})</span>

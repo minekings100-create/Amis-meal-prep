@@ -83,7 +83,7 @@ export function CookieConsent() {
                 <button
                   type="button"
                   onClick={acceptAll}
-                  className="ml-auto h-9 px-4 rounded-lg bg-(--color-brand-black) text-white text-xs font-semibold hover:bg-stone-800"
+                  className="ml-auto h-9 px-4 rounded-lg bg-(--color-brand-black) text-white text-xs font-semibold hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black)"
                 >
                   Accepteren
                 </button>
@@ -152,7 +152,7 @@ export function CookieConsent() {
               </Dialog.Close>
               <button
                 onClick={savePrefs}
-                className="h-10 px-5 rounded-md bg-(--color-brand-black) text-white text-sm font-semibold hover:bg-stone-800"
+                className="h-10 px-5 rounded-md bg-(--color-brand-black) text-white text-sm font-semibold hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black)"
               >
                 Bewaren
               </button>

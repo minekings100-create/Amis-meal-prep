@@ -130,7 +130,7 @@ export default function CartPage() {
             </dl>
             <Link
               href="/checkout"
-              className="mt-5 w-full inline-flex items-center justify-center h-12 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 active:scale-[0.99] transition-all shadow-[0_8px_24px_-8px_rgba(10,10,10,0.35)]"
+              className="mt-5 w-full inline-flex items-center justify-center h-12 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) active:scale-[0.99] transition-all shadow-[0_8px_24px_-8px_rgba(10,10,10,0.35)]"
             >
               {t('checkout')}
             </Link>

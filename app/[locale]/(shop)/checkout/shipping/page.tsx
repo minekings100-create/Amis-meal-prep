@@ -191,7 +191,7 @@ export default function CheckoutShippingPage() {
         <button
           type="button"
           onClick={() => router.push('/checkout/payment')}
-          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800"
+          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black)"
         >
           Volgende: Betaling <ArrowRight className="h-4 w-4" />
         </button>

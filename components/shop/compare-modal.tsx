@@ -209,7 +209,7 @@ function ProductCol({
             <button
               type="button"
               onClick={() => onAddToCart(item)}
-              className="inline-flex items-center gap-1 h-8 px-3 rounded-full bg-(--color-brand-black) text-white text-xs font-semibold hover:bg-stone-800 transition-colors"
+              className="inline-flex items-center gap-1 h-8 px-3 rounded-full bg-(--color-brand-black) text-white text-xs font-semibold hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) transition-colors"
             >
               <ShoppingBag className="h-3 w-3" />
               {t('addToCart')}
@@ -394,7 +394,7 @@ function MobileStack({
               key={it.id}
               type="button"
               onClick={() => onAddToCart(it)}
-              className="inline-flex items-center justify-center gap-1.5 h-10 px-3 rounded-full bg-(--color-brand-black) text-white text-xs font-semibold hover:bg-stone-800 transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 h-10 px-3 rounded-full bg-(--color-brand-black) text-white text-xs font-semibold hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) transition-colors"
             >
               <ShoppingBag className="h-3.5 w-3.5" />
               {t('addToCart')}

@@ -75,7 +75,7 @@ export function BuildYourOwnBanner() {
           <Link
             href="/shop"
             onClick={handleClick}
-            className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 active:scale-[0.99] transition-all w-full md:w-auto shadow-[0_8px_24px_-8px_rgba(10,10,10,0.35)]"
+            className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) active:scale-[0.99] transition-all w-full md:w-auto shadow-[0_8px_24px_-8px_rgba(10,10,10,0.35)]"
           >
             {pending ? '…' : c.cta}
             <ArrowRight className="h-4 w-4" />
