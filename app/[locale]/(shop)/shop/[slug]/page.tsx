@@ -221,7 +221,7 @@ async function ProductDetail({
               {stockText}
             </p>
 
-            <div className="mt-8">
+            <div id="add-to-cart" className="mt-8 scroll-mt-24">
               <AddToCartButton product={product} displayName={name} />
             </div>
 
@@ -253,6 +253,26 @@ async function ProductDetail({
         <ReviewsSection reviews={reviews} />
         <ReviewSubmit productId={product.id} productSlug={slug} eligibility={eligibility} />
       </div>
+
+      {/* Mobile sticky bottom bar — visible <md only, mirrors price + Add CTA */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-(--color-brand-black) text-white border-t border-white/10 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.45)]">
+        <div className="container-amis py-3 flex items-center gap-3">
+          <div className="flex-1 min-w-0">
+            <p className="text-[11px] text-white/60 truncate leading-tight">{name}</p>
+            <p className="font-mono text-lg font-semibold tabular-nums text-(--color-brand-yellow) leading-tight">
+              {formatMoneyCents(product.price_cents)}
+            </p>
+          </div>
+          <a
+            href="#add-to-cart"
+            className="shrink-0 inline-flex items-center gap-1.5 px-5 h-11 rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-white transition-colors duration-[200ms]"
+          >
+            Toevoegen
+          </a>
+        </div>
+      </div>
+      {/* Spacer so sticky bar doesn't cover content */}
+      <div className="md:hidden h-[68px]" aria-hidden />
     </>
   );
 }
