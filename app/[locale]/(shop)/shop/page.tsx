@@ -6,6 +6,7 @@ import { FilterSidebar } from '@/components/shop/filter-sidebar';
 import { FilterBottomSheet } from '@/components/shop/filter-bottom-sheet';
 import { ActiveFilterPills } from '@/components/shop/active-filter-pills';
 import { SortDropdown } from '@/components/shop/sort-dropdown';
+import { BuildYourOwnBanner } from '@/components/shop/build-your-own-banner';
 import { listProducts } from '@/lib/data/products';
 import { parseFiltersFromSearchParams } from '@/lib/shop/filters';
 import { maybeSlow } from '@/lib/utils/slow-mode';
@@ -42,6 +43,8 @@ export default async function ShopPage({
 
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 md:py-16">
+      <BuildYourOwnBanner />
+
       <header className="mb-10 lg:mb-14">
         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-500 mb-4">
           Menu
