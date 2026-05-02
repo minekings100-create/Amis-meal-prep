@@ -36,16 +36,16 @@ export function AmisStandard() {
             <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-stone-500 mb-3">
               {t('lineMuted')}
             </p>
-            <h3 className="font-bold uppercase tracking-tight text-white text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
+            <h3 className="font-bold uppercase tracking-tight text-white text-4xl md:text-5xl leading-[0.95]">
               {t('lineDark')}
             </h3>
           </header>
         </RevealSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10 items-stretch">
           {VALUES.map((v, i) => (
-            <RevealSection key={v.titleKey} delay={i * 0.08}>
-              <div>
+            <RevealSection key={v.titleKey} delay={i * 0.08} className="h-full">
+              <div className="h-full">
                 <div className="h-10 w-10 rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) inline-flex items-center justify-center mb-5">
                   <Check className="h-5 w-5" strokeWidth={3} />
                 </div>

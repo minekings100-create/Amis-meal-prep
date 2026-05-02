@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { ArrowRight, Flame } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
 import { ProductCard } from '@/components/shop/product-card';
 import { RevealSection } from '@/components/layout/reveal-section';
@@ -158,30 +158,32 @@ export default async function HomePage({
       </section>
 
       {/* HOT MENU — quick teaser, intentionally subtler than a hero moment */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-12 md:py-16">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-20">
         <RevealSection>
-          <div className="mb-8 md:mb-10">
-            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-(--color-brand-yellow-deep) mb-3">
-              <Flame className="h-3.5 w-3.5 text-(--color-brand-yellow)" />
+          <div className="mb-10 md:mb-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-(--color-brand-yellow-deep) mb-3">
               {t('menu.subtitle')}
             </p>
             <h2 className="text-3xl md:text-4xl tracking-[-0.025em] font-bold text-stone-900">
               {t('menu.title')}
             </h2>
-            <span aria-hidden className="block h-1 w-12 rounded-full bg-(--color-brand-yellow) mt-3" />
+            <span
+              aria-hidden
+              className="block h-1 w-16 rounded-full bg-(--color-brand-yellow) mt-4"
+            />
           </div>
         </RevealSection>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-fr">
           {featured.slice(0, 3).map((p, i) => (
             <RevealSection key={p.id} delay={i * 0.1} className="h-full">
               <ProductCard product={p} compact />
             </RevealSection>
           ))}
         </div>
-        <div className="mt-8 text-center">
+        <div className="mt-10 text-center">
           <Link
             href="/shop"
-            className="inline-flex items-center gap-1.5 text-sm text-stone-700 hover:text-stone-900 transition-colors font-medium underline-offset-4 hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm text-stone-700 hover:text-(--color-brand-black) transition-colors font-medium underline-offset-4 hover:underline"
           >
             {t('menu.viewAll')} <ArrowRight className="h-3.5 w-3.5" />
           </Link>
@@ -192,33 +194,31 @@ export default async function HomePage({
       <section className="relative bg-(--color-brand-black) text-white py-20 md:py-24 overflow-hidden">
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 h-[420px] w-[420px] rounded-full bg-(--color-brand-yellow)/10 blur-3xl"
+          className="pointer-events-none absolute -right-24 top-1/2 -translate-y-1/2 h-[420px] w-[420px] rounded-full bg-(--color-brand-yellow)/[0.05] blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-32 top-1/2 -translate-y-1/2 h-[260px] w-[260px] rounded-full border border-(--color-brand-yellow)/20"
+          className="pointer-events-none absolute -right-32 top-1/2 -translate-y-1/2 h-[260px] w-[260px] rounded-full border border-(--color-brand-yellow)/15"
         />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-12 items-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
           <RevealSection>
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-(--color-brand-yellow) mb-4">
-                Performance fuel
-              </p>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.025em] leading-[1.05] text-white">
-                Wij koken,{' '}
-                <span className="text-(--color-brand-yellow)">jij traint.</span>
-              </h2>
-              <p className="text-white/70 mt-6 text-lg max-w-xl leading-relaxed">
-                Hoog-eiwit, vers bereid, klaar in 4 minuten. Zonder gedoe, zonder tijdverlies —
-                gewoon goed eten dat werkt voor je doel.
-              </p>
-            </div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-(--color-brand-yellow) mb-4">
+              Performance fuel
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.025em] leading-[1.05] text-white">
+              Wij koken,{' '}
+              <span className="text-(--color-brand-yellow)">jij traint.</span>
+            </h2>
+            <p className="text-white/70 mt-6 text-lg max-w-2xl mx-auto leading-relaxed">
+              Hoog-eiwit, vers bereid, klaar in 4 minuten. Zonder gedoe, zonder tijdverlies —
+              gewoon goed eten dat werkt voor je doel.
+            </p>
           </RevealSection>
           <RevealSection delay={0.1}>
-            <div className="flex lg:justify-end">
+            <div className="mt-8 flex justify-center">
               <Link
                 href="/over-ons"
-                className="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-black) hover:text-(--color-brand-yellow) hover:ring-2 hover:ring-(--color-brand-yellow) transition-colors duration-[250ms]"
+                className="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-white transition-colors duration-[250ms]"
               >
                 Hoe het werkt <ArrowRight className="h-4 w-4" />
               </Link>
@@ -288,14 +288,14 @@ export default async function HomePage({
       </section>
 
       {/* YELLOW BANNER — pre-footer, simple time-saving pitch */}
-      <section className="bg-(--color-brand-yellow) text-(--color-brand-black) py-14 md:py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center">
+      <section className="bg-(--color-brand-yellow) text-(--color-brand-black) py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center">
           <RevealSection>
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.025em] leading-[1.05]">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.025em] leading-[1.05]">
                 Geen tijd? Wij wel.
               </h2>
-              <p className="mt-4 text-base md:text-lg max-w-xl text-(--color-brand-black)/80">
+              <p className="mt-3 text-base md:text-lg max-w-xl text-(--color-brand-black)/80">
                 Bestel nu een weekpakket en je hebt 7 dagen geen kookzorg.
               </p>
             </div>
