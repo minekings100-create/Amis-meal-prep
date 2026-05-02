@@ -49,12 +49,12 @@ export function ProductCard({ product }: { product: Product }) {
         href={`/shop/${product.slug}`}
         className="flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2 rounded-2xl"
       >
-        <div className="relative flex flex-1 flex-col bg-white border border-stone-200 rounded-2xl p-5 md:p-6 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_18px_44px_-20px_rgba(19,22,19,0.18)] group-hover:border-(--color-brand-yellow-bright)/40">
+        <div className="relative flex flex-1 flex-col bg-white border border-stone-200 rounded-2xl p-5 md:p-6 shadow-sm transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-xl group-hover:border-(--color-brand-black)">
           {/* Corner badge: at most one (sale > limited > new > bestseller). */}
           <CornerBadge product={product} />
 
           {showTypePill && (
-            <span className="absolute top-3 right-14 z-10 inline-flex items-center px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] rounded-full bg-stone-100 text-stone-700 border border-stone-200">
+            <span className="absolute top-3 right-14 z-10 inline-flex items-center px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] rounded bg-stone-900 text-white">
               {typeLabel}
             </span>
           )}
@@ -81,8 +81,15 @@ export function ProductCard({ product }: { product: Product }) {
 
 
           {/* Plate-circle: visual element inside the rectangular card. Aspect-square so
-              the plate height stays identical regardless of badge / name length. */}
-          <div className="relative aspect-square w-full max-w-[300px] mx-auto rounded-full overflow-hidden bg-stone-50 ring-1 ring-stone-100">
+              the plate height stays identical regardless of badge / name length.
+              Subtle radial wash + yellow ring on hover for warm AMIS glow. */}
+          <div
+            className="relative aspect-square w-full max-w-[300px] mx-auto rounded-full overflow-hidden ring-1 ring-stone-100 transition-all duration-300 group-hover:ring-2 group-hover:ring-(--color-brand-yellow) group-hover:ring-offset-2 group-hover:ring-offset-white"
+            style={{
+              background:
+                'radial-gradient(circle at 50% 35%, #ffffff 0%, #f7f7f5 100%)',
+            }}
+          >
             {product.image_url && (
               <Image
                 src={product.image_url}
@@ -122,7 +129,7 @@ export function ProductCard({ product }: { product: Product }) {
 
             {/* Macros grid — full labels, mono numbers */}
             {product.kcal !== null && (
-              <div className="mt-4 grid grid-cols-4 border border-stone-200 rounded-xl overflow-hidden">
+              <div className="mt-4 grid grid-cols-4 bg-stone-50 border border-stone-200 rounded-xl overflow-hidden">
                 <MacroCell
                   label={t('macroProtein')}
                   value={product.protein_g}
@@ -140,11 +147,11 @@ export function ProductCard({ product }: { product: Product }) {
                 the Add button on package cards. */}
             <div className="mt-auto pt-5 space-y-3">
               <div className="flex items-baseline gap-2 flex-wrap">
-                <span className="font-mono text-xl font-semibold tabular-nums">
+                <span className="font-mono text-2xl font-semibold tabular-nums text-stone-900">
                   {formatMoneyCents(product.price_cents)}
                 </span>
                 {onSale && (
-                  <span className="font-mono text-sm text-stone-500 line-through tabular-nums">
+                  <span className="font-mono text-base text-stone-400 line-through tabular-nums">
                     {formatMoneyCents(product.compare_at_price_cents!)}
                   </span>
                 )}
@@ -162,7 +169,7 @@ export function ProductCard({ product }: { product: Product }) {
                   onClick={handleAdd}
                   disabled={outOfStock}
                   aria-label={`${t('addToCart')} — ${name}`}
-                  className="shrink-0 inline-flex items-center gap-1.5 px-4 h-10 rounded-full bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 active:scale-95 transition-all duration-200 ease-out disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2"
+                  className="shrink-0 inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full font-semibold text-sm bg-(--color-brand-black) text-white hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) transition-colors duration-[250ms] ease-out active:scale-95 disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2"
                 >
                   <Plus className="h-4 w-4" strokeWidth={2.5} />
                   <span>{t('addToCart')}</span>
@@ -189,13 +196,11 @@ function MacroCell({
 }) {
   return (
     <div className="px-2 py-2.5 text-center border-r border-stone-200 last:border-r-0">
-      <div className="text-[9px] font-semibold uppercase tracking-[0.14em] text-stone-500">
-        {label}
-      </div>
+      <div className="text-[9px] font-semibold uppercase tracking-wide text-stone-500">{label}</div>
       <div
         className={
           'font-mono text-sm font-semibold tabular-nums mt-0.5 ' +
-          (accent ? 'text-(--color-brand-yellow)' : 'text-stone-900')
+          (accent ? 'text-(--color-brand-yellow-deep)' : 'text-stone-900')
         }
       >
         {value ?? '–'}

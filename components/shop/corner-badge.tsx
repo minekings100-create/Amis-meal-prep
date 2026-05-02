@@ -54,7 +54,9 @@ export function CornerBadge({
   switch (picked.kind) {
     case 'sale':
       return (
-        <span className={cn(baseClasses, 'bg-red-600 text-white')}>−{picked.salePct}%</span>
+        <span className={cn(baseClasses, 'bg-(--color-brand-yellow) text-(--color-brand-black)')}>
+          −{picked.salePct}%
+        </span>
       );
     case 'limited':
       return (
