@@ -186,13 +186,18 @@ export default async function HomePage({
 
       {/* TESTIMONIALS */}
       <section className="bg-stone-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-20">
           <RevealSection>
-            <h2 className="text-3xl md:text-4xl tracking-[-0.03em] font-semibold mb-12 text-white">
-              {t('testimonials.title')}
-            </h2>
+            <div className="mb-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-(--color-accent-bright) mb-2">
+                Stemmen uit de community
+              </p>
+              <h2 className="text-2xl md:text-3xl tracking-[-0.025em] font-semibold text-white">
+                {t('testimonials.title')}
+              </h2>
+            </div>
           </RevealSection>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
             {[
               {
                 quote:
@@ -213,14 +218,20 @@ export default async function HomePage({
                 role: 'Hardloper',
               },
             ].map((q, i) => (
-              <RevealSection key={i} delay={i * 0.1}>
-                <figure className="border-t border-white/15 pt-6">
-                  <blockquote className="text-lg leading-relaxed text-white/90">
-                    &ldquo;{q.quote}&rdquo;
+              <RevealSection key={i} delay={i * 0.08}>
+                <figure className="relative h-full rounded-2xl bg-white/[0.04] border border-white/10 p-6 md:p-7">
+                  <span
+                    aria-hidden
+                    className="absolute top-4 right-5 text-5xl leading-none text-(--color-accent-bright)/40 font-serif"
+                  >
+                    &ldquo;
+                  </span>
+                  <blockquote className="text-base md:text-lg leading-relaxed text-white/90">
+                    {q.quote}
                   </blockquote>
-                  <figcaption className="mt-6 flex items-center gap-3 text-sm">
+                  <figcaption className="mt-6 pt-4 border-t border-white/10 flex items-center gap-3 text-sm">
                     <span className="font-medium text-white">{q.name}</span>
-                    <span className="text-white/40">·</span>
+                    <span className="text-white/30">·</span>
                     <span className="text-white/60">{q.role}</span>
                   </figcaption>
                 </figure>
@@ -235,8 +246,8 @@ export default async function HomePage({
 
 function HeroStat({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col items-start justify-center px-6 lg:px-8 py-5 md:py-6">
-      <dt className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-white/70 order-2 mt-1">
+    <div className="min-w-0 flex flex-col items-start justify-center px-5 sm:px-6 lg:px-8 py-5 md:py-6">
+      <dt className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-white/70 order-2 mt-1 truncate max-w-full">
         {label}
       </dt>
       <dd className="font-mono text-2xl sm:text-3xl font-bold tabular-nums text-white leading-tight order-1">

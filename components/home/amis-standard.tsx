@@ -21,11 +21,11 @@ export function AmisStandard() {
   const t = useTranslations('amisStandard');
 
   return (
-    <section className="bg-[#f7f7f5] py-20 md:py-28">
+    <section className="bg-[#f7f7f5] py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <RevealSection>
-          <header className="mb-12 md:mb-16">
-            <h2 className="font-bold uppercase tracking-tight text-stone-400 text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
+          <header className="mb-10 md:mb-14">
+            <h2 className="font-bold uppercase tracking-tight text-stone-300 text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
               {t('lineMuted')}
             </h2>
             <h3 className="font-bold uppercase tracking-tight text-stone-900 text-4xl md:text-5xl lg:text-6xl leading-[0.95] mt-1">
