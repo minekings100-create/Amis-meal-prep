@@ -123,7 +123,7 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
 
           {/* Product name */}
-          <h3 className="mt-4 font-semibold text-lg tracking-tight text-stone-900 line-clamp-2 group-hover:text-(--color-brand-yellow) transition-colors">
+          <h3 className="mt-4 font-semibold text-lg tracking-tight text-stone-900 line-clamp-2 group-hover:text-(--color-brand-black) transition-colors">
             {name}
           </h3>
 
@@ -166,7 +166,7 @@ export function ProductCard({ product }: { product: Product }) {
               onClick={handleAdd}
               disabled={outOfStock}
               aria-label={`${t('addToCart')} — ${name}`}
-              className="shrink-0 inline-flex items-center gap-1.5 px-4 h-10 rounded-full bg-(--color-brand-yellow-bright) text-(--color-ink) font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) active:scale-95 transition-all duration-200 ease-out disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2"
+              className="shrink-0 inline-flex items-center gap-1.5 px-4 h-10 rounded-full bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-stone-800 active:scale-95 transition-all duration-200 ease-out disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2"
             >
               <Plus className="h-4 w-4" strokeWidth={2.5} />
               <span>{t('addToCart')}</span>

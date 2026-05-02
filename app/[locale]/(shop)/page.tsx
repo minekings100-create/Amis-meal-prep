@@ -174,7 +174,7 @@ export default async function HomePage({
         <div className="mt-8 text-center">
           <Link
             href="/shop"
-            className="inline-flex items-center gap-1.5 text-sm text-stone-700 hover:text-(--color-brand-yellow) transition-colors font-medium underline-offset-4 hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm text-stone-700 hover:text-stone-900 transition-colors font-medium underline-offset-4 hover:underline"
           >
             {t('menu.viewAll')} <ArrowRight className="h-3.5 w-3.5" />
           </Link>

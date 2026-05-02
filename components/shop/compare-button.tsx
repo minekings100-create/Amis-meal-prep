@@ -42,7 +42,7 @@ export function CompareButton({ item, className }: { item: CompareItem; classNam
       className={cn(
         'inline-flex h-8 w-8 items-center justify-center rounded-full border bg-white/90 backdrop-blur transition-all',
         checked
-          ? 'border-(--color-brand-yellow) bg-(--color-brand-black) text-white shadow-sm'
+          ? 'border-(--color-brand-yellow-deep) bg-(--color-brand-yellow) text-(--color-brand-black) shadow-sm'
           : 'border-stone-200 text-stone-600 hover:border-stone-400 hover:text-stone-900',
         className,
       )}
