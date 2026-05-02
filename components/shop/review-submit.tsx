@@ -42,7 +42,7 @@ export function ReviewSubmit({
       <Card>
         <p className="text-sm text-stone-700">
           Alleen klanten die dit product besteld hebben kunnen reviewen.{' '}
-          <Link href="/shop" className="text-(--color-brand-yellow) hover:underline">
+          <Link href="/shop" className="text-stone-900 underline underline-offset-2 hover:text-(--color-brand-black)">
             Bekijk producten
           </Link>
         </p>
@@ -119,11 +119,11 @@ function SubmitForm({
   return (
     <Card>
       <div className="flex items-center gap-2 mb-4">
-        <ShieldCheck className="h-4 w-4 text-(--color-brand-yellow)" />
+        <ShieldCheck className="h-4 w-4 text-stone-700" />
         <p className="text-sm font-semibold text-stone-900">
           {editingExisting ? 'Bewerk je review' : 'Schrijf een review'}
         </p>
-        <span className="ml-auto text-[10px] uppercase tracking-wider font-bold text-(--color-brand-yellow) bg-(--color-brand-yellow-bright)/15 px-2 py-0.5 rounded-full">
+        <span className="ml-auto text-[10px] uppercase tracking-wider font-bold text-white bg-(--color-brand-black) px-2 py-0.5 rounded-full">
           Verified
         </span>
       </div>
@@ -199,9 +199,9 @@ function SubmitForm({
 
       {error && <p className="text-sm text-red-600 mb-3">{error}</p>}
       {success && (
-        <div className="rounded-md bg-(--color-brand-yellow-bright)/15 border border-(--color-brand-yellow-bright)/30 px-3 py-2 mb-3 inline-flex items-center gap-2">
-          <Check className="h-3.5 w-3.5 text-(--color-brand-yellow)" />
-          <span className="text-sm text-(--color-brand-yellow) font-medium">{success}</span>
+        <div className="rounded-md bg-emerald-50 border border-emerald-200 px-3 py-2 mb-3 inline-flex items-center gap-2">
+          <Check className="h-3.5 w-3.5 text-emerald-700" />
+          <span className="text-sm text-emerald-800 font-medium">{success}</span>
         </div>
       )}
 
@@ -252,13 +252,13 @@ function ReviewStatePill({ existing }: { existing: NonNullable<ReviewEligibility
   }
   if (existing.isPublished) {
     return (
-      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border border-(--color-brand-yellow-bright)/30">
+      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
         Gepubliceerd
       </span>
     );
   }
   return (
-    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-amber-100 text-amber-800 border border-amber-200">
+    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-(--color-brand-yellow-soft) text-(--color-brand-yellow-deep) border border-(--color-brand-yellow)">
       In review
     </span>
   );
