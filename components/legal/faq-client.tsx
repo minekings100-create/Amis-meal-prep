@@ -254,7 +254,7 @@ export function FaqClient({ locale }: { locale: 'nl' | 'en' }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-12">
         <aside className="hidden lg:block">
-          <nav className="sticky top-24 space-y-1.5">
+          <nav className="sticky top-24 space-y-1">
             <p className="text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-3">
               {locale === 'en' ? 'Topics' : 'Categorieën'}
             </p>
@@ -262,15 +262,32 @@ export function FaqClient({ locale }: { locale: 'nl' | 'en' }) {
               <a
                 key={cat.id}
                 href={`#${cat.id}`}
-                className="block text-sm text-stone-600 hover:text-stone-900 transition-colors"
+                className="group flex items-center justify-between gap-3 text-sm text-stone-600 hover:text-(--color-accent) transition-colors py-1"
               >
-                {cat.title}
+                <span>{cat.title}</span>
+                <span className="font-mono text-[10px] text-stone-400 group-hover:text-(--color-accent)/70 tabular-nums">
+                  {cat.items.length}
+                </span>
               </a>
             ))}
           </nav>
         </aside>
 
         <div>
+          {/* Mobile: horizontal pill nav for quick jumps */}
+          <nav className="lg:hidden -mx-1 px-1 mb-6 flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {data.map((cat) => (
+              <a
+                key={cat.id}
+                href={`#${cat.id}`}
+                className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-200 bg-white text-xs font-medium text-stone-700 hover:border-(--color-accent-bright)/40 hover:text-(--color-accent) transition-colors whitespace-nowrap"
+              >
+                {cat.title}
+                <span className="font-mono text-[10px] text-stone-400">{cat.items.length}</span>
+              </a>
+            ))}
+          </nav>
+
           <div className="relative mb-8">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400" />
             <input
@@ -278,7 +295,7 @@ export function FaqClient({ locale }: { locale: 'nl' | 'en' }) {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={locale === 'en' ? 'Search the FAQ…' : 'Zoek in de FAQ…'}
-              className="h-12 w-full pl-11 pr-4 rounded-2xl border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent-bright)/30"
+              className="h-12 w-full pl-11 pr-4 rounded-2xl border border-stone-200 bg-white text-sm transition-colors hover:border-stone-300 focus:outline-none focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent-bright)/30"
             />
           </div>
 
@@ -307,17 +324,29 @@ export function FaqClient({ locale }: { locale: 'nl' | 'en' }) {
 function FaqRow({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <li className="rounded-2xl border border-stone-200 bg-white">
+    <li
+      className={cn(
+        'rounded-2xl border bg-white transition-colors',
+        open ? 'border-(--color-accent-bright)/40' : 'border-stone-200 hover:border-stone-300',
+      )}
+    >
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left"
+        className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left group"
       >
-        <span className="font-medium text-stone-900">{q}</span>
+        <span
+          className={cn(
+            'font-medium transition-colors',
+            open ? 'text-(--color-accent)' : 'text-stone-900 group-hover:text-stone-700',
+          )}
+        >
+          {q}
+        </span>
         <ChevronDown
           className={cn(
-            'h-4 w-4 text-stone-500 shrink-0 transition-transform',
-            open && 'rotate-180',
+            'h-4 w-4 shrink-0 transition-all',
+            open ? 'rotate-180 text-(--color-accent)' : 'text-stone-400 group-hover:text-stone-600',
           )}
         />
       </button>
