@@ -60,7 +60,7 @@ export default function CartPage() {
                 <div className="flex-1 min-w-0 flex flex-col">
                   <Link
                     href={`/shop/${line.slug}`}
-                    className="font-medium text-stone-900 hover:text-(--color-brand-yellow) transition-colors leading-tight"
+                    className="font-medium text-stone-900 hover:text-(--color-brand-black) transition-colors leading-tight"
                   >
                     {line.name}
                   </Link>
@@ -136,7 +136,7 @@ export default function CartPage() {
             </Link>
             <Link
               href="/shop"
-              className="mt-2 block text-center text-xs text-stone-500 hover:text-stone-900 transition-colors"
+              className="mt-2 block text-center text-xs text-stone-600 hover:text-(--color-brand-black) transition-colors"
             >
               {t('continueShopping')}
             </Link>

@@ -140,7 +140,7 @@ export function CartDrawer() {
                         <Link
                           href={`/shop/${line.slug}`}
                           onClick={close}
-                          className="font-medium text-sm text-stone-900 hover:text-(--color-brand-yellow) transition-colors truncate block leading-tight"
+                          className="font-medium text-sm text-stone-900 hover:text-(--color-brand-black) transition-colors truncate block leading-tight"
                         >
                           {line.name}
                         </Link>
@@ -272,7 +272,7 @@ function Footer({
       <button
         type="button"
         onClick={onClose}
-        className="block w-full text-center text-xs text-stone-500 hover:text-stone-900 transition-colors"
+        className="block w-full text-center text-xs text-stone-600 hover:text-(--color-brand-black) transition-colors"
       >
         {continueLabel}
       </button>
