@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
+import { AnimatePresence } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
-import { Plus } from 'lucide-react';
+import { Plus, Activity } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
 import type { Product } from '@/types/database';
 import { formatMoneyTight } from '@/lib/utils/money';
@@ -12,12 +14,23 @@ import { GoalBadge } from './goal-badge';
 import { AttributeBadges } from './attribute-badges';
 import { CompareButton } from './compare-button';
 import { CornerBadge, pickCornerKind } from './corner-badge';
+import { MacrosOverlay } from './macros-overlay';
 import type { AttributeTag } from '@/types/database';
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  compact = false,
+}: {
+  product: Product;
+  /** Compact variant — used on the homepage Hot deze week. Drops the
+   *  inline macros grid in favour of a "Bekijk macros" link that opens
+   *  an in-card overlay. Card ends up ~30% shorter. */
+  compact?: boolean;
+}) {
   const t = useTranslations('shop.card');
   const locale = useLocale() as 'nl' | 'en';
   const add = useCart((s) => s.add);
+  const [macrosOpen, setMacrosOpen] = useState(false);
 
   const name = locale === 'en' ? product.name_en : product.name_nl;
   const outOfStock = product.stock <= 0;
@@ -60,6 +73,20 @@ export function ProductCard({ product }: { product: Product }) {
         className="flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2 rounded-2xl"
       >
         <div className="relative flex flex-1 flex-col bg-white border border-stone-200 rounded-2xl p-5 md:p-6 shadow-sm transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-xl group-hover:border-(--color-brand-black)">
+          {/* Macros overlay — sits inside the card on top of the content,
+              triggered from the "Bekijk macros" link in compact mode. */}
+          <AnimatePresence>
+            {compact && macrosOpen && (
+              <MacrosOverlay
+                open={macrosOpen}
+                onClose={() => setMacrosOpen(false)}
+                proteinG={product.protein_g}
+                carbsG={product.carbs_g}
+                fatG={product.fat_g}
+                kcal={product.kcal}
+              />
+            )}
+          </AnimatePresence>
           {/* Corner badge: at most one (sale > limited > new > bestseller). */}
           <CornerBadge product={product} />
 
@@ -143,8 +170,9 @@ export function ProductCard({ product }: { product: Product }) {
               {name}
             </h3>
 
-            {/* Macros grid — full labels, mono numbers */}
-            {product.kcal !== null && (
+            {/* Macros: full inline grid in default variant; "Bekijk macros"
+                link in compact variant (overlay opens via setMacrosOpen). */}
+            {product.kcal !== null && !compact && (
               <div className="mt-4 grid grid-cols-4 bg-stone-50 border border-stone-200 rounded-xl overflow-hidden">
                 <MacroCell
                   label={t('macroProtein')}
@@ -156,6 +184,21 @@ export function ProductCard({ product }: { product: Product }) {
                 <MacroCell label={t('macroFat')} value={product.fat_g} unit="g" />
                 <MacroCell label={t('macroKcal')} value={product.kcal} />
               </div>
+            )}
+            {product.kcal !== null && compact && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setMacrosOpen(true);
+                }}
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-stone-700 hover:text-(--color-brand-black) transition-colors self-start"
+              >
+                <Activity className="h-3.5 w-3.5" />
+                Bekijk macros
+                <span aria-hidden>→</span>
+              </button>
             )}
 
             {/* Footer: pinned to the bottom via mt-auto. Sora light for the
