@@ -128,15 +128,21 @@ export function MobileMenu({ open, onOpenChange, transparent, isAuthed }: Mobile
                     const active =
                       pathname === item.href || pathname?.startsWith(item.href + '/') === true;
                     return (
-                      <li key={item.href}>
+                      <li key={item.href} className="relative">
+                        {active && (
+                          <span
+                            aria-hidden
+                            className="absolute -left-3 top-1/2 -translate-y-1/2 h-6 w-0.5 rounded-full bg-(--color-brand-yellow)"
+                          />
+                        )}
                         <Link
                           href={item.href}
                           onClick={() => onOpenChange(false)}
                           className={cn(
                             'flex items-center justify-between gap-3 py-4 text-lg border-b border-stone-100 transition-colors',
                             active
-                              ? 'text-(--color-brand-yellow) font-semibold'
-                              : 'text-stone-900 hover:text-(--color-brand-yellow)',
+                              ? 'text-(--color-brand-black) font-semibold'
+                              : 'text-stone-900',
                           )}
                         >
                           {item.label}
@@ -144,7 +150,7 @@ export function MobileMenu({ open, onOpenChange, transparent, isAuthed }: Mobile
                             className={cn(
                               'h-4 w-4 transition-all',
                               active
-                                ? 'text-(--color-brand-yellow) translate-x-0.5'
+                                ? 'text-(--color-brand-black) translate-x-0.5'
                                 : 'text-stone-300',
                             )}
                           />

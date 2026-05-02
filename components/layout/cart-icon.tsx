@@ -46,12 +46,7 @@ export function CartIcon({
       {icon}
       {count > 0 && (
         <span
-          className={cn(
-            'absolute -top-0.5 -right-0.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full text-[10px] font-semibold px-1 tabular-nums',
-            transparent
-              ? 'bg-(--color-brand-yellow-bright) text-stone-900'
-              : 'bg-(--color-brand-black) text-white',
-          )}
+          className="absolute -top-0.5 -right-0.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full text-[10px] font-semibold px-1 tabular-nums bg-(--color-brand-yellow) text-(--color-brand-black)"
         >
           {count}
         </span>
