@@ -105,7 +105,7 @@ export default async function HomePage({
                       {chunks}
                       <span
                         aria-hidden
-                        className="absolute -bottom-1 left-0 right-0 h-[6px] bg-(--color-brand-yellow-bright)"
+                        className="absolute -bottom-1 left-0 right-0 h-[6px] bg-(--color-brand-yellow)"
                       />
                     </span>
                   ),
@@ -117,14 +117,14 @@ export default async function HomePage({
               <div className="flex flex-wrap items-center gap-3">
                 <Link
                   href="/shop"
-                  className="inline-flex items-center gap-2 rounded-full bg-(--color-brand-yellow-bright) px-7 h-12 font-semibold text-stone-900 transition-all duration-200 hover:bg-white hover:gap-3 active:scale-95"
+                  className="inline-flex items-center gap-2 rounded-full bg-(--color-brand-yellow) px-7 h-12 font-semibold text-(--color-brand-black) transition-all duration-200 hover:bg-(--color-brand-yellow-bright) hover:gap-3 active:scale-95"
                 >
                   {t('hero.ctaShop')}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/over-ons"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/5 backdrop-blur px-7 h-12 font-semibold text-white transition-all duration-200 hover:bg-white hover:text-stone-900 active:scale-95"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/5 backdrop-blur px-7 h-12 font-semibold text-white transition-all duration-200 hover:bg-white hover:text-(--color-brand-black) active:scale-95"
                 >
                   {t('hero.ctaHowItWorks')}
                 </Link>
