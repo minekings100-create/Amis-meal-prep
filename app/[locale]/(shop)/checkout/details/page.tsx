@@ -89,7 +89,7 @@ export default function CheckoutDetailsPage() {
               <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em]">Bezorggegevens</h1>
               <Link
                 href={`/account/login?next=${encodeURIComponent('/checkout/details')}`}
-                className="text-sm text-(--color-brand-yellow) hover:underline whitespace-nowrap"
+                className="text-sm text-stone-700 hover:text-(--color-brand-black) underline underline-offset-2 whitespace-nowrap"
               >
                 Heb je al een account?
               </Link>
@@ -185,12 +185,12 @@ export default function CheckoutDetailsPage() {
             </div>
 
             {validPostalCode && isLocal && (
-              <div className="rounded-md bg-(--color-brand-yellow-bright)/10 border border-(--color-brand-yellow-bright)/30 px-4 py-2.5 flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-(--color-brand-yellow)" />
-                <span className="text-sm text-(--color-brand-yellow) font-medium">
+              <div className="rounded-md bg-(--color-brand-yellow-soft) border border-(--color-brand-yellow) px-4 py-2.5 flex items-center gap-2">
+                <MapPin className="h-4 w-4 text-(--color-brand-yellow-deep)" />
+                <span className="text-sm text-(--color-brand-yellow-deep) font-medium">
                   Lokale bezorging beschikbaar
                 </span>
-                <span className="ml-auto text-[10px] uppercase tracking-wider font-bold text-(--color-brand-yellow)">
+                <span className="ml-auto inline-flex items-center px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-bold bg-(--color-brand-yellow) text-(--color-brand-black)">
                   Maastricht
                 </span>
               </div>

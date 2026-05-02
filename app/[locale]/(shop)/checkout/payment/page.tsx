@@ -156,7 +156,7 @@ export default function CheckoutPaymentPage() {
                 className={cn(
                   'w-full text-left rounded-2xl border-2 transition-all p-4 flex items-center gap-3',
                   paymentMethod === option.key
-                    ? 'border-(--color-brand-yellow) bg-(--color-brand-yellow-bright)/10'
+                    ? 'border-(--color-brand-black) bg-stone-50'
                     : 'border-stone-200 bg-white hover:border-stone-300',
                 )}
               >
@@ -167,7 +167,7 @@ export default function CheckoutPaymentPage() {
                 </div>
                 <div className={cn(
                   'h-5 w-5 shrink-0 rounded-full border-2 inline-flex items-center justify-center',
-                  paymentMethod === option.key ? 'border-(--color-brand-yellow) bg-(--color-brand-yellow)' : 'border-stone-300 bg-white',
+                  paymentMethod === option.key ? 'border-(--color-brand-black) bg-(--color-brand-black)' : 'border-stone-300 bg-white',
                 )}>
                   {paymentMethod === option.key && <Check className="h-3 w-3 text-white" />}
                 </div>
@@ -181,7 +181,7 @@ export default function CheckoutPaymentPage() {
               type="checkbox"
               checked={termsAccepted}
               onChange={(e) => setTermsAccepted(e.target.checked)}
-              className="mt-1 h-4 w-4 rounded border-stone-300 text-(--color-brand-yellow) focus:ring-(--color-brand-yellow-bright)"
+              className="mt-1 h-4 w-4 rounded border-stone-300 text-(--color-brand-black) focus:ring-(--color-brand-yellow-bright)"
             />
             <span className="text-sm text-stone-700">
               Ik ga akkoord met de{' '}
@@ -258,7 +258,7 @@ function SummaryCard({
     <div className="rounded-2xl border border-stone-200 bg-white p-4">
       <div className="flex items-baseline justify-between mb-2">
         <p className="text-[11px] font-bold uppercase tracking-wider text-stone-500">{title}</p>
-        <Link href={editHref} className="text-xs text-(--color-brand-yellow) hover:underline">
+        <Link href={editHref} className="text-xs text-stone-600 hover:text-(--color-brand-black) underline underline-offset-2">
           Wijzig
         </Link>
       </div>

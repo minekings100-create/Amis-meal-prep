@@ -42,10 +42,10 @@ export function StepIndicator({ active }: { active: CheckoutStep }) {
                   className={cn(
                     'relative z-10 inline-flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full text-xs md:text-sm font-semibold transition-all',
                     isDone
-                      ? 'bg-(--color-brand-black) text-white shadow-[0_4px_16px_-4px_rgba(10,10,10,0.35)] hover:bg-stone-800'
+                      ? 'bg-(--color-brand-yellow) text-(--color-brand-black) hover:bg-(--color-brand-yellow-bright)'
                       : isActive
                         ? 'bg-(--color-brand-black) text-white ring-4 ring-(--color-brand-yellow-bright)/30 shadow-[0_4px_16px_-4px_rgba(10,10,10,0.35)]'
-                        : 'bg-white border-2 border-stone-200 text-stone-400',
+                        : 'bg-stone-200 text-stone-500',
                   )}
                 >
                   {isDone ? <Check className="h-4 w-4" /> : step.index}
@@ -56,7 +56,7 @@ export function StepIndicator({ active }: { active: CheckoutStep }) {
                     isActive
                       ? 'text-stone-900'
                       : isDone
-                        ? 'text-(--color-brand-yellow)'
+                        ? 'text-(--color-brand-yellow-deep)'
                         : 'text-stone-500',
                   )}
                 >

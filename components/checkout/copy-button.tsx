@@ -23,8 +23,8 @@ export function CopyButton({ value, label }: { value: string; label?: string }) 
     >
       {copied ? (
         <>
-          <Check className="h-3 w-3 text-(--color-brand-yellow)" />
-          <span className="text-(--color-brand-yellow) font-medium">Gekopieerd</span>
+          <Check className="h-3 w-3 text-emerald-700" />
+          <span className="text-emerald-700 font-medium">Gekopieerd</span>
         </>
       ) : (
         <>
