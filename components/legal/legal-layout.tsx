@@ -40,10 +40,31 @@ export function LegalLayout({
 
   return (
     <div className="container-amis py-12 md:py-20 max-w-6xl">
-      <header className="mb-10">
+      <header className="mb-8 md:mb-10">
         <h1 className="text-4xl md:text-5xl font-bold tracking-[-0.035em]">{title}</h1>
-        <p className="text-sm text-stone-500 mt-3 font-mono">Laatst bijgewerkt: {lastUpdated}</p>
+        <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-3 py-1 text-[11px] font-mono text-stone-600">
+          <span className="h-1.5 w-1.5 rounded-full bg-(--color-accent)" aria-hidden />
+          Laatst bijgewerkt: {lastUpdated}
+        </div>
       </header>
+
+      {/* Mobile: horizontal pill nav for section jumps */}
+      <nav className="lg:hidden -mx-1 px-1 mb-8 flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {sections.map((s) => (
+          <a
+            key={s.id}
+            href={`#${s.id}`}
+            className={cn(
+              'shrink-0 inline-flex items-center px-3 py-1.5 rounded-full border text-xs font-medium transition-colors whitespace-nowrap',
+              activeId === s.id
+                ? 'bg-(--color-accent-bright)/15 text-(--color-accent) border-(--color-accent-bright)/40'
+                : 'bg-white text-stone-700 border-stone-200 hover:border-stone-300',
+            )}
+          >
+            {s.title}
+          </a>
+        ))}
+      </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-12">
         <aside className="hidden lg:block">
@@ -53,7 +74,13 @@ export function LegalLayout({
             </p>
             <ul className="space-y-1.5">
               {sections.map((s) => (
-                <li key={s.id}>
+                <li key={s.id} className="relative">
+                  {activeId === s.id && (
+                    <span
+                      aria-hidden
+                      className="absolute -left-3 top-1.5 h-3 w-0.5 rounded-full bg-(--color-accent)"
+                    />
+                  )}
                   <a
                     href={`#${s.id}`}
                     className={cn(
