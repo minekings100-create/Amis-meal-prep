@@ -33,10 +33,10 @@ export function AmisStandard() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <RevealSection>
           <header className="mb-10 md:mb-14">
-            <h2 className="font-bold uppercase tracking-tight text-white/30 text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
+            <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-stone-500 mb-3">
               {t('lineMuted')}
-            </h2>
-            <h3 className="font-bold uppercase tracking-tight text-white text-4xl md:text-5xl lg:text-6xl leading-[0.95] mt-1">
+            </p>
+            <h3 className="font-bold uppercase tracking-tight text-white text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
               {t('lineDark')}
             </h3>
           </header>
