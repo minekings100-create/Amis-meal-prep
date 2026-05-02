@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils/cn';
 import { centsFromEuros } from '@/lib/utils/money';
 import { MainImageUpload, GalleryUpload } from './image-upload';
 import { PackageItemsSection, type MealOption } from './package-items';
+import { ProductPreview } from './product-preview';
 import {
   createProductAction,
   updateProductAction,
@@ -190,7 +191,7 @@ export function ProductForm({
   return (
     <div className="pb-32">
       {/* Top bar */}
-      <div className="flex items-center justify-between gap-3 mb-6">
+      <div className="flex items-center justify-between gap-3 mb-6 lg:max-w-[60%]">
         <div className="flex items-center gap-3 text-xs text-stone-500">
           <Link href="/admin" className="hover:text-stone-900">Admin</Link>
           <span>/</span>
@@ -221,8 +222,9 @@ export function ProductForm({
         )}
       </div>
 
-      <div className="space-y-5">
-        {/* Section 1 — Algemeen */}
+      <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8">
+        <div className="space-y-5 min-w-0">
+          {/* Section 1 — Algemeen */}
         <Section title="1. Algemeen">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Field label="Naam NL *">
@@ -497,6 +499,12 @@ export function ProductForm({
             )}
           </Section>
         )}
+        </div>
+
+        {/* Live preview — hidden on <lg, sticky on lg+ */}
+        <div className="hidden lg:block">
+          <ProductPreview state={state} publishedSlug={productId ? state.slug : undefined} />
+        </div>
       </div>
 
       {/* Sticky save bar */}
