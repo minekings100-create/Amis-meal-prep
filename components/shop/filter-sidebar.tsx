@@ -33,7 +33,7 @@ export function FilterSidebar({ filters }: { filters: ProductFilters }) {
           {t('title')}
         </h2>
         {count > 0 && (
-          <span className="inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-(--color-accent-bright)/20 text-(--color-accent) font-mono text-[10px] tabular-nums font-semibold">
+          <span className="inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-(--color-brand-yellow-bright)/20 text-(--color-brand-yellow) font-mono text-[10px] tabular-nums font-semibold">
             {count}
           </span>
         )}

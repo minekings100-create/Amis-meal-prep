@@ -46,7 +46,7 @@ export function CompareBar() {
             <button
               type="button"
               onClick={open}
-              className="inline-flex items-center h-10 px-5 rounded-full bg-(--color-accent-bright) text-stone-900 text-sm font-semibold hover:bg-white transition-colors active:scale-95"
+              className="inline-flex items-center h-10 px-5 rounded-full bg-(--color-brand-yellow-bright) text-stone-900 text-sm font-semibold hover:bg-white transition-colors active:scale-95"
             >
               {t('compare')}
             </button>

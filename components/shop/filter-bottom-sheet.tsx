@@ -100,7 +100,7 @@ export function FilterBottomSheet({
           <SlidersHorizontal className="h-4 w-4" />
           <span>{t('openOnMobile')}</span>
           {liveCount > 0 && (
-            <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-(--color-accent) text-white text-[10px] font-semibold px-1 tabular-nums">
+            <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) text-[10px] font-semibold px-1 tabular-nums">
               {liveCount}
             </span>
           )}
@@ -151,7 +151,7 @@ export function FilterBottomSheet({
             <button
               type="button"
               onClick={commitDraft}
-              className="ml-auto inline-flex items-center justify-center gap-1.5 h-12 px-6 rounded-full bg-(--color-accent-bright) text-stone-900 font-semibold text-sm hover:bg-(--color-accent) hover:text-white active:scale-95 transition-all"
+              className="ml-auto inline-flex items-center justify-center gap-1.5 h-12 px-6 rounded-full bg-(--color-brand-yellow-bright) text-stone-900 font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) active:scale-95 transition-all"
             >
               {t('showResults')}{' '}
               <span className="font-mono tabular-nums">({resultCount})</span>

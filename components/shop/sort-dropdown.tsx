@@ -35,7 +35,7 @@ export function SortDropdown({ value }: { value: SortKey }) {
         <select
           value={value}
           onChange={(e) => setSort(e.target.value as SortKey)}
-          className="appearance-none h-10 pl-4 pr-9 rounded-full border border-stone-300 bg-white text-sm font-medium text-stone-800 hover:border-stone-400 focus:outline-none focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent-bright)/30 transition-colors cursor-pointer"
+          className="appearance-none h-10 pl-4 pr-9 rounded-full border border-stone-300 bg-white text-sm font-medium text-stone-800 hover:border-stone-400 focus:outline-none focus:border-(--color-brand-yellow) focus:ring-2 focus:ring-(--color-brand-yellow-bright)/30 transition-colors cursor-pointer"
         >
           {OPTIONS.map((opt) => (
             <option key={opt} value={opt}>

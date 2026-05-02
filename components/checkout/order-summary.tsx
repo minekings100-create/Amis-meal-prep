@@ -83,7 +83,7 @@ export function OrderSummary({ collapsibleOnMobile = false }: { collapsibleOnMob
             <dd className="font-mono tabular-nums text-stone-900">{formatMoneyCents(subtotal)}</dd>
           </div>
           {discountValue > 0 && (
-            <div className="flex justify-between text-(--color-accent)">
+            <div className="flex justify-between text-(--color-brand-yellow)">
               <dt>Korting{discountCode && <span className="text-stone-500 ml-1">({discountCode})</span>}</dt>
               <dd className="font-mono tabular-nums">−{formatMoneyCents(discountValue)}</dd>
             </div>
@@ -94,7 +94,7 @@ export function OrderSummary({ collapsibleOnMobile = false }: { collapsibleOnMob
               {shippingMethod === null ? (
                 <span className="text-stone-400 text-xs">vanaf €3,95</span>
               ) : shippingCents === 0 ? (
-                <span className="text-(--color-accent) font-semibold">Gratis</span>
+                <span className="text-(--color-brand-yellow) font-semibold">Gratis</span>
               ) : (
                 formatMoneyCents(shippingCents)
               )}

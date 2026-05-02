@@ -1,15 +1,21 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Brand palette */
+  /* Brand palette — black + warm goldenrod */
   --color-bg: #ffffff;
   --color-bg-soft: #f7f7f5;
   --color-ink: #131613;
   --color-ink-soft: #4a4d49;
-  --color-accent: #4a8a3c;
-  --color-accent-bright: #7cc24f;
   --color-line: #e8e8e3;
   --color-gray: #707370;
+
+  /* AMIS brand: black for premium primary, goldenrod for accent. */
+  --color-brand-black: #0a0a0a;
+  --color-brand-black-soft: #1a1a1a;
+  --color-brand-yellow: #e8a91c;
+  --color-brand-yellow-bright: #f5b727;
+  --color-brand-yellow-soft: #fef3c7;
+  --color-brand-yellow-deep: #b8830f;
 
   --font-sans:
     var(--font-sora), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -20,8 +26,8 @@
   --radius: 0.75rem;
   --radius-lg: 1.25rem;
 
-  --shadow-soft: 0 1px 2px rgba(19, 22, 19, 0.04), 0 8px 24px -12px rgba(19, 22, 19, 0.08);
-  --shadow-glow: 0 1px 0 rgba(124, 194, 79, 0.15), 0 12px 40px -16px rgba(74, 138, 60, 0.25);
+  --shadow-soft: 0 1px 2px rgba(10, 10, 10, 0.04), 0 8px 24px -12px rgba(10, 10, 10, 0.08);
+  --shadow-glow: 0 1px 0 rgba(232, 169, 28, 0.15), 0 12px 40px -16px rgba(184, 131, 15, 0.25);
 }
 
 @layer base {
@@ -64,17 +70,17 @@
   }
 
   ::selection {
-    background: var(--color-accent-bright);
-    color: var(--color-ink);
+    background: var(--color-brand-yellow-soft);
+    color: var(--color-brand-black);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-brand-yellow);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
-  /* Brand stripe at top of every page — slim 2px gradient */
+  /* Brand stripe at top of every page — slim 2px gradient zwart→geel→zwart */
   body::before {
     content: '';
     position: fixed;
@@ -84,9 +90,9 @@
     height: 2px;
     background: linear-gradient(
       90deg,
-      var(--color-accent-bright) 0%,
-      var(--color-accent) 50%,
-      var(--color-accent-bright) 100%
+      var(--color-brand-black) 0%,
+      var(--color-brand-yellow) 50%,
+      var(--color-brand-black) 100%
     );
     z-index: 100;
     pointer-events: none;
@@ -158,13 +164,13 @@
     margin-bottom: 0.4rem;
   }
   .prose-amis a {
-    color: var(--color-accent);
+    color: var(--color-brand-yellow-deep);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
   }
   .prose-amis a:hover {
-    color: var(--color-accent-bright);
+    color: var(--color-brand-black);
   }
   .prose-amis strong {
     color: var(--color-ink);
@@ -198,8 +204,8 @@
     width: 18px;
     border-radius: 9999px;
     background: var(--color-bg);
-    border: 2px solid var(--color-accent);
-    box-shadow: 0 1px 3px rgba(19, 22, 19, 0.15);
+    border: 2px solid var(--color-brand-yellow);
+    box-shadow: 0 1px 3px rgba(10, 10, 10, 0.15);
     cursor: grab;
   }
   .price-range-thumb::-webkit-slider-thumb:active {
@@ -211,8 +217,8 @@
     width: 18px;
     border-radius: 9999px;
     background: var(--color-bg);
-    border: 2px solid var(--color-accent);
-    box-shadow: 0 1px 3px rgba(19, 22, 19, 0.15);
+    border: 2px solid var(--color-brand-yellow);
+    box-shadow: 0 1px 3px rgba(10, 10, 10, 0.15);
     cursor: grab;
   }
 }

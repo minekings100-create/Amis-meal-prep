@@ -91,7 +91,7 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
                       aria-hidden
                       className={cn(
                         'absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full',
-                        transparent ? 'bg-white' : 'bg-(--color-accent)',
+                        transparent ? 'bg-white' : 'bg-(--color-brand-yellow)',
                       )}
                     />
                   )}

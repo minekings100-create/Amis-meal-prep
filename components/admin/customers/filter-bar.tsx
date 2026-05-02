@@ -47,7 +47,7 @@ export function CustomersFilterBar() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Zoek op naam of email…"
-          className="w-full h-10 pl-9 pr-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-accent)"
+          className="w-full h-10 pl-9 pr-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-brand-yellow)"
         />
       </div>
       <div className="flex gap-1.5">

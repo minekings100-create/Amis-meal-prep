@@ -99,7 +99,7 @@ export function ActiveFilterPills({ filters }: { filters: ProductFilters }) {
       <button
         type="button"
         onClick={clearAll}
-        className="ml-1 text-sm font-medium text-(--color-accent) hover:text-stone-900 transition-colors"
+        className="ml-1 text-sm font-medium text-(--color-brand-yellow) hover:text-stone-900 transition-colors"
       >
         {t('clearAll')}
       </button>

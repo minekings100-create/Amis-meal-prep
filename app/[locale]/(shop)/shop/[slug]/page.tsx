@@ -162,7 +162,7 @@ async function ProductDetail({
           </div>
 
           <div>
-            <p className="text-[10px] uppercase tracking-[0.24em] text-(--color-accent) mb-3">
+            <p className="text-[10px] uppercase tracking-[0.24em] text-(--color-brand-yellow) mb-3">
               {product.type === 'meal'
                 ? locale === 'en'
                   ? 'Meal'

@@ -23,7 +23,7 @@ function statusPillStyle(s: OrderStatus): string {
   if (s === 'paid' || s === 'preparing') return 'bg-blue-50 text-blue-700 border-blue-200';
   if (s === 'shipped') return 'bg-amber-50 text-amber-800 border-amber-200';
   if (s === 'delivered')
-    return 'bg-(--color-accent-bright)/15 text-(--color-accent) border-(--color-accent-bright)/30';
+    return 'bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border-(--color-brand-yellow-bright)/30';
   if (s === 'cancelled' || s === 'refunded') return 'bg-stone-100 text-stone-600 border-stone-200';
   return 'bg-stone-100 text-stone-700 border-stone-200';
 }
@@ -154,9 +154,9 @@ export default async function CustomerOrderDetailPage({
                       className={cn(
                         'h-7 w-7 rounded-full inline-flex items-center justify-center shrink-0',
                         completed
-                          ? 'bg-(--color-accent) text-white'
+                          ? 'bg-(--color-brand-yellow) text-(--color-brand-black)'
                           : current
-                            ? 'bg-(--color-accent-bright)/30 text-(--color-accent) border-2 border-(--color-accent)'
+                            ? 'bg-(--color-brand-yellow-bright)/30 text-(--color-brand-yellow) border-2 border-(--color-brand-yellow)'
                             : 'bg-stone-100 text-stone-400',
                       )}
                     >
@@ -175,7 +175,7 @@ export default async function CustomerOrderDetailPage({
                           completed
                             ? 'font-medium text-stone-900'
                             : current
-                              ? 'font-semibold text-(--color-accent)'
+                              ? 'font-semibold text-(--color-brand-yellow)'
                               : 'text-stone-400',
                         )}
                       >
@@ -221,7 +221,7 @@ export default async function CustomerOrderDetailPage({
                 <dd className="font-mono">{formatMoneyCents(order.totals.subtotalCents)}</dd>
               </div>
               {order.totals.discountCents > 0 && (
-                <div className="flex justify-between text-(--color-accent)">
+                <div className="flex justify-between text-(--color-brand-yellow)">
                   <dt>Korting</dt>
                   <dd className="font-mono">−{formatMoneyCents(order.totals.discountCents)}</dd>
                 </div>

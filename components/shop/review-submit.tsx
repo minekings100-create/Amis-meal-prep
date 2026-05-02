@@ -28,7 +28,7 @@ export function ReviewSubmit({
         </p>
         <Link
           href={`/account/login?next=${encodeURIComponent(`/shop/${productSlug}`)}`}
-          className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-(--color-accent) text-white text-sm font-semibold hover:bg-(--color-accent)/90"
+          className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow)/90"
         >
           <Lock className="h-3.5 w-3.5" />
           Inloggen om te reviewen
@@ -42,7 +42,7 @@ export function ReviewSubmit({
       <Card>
         <p className="text-sm text-stone-700">
           Alleen klanten die dit product besteld hebben kunnen reviewen.{' '}
-          <Link href="/shop" className="text-(--color-accent) hover:underline">
+          <Link href="/shop" className="text-(--color-brand-yellow) hover:underline">
             Bekijk producten
           </Link>
         </p>
@@ -119,11 +119,11 @@ function SubmitForm({
   return (
     <Card>
       <div className="flex items-center gap-2 mb-4">
-        <ShieldCheck className="h-4 w-4 text-(--color-accent)" />
+        <ShieldCheck className="h-4 w-4 text-(--color-brand-yellow)" />
         <p className="text-sm font-semibold text-stone-900">
           {editingExisting ? 'Bewerk je review' : 'Schrijf een review'}
         </p>
-        <span className="ml-auto text-[10px] uppercase tracking-wider font-bold text-(--color-accent) bg-(--color-accent-bright)/15 px-2 py-0.5 rounded-full">
+        <span className="ml-auto text-[10px] uppercase tracking-wider font-bold text-(--color-brand-yellow) bg-(--color-brand-yellow-bright)/15 px-2 py-0.5 rounded-full">
           Verified
         </span>
       </div>
@@ -176,7 +176,7 @@ function SubmitForm({
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Bijv. Beste meal prep van Maastricht"
           disabled={!isEditable}
-          className="h-11 w-full rounded-md border border-stone-300 px-3 text-sm focus:outline-none focus:border-(--color-accent) disabled:bg-stone-50"
+          className="h-11 w-full rounded-md border border-stone-300 px-3 text-sm focus:outline-none focus:border-(--color-brand-yellow) disabled:bg-stone-50"
         />
       </label>
 
@@ -190,7 +190,7 @@ function SubmitForm({
           rows={4}
           placeholder="Wat vond je van de smaak, portie, macros, prijs/kwaliteit…"
           disabled={!isEditable}
-          className="w-full rounded-md border border-stone-300 px-3 py-2 text-sm focus:outline-none focus:border-(--color-accent) disabled:bg-stone-50"
+          className="w-full rounded-md border border-stone-300 px-3 py-2 text-sm focus:outline-none focus:border-(--color-brand-yellow) disabled:bg-stone-50"
         />
         <span className="block text-right text-[11px] text-stone-400 mt-1">
           {body.length}/{BODY_MAX}
@@ -199,9 +199,9 @@ function SubmitForm({
 
       {error && <p className="text-sm text-red-600 mb-3">{error}</p>}
       {success && (
-        <div className="rounded-md bg-(--color-accent-bright)/15 border border-(--color-accent-bright)/30 px-3 py-2 mb-3 inline-flex items-center gap-2">
-          <Check className="h-3.5 w-3.5 text-(--color-accent)" />
-          <span className="text-sm text-(--color-accent) font-medium">{success}</span>
+        <div className="rounded-md bg-(--color-brand-yellow-bright)/15 border border-(--color-brand-yellow-bright)/30 px-3 py-2 mb-3 inline-flex items-center gap-2">
+          <Check className="h-3.5 w-3.5 text-(--color-brand-yellow)" />
+          <span className="text-sm text-(--color-brand-yellow) font-medium">{success}</span>
         </div>
       )}
 
@@ -209,7 +209,7 @@ function SubmitForm({
         type="button"
         onClick={submit}
         disabled={pending || rating === 0 || !title.trim() || !body.trim()}
-        className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-(--color-accent) text-white text-sm font-semibold hover:bg-(--color-accent)/90 disabled:opacity-50"
+        className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow)/90 disabled:opacity-50"
       >
         <Send className="h-3.5 w-3.5" />
         {pending ? 'Versturen…' : editingExisting ? 'Wijzigingen opslaan' : 'Plaats review'}
@@ -252,7 +252,7 @@ function ReviewStatePill({ existing }: { existing: NonNullable<ReviewEligibility
   }
   if (existing.isPublished) {
     return (
-      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-(--color-accent-bright)/15 text-(--color-accent) border border-(--color-accent-bright)/30">
+      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border border-(--color-brand-yellow-bright)/30">
         Gepubliceerd
       </span>
     );

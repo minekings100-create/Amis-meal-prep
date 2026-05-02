@@ -52,15 +52,15 @@ export default function ForgotPasswordPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="email@adres.nl"
-              className="h-12 w-full pl-9 pr-3 rounded-xl border border-stone-300 text-sm focus:outline-none focus:border-(--color-accent)"
+              className="h-12 w-full pl-9 pr-3 rounded-xl border border-stone-300 text-sm focus:outline-none focus:border-(--color-brand-yellow)"
             />
           </div>
-          {info && <p className="text-sm text-(--color-accent)">{info}</p>}
+          {info && <p className="text-sm text-(--color-brand-yellow)">{info}</p>}
           {error && <p className="text-sm text-red-600">{error}</p>}
           <button
             type="submit"
             disabled={pending}
-            className="w-full h-12 rounded-xl bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90 disabled:opacity-60"
+            className="w-full h-12 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 disabled:opacity-60"
           >
             {pending ? 'Bezig…' : 'Stuur reset-link'}
           </button>

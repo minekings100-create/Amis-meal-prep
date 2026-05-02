@@ -51,7 +51,7 @@ export function CookieConsent() {
           >
             <div className="rounded-2xl bg-white/90 backdrop-blur-xl border border-white/40 shadow-[0_24px_64px_-16px_rgba(19,22,19,0.32)] p-5">
               <div className="flex items-start gap-3 mb-3">
-                <div className="h-9 w-9 rounded-full bg-(--color-accent-bright)/15 text-(--color-accent) inline-flex items-center justify-center shrink-0">
+                <div className="h-9 w-9 rounded-full bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) inline-flex items-center justify-center shrink-0">
                   <Cookie className="h-4 w-4" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -59,7 +59,7 @@ export function CookieConsent() {
                   <p className="text-xs text-stone-600 leading-relaxed mt-1">
                     We gebruiken essentiële cookies voor je winkelmand en account. Met jouw
                     toestemming gebruiken we ook analytics-cookies om de site te verbeteren.{' '}
-                    <Link href="/privacybeleid" className="text-(--color-accent) hover:underline">
+                    <Link href="/privacybeleid" className="text-(--color-brand-yellow) hover:underline">
                       Meer info
                     </Link>
                   </p>
@@ -83,7 +83,7 @@ export function CookieConsent() {
                 <button
                   type="button"
                   onClick={acceptAll}
-                  className="ml-auto h-9 px-4 rounded-lg bg-(--color-accent) text-white text-xs font-semibold hover:bg-(--color-accent)/90"
+                  className="ml-auto h-9 px-4 rounded-lg bg-(--color-brand-yellow) text-(--color-brand-black) text-xs font-semibold hover:bg-(--color-brand-yellow)/90"
                 >
                   Accepteren
                 </button>
@@ -152,7 +152,7 @@ export function CookieConsent() {
               </Dialog.Close>
               <button
                 onClick={savePrefs}
-                className="h-10 px-5 rounded-md bg-(--color-accent) text-white text-sm font-semibold hover:bg-(--color-accent)/90"
+                className="h-10 px-5 rounded-md bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow)/90"
               >
                 Bewaren
               </button>
@@ -182,7 +182,7 @@ function PrefRow({
       className={cn(
         'flex items-start gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-colors',
         checked
-          ? 'border-(--color-accent) bg-(--color-accent-bright)/10'
+          ? 'border-(--color-brand-yellow) bg-(--color-brand-yellow-bright)/10'
           : 'border-stone-200 bg-white hover:bg-stone-50',
         disabled && 'opacity-90 cursor-default',
       )}
@@ -202,7 +202,7 @@ function PrefRow({
         }}
         className={cn(
           'relative h-5 w-9 shrink-0 rounded-full transition-colors',
-          checked ? 'bg-(--color-accent)' : 'bg-stone-300',
+          checked ? 'bg-(--color-brand-yellow)' : 'bg-stone-300',
           disabled && 'opacity-60 cursor-not-allowed',
         )}
       >

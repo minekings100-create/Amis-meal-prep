@@ -15,13 +15,13 @@ export default function NotFound() {
   return (
     <div className="min-h-screen grid place-items-center px-6 py-16 bg-stone-50">
       <div className="text-center max-w-sm">
-        <p className="font-mono text-5xl font-bold text-(--color-accent) tracking-[-0.04em] mb-4">
+        <p className="font-mono text-5xl font-bold text-(--color-brand-yellow) tracking-[-0.04em] mb-4">
           404
         </p>
         <h1 className="text-xl font-bold tracking-[-0.025em] mb-2">Pagina niet gevonden</h1>
         <Link
           href="/"
-          className="mt-4 inline-flex items-center justify-center h-11 px-5 rounded-xl bg-(--color-accent) text-white text-sm font-semibold hover:bg-(--color-accent)/90 transition-colors"
+          className="mt-4 inline-flex items-center justify-center h-11 px-5 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow)/90 transition-colors"
         >
           Terug naar home
         </Link>

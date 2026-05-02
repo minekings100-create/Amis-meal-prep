@@ -132,7 +132,7 @@ export function OrdersTable({
                           aria-label="Selecteer alle"
                           checked={allSelected}
                           onChange={toggleAll}
-                          className="h-4 w-4 rounded border-stone-300 text-(--color-accent) focus:ring-(--color-accent-bright)/40"
+                          className="h-4 w-4 rounded border-stone-300 text-(--color-brand-yellow) focus:ring-(--color-brand-yellow-bright)/40"
                         />
                       ) : sortable ? (
                         <Link
@@ -177,7 +177,7 @@ export function OrdersTable({
                     onClick={() => router.push(`/admin/orders/${row.id}`)}
                     className={cn(
                       'group cursor-pointer hover:bg-stone-50 transition-colors',
-                      isChecked && 'bg-(--color-accent-bright)/5',
+                      isChecked && 'bg-(--color-brand-yellow-bright)/5',
                     )}
                   >
                     <td className="px-3 py-3 sticky left-0 bg-white group-hover:bg-stone-50 z-10">
@@ -187,13 +187,13 @@ export function OrdersTable({
                         checked={isChecked}
                         onChange={() => toggleOne(row.id)}
                         onClick={(e) => e.stopPropagation()}
-                        className="h-4 w-4 rounded border-stone-300 text-(--color-accent)"
+                        className="h-4 w-4 rounded border-stone-300 text-(--color-brand-yellow)"
                       />
                     </td>
                     <td className="px-3 py-3">
                       <Link
                         href={`/admin/orders/${row.id}`}
-                        className="font-mono text-sm font-medium text-stone-900 hover:text-(--color-accent)"
+                        className="font-mono text-sm font-medium text-stone-900 hover:text-(--color-brand-yellow)"
                       >
                         {row.orderNumber}
                       </Link>
@@ -209,7 +209,7 @@ export function OrdersTable({
                     </td>
                     <td className="px-3 py-3">
                       {row.isLocal ? (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-(--color-accent-bright)/15 text-(--color-accent) text-[10px] font-bold uppercase tracking-wider border border-(--color-accent-bright)/30">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) text-[10px] font-bold uppercase tracking-wider border border-(--color-brand-yellow-bright)/30">
                           📍 Maastricht
                         </span>
                       ) : (

@@ -19,12 +19,12 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       {/* Brand backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-16 -translate-x-1/2 h-[480px] w-[480px] rounded-full bg-(--color-accent-bright)/8 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-16 -translate-x-1/2 h-[480px] w-[480px] rounded-full bg-(--color-brand-yellow-bright)/8 blur-3xl"
       />
 
       <div className="container-amis relative py-16 md:py-24 max-w-3xl">
         <header className="mb-10 md:mb-14">
-          <p className="text-[10px] uppercase tracking-[0.24em] text-(--color-accent) mb-3 font-semibold">
+          <p className="text-[10px] uppercase tracking-[0.24em] text-(--color-brand-yellow) mb-3 font-semibold">
             {isEN ? 'Contact' : 'Contact'}
           </p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-[-0.035em]">
@@ -44,7 +44,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             primary={
               <a
                 href="mailto:hallo@amismeals.nl"
-                className="font-mono text-(--color-accent) hover:underline"
+                className="font-mono text-(--color-brand-yellow) hover:underline"
               >
                 hallo@amismeals.nl
               </a>
@@ -61,10 +61,10 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
         <Link
           href="/faq"
-          className="mt-4 group flex items-center justify-between gap-3 rounded-2xl border border-stone-200 bg-white p-5 hover:border-(--color-accent-bright)/40 hover:bg-(--color-accent-bright)/5 transition-colors"
+          className="mt-4 group flex items-center justify-between gap-3 rounded-2xl border border-stone-200 bg-white p-5 hover:border-(--color-brand-yellow-bright)/40 hover:bg-(--color-brand-yellow-bright)/5 transition-colors"
         >
           <div className="flex items-center gap-4 min-w-0">
-            <div className="h-10 w-10 rounded-xl bg-stone-100 text-stone-700 inline-flex items-center justify-center shrink-0 group-hover:bg-(--color-accent-bright)/20 group-hover:text-(--color-accent) transition-colors">
+            <div className="h-10 w-10 rounded-xl bg-stone-100 text-stone-700 inline-flex items-center justify-center shrink-0 group-hover:bg-(--color-brand-yellow-bright)/20 group-hover:text-(--color-brand-yellow) transition-colors">
               <MessageSquare className="h-4 w-4" />
             </div>
             <div className="min-w-0">
@@ -78,7 +78,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               </p>
             </div>
           </div>
-          <ArrowRight className="h-4 w-4 text-stone-400 group-hover:text-(--color-accent) group-hover:translate-x-0.5 transition-all shrink-0" />
+          <ArrowRight className="h-4 w-4 text-stone-400 group-hover:text-(--color-brand-yellow) group-hover:translate-x-0.5 transition-all shrink-0" />
         </Link>
 
         <p className="mt-12 text-xs text-stone-500 font-mono">
@@ -103,7 +103,7 @@ function ContactCard({
   return (
     <div className="rounded-2xl border border-stone-200 bg-white p-5">
       <div className="flex items-center gap-2 mb-2">
-        <span className="h-7 w-7 rounded-lg bg-(--color-accent-bright)/15 text-(--color-accent) inline-flex items-center justify-center">
+        <span className="h-7 w-7 rounded-lg bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) inline-flex items-center justify-center">
           {icon}
         </span>
         <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-500">

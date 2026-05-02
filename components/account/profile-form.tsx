@@ -60,7 +60,7 @@ export function ProfileForm({ customer }: { customer: CustomerProfile }) {
             type="checkbox"
             checked={newsletter}
             onChange={(e) => setNewsletter(e.target.checked)}
-            className="mt-1 h-4 w-4 rounded border-stone-300 text-(--color-accent)"
+            className="mt-1 h-4 w-4 rounded border-stone-300 text-(--color-brand-yellow)"
           />
           <span className="text-sm text-stone-700">
             Ja, hou me op de hoogte van nieuwe maaltijden en aanbiedingen
@@ -68,14 +68,14 @@ export function ProfileForm({ customer }: { customer: CustomerProfile }) {
         </label>
         <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-between">
           <div className="text-xs text-stone-500">
-            {savedAt && <span className="text-(--color-accent)">Opgeslagen om {savedAt}</span>}
+            {savedAt && <span className="text-(--color-brand-yellow)">Opgeslagen om {savedAt}</span>}
             {error && <span className="text-red-600">{error}</span>}
           </div>
           <button
             type="button"
             onClick={save}
             disabled={pending}
-            className="inline-flex items-center gap-1.5 h-10 px-5 rounded-xl bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90 disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 h-10 px-5 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 disabled:opacity-60"
           >
             <Save className="h-3.5 w-3.5" />
             {pending ? 'Opslaan…' : 'Opslaan'}
@@ -191,7 +191,7 @@ function Input({
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
       className={cn(
-        'h-11 w-full rounded-md border border-stone-300 px-3 text-sm focus:outline-none focus:border-(--color-accent)',
+        'h-11 w-full rounded-md border border-stone-300 px-3 text-sm focus:outline-none focus:border-(--color-brand-yellow)',
         disabled && 'bg-stone-50 text-stone-500',
       )}
     />

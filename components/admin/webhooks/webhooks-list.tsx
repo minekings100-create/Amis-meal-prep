@@ -71,7 +71,7 @@ export function WebhooksList({ rows }: { rows: WebhookLogEntry[] }) {
                   {w.relatedOrderId && w.relatedOrderNumber ? (
                     <Link
                       href={`/admin/orders/${w.relatedOrderId}`}
-                      className="font-mono text-xs text-(--color-accent) hover:underline"
+                      className="font-mono text-xs text-(--color-brand-yellow) hover:underline"
                     >
                       {w.relatedOrderNumber}
                     </Link>
@@ -102,7 +102,7 @@ export function WebhooksList({ rows }: { rows: WebhookLogEntry[] }) {
 function StatusPill({ status }: { status: WebhookLogEntry['status'] }) {
   if (status === 'processed') {
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-(--color-accent-bright)/15 text-(--color-accent) border border-(--color-accent-bright)/30 text-[10px] font-semibold uppercase tracking-wider">
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border border-(--color-brand-yellow-bright)/30 text-[10px] font-semibold uppercase tracking-wider">
         <CheckCircle2 className="h-3 w-3" /> Processed
       </span>
     );
@@ -167,7 +167,7 @@ function DetailsDialog({ entry, onClose }: { entry: WebhookLogEntry | null; onCl
             {entry?.relatedOrderId && entry?.relatedOrderNumber && (
               <p className="text-sm">
                 Related order:{' '}
-                <Link href={`/admin/orders/${entry.relatedOrderId}`} className="font-mono text-(--color-accent) hover:underline">
+                <Link href={`/admin/orders/${entry.relatedOrderId}`} className="font-mono text-(--color-brand-yellow) hover:underline">
                   {entry.relatedOrderNumber}
                 </Link>
               </p>
@@ -178,7 +178,7 @@ function DetailsDialog({ entry, onClose }: { entry: WebhookLogEntry | null; onCl
 {JSON.stringify(entry?.payload, null, 2)}
               </pre>
             </div>
-            {result && <p className="text-sm text-(--color-accent)">{result}</p>}
+            {result && <p className="text-sm text-(--color-brand-yellow)">{result}</p>}
           </div>
           <div className="flex justify-between items-center gap-3 px-6 py-4 border-t border-stone-200 bg-stone-50/50">
             {entry?.status === 'failed' ? (

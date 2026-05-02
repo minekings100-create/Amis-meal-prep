@@ -70,7 +70,7 @@ export function ProductionUpdateDialog({ rows }: { rows: StockRow[] }) {
   return (
     <Dialog.Root open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
       <Dialog.Trigger asChild>
-        <button className="inline-flex items-center gap-2 h-10 px-4 rounded-md bg-(--color-accent) text-white text-sm font-medium hover:bg-(--color-accent)/90">
+        <button className="inline-flex items-center gap-2 h-10 px-4 rounded-md bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-medium hover:bg-(--color-brand-yellow)/90">
           <PackagePlus className="h-4 w-4" />
           Bijwerken na productie
         </button>
@@ -102,7 +102,7 @@ export function ProductionUpdateDialog({ rows }: { rows: StockRow[] }) {
               placeholder="Filter op naam…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full h-9 px-3 rounded-md border border-stone-200 bg-stone-50/50 text-sm focus:outline-none focus:border-(--color-accent) focus:bg-white"
+              className="w-full h-9 px-3 rounded-md border border-stone-200 bg-stone-50/50 text-sm focus:outline-none focus:border-(--color-brand-yellow) focus:bg-white"
             />
           </div>
 
@@ -137,7 +137,7 @@ export function ProductionUpdateDialog({ rows }: { rows: StockRow[] }) {
                         {valid && (
                           <>
                             {' '}→{' '}
-                            <span className="text-(--color-accent) font-semibold">
+                            <span className="text-(--color-brand-yellow) font-semibold">
                               {row.stock + n}
                             </span>
                           </>
@@ -153,8 +153,8 @@ export function ProductionUpdateDialog({ rows }: { rows: StockRow[] }) {
                         onChange={(e) => setAddition(row.id, e.target.value)}
                         placeholder="0"
                         className={cn(
-                          'h-9 w-20 px-2 rounded-md border bg-white text-sm font-mono tabular-nums text-right focus:outline-none focus:ring-2 focus:ring-(--color-accent-bright)/30',
-                          valid ? 'border-(--color-accent)' : 'border-stone-200',
+                          'h-9 w-20 px-2 rounded-md border bg-white text-sm font-mono tabular-nums text-right focus:outline-none focus:ring-2 focus:ring-(--color-brand-yellow-bright)/30',
+                          valid ? 'border-(--color-brand-yellow)' : 'border-stone-200',
                         )}
                       />
                     </div>
@@ -185,7 +185,7 @@ export function ProductionUpdateDialog({ rows }: { rows: StockRow[] }) {
               <button
                 onClick={submit}
                 disabled={productCount === 0 || pending}
-                className="inline-flex items-center gap-1.5 h-10 px-5 rounded-md bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex items-center gap-1.5 h-10 px-5 rounded-md bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Plus className="h-3.5 w-3.5" />
                 {pending ? 'Toevoegen…' : 'Voeg alle toe'}

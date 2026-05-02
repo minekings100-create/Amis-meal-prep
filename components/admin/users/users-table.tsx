@@ -186,7 +186,7 @@ function InviteDialog() {
   return (
     <Dialog.Root open={open} onOpenChange={(v) => { setOpen(v); if (!v) { setError(null); setSuccess(null); } }}>
       <Dialog.Trigger asChild>
-        <button className="inline-flex items-center gap-1.5 h-10 px-4 rounded-md bg-(--color-accent) text-white text-sm font-medium hover:bg-(--color-accent)/90">
+        <button className="inline-flex items-center gap-1.5 h-10 px-4 rounded-md bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-medium hover:bg-(--color-brand-yellow)/90">
           <UserPlus className="h-4 w-4" />
           Nieuwe admin
         </button>
@@ -213,7 +213,7 @@ function InviteDialog() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="naam@amismeals.nl"
-                className="w-full h-10 px-3 rounded-md border border-stone-200 text-sm focus:outline-none focus:border-(--color-accent)"
+                className="w-full h-10 px-3 rounded-md border border-stone-200 text-sm focus:outline-none focus:border-(--color-brand-yellow)"
               />
             </label>
             <label className="block">
@@ -229,7 +229,7 @@ function InviteDialog() {
             </label>
           </div>
           {error && <p className="text-sm text-red-600 mt-3">{error}</p>}
-          {success && <p className="text-sm text-(--color-accent) mt-3">{success}</p>}
+          {success && <p className="text-sm text-(--color-brand-yellow) mt-3">{success}</p>}
           <div className="flex justify-end gap-2 mt-5">
             <Dialog.Close asChild>
               <button className="h-10 px-4 rounded-md border border-stone-200 text-sm hover:bg-stone-50">Annuleren</button>

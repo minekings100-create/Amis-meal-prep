@@ -105,7 +105,7 @@ export default async function HomePage({
                       {chunks}
                       <span
                         aria-hidden
-                        className="absolute -bottom-1 left-0 right-0 h-[6px] bg-(--color-accent-bright)"
+                        className="absolute -bottom-1 left-0 right-0 h-[6px] bg-(--color-brand-yellow-bright)"
                       />
                     </span>
                   ),
@@ -117,7 +117,7 @@ export default async function HomePage({
               <div className="flex flex-wrap items-center gap-3">
                 <Link
                   href="/shop"
-                  className="inline-flex items-center gap-2 rounded-full bg-(--color-accent-bright) px-7 h-12 font-semibold text-stone-900 transition-all duration-200 hover:bg-white hover:gap-3 active:scale-95"
+                  className="inline-flex items-center gap-2 rounded-full bg-(--color-brand-yellow-bright) px-7 h-12 font-semibold text-stone-900 transition-all duration-200 hover:bg-white hover:gap-3 active:scale-95"
                 >
                   {t('hero.ctaShop')}
                   <ArrowRight className="h-4 w-4" />
@@ -174,7 +174,7 @@ export default async function HomePage({
         <div className="mt-8 text-center">
           <Link
             href="/shop"
-            className="inline-flex items-center gap-1.5 text-sm text-stone-700 hover:text-(--color-accent) transition-colors font-medium underline-offset-4 hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm text-stone-700 hover:text-(--color-brand-yellow) transition-colors font-medium underline-offset-4 hover:underline"
           >
             {t('menu.viewAll')} <ArrowRight className="h-3.5 w-3.5" />
           </Link>
@@ -189,7 +189,7 @@ export default async function HomePage({
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-20">
           <RevealSection>
             <div className="mb-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-(--color-accent-bright) mb-2">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-(--color-brand-yellow-bright) mb-2">
                 Stemmen uit de community
               </p>
               <h2 className="text-2xl md:text-3xl tracking-[-0.025em] font-semibold text-white">
@@ -222,7 +222,7 @@ export default async function HomePage({
                 <figure className="relative h-full rounded-2xl bg-white/[0.04] border border-white/10 p-6 md:p-7">
                   <span
                     aria-hidden
-                    className="absolute top-4 right-5 text-5xl leading-none text-(--color-accent-bright)/40 font-serif"
+                    className="absolute top-4 right-5 text-5xl leading-none text-(--color-brand-yellow-bright)/40 font-serif"
                   >
                     &ldquo;
                   </span>

@@ -48,7 +48,7 @@ export function ProductsFilterBar({ categories }: { categories: Category[] }) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Zoek op productnaam of slug…"
-          className="w-full h-10 pl-9 pr-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-accent)"
+          className="w-full h-10 pl-9 pr-3 rounded-md border border-stone-200 bg-white text-sm focus:outline-none focus:border-(--color-brand-yellow)"
         />
       </div>
       <select

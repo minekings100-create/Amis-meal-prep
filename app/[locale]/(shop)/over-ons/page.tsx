@@ -31,12 +31,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* Brand backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-12 -translate-x-1/2 h-[520px] w-[520px] rounded-full bg-(--color-accent-bright)/8 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-12 -translate-x-1/2 h-[520px] w-[520px] rounded-full bg-(--color-brand-yellow-bright)/8 blur-3xl"
       />
 
       <div className="container-amis relative py-16 md:py-24 max-w-4xl">
         <header className="mb-12 md:mb-16 max-w-3xl">
-          <p className="text-[10px] uppercase tracking-[0.24em] text-(--color-accent) mb-3 font-semibold">
+          <p className="text-[10px] uppercase tracking-[0.24em] text-(--color-brand-yellow) mb-3 font-semibold">
             {isEN ? 'About' : 'Over ons'}
           </p>
           <h1 className="text-4xl md:text-6xl font-bold tracking-[-0.035em] leading-[1.05]">
@@ -57,7 +57,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 key={p.title}
                 className="rounded-2xl border border-stone-200 bg-white p-6 hover:border-stone-300 transition-colors"
               >
-                <div className="h-10 w-10 rounded-xl bg-(--color-accent-bright)/15 text-(--color-accent) inline-flex items-center justify-center mb-4">
+                <div className="h-10 w-10 rounded-xl bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) inline-flex items-center justify-center mb-4">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h2 className="font-semibold text-stone-900 tracking-[-0.01em]">{p.title}</h2>
@@ -87,7 +87,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90 shrink-0"
+              className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 shrink-0"
             >
               {isEN ? 'To the shop' : 'Naar de shop'} <ArrowRight className="h-4 w-4" />
             </Link>

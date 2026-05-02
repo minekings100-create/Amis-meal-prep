@@ -33,7 +33,7 @@ export function OrdersTabs({
             className={cn(
               'group relative flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors',
               isActive
-                ? 'text-stone-900 border-b-2 border-(--color-accent)'
+                ? 'text-stone-900 border-b-2 border-(--color-brand-yellow)'
                 : 'text-stone-500 hover:text-stone-900 border-b-2 border-transparent',
             )}
           >
@@ -42,7 +42,7 @@ export function OrdersTabs({
               className={cn(
                 'inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-[10px] font-mono tabular-nums',
                 isActive
-                  ? 'bg-(--color-accent-bright)/20 text-(--color-accent)'
+                  ? 'bg-(--color-brand-yellow-bright)/20 text-(--color-brand-yellow)'
                   : 'bg-stone-100 text-stone-600 group-hover:bg-stone-200',
               )}
             >

@@ -69,11 +69,11 @@ function RegisterInner() {
       {/* Soft plate-circle brand backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-24 -translate-x-1/2 h-[520px] w-[520px] rounded-full bg-(--color-accent-bright)/8 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-24 -translate-x-1/2 h-[520px] w-[520px] rounded-full bg-(--color-brand-yellow-bright)/8 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-32 -translate-x-1/2 h-[360px] w-[360px] rounded-full border border-(--color-accent-bright)/15"
+        className="pointer-events-none absolute left-1/2 top-32 -translate-x-1/2 h-[360px] w-[360px] rounded-full border border-(--color-brand-yellow-bright)/15"
       />
       <div className="container-amis relative py-12 md:py-16 max-w-md">
         <div className="text-center mb-6">
@@ -112,15 +112,15 @@ function RegisterInner() {
               type="checkbox"
               checked={terms}
               onChange={(e) => setTerms(e.target.checked)}
-              className="mt-1 h-4 w-4 rounded border-stone-300 text-(--color-accent)"
+              className="mt-1 h-4 w-4 rounded border-stone-300 text-(--color-brand-yellow)"
             />
             <span className="text-xs text-stone-700 leading-snug">
               Ik ga akkoord met de{' '}
-              <Link href="/algemene-voorwaarden" className="text-(--color-accent) hover:underline" target="_blank">
+              <Link href="/algemene-voorwaarden" className="text-(--color-brand-yellow) hover:underline" target="_blank">
                 algemene voorwaarden
               </Link>{' '}
               en het{' '}
-              <Link href="/privacybeleid" className="text-(--color-accent) hover:underline" target="_blank">
+              <Link href="/privacybeleid" className="text-(--color-brand-yellow) hover:underline" target="_blank">
                 privacybeleid
               </Link>
               .
@@ -131,7 +131,7 @@ function RegisterInner() {
               type="checkbox"
               checked={newsletter}
               onChange={(e) => setNewsletter(e.target.checked)}
-              className="mt-1 h-4 w-4 rounded border-stone-300 text-(--color-accent)"
+              className="mt-1 h-4 w-4 rounded border-stone-300 text-(--color-brand-yellow)"
             />
             <span className="text-xs text-stone-700">Hou me op de hoogte van nieuwe maaltijden en aanbiedingen</span>
           </label>
@@ -141,7 +141,7 @@ function RegisterInner() {
           <button
             type="submit"
             disabled={pending}
-            className="w-full h-12 rounded-xl bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90 disabled:opacity-60 inline-flex items-center justify-center gap-2 mt-4"
+            className="w-full h-12 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 disabled:opacity-60 inline-flex items-center justify-center gap-2 mt-4"
           >
             {pending ? 'Bezig…' : 'Account aanmaken'}
             <ArrowRight className="h-4 w-4" />
@@ -151,7 +151,7 @@ function RegisterInner() {
 
       <p className="text-sm text-stone-600 text-center mt-6">
         Al een account?{' '}
-        <Link href="/account/login" className="text-(--color-accent) hover:underline font-medium">
+        <Link href="/account/login" className="text-(--color-brand-yellow) hover:underline font-medium">
           Inloggen
         </Link>
       </p>
@@ -181,7 +181,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-12 w-full pl-9 pr-3 rounded-xl border border-stone-200 bg-stone-50/60 text-sm transition-colors hover:border-stone-300 focus:outline-none focus:border-(--color-accent) focus:bg-white focus:ring-2 focus:ring-(--color-accent-bright)/30"
+        className="h-12 w-full pl-9 pr-3 rounded-xl border border-stone-200 bg-stone-50/60 text-sm transition-colors hover:border-stone-300 focus:outline-none focus:border-(--color-brand-yellow) focus:bg-white focus:ring-2 focus:ring-(--color-brand-yellow-bright)/30"
       />
     </div>
   );
@@ -189,7 +189,7 @@ function Field({
 
 function Requirement({ met, children }: { met: boolean; children: React.ReactNode }) {
   return (
-    <li className={cn('inline-flex items-center gap-1.5', met ? 'text-(--color-accent)' : 'text-stone-400')}>
+    <li className={cn('inline-flex items-center gap-1.5', met ? 'text-(--color-brand-yellow)' : 'text-stone-400')}>
       {met ? <Check className="h-3 w-3" /> : <X className="h-3 w-3" />}
       {children}
     </li>

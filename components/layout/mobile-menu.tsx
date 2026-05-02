@@ -135,8 +135,8 @@ export function MobileMenu({ open, onOpenChange, transparent, isAuthed }: Mobile
                           className={cn(
                             'flex items-center justify-between gap-3 py-4 text-lg border-b border-stone-100 transition-colors',
                             active
-                              ? 'text-(--color-accent) font-semibold'
-                              : 'text-stone-900 hover:text-(--color-accent)',
+                              ? 'text-(--color-brand-yellow) font-semibold'
+                              : 'text-stone-900 hover:text-(--color-brand-yellow)',
                           )}
                         >
                           {item.label}
@@ -144,7 +144,7 @@ export function MobileMenu({ open, onOpenChange, transparent, isAuthed }: Mobile
                             className={cn(
                               'h-4 w-4 transition-all',
                               active
-                                ? 'text-(--color-accent) translate-x-0.5'
+                                ? 'text-(--color-brand-yellow) translate-x-0.5'
                                 : 'text-stone-300',
                             )}
                           />

@@ -69,7 +69,7 @@ function SimpleActionButton({
   const [pending, start] = useTransition();
   const styles =
     tone === 'primary'
-      ? 'bg-(--color-accent) text-white hover:bg-(--color-accent)/90'
+      ? 'bg-(--color-brand-yellow) text-(--color-brand-black) hover:bg-(--color-brand-yellow)/90'
       : tone === 'danger'
         ? 'bg-red-50 text-red-700 hover:bg-red-100 border border-red-200'
         : 'bg-stone-100 text-stone-800 hover:bg-stone-200';
@@ -152,7 +152,7 @@ function SendcloudLabelButton({
           <button
             onClick={confirm}
             disabled={pending}
-            className="h-10 px-4 rounded-md bg-(--color-accent-bright) text-stone-900 font-semibold text-sm hover:bg-(--color-accent) hover:text-white disabled:opacity-60"
+            className="h-10 px-4 rounded-md bg-(--color-brand-yellow-bright) text-stone-900 font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) disabled:opacity-60"
           >
             {pending ? 'Bezig…' : 'Label genereren'}
           </button>
@@ -209,7 +209,7 @@ function RefundButton({ orderId, totalCents }: { orderId: string; totalCents: nu
             step="0.01"
             value={amountEur}
             onChange={(e) => setAmountEur(e.target.value)}
-            className="w-full h-10 px-3 rounded-md border border-stone-200 font-mono tabular-nums focus:outline-none focus:border-(--color-accent)"
+            className="w-full h-10 px-3 rounded-md border border-stone-200 font-mono tabular-nums focus:outline-none focus:border-(--color-brand-yellow)"
           />
         </label>
         <label className="block mb-3">
@@ -219,7 +219,7 @@ function RefundButton({ orderId, totalCents }: { orderId: string; totalCents: nu
             onChange={(e) => setReason(e.target.value)}
             rows={3}
             placeholder="Bijv. klant niet thuis, product beschadigd…"
-            className="w-full rounded-md border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:border-(--color-accent)"
+            className="w-full rounded-md border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:border-(--color-brand-yellow)"
           />
         </label>
         {error && (
@@ -286,7 +286,7 @@ function EmailCustomerButton({ orderId }: { orderId: string }) {
               className={cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-md border cursor-pointer transition-colors',
                 template === t.value
-                  ? 'border-(--color-accent) bg-(--color-accent-bright)/10'
+                  ? 'border-(--color-brand-yellow) bg-(--color-brand-yellow-bright)/10'
                   : 'border-stone-200 hover:bg-stone-50',
               )}
             >
@@ -296,7 +296,7 @@ function EmailCustomerButton({ orderId }: { orderId: string }) {
                 value={t.value}
                 checked={template === t.value}
                 onChange={() => setTemplate(t.value)}
-                className="text-(--color-accent)"
+                className="text-(--color-brand-yellow)"
               />
               <span className="text-sm text-stone-900">{t.label}</span>
             </label>
@@ -311,7 +311,7 @@ function EmailCustomerButton({ orderId }: { orderId: string }) {
           <button
             onClick={confirm}
             disabled={pending}
-            className="h-10 px-4 rounded-md bg-(--color-accent-bright) text-stone-900 font-semibold text-sm hover:bg-(--color-accent) hover:text-white disabled:opacity-60"
+            className="h-10 px-4 rounded-md bg-(--color-brand-yellow-bright) text-stone-900 font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) disabled:opacity-60"
           >
             {pending ? 'Versturen…' : 'Verstuur'}
           </button>
@@ -356,7 +356,7 @@ function CancelButton({ orderId }: { orderId: string }) {
             onChange={(e) => setReason(e.target.value)}
             rows={3}
             placeholder="Bijv. klantverzoek, dubbele bestelling, voorraadprobleem…"
-            className="w-full rounded-md border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:border-(--color-accent)"
+            className="w-full rounded-md border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:border-(--color-brand-yellow)"
           />
         </label>
         <div className="flex justify-end gap-2">

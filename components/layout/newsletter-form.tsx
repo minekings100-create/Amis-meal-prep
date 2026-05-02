@@ -42,7 +42,7 @@ export function NewsletterForm({ subscribeLabel }: { subscribeLabel: string }) {
         placeholder="email@adres.nl"
         disabled={success}
         aria-label="Email"
-        className="flex-1 h-10 rounded-md bg-white/10 border border-white/15 px-3 text-sm text-white placeholder:text-white/40 transition-colors hover:border-white/30 focus:outline-none focus:border-(--color-accent-bright) focus:bg-white/15 disabled:opacity-60"
+        className="flex-1 h-10 rounded-md bg-white/10 border border-white/15 px-3 text-sm text-white placeholder:text-white/40 transition-colors hover:border-white/30 focus:outline-none focus:border-(--color-brand-yellow-bright) focus:bg-white/15 disabled:opacity-60"
       />
       <button
         type="submit"
@@ -50,8 +50,8 @@ export function NewsletterForm({ subscribeLabel }: { subscribeLabel: string }) {
         className={cn(
           'h-10 px-4 rounded-md text-sm font-medium transition-colors inline-flex items-center gap-1.5',
           success
-            ? 'bg-(--color-accent) text-white'
-            : 'bg-(--color-accent-bright) text-(--color-ink) hover:bg-white',
+            ? 'bg-(--color-brand-yellow) text-(--color-brand-black)'
+            : 'bg-(--color-brand-yellow-bright) text-(--color-ink) hover:bg-white',
         )}
       >
         {success ? <><Check className="h-3.5 w-3.5" /> Aangemeld</> : <>{pending ? '…' : subscribeLabel} <ArrowRight className="h-3 w-3" /></>}

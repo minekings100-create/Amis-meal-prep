@@ -33,7 +33,7 @@ export function AccountSidebar({ customer }: { customer: CustomerProfile }) {
     <aside className="lg:sticky lg:top-24 lg:self-start">
       <div className="rounded-2xl bg-white border border-stone-200 p-4 mb-3 flex items-center gap-3 lg:block">
         <div className="flex items-center gap-3 lg:w-full">
-          <div className="h-11 w-11 rounded-full bg-(--color-accent-bright)/15 text-(--color-accent) inline-flex items-center justify-center font-semibold shrink-0">
+          <div className="h-11 w-11 rounded-full bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) inline-flex items-center justify-center font-semibold shrink-0">
             {initial}
           </div>
           <div className="min-w-0 flex-1">
@@ -59,7 +59,7 @@ export function AccountSidebar({ customer }: { customer: CustomerProfile }) {
                   className={cn(
                     'group inline-flex lg:flex items-center gap-2 lg:gap-3 px-3 py-2 rounded-full lg:rounded-md text-sm border lg:border-0 transition-colors whitespace-nowrap',
                     active
-                      ? 'bg-(--color-accent-bright)/15 text-(--color-accent) font-medium border-(--color-accent-bright)/30 lg:border-transparent'
+                      ? 'bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) font-medium border-(--color-brand-yellow-bright)/30 lg:border-transparent'
                       : 'text-stone-700 border-stone-200 lg:border-transparent hover:bg-stone-100 hover:border-stone-300 lg:hover:border-transparent',
                   )}
                 >

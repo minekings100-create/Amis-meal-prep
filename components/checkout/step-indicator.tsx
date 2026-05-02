@@ -24,7 +24,7 @@ export function StepIndicator({ active }: { active: CheckoutStep }) {
         {/* Progress line */}
         <div
           aria-hidden
-          className="absolute left-4 top-4 md:top-5 h-0.5 bg-(--color-accent) transition-all duration-500 ease-out -z-0"
+          className="absolute left-4 top-4 md:top-5 h-0.5 bg-(--color-brand-yellow) transition-all duration-500 ease-out -z-0"
           style={{ width: `calc((100% - 32px) * ${progressPct / 100})` }}
         />
         <ol className="relative flex items-start justify-between">
@@ -42,9 +42,9 @@ export function StepIndicator({ active }: { active: CheckoutStep }) {
                   className={cn(
                     'relative z-10 inline-flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full text-xs md:text-sm font-semibold transition-all',
                     isDone
-                      ? 'bg-(--color-accent) text-white shadow-[0_4px_16px_-4px_rgba(74,138,60,0.5)] hover:bg-(--color-accent)/90'
+                      ? 'bg-(--color-brand-yellow) text-(--color-brand-black) shadow-[0_4px_16px_-4px_rgba(74,138,60,0.5)] hover:bg-(--color-brand-yellow)/90'
                       : isActive
-                        ? 'bg-(--color-accent) text-white ring-4 ring-(--color-accent-bright)/30 shadow-[0_4px_16px_-4px_rgba(74,138,60,0.5)]'
+                        ? 'bg-(--color-brand-yellow) text-(--color-brand-black) ring-4 ring-(--color-brand-yellow-bright)/30 shadow-[0_4px_16px_-4px_rgba(74,138,60,0.5)]'
                         : 'bg-white border-2 border-stone-200 text-stone-400',
                   )}
                 >
@@ -56,7 +56,7 @@ export function StepIndicator({ active }: { active: CheckoutStep }) {
                     isActive
                       ? 'text-stone-900'
                       : isDone
-                        ? 'text-(--color-accent)'
+                        ? 'text-(--color-brand-yellow)'
                         : 'text-stone-500',
                   )}
                 >

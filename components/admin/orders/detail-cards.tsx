@@ -14,7 +14,7 @@ export function CustomerCard({ customer }: { customer: OrderDetail['customer'] }
           {customer.userId ? (
             <Link
               href={`/admin/customers/${customer.userId}`}
-              className="text-xs text-(--color-accent) hover:underline"
+              className="text-xs text-(--color-brand-yellow) hover:underline"
             >
               {customer.totalOrders} {customer.totalOrders === 1 ? 'order' : 'orders'} totaal →
             </Link>
@@ -61,7 +61,7 @@ export function AddressCard({ shipping }: { shipping: OrderDetail['shipping'] })
           href={mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-xs text-(--color-accent) hover:underline"
+          className="inline-flex items-center gap-1 text-xs text-(--color-brand-yellow) hover:underline"
         >
           Bekijk op Google Maps <ExternalLink className="h-3 w-3" />
         </a>
@@ -71,7 +71,7 @@ export function AddressCard({ shipping }: { shipping: OrderDetail['shipping'] })
             {shipping.method === 'local' ? 'Lokale bezorging' : 'PostNL'}
           </div>
           {shipping.isLocal ? (
-            <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-(--color-accent-bright)/15 text-(--color-accent) text-[10px] font-bold uppercase tracking-wider border border-(--color-accent-bright)/30">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) text-[10px] font-bold uppercase tracking-wider border border-(--color-brand-yellow-bright)/30">
               Maastricht
             </span>
           ) : (
@@ -88,7 +88,7 @@ export function AddressCard({ shipping }: { shipping: OrderDetail['shipping'] })
                 href={shipping.trackingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-mono text-(--color-accent) hover:underline inline-flex items-center gap-1"
+                className="text-sm font-mono text-(--color-brand-yellow) hover:underline inline-flex items-center gap-1"
               >
                 {shipping.trackingNumber} <ExternalLink className="h-3 w-3" />
               </a>
@@ -155,7 +155,7 @@ function Row({
           'font-mono tabular-nums',
           bold ? 'text-base font-semibold text-stone-900' : 'text-stone-900',
           muted && 'text-stone-400 text-xs',
-          negative && 'text-(--color-accent)',
+          negative && 'text-(--color-brand-yellow)',
         ]
           .filter(Boolean)
           .join(' ')}

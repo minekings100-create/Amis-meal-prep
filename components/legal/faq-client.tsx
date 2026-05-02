@@ -245,7 +245,7 @@ export function FaqClient({ locale }: { locale: 'nl' | 'en' }) {
           {locale === 'en'
             ? 'Find quick answers below. Still stuck? Reach out via '
             : 'Snelle antwoorden hieronder. Kom je er niet uit? Mail '}
-          <a href="mailto:hallo@amismeals.nl" className="text-(--color-accent) hover:underline">
+          <a href="mailto:hallo@amismeals.nl" className="text-(--color-brand-yellow) hover:underline">
             hallo@amismeals.nl
           </a>
           .
@@ -262,10 +262,10 @@ export function FaqClient({ locale }: { locale: 'nl' | 'en' }) {
               <a
                 key={cat.id}
                 href={`#${cat.id}`}
-                className="group flex items-center justify-between gap-3 text-sm text-stone-600 hover:text-(--color-accent) transition-colors py-1"
+                className="group flex items-center justify-between gap-3 text-sm text-stone-600 hover:text-(--color-brand-yellow) transition-colors py-1"
               >
                 <span>{cat.title}</span>
-                <span className="font-mono text-[10px] text-stone-400 group-hover:text-(--color-accent)/70 tabular-nums">
+                <span className="font-mono text-[10px] text-stone-400 group-hover:text-(--color-brand-yellow)/70 tabular-nums">
                   {cat.items.length}
                 </span>
               </a>
@@ -280,7 +280,7 @@ export function FaqClient({ locale }: { locale: 'nl' | 'en' }) {
               <a
                 key={cat.id}
                 href={`#${cat.id}`}
-                className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-200 bg-white text-xs font-medium text-stone-700 hover:border-(--color-accent-bright)/40 hover:text-(--color-accent) transition-colors whitespace-nowrap"
+                className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-200 bg-white text-xs font-medium text-stone-700 hover:border-(--color-brand-yellow-bright)/40 hover:text-(--color-brand-yellow) transition-colors whitespace-nowrap"
               >
                 {cat.title}
                 <span className="font-mono text-[10px] text-stone-400">{cat.items.length}</span>
@@ -295,7 +295,7 @@ export function FaqClient({ locale }: { locale: 'nl' | 'en' }) {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={locale === 'en' ? 'Search the FAQ…' : 'Zoek in de FAQ…'}
-              className="h-12 w-full pl-11 pr-4 rounded-2xl border border-stone-200 bg-white text-sm transition-colors hover:border-stone-300 focus:outline-none focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent-bright)/30"
+              className="h-12 w-full pl-11 pr-4 rounded-2xl border border-stone-200 bg-white text-sm transition-colors hover:border-stone-300 focus:outline-none focus:border-(--color-brand-yellow) focus:ring-2 focus:ring-(--color-brand-yellow-bright)/30"
             />
           </div>
 
@@ -327,7 +327,7 @@ function FaqRow({ q, a }: { q: string; a: string }) {
     <li
       className={cn(
         'rounded-2xl border bg-white transition-colors',
-        open ? 'border-(--color-accent-bright)/40' : 'border-stone-200 hover:border-stone-300',
+        open ? 'border-(--color-brand-yellow-bright)/40' : 'border-stone-200 hover:border-stone-300',
       )}
     >
       <button
@@ -338,7 +338,7 @@ function FaqRow({ q, a }: { q: string; a: string }) {
         <span
           className={cn(
             'font-medium transition-colors',
-            open ? 'text-(--color-accent)' : 'text-stone-900 group-hover:text-stone-700',
+            open ? 'text-(--color-brand-yellow)' : 'text-stone-900 group-hover:text-stone-700',
           )}
         >
           {q}
@@ -346,7 +346,7 @@ function FaqRow({ q, a }: { q: string; a: string }) {
         <ChevronDown
           className={cn(
             'h-4 w-4 shrink-0 transition-all',
-            open ? 'rotate-180 text-(--color-accent)' : 'text-stone-400 group-hover:text-stone-600',
+            open ? 'rotate-180 text-(--color-brand-yellow)' : 'text-stone-400 group-hover:text-stone-600',
           )}
         />
       </button>

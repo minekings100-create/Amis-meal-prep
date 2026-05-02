@@ -156,7 +156,7 @@ export default function CheckoutPaymentPage() {
                 className={cn(
                   'w-full text-left rounded-2xl border-2 transition-all p-4 flex items-center gap-3',
                   paymentMethod === option.key
-                    ? 'border-(--color-accent) bg-(--color-accent-bright)/10'
+                    ? 'border-(--color-brand-yellow) bg-(--color-brand-yellow-bright)/10'
                     : 'border-stone-200 bg-white hover:border-stone-300',
                 )}
               >
@@ -167,7 +167,7 @@ export default function CheckoutPaymentPage() {
                 </div>
                 <div className={cn(
                   'h-5 w-5 shrink-0 rounded-full border-2 inline-flex items-center justify-center',
-                  paymentMethod === option.key ? 'border-(--color-accent) bg-(--color-accent)' : 'border-stone-300 bg-white',
+                  paymentMethod === option.key ? 'border-(--color-brand-yellow) bg-(--color-brand-yellow)' : 'border-stone-300 bg-white',
                 )}>
                   {paymentMethod === option.key && <Check className="h-3 w-3 text-white" />}
                 </div>
@@ -181,15 +181,15 @@ export default function CheckoutPaymentPage() {
               type="checkbox"
               checked={termsAccepted}
               onChange={(e) => setTermsAccepted(e.target.checked)}
-              className="mt-1 h-4 w-4 rounded border-stone-300 text-(--color-accent) focus:ring-(--color-accent-bright)"
+              className="mt-1 h-4 w-4 rounded border-stone-300 text-(--color-brand-yellow) focus:ring-(--color-brand-yellow-bright)"
             />
             <span className="text-sm text-stone-700">
               Ik ga akkoord met de{' '}
-              <Link href="/algemene-voorwaarden" className="text-(--color-accent) hover:underline" target="_blank">
+              <Link href="/algemene-voorwaarden" className="text-(--color-brand-yellow) hover:underline" target="_blank">
                 algemene voorwaarden
               </Link>{' '}
               en het{' '}
-              <Link href="/privacybeleid" className="text-(--color-accent) hover:underline" target="_blank">
+              <Link href="/privacybeleid" className="text-(--color-brand-yellow) hover:underline" target="_blank">
                 privacybeleid
               </Link>
               .
@@ -220,7 +220,7 @@ export default function CheckoutPaymentPage() {
           type="button"
           onClick={placeOrder}
           disabled={pending || !termsAccepted}
-          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90 disabled:opacity-50 shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)]"
+          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 disabled:opacity-50 shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)]"
         >
           {pending ? 'Bezig…' : `Bestelling plaatsen ${formatMoneyCents(totalCents)}`}
         </button>
@@ -236,7 +236,7 @@ export default function CheckoutPaymentPage() {
           type="button"
           onClick={placeOrder}
           disabled={pending || !termsAccepted}
-          className="flex-1 inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-accent) text-white font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)] disabled:opacity-50"
+          className="flex-1 inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)] disabled:opacity-50"
         >
           {pending ? 'Bezig…' : `Plaatsen — ${formatMoneyCents(totalCents)}`}
         </button>
@@ -258,7 +258,7 @@ function SummaryCard({
     <div className="rounded-2xl border border-stone-200 bg-white p-4">
       <div className="flex items-baseline justify-between mb-2">
         <p className="text-[11px] font-bold uppercase tracking-wider text-stone-500">{title}</p>
-        <Link href={editHref} className="text-xs text-(--color-accent) hover:underline">
+        <Link href={editHref} className="text-xs text-(--color-brand-yellow) hover:underline">
           Wijzig
         </Link>
       </div>

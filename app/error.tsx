@@ -50,7 +50,7 @@ export default function ErrorPage({
           <button
             type="button"
             onClick={reset}
-            className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-accent) text-white text-sm font-semibold hover:bg-(--color-accent)/90 transition-colors"
+            className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow)/90 transition-colors"
           >
             <RefreshCw className="h-4 w-4" />
             Probeer opnieuw

@@ -105,7 +105,7 @@ export default async function CustomerReviewsPage() {
               <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100 text-xs">
                 <Link
                   href={`/shop/${r.productSlug}`}
-                  className="text-stone-600 hover:text-(--color-accent) transition-colors"
+                  className="text-stone-600 hover:text-(--color-brand-yellow) transition-colors"
                 >
                   Op {r.productName} →
                 </Link>
@@ -144,7 +144,7 @@ function ReviewStatus({ isPublished, isDeleted }: { isPublished: boolean; isDele
   }
   if (isPublished) {
     return (
-      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider border bg-(--color-accent-bright)/15 text-(--color-accent) border-(--color-accent-bright)/30">
+      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider border bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border-(--color-brand-yellow-bright)/30">
         Gepubliceerd
       </span>
     );

@@ -38,7 +38,7 @@ export function AmisStandard() {
           {VALUES.map((v, i) => (
             <RevealSection key={v.titleKey} delay={i * 0.08}>
               <div>
-                <div className="h-10 w-10 rounded-full bg-(--color-accent) text-white inline-flex items-center justify-center mb-5">
+                <div className="h-10 w-10 rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) inline-flex items-center justify-center mb-5">
                   <Check className="h-5 w-5" strokeWidth={3} />
                 </div>
                 <h4 className="font-bold uppercase tracking-wide text-sm text-stone-900 mb-3 leading-snug">

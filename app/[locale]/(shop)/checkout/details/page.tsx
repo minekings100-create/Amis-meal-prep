@@ -89,7 +89,7 @@ export default function CheckoutDetailsPage() {
               <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em]">Bezorggegevens</h1>
               <Link
                 href={`/account/login?next=${encodeURIComponent('/checkout/details')}`}
-                className="text-sm text-(--color-accent) hover:underline whitespace-nowrap"
+                className="text-sm text-(--color-brand-yellow) hover:underline whitespace-nowrap"
               >
                 Heb je al een account?
               </Link>
@@ -176,7 +176,7 @@ export default function CheckoutDetailsPage() {
                 <select
                   value={shipping.country}
                   onChange={(e) => setShipping({ country: e.target.value })}
-                  className="h-11 w-full rounded-md border border-stone-300 px-3 text-sm focus:outline-none focus:border-(--color-accent)"
+                  className="h-11 w-full rounded-md border border-stone-300 px-3 text-sm focus:outline-none focus:border-(--color-brand-yellow)"
                 >
                   <option value="NL">NL</option>
                   <option value="BE">BE</option>
@@ -185,12 +185,12 @@ export default function CheckoutDetailsPage() {
             </div>
 
             {validPostalCode && isLocal && (
-              <div className="rounded-md bg-(--color-accent-bright)/10 border border-(--color-accent-bright)/30 px-4 py-2.5 flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-(--color-accent)" />
-                <span className="text-sm text-(--color-accent) font-medium">
+              <div className="rounded-md bg-(--color-brand-yellow-bright)/10 border border-(--color-brand-yellow-bright)/30 px-4 py-2.5 flex items-center gap-2">
+                <MapPin className="h-4 w-4 text-(--color-brand-yellow)" />
+                <span className="text-sm text-(--color-brand-yellow) font-medium">
                   Lokale bezorging beschikbaar
                 </span>
-                <span className="ml-auto text-[10px] uppercase tracking-wider font-bold text-(--color-accent)">
+                <span className="ml-auto text-[10px] uppercase tracking-wider font-bold text-(--color-brand-yellow)">
                   Maastricht
                 </span>
               </div>
@@ -201,7 +201,7 @@ export default function CheckoutDetailsPage() {
                 value={shipping.customer_note}
                 onChange={(e) => setShipping({ customer_note: e.target.value })}
                 rows={2}
-                className="w-full rounded-md border border-stone-300 px-3 py-2 text-sm focus:outline-none focus:border-(--color-accent)"
+                className="w-full rounded-md border border-stone-300 px-3 py-2 text-sm focus:outline-none focus:border-(--color-brand-yellow)"
               />
             </Field>
           </div>
@@ -226,7 +226,7 @@ export default function CheckoutDetailsPage() {
         <button
           type="button"
           onClick={next}
-          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90 transition-colors"
+          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 transition-colors"
         >
           Volgende: Verzending
           <ArrowRight className="h-4 w-4" />
@@ -237,7 +237,7 @@ export default function CheckoutDetailsPage() {
         <button
           type="button"
           onClick={next}
-          className="w-full inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-accent) text-white font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)]"
+          className="w-full inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)]"
         >
           Volgende: Verzending
           <ArrowRight className="h-4 w-4" />
@@ -310,7 +310,7 @@ function GiftAddressSection({
               <select
                 value={billing.country}
                 onChange={(e) => setBilling({ country: e.target.value })}
-                className="h-11 w-full rounded-md border border-stone-300 px-3 text-sm focus:outline-none focus:border-(--color-accent)"
+                className="h-11 w-full rounded-md border border-stone-300 px-3 text-sm focus:outline-none focus:border-(--color-brand-yellow)"
               >
                 <option value="NL">NL</option>
                 <option value="BE">BE</option>
@@ -371,7 +371,7 @@ function Input({
       autoComplete={autoComplete}
       placeholder={placeholder}
       className={cn(
-        'h-11 w-full rounded-md border border-stone-300 px-4 text-sm focus:outline-none focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent-bright)/30',
+        'h-11 w-full rounded-md border border-stone-300 px-4 text-sm focus:outline-none focus:border-(--color-brand-yellow) focus:ring-2 focus:ring-(--color-brand-yellow-bright)/30',
         mono && 'font-mono tabular-nums',
       )}
     />

@@ -38,7 +38,7 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
                 className={
                   'h-4 w-4 ' +
                   (n <= Math.round(avg)
-                    ? 'fill-(--color-accent-bright) text-(--color-accent-bright)'
+                    ? 'fill-(--color-brand-yellow-bright) text-(--color-brand-yellow-bright)'
                     : 'text-(--color-line)')
                 }
               />
@@ -62,7 +62,7 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
                   className={
                     'h-3.5 w-3.5 ' +
                     (n <= r.rating
-                      ? 'fill-(--color-accent-bright) text-(--color-accent-bright)'
+                      ? 'fill-(--color-brand-yellow-bright) text-(--color-brand-yellow-bright)'
                       : 'text-(--color-line)')
                   }
                 />

@@ -60,7 +60,7 @@ export default function CartPage() {
                 <div className="flex-1 min-w-0 flex flex-col">
                   <Link
                     href={`/shop/${line.slug}`}
-                    className="font-medium text-stone-900 hover:text-(--color-accent) transition-colors leading-tight"
+                    className="font-medium text-stone-900 hover:text-(--color-brand-yellow) transition-colors leading-tight"
                   >
                     {line.name}
                   </Link>
@@ -130,7 +130,7 @@ export default function CartPage() {
             </dl>
             <Link
               href="/checkout"
-              className="mt-5 w-full inline-flex items-center justify-center h-12 rounded-2xl bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90 active:scale-[0.99] transition-all shadow-[0_8px_24px_-8px_rgba(74,138,60,0.5)]"
+              className="mt-5 w-full inline-flex items-center justify-center h-12 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 active:scale-[0.99] transition-all shadow-[0_8px_24px_-8px_rgba(74,138,60,0.5)]"
             >
               {t('checkout')}
             </Link>

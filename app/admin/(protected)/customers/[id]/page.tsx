@@ -102,7 +102,7 @@ export default async function CustomerDetailPage({
                   {detail.orders.map((o) => (
                     <tr key={o.id}>
                       <td className="py-2.5 font-mono text-sm">
-                        <Link href={`/admin/orders/${o.id}`} className="hover:text-(--color-accent)">{o.orderNumber}</Link>
+                        <Link href={`/admin/orders/${o.id}`} className="hover:text-(--color-brand-yellow)">{o.orderNumber}</Link>
                       </td>
                       <td className="py-2.5 text-xs text-stone-500 font-mono">
                         {dateFmt.format(new Date(o.createdAt))}
@@ -174,9 +174,9 @@ function Row({ icon, children }: { icon: React.ReactNode; children: React.ReactN
 
 function Stat({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
-    <div className={cn('rounded-lg px-3 py-2', accent ? 'bg-(--color-accent-bright)/10 border border-(--color-accent-bright)/30' : 'bg-stone-50 border border-stone-100')}>
+    <div className={cn('rounded-lg px-3 py-2', accent ? 'bg-(--color-brand-yellow-bright)/10 border border-(--color-brand-yellow-bright)/30' : 'bg-stone-50 border border-stone-100')}>
       <p className="text-[10px] uppercase tracking-wider text-stone-500">{label}</p>
-      <p className={cn('mt-0.5 font-mono text-base tabular-nums', accent ? 'text-(--color-accent) font-semibold' : 'text-stone-900')}>
+      <p className={cn('mt-0.5 font-mono text-base tabular-nums', accent ? 'text-(--color-brand-yellow) font-semibold' : 'text-stone-900')}>
         {value}
       </p>
     </div>
@@ -184,7 +184,7 @@ function Stat({ label, value, accent }: { label: string; value: string; accent?:
 }
 
 function statusPill(status: string): string {
-  if (status === 'paid' || status === 'preparing') return 'bg-(--color-accent-bright)/15 text-(--color-accent)';
+  if (status === 'paid' || status === 'preparing') return 'bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow)';
   if (status === 'shipped' || status === 'delivered') return 'bg-stone-900 text-white';
   if (status === 'cancelled' || status === 'refunded') return 'bg-stone-100 text-stone-600';
   return 'bg-amber-100 text-amber-800';

@@ -16,11 +16,11 @@ export default async function AddressesPage() {
 
       <div className="space-y-3">
         <div className="rounded-2xl border border-stone-200 bg-white p-5 flex items-start gap-3">
-          <MapPin className="h-5 w-5 text-(--color-accent) shrink-0 mt-0.5" />
+          <MapPin className="h-5 w-5 text-(--color-brand-yellow) shrink-0 mt-0.5" />
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <p className="font-medium text-stone-900">Thuis</p>
-              <span className="text-[10px] uppercase tracking-wider font-bold text-(--color-accent) bg-(--color-accent-bright)/15 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] uppercase tracking-wider font-bold text-(--color-brand-yellow) bg-(--color-brand-yellow-bright)/15 px-2 py-0.5 rounded-full">
                 Standaard
               </span>
             </div>
@@ -32,7 +32,7 @@ export default async function AddressesPage() {
               <span className="font-mono">6221 ED</span> Maastricht, NL
             </p>
             <div className="flex gap-3 mt-3">
-              <button className="text-xs text-(--color-accent) hover:underline">Bewerken</button>
+              <button className="text-xs text-(--color-brand-yellow) hover:underline">Bewerken</button>
               <button className="text-xs text-stone-400 hover:text-red-600">Verwijderen</button>
             </div>
           </div>

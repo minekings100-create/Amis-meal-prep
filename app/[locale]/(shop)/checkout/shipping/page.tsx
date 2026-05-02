@@ -94,7 +94,7 @@ export default function CheckoutShippingPage() {
               </div>
               <Link
                 href="/checkout/details"
-                className="text-xs text-(--color-accent) hover:underline shrink-0"
+                className="text-xs text-(--color-brand-yellow) hover:underline shrink-0"
               >
                 Wijzig
               </Link>
@@ -135,8 +135,8 @@ export default function CheckoutShippingPage() {
               <p className="text-sm font-semibold text-stone-900">Kortingscode</p>
             </div>
             {discountCode && discountMsg?.kind !== 'err' ? (
-              <div className="flex items-center justify-between rounded-md bg-(--color-accent-bright)/10 border border-(--color-accent-bright)/30 px-3 py-2.5">
-                <div className="flex items-center gap-2 text-sm text-(--color-accent) font-medium">
+              <div className="flex items-center justify-between rounded-md bg-(--color-brand-yellow-bright)/10 border border-(--color-brand-yellow-bright)/30 px-3 py-2.5">
+                <div className="flex items-center gap-2 text-sm text-(--color-brand-yellow) font-medium">
                   <Check className="h-3.5 w-3.5" />
                   <span className="font-mono">{discountCode}</span>
                   {discountMsg && <span className="text-stone-600 font-normal">— {discountMsg.text}</span>}
@@ -157,7 +157,7 @@ export default function CheckoutShippingPage() {
                   value={codeInput}
                   onChange={(e) => setCodeInput(e.target.value.toUpperCase())}
                   placeholder="BV. WELKOM10"
-                  className="h-11 flex-1 rounded-md border border-stone-300 px-3 text-sm font-mono focus:outline-none focus:border-(--color-accent)"
+                  className="h-11 flex-1 rounded-md border border-stone-300 px-3 text-sm font-mono focus:outline-none focus:border-(--color-brand-yellow)"
                 />
                 <button
                   type="button"
@@ -191,7 +191,7 @@ export default function CheckoutShippingPage() {
         <button
           type="button"
           onClick={() => router.push('/checkout/payment')}
-          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90"
+          className="inline-flex items-center gap-2 h-12 px-7 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90"
         >
           Volgende: Betaling <ArrowRight className="h-4 w-4" />
         </button>
@@ -206,7 +206,7 @@ export default function CheckoutShippingPage() {
         <button
           type="button"
           onClick={() => router.push('/checkout/payment')}
-          className="flex-1 inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-accent) text-white font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)]"
+          className="flex-1 inline-flex items-center justify-center gap-2 h-12 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm shadow-[0_8px_24px_-6px_rgba(74,138,60,0.5)]"
         >
           Volgende: Betaling <ArrowRight className="h-4 w-4" />
         </button>
@@ -241,13 +241,13 @@ function ShippingOption({
       className={cn(
         'w-full text-left rounded-2xl border-2 transition-all p-4 flex items-start gap-3',
         selected
-          ? 'border-(--color-accent) bg-(--color-accent-bright)/10'
+          ? 'border-(--color-brand-yellow) bg-(--color-brand-yellow-bright)/10'
           : 'border-stone-200 bg-white hover:border-stone-300',
       )}
     >
       <div className={cn(
         'mt-0.5 h-9 w-9 shrink-0 rounded-full inline-flex items-center justify-center',
-        selected ? 'bg-(--color-accent) text-white' : 'bg-stone-100 text-stone-600',
+        selected ? 'bg-(--color-brand-yellow) text-(--color-brand-black)' : 'bg-stone-100 text-stone-600',
       )}>
         {icon}
       </div>
@@ -262,7 +262,7 @@ function ShippingOption({
             ETA: {eta}
           </span>
           {badge && (
-            <span className="text-[10px] uppercase tracking-wider font-bold text-(--color-accent) bg-(--color-accent-bright)/15 px-2 py-0.5 rounded-full">
+            <span className="text-[10px] uppercase tracking-wider font-bold text-(--color-brand-yellow) bg-(--color-brand-yellow-bright)/15 px-2 py-0.5 rounded-full">
               {badge}
             </span>
           )}
@@ -270,7 +270,7 @@ function ShippingOption({
       </div>
       <div className={cn(
         'h-5 w-5 shrink-0 rounded-full border-2 inline-flex items-center justify-center',
-        selected ? 'border-(--color-accent) bg-(--color-accent)' : 'border-stone-300 bg-white',
+        selected ? 'border-(--color-brand-yellow) bg-(--color-brand-yellow)' : 'border-stone-300 bg-white',
       )}>
         {selected && <Check className="h-3 w-3 text-white" />}
       </div>

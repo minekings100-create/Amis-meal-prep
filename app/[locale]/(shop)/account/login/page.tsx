@@ -54,11 +54,11 @@ function LoginInner() {
       {/* Soft plate-circle brand backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-24 -translate-x-1/2 h-[520px] w-[520px] rounded-full bg-(--color-accent-bright)/8 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-24 -translate-x-1/2 h-[520px] w-[520px] rounded-full bg-(--color-brand-yellow-bright)/8 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-32 -translate-x-1/2 h-[360px] w-[360px] rounded-full border border-(--color-accent-bright)/15"
+        className="pointer-events-none absolute left-1/2 top-32 -translate-x-1/2 h-[360px] w-[360px] rounded-full border border-(--color-brand-yellow-bright)/15"
       />
       <div className="container-amis relative py-12 md:py-16 max-w-md">
         <div className="text-center mb-6">
@@ -138,11 +138,11 @@ function LoginInner() {
             />
           )}
           {error && <p className="text-sm text-red-600">{error}</p>}
-          {info && <p className="text-sm text-(--color-accent)">{info}</p>}
+          {info && <p className="text-sm text-(--color-brand-yellow)">{info}</p>}
           <button
             type="submit"
             disabled={pending}
-            className="w-full h-12 rounded-xl bg-(--color-accent) text-white font-semibold text-sm hover:bg-(--color-accent)/90 disabled:opacity-60 inline-flex items-center justify-center gap-2"
+            className="w-full h-12 rounded-xl bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-(--color-brand-yellow)/90 disabled:opacity-60 inline-flex items-center justify-center gap-2"
           >
             {pending ? 'Bezig…' : mode === 'password' ? 'Inloggen' : 'Stuur magic link'}
             <ArrowRight className="h-4 w-4" />
@@ -151,7 +151,7 @@ function LoginInner() {
             <div className="text-center pt-1">
               <Link
                 href="/account/forgot-password"
-                className="text-xs text-stone-500 hover:text-(--color-accent) transition-colors"
+                className="text-xs text-stone-500 hover:text-(--color-brand-yellow) transition-colors"
               >
                 Wachtwoord vergeten?
               </Link>
@@ -164,7 +164,7 @@ function LoginInner() {
         Nog geen account?{' '}
         <Link
           href={`/account/register?next=${encodeURIComponent(next)}`}
-          className="text-(--color-accent) hover:underline font-medium"
+          className="text-(--color-brand-yellow) hover:underline font-medium"
         >
           Registreren
         </Link>
@@ -195,7 +195,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-12 w-full pl-9 pr-3 rounded-xl border border-stone-200 bg-stone-50/60 text-sm transition-colors hover:border-stone-300 focus:outline-none focus:border-(--color-accent) focus:bg-white focus:ring-2 focus:ring-(--color-accent-bright)/30"
+        className="h-12 w-full pl-9 pr-3 rounded-xl border border-stone-200 bg-stone-50/60 text-sm transition-colors hover:border-stone-300 focus:outline-none focus:border-(--color-brand-yellow) focus:bg-white focus:ring-2 focus:ring-(--color-brand-yellow-bright)/30"
       />
     </div>
   );

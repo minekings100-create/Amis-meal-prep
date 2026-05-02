@@ -72,7 +72,7 @@ export function MainImageUpload({
           onClick={() => fileRef.current?.click()}
           className={cn(
             'w-full max-w-md border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors',
-            drag ? 'border-(--color-accent) bg-(--color-accent-bright)/10' : 'border-stone-300 hover:border-stone-400 bg-stone-50',
+            drag ? 'border-(--color-brand-yellow) bg-(--color-brand-yellow-bright)/10' : 'border-stone-300 hover:border-stone-400 bg-stone-50',
           )}
         >
           <Upload className="h-6 w-6 mx-auto text-stone-400 mb-2" />

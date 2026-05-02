@@ -28,15 +28,15 @@ export default async function LocaleNotFound() {
           {/* Decorative plate-circle behind content */}
           <div
             aria-hidden
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[640px] w-[640px] rounded-full bg-(--color-accent-bright)/10 blur-2xl pointer-events-none"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[640px] w-[640px] rounded-full bg-(--color-brand-yellow-bright)/10 blur-2xl pointer-events-none"
           />
           <div
             aria-hidden
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[440px] w-[440px] rounded-full border border-(--color-accent-bright)/20 pointer-events-none"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[440px] w-[440px] rounded-full border border-(--color-brand-yellow-bright)/20 pointer-events-none"
           />
 
           <div className="relative z-10 text-center max-w-lg">
-            <p className="font-mono text-7xl md:text-9xl font-bold text-(--color-accent) tracking-[-0.04em] leading-none mb-6">
+            <p className="font-mono text-7xl md:text-9xl font-bold text-(--color-brand-yellow) tracking-[-0.04em] leading-none mb-6">
               404
             </p>
             <h1 className="text-2xl md:text-3xl font-bold tracking-[-0.025em] mb-2">
@@ -57,7 +57,7 @@ export default async function LocaleNotFound() {
               </Link>
               <Link
                 href="/shop"
-                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-accent) text-white text-sm font-semibold hover:bg-(--color-accent)/90 transition-colors"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-yellow) text-(--color-brand-black) text-sm font-semibold hover:bg-(--color-brand-yellow)/90 transition-colors"
               >
                 <ShoppingBag className="h-4 w-4" />
                 {isEN ? 'To the shop' : 'Naar shop'}
@@ -69,13 +69,13 @@ export default async function LocaleNotFound() {
               <span>{isEN ? 'Or try:' : 'Of probeer:'}</span>
               <Link
                 href="/faq"
-                className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-stone-200 bg-white hover:border-(--color-accent-bright)/40 hover:text-(--color-accent) transition-colors"
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-stone-200 bg-white hover:border-(--color-brand-yellow-bright)/40 hover:text-(--color-brand-yellow) transition-colors"
               >
                 <HelpCircle className="h-3 w-3" /> FAQ
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-stone-200 bg-white hover:border-(--color-accent-bright)/40 hover:text-(--color-accent) transition-colors"
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-stone-200 bg-white hover:border-(--color-brand-yellow-bright)/40 hover:text-(--color-brand-yellow) transition-colors"
               >
                 <MessageCircle className="h-3 w-3" /> Contact
               </Link>

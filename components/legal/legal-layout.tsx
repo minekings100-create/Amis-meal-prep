@@ -43,7 +43,7 @@ export function LegalLayout({
       <header className="mb-8 md:mb-10">
         <h1 className="text-4xl md:text-5xl font-bold tracking-[-0.035em]">{title}</h1>
         <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-3 py-1 text-[11px] font-mono text-stone-600">
-          <span className="h-1.5 w-1.5 rounded-full bg-(--color-accent)" aria-hidden />
+          <span className="h-1.5 w-1.5 rounded-full bg-(--color-brand-yellow)" aria-hidden />
           Laatst bijgewerkt: {lastUpdated}
         </div>
       </header>
@@ -57,7 +57,7 @@ export function LegalLayout({
             className={cn(
               'shrink-0 inline-flex items-center px-3 py-1.5 rounded-full border text-xs font-medium transition-colors whitespace-nowrap',
               activeId === s.id
-                ? 'bg-(--color-accent-bright)/15 text-(--color-accent) border-(--color-accent-bright)/40'
+                ? 'bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border-(--color-brand-yellow-bright)/40'
                 : 'bg-white text-stone-700 border-stone-200 hover:border-stone-300',
             )}
           >
@@ -78,7 +78,7 @@ export function LegalLayout({
                   {activeId === s.id && (
                     <span
                       aria-hidden
-                      className="absolute -left-3 top-1.5 h-3 w-0.5 rounded-full bg-(--color-accent)"
+                      className="absolute -left-3 top-1.5 h-3 w-0.5 rounded-full bg-(--color-brand-yellow)"
                     />
                   )}
                   <a
@@ -86,7 +86,7 @@ export function LegalLayout({
                     className={cn(
                       'block text-sm leading-snug transition-colors',
                       activeId === s.id
-                        ? 'text-(--color-accent) font-medium'
+                        ? 'text-(--color-brand-yellow) font-medium'
                         : 'text-stone-600 hover:text-stone-900',
                     )}
                   >

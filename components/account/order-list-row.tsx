@@ -18,7 +18,7 @@ const statusLabel: Record<OrderStatus, string> = {
 function statusStyles(s: OrderStatus): string {
   if (s === 'paid' || s === 'preparing') return 'bg-blue-50 text-blue-700 border-blue-200';
   if (s === 'shipped') return 'bg-amber-50 text-amber-800 border-amber-200';
-  if (s === 'delivered') return 'bg-(--color-accent-bright)/15 text-(--color-accent) border-(--color-accent-bright)/30';
+  if (s === 'delivered') return 'bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border-(--color-brand-yellow-bright)/30';
   if (s === 'cancelled' || s === 'refunded') return 'bg-stone-100 text-stone-600 border-stone-200';
   return 'bg-stone-100 text-stone-700 border-stone-200';
 }
@@ -68,9 +68,9 @@ export function OrderListRow({ order }: { order: CustomerOrderListRow }) {
             >
               {statusLabel[order.status]}
             </span>
-            <ArrowRight className="h-4 w-4 text-stone-400 group-hover:text-(--color-accent) group-hover:translate-x-0.5 transition-all" />
+            <ArrowRight className="h-4 w-4 text-stone-400 group-hover:text-(--color-brand-yellow) group-hover:translate-x-0.5 transition-all" />
           </div>
-          <ArrowRight className="sm:hidden h-4 w-4 text-stone-400 self-center group-hover:text-(--color-accent) group-hover:translate-x-0.5 transition-all" />
+          <ArrowRight className="sm:hidden h-4 w-4 text-stone-400 self-center group-hover:text-(--color-brand-yellow) group-hover:translate-x-0.5 transition-all" />
         </div>
       </Link>
     </li>

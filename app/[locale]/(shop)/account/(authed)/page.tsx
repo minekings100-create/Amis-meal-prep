@@ -25,7 +25,7 @@ export default async function AccountDashboardPage() {
 
       {/* Welcome offer for first-time customers */}
       {isNewCustomer && (
-        <div className="rounded-2xl bg-gradient-to-br from-(--color-accent) to-(--color-accent-bright) text-white p-6 md:p-8 mb-6 relative overflow-hidden">
+        <div className="rounded-2xl bg-gradient-to-br from-(--color-brand-yellow) to-(--color-brand-yellow-bright) text-white p-6 md:p-8 mb-6 relative overflow-hidden">
           <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/10" aria-hidden />
           <div className="relative">
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 mb-3">
@@ -44,7 +44,7 @@ export default async function AccountDashboardPage() {
             </p>
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-2xl bg-white text-(--color-accent) font-semibold text-sm hover:bg-stone-50 transition-colors"
+              className="inline-flex items-center gap-2 h-11 px-5 rounded-2xl bg-white text-(--color-brand-yellow) font-semibold text-sm hover:bg-stone-50 transition-colors"
             >
               Naar shop <ArrowRight className="h-4 w-4" />
             </Link>
@@ -66,7 +66,7 @@ export default async function AccountDashboardPage() {
           {stats.recentOrders.length > 0 && (
             <Link
               href="/account/orders"
-              className="text-xs text-(--color-accent) hover:underline inline-flex items-center gap-1"
+              className="text-xs text-(--color-brand-yellow) hover:underline inline-flex items-center gap-1"
             >
               Alle bekijken <ArrowRight className="h-3 w-3" />
             </Link>
@@ -120,7 +120,7 @@ function StatCard({ label, value, accent }: { label: string; value: string; acce
       <p
         className={cn(
           'mt-1 font-mono text-3xl font-semibold tabular-nums',
-          accent ? 'text-(--color-accent)' : 'text-stone-900',
+          accent ? 'text-(--color-brand-yellow)' : 'text-stone-900',
         )}
       >
         {value}
@@ -145,14 +145,14 @@ function ActionCard({
       href={href}
       className="rounded-2xl border border-stone-200 bg-white p-4 hover:border-stone-300 transition-colors flex items-center gap-3 group"
     >
-      <div className="h-10 w-10 rounded-xl bg-stone-100 text-stone-700 inline-flex items-center justify-center group-hover:bg-(--color-accent-bright)/15 group-hover:text-(--color-accent) transition-colors">
+      <div className="h-10 w-10 rounded-xl bg-stone-100 text-stone-700 inline-flex items-center justify-center group-hover:bg-(--color-brand-yellow-bright)/15 group-hover:text-(--color-brand-yellow) transition-colors">
         {icon}
       </div>
       <div className="flex-1 min-w-0">
         <p className="font-semibold text-stone-900 text-sm">{title}</p>
         <p className="text-xs text-stone-500">{sub}</p>
       </div>
-      <ArrowRight className="h-4 w-4 text-stone-400 group-hover:text-(--color-accent) transition-colors" />
+      <ArrowRight className="h-4 w-4 text-stone-400 group-hover:text-(--color-brand-yellow) transition-colors" />
     </Link>
   );
 }
