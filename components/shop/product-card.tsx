@@ -11,7 +11,8 @@ import { toast } from '@/lib/toast/store';
 import { GoalBadge } from './goal-badge';
 import { AttributeBadges } from './attribute-badges';
 import { CompareButton } from './compare-button';
-import { CornerBadge } from './corner-badge';
+import { CornerBadge, pickCornerKind } from './corner-badge';
+import type { AttributeTag } from '@/types/database';
 
 export function ProductCard({ product }: { product: Product }) {
   const t = useTranslations('shop.card');
@@ -25,6 +26,15 @@ export function ProductCard({ product }: { product: Product }) {
     product.compare_at_price_cents > product.price_cents;
   const showTypePill = product.type === 'package' || product.type === 'tryout';
   const typeLabel = product.type === 'package' ? t('typePackage') : t('typeTryout');
+
+  // Hide the attribute that's already shown as the corner-badge so it doesn't
+  // render twice on the same card (e.g. "Bestseller" sticker + Bestseller pill).
+  const corner = pickCornerKind(product);
+  const cornerAttr =
+    corner && corner.kind !== 'sale' ? (corner.kind as AttributeTag) : null;
+  const visibleAttributeTags = cornerAttr
+    ? product.attribute_tags.filter((t) => t !== cornerAttr)
+    : product.attribute_tags;
 
   function handleAdd(e: React.MouseEvent) {
     e.preventDefault();
@@ -117,8 +127,8 @@ export function ProductCard({ product }: { product: Product }) {
               {product.goal_tag && (
                 <GoalBadge tag={product.goal_tag} locale={locale} variant="solid" size="md" />
               )}
-              {product.attribute_tags.length > 0 && (
-                <AttributeBadges tags={product.attribute_tags} locale={locale} max={3} size="sm" />
+              {visibleAttributeTags.length > 0 && (
+                <AttributeBadges tags={visibleAttributeTags} locale={locale} max={3} size="sm" />
               )}
             </div>
 

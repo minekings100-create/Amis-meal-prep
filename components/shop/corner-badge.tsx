@@ -13,14 +13,16 @@ import { cn } from '@/lib/utils/cn';
  * The `attribute_tags` driver matches the existing AttributeTag enum so
  * authors stay in the admin form they already know.
  */
-type CornerKind = 'sale' | 'limited' | 'new' | 'bestseller';
+export type CornerKind = 'sale' | 'limited' | 'new' | 'bestseller';
 
 const PRIORITY: CornerKind[] = ['sale', 'limited', 'new', 'bestseller'];
 
-function pickKind(product: Pick<Product, 'compare_at_price_cents' | 'price_cents' | 'attribute_tags'>): {
-  kind: CornerKind;
-  salePct: number | null;
-} | null {
+/** Returns which corner-badge kind the product earns, if any. Exported so the
+ *  ProductCard can hide that same tag from the attribute-pill row to avoid
+ *  rendering "Bestseller" twice. */
+export function pickCornerKind(
+  product: Pick<Product, 'compare_at_price_cents' | 'price_cents' | 'attribute_tags'>,
+): { kind: CornerKind; salePct: number | null } | null {
   const onSale =
     product.compare_at_price_cents !== null &&
     product.compare_at_price_cents > product.price_cents;
@@ -45,7 +47,7 @@ export function CornerBadge({
 }: {
   product: Pick<Product, 'compare_at_price_cents' | 'price_cents' | 'attribute_tags'>;
 }) {
-  const picked = pickKind(product);
+  const picked = pickCornerKind(product);
   if (!picked) return null;
 
   const baseClasses =
