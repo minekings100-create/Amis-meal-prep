@@ -65,20 +65,37 @@ export function Header() {
                 { href: '/over-ons', key: 'about' },
                 { href: '/contact', key: 'contact' },
               ] as const
-            ).map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  'transition-colors',
-                  transparent
-                    ? 'text-white/85 hover:text-white'
-                    : 'text-stone-600 hover:text-stone-900',
-                )}
-              >
-                {t(item.key)}
-              </Link>
-            ))}
+            ).map((item) => {
+              const active =
+                pathname === item.href || pathname?.startsWith(item.href + '/') === true;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    'relative transition-colors py-1',
+                    transparent
+                      ? active
+                        ? 'text-white'
+                        : 'text-white/85 hover:text-white'
+                      : active
+                        ? 'text-stone-900'
+                        : 'text-stone-600 hover:text-stone-900',
+                  )}
+                >
+                  {t(item.key)}
+                  {active && (
+                    <span
+                      aria-hidden
+                      className={cn(
+                        'absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full',
+                        transparent ? 'bg-white' : 'bg-(--color-accent)',
+                      )}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-1">
