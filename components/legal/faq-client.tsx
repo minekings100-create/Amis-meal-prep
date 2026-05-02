@@ -326,8 +326,10 @@ function FaqRow({ q, a }: { q: string; a: string }) {
   return (
     <li
       className={cn(
-        'rounded-2xl border bg-white transition-colors',
-        open ? 'border-(--color-brand-yellow-bright)/40' : 'border-stone-200 hover:border-stone-300',
+        'rounded-2xl border-l-4 border-y border-r bg-white transition-colors',
+        open
+          ? 'border-l-(--color-brand-yellow) border-y-stone-200 border-r-stone-200'
+          : 'border-l-transparent border-stone-200 hover:border-l-stone-300',
       )}
     >
       <button
@@ -338,7 +340,7 @@ function FaqRow({ q, a }: { q: string; a: string }) {
         <span
           className={cn(
             'font-medium transition-colors',
-            open ? 'text-(--color-brand-yellow)' : 'text-stone-900 group-hover:text-stone-700',
+            open ? 'text-stone-900' : 'text-stone-900 group-hover:text-stone-700',
           )}
         >
           {q}
@@ -346,7 +348,7 @@ function FaqRow({ q, a }: { q: string; a: string }) {
         <ChevronDown
           className={cn(
             'h-4 w-4 shrink-0 transition-all',
-            open ? 'rotate-180 text-(--color-brand-yellow)' : 'text-stone-400 group-hover:text-stone-600',
+            open ? 'rotate-180 text-(--color-brand-black)' : 'text-stone-400 group-hover:text-stone-600',
           )}
         />
       </button>

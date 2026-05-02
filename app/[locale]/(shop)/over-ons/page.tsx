@@ -55,19 +55,20 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             return (
               <div
                 key={p.title}
-                className="rounded-2xl border border-stone-200 bg-white p-6 hover:border-stone-300 transition-colors"
+                className="rounded-2xl border border-stone-200 bg-white p-6 hover:border-stone-900 transition-colors group"
               >
-                <div className="h-10 w-10 rounded-xl bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) inline-flex items-center justify-center mb-4">
+                <div className="h-10 w-10 rounded-full bg-(--color-brand-black) text-(--color-brand-yellow) inline-flex items-center justify-center mb-4">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h2 className="font-semibold text-stone-900 tracking-[-0.01em]">{p.title}</h2>
+                <span aria-hidden className="block h-0.5 w-8 rounded-full bg-(--color-brand-yellow) mt-2 mb-2" />
                 <p className="text-sm text-stone-600 mt-2 leading-relaxed">{p.body}</p>
               </div>
             );
           })}
         </section>
 
-        <div className="rounded-2xl bg-(--color-ink) text-white p-6 md:p-8 relative overflow-hidden">
+        <div className="rounded-2xl bg-(--color-brand-black) text-white p-6 md:p-8 relative overflow-hidden">
           <div
             aria-hidden
             className="absolute -bottom-12 -right-12 select-none pointer-events-none text-[14rem] font-bold tracking-[-0.06em] text-white/[0.04] leading-none"
@@ -76,6 +77,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </div>
           <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div className="max-w-xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-(--color-brand-yellow) mb-2">
+                {isEN ? 'Performance fuel' : 'Performance fuel'}
+              </p>
               <h3 className="text-xl md:text-2xl font-bold tracking-[-0.02em]">
                 {isEN ? 'Ready to fuel the week?' : 'Klaar om je week vol te plannen?'}
               </h3>
@@ -87,7 +91,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-2xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) shrink-0"
+              className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-white transition-colors duration-[250ms] shrink-0"
             >
               {isEN ? 'To the shop' : 'Naar de shop'} <ArrowRight className="h-4 w-4" />
             </Link>

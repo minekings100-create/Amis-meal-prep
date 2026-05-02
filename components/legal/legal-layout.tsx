@@ -57,7 +57,7 @@ export function LegalLayout({
             className={cn(
               'shrink-0 inline-flex items-center px-3 py-1.5 rounded-full border text-xs font-medium transition-colors whitespace-nowrap',
               activeId === s.id
-                ? 'bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) border-(--color-brand-yellow-bright)/40'
+                ? 'bg-(--color-brand-black) text-white border-(--color-brand-black)'
                 : 'bg-white text-stone-700 border-stone-200 hover:border-stone-300',
             )}
           >
@@ -72,22 +72,16 @@ export function LegalLayout({
             <p className="text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-3">
               Inhoud
             </p>
-            <ul className="space-y-1.5">
+            <ul className="space-y-0.5">
               {sections.map((s) => (
-                <li key={s.id} className="relative">
-                  {activeId === s.id && (
-                    <span
-                      aria-hidden
-                      className="absolute -left-3 top-1.5 h-3 w-0.5 rounded-full bg-(--color-brand-yellow)"
-                    />
-                  )}
+                <li key={s.id}>
                   <a
                     href={`#${s.id}`}
                     className={cn(
-                      'block text-sm leading-snug transition-colors',
+                      'block text-sm leading-snug px-3 py-1.5 -mx-3 rounded-md border-l-2 transition-colors',
                       activeId === s.id
-                        ? 'text-(--color-brand-yellow) font-medium'
-                        : 'text-stone-600 hover:text-stone-900',
+                        ? 'border-(--color-brand-yellow) bg-stone-50 text-stone-900 font-medium'
+                        : 'border-transparent text-stone-600 hover:text-stone-900 hover:bg-stone-50/60',
                     )}
                   >
                     {s.title}

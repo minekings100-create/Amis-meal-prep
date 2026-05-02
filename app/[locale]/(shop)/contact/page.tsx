@@ -103,7 +103,7 @@ function ContactCard({
   return (
     <div className="rounded-2xl border border-stone-200 bg-white p-5">
       <div className="flex items-center gap-2 mb-2">
-        <span className="h-7 w-7 rounded-lg bg-(--color-brand-yellow-bright)/15 text-(--color-brand-yellow) inline-flex items-center justify-center">
+        <span className="h-8 w-8 rounded-full bg-(--color-brand-black) text-(--color-brand-yellow) inline-flex items-center justify-center">
           {icon}
         </span>
         <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-500">
