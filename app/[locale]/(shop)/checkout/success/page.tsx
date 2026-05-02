@@ -42,11 +42,14 @@ export default async function CheckoutSuccessPage({
       <ConfettiBurst orderNumber={order.orderNumber} />
 
       {/* Hero */}
-      <div className="text-center mb-12">
-        <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-(--color-accent-bright)/15 mb-6">
-          <CheckCircle2 className="h-10 w-10 text-(--color-accent)" strokeWidth={2.5} />
+      <div className="text-center mb-12 md:mb-14">
+        <div className="relative inline-flex h-24 w-24 items-center justify-center rounded-full bg-(--color-accent-bright)/15 mb-6 ring-8 ring-(--color-accent-bright)/8">
+          <CheckCircle2 className="h-12 w-12 text-(--color-accent)" strokeWidth={2.5} />
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-[-0.025em] mb-3">
+        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-(--color-accent) mb-3">
+          Bestelling geplaatst
+        </p>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-[-0.025em] mb-5">
           Bedankt voor je bestelling!
         </h1>
         <div className="inline-flex items-center gap-2 rounded-full bg-stone-100 pl-4 pr-1 py-1">
@@ -56,12 +59,14 @@ export default async function CheckoutSuccessPage({
           </span>
           <CopyButton value={order.orderNumber} />
         </div>
-        <p className="text-stone-600 mt-4">
+        <p className="text-stone-600 mt-5">
           We hebben een bevestigingsmail gestuurd naar{' '}
           <span className="font-medium text-stone-900">{order.customerEmail}</span>
         </p>
         {order.isMocked && (
-          <p className="text-amber-700 text-xs mt-2">(demo mode — geen echte order in database)</p>
+          <p className="text-stone-400 text-[11px] font-mono mt-3">
+            demo mode — geen echte order in database
+          </p>
         )}
       </div>
 
@@ -163,15 +168,20 @@ export default async function CheckoutSuccessPage({
       </div>
 
       {/* Account CTA for guests */}
-      <div className="mt-8 rounded-2xl bg-stone-50 border border-stone-200 px-6 py-5 text-center">
-        <p className="text-sm text-stone-700 mb-3">
-          <strong>Maak een account aan</strong> om je bestelling te volgen en sneller af te rekenen volgende keer.
+      <div className="mt-10 rounded-2xl bg-gradient-to-br from-(--color-accent-bright)/10 to-stone-50 border border-(--color-accent-bright)/20 px-6 py-6 text-center">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-(--color-accent) mb-2">
+          Sneller volgende keer
+        </p>
+        <p className="text-sm text-stone-700 mb-4 max-w-md mx-auto">
+          Maak een account aan om je bestelling te volgen en sneller af te rekenen — een paar
+          seconden werk.
         </p>
         <Link
           href={`/account/register?email=${encodeURIComponent(order.customerEmail)}`}
-          className="inline-flex items-center gap-1.5 h-10 px-5 rounded-xl bg-stone-900 text-white text-sm font-medium hover:bg-black"
+          className="inline-flex items-center gap-1.5 h-11 px-5 rounded-xl bg-(--color-accent) text-white text-sm font-semibold hover:bg-(--color-accent)/90 active:scale-[0.99] transition-all"
         >
           Account aanmaken
+          <ArrowRight className="h-3.5 w-3.5" />
         </Link>
       </div>
     </div>
