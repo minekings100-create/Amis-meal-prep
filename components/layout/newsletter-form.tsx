@@ -42,7 +42,7 @@ export function NewsletterForm({ subscribeLabel }: { subscribeLabel: string }) {
         placeholder="email@adres.nl"
         disabled={success}
         aria-label="Email"
-        className="flex-1 h-10 rounded-md bg-white/10 border border-white/15 px-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-(--color-accent-bright) disabled:opacity-60"
+        className="flex-1 h-10 rounded-md bg-white/10 border border-white/15 px-3 text-sm text-white placeholder:text-white/40 transition-colors hover:border-white/30 focus:outline-none focus:border-(--color-accent-bright) focus:bg-white/15 disabled:opacity-60"
       />
       <button
         type="submit"

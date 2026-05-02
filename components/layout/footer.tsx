@@ -63,7 +63,7 @@ export function Footer() {
         </FooterColumn>
 
         {/* Klantenservice */}
-        <FooterColumn title="Klantenservice">
+        <FooterColumn title={t('support')}>
           <FooterLink href="/faq">{t('faq')}</FooterLink>
           <FooterLink href="/contact">{t('contact')}</FooterLink>
           <FooterLink href="/algemene-voorwaarden">{t('terms')}</FooterLink>
