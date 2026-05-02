@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Sora, JetBrains_Mono } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 
 const sora = Sora({
@@ -64,15 +63,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#e8a91c',
+  themeColor: '#0a0a0a',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html className={`${sora.variable} ${jetbrains.variable} h-full`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col bg-bg text-text">
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
+    <html className={`${sora.variable} ${jetbrains.variable} h-full`}>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

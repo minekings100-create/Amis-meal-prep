@@ -2,7 +2,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export function ProductCardSkeleton() {
   return (
-    <article className="flex h-full flex-col bg-white border border-stone-200 dark:bg-(--color-bg-elevated) dark:border-(--color-border) rounded-2xl p-5 md:p-6">
+    <article className="flex h-full flex-col bg-white border border-stone-200 rounded-2xl p-5 md:p-6">
       {/* Plate-circle */}
       <div className="aspect-square w-full max-w-[300px] mx-auto rounded-full bg-stone-100 animate-pulse" />
 

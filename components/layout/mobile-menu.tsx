@@ -6,7 +6,6 @@ import { Menu, X, Instagram, Facebook, Music2, User, LogIn, LogOut, ArrowRight }
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/lib/i18n/navigation';
 import { LocaleSwitch } from './locale-switch';
-import { ThemeToggle } from '@/components/theme-toggle';
 import { logoutAction } from '@/app/_actions/account';
 import { cn } from '@/lib/utils/cn';
 
@@ -98,7 +97,7 @@ export function MobileMenu({ open, onOpenChange, transparent, isAuthed }: Mobile
               exit={{ x: '100%' }}
               transition={panelTransition}
               style={{ height: '100dvh' }}
-              className="fixed top-0 right-0 z-50 w-full max-w-sm bg-white shadow-2xl flex flex-col md:hidden dark:bg-(--color-bg)"
+              className="fixed top-0 right-0 z-50 w-full max-w-sm bg-white shadow-2xl flex flex-col md:hidden"
             >
               {/* Panel header */}
               <div className="flex items-center justify-between px-6 h-16 border-b border-stone-100">
@@ -195,10 +194,7 @@ export function MobileMenu({ open, onOpenChange, transparent, isAuthed }: Mobile
 
               {/* Panel footer */}
               <div className="px-6 py-5 border-t border-stone-100 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-1">
-                  <LocaleSwitch />
-                  <ThemeToggle />
-                </div>
+                <LocaleSwitch />
                 <div className="flex items-center gap-2">
                   <SocialPill href="https://instagram.com/amismeals" label="Instagram">
                     <Instagram className="h-4 w-4" />

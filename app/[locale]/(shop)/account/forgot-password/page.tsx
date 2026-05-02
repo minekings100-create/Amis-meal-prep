@@ -37,7 +37,7 @@ export default function ForgotPasswordPage() {
         Vul je e-mailadres in en we sturen je een link om een nieuw wachtwoord in te stellen.
       </p>
 
-      <div className="rounded-2xl bg-white border border-stone-200 dark:bg-(--color-bg-elevated) dark:border-(--color-border) p-6">
+      <div className="rounded-2xl bg-white border border-stone-200 p-6">
         <form
           onSubmit={(e) => {
             e.preventDefault();

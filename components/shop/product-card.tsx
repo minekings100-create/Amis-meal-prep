@@ -49,7 +49,7 @@ export function ProductCard({ product }: { product: Product }) {
         href={`/shop/${product.slug}`}
         className="flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand-yellow) focus-visible:ring-offset-2 rounded-2xl"
       >
-        <div className="relative flex flex-1 flex-col bg-white border border-stone-200 dark:bg-(--color-bg-elevated) dark:border-(--color-border) rounded-2xl p-5 md:p-6 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_18px_44px_-20px_rgba(19,22,19,0.18)] group-hover:border-(--color-brand-yellow-bright)/40 dark:bg-(--color-bg-elevated) dark:border-(--color-border) dark:group-hover:shadow-[0_18px_44px_-20px_rgba(0,0,0,0.6)]">
+        <div className="relative flex flex-1 flex-col bg-white border border-stone-200 rounded-2xl p-5 md:p-6 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_18px_44px_-20px_rgba(19,22,19,0.18)] group-hover:border-(--color-brand-yellow-bright)/40">
           {/* Corner badge: at most one (sale > limited > new > bestseller). */}
           <CornerBadge product={product} />
 
@@ -82,7 +82,7 @@ export function ProductCard({ product }: { product: Product }) {
 
           {/* Plate-circle: visual element inside the rectangular card. Aspect-square so
               the plate height stays identical regardless of badge / name length. */}
-          <div className="relative aspect-square w-full max-w-[300px] mx-auto rounded-full overflow-hidden bg-stone-50 ring-1 ring-stone-100 dark:bg-(--color-bg-soft) dark:ring-(--color-border)">
+          <div className="relative aspect-square w-full max-w-[300px] mx-auto rounded-full overflow-hidden bg-stone-50 ring-1 ring-stone-100">
             {product.image_url && (
               <Image
                 src={product.image_url}
@@ -116,13 +116,13 @@ export function ProductCard({ product }: { product: Product }) {
             </div>
 
             {/* Product name */}
-            <h3 className="mt-4 font-semibold text-lg tracking-tight text-stone-900 dark:text-(--color-text) line-clamp-2 group-hover:text-(--color-brand-black) dark:group-hover:text-(--color-brand-yellow) transition-colors">
+            <h3 className="mt-4 font-semibold text-lg tracking-tight text-stone-900 line-clamp-2 group-hover:text-(--color-brand-black) transition-colors">
               {name}
             </h3>
 
             {/* Macros grid — full labels, mono numbers */}
             {product.kcal !== null && (
-              <div className="mt-4 grid grid-cols-4 border border-stone-200 rounded-xl overflow-hidden dark:bg-(--color-bg-soft) dark:border-(--color-border)">
+              <div className="mt-4 grid grid-cols-4 border border-stone-200 rounded-xl overflow-hidden">
                 <MacroCell
                   label={t('macroProtein')}
                   value={product.protein_g}
@@ -188,19 +188,19 @@ function MacroCell({
   accent?: boolean;
 }) {
   return (
-    <div className="px-2 py-2.5 text-center border-r border-stone-200 dark:border-(--color-border) last:border-r-0">
-      <div className="text-[9px] font-semibold uppercase tracking-[0.14em] text-stone-500 dark:text-(--color-text-muted)">
+    <div className="px-2 py-2.5 text-center border-r border-stone-200 last:border-r-0">
+      <div className="text-[9px] font-semibold uppercase tracking-[0.14em] text-stone-500">
         {label}
       </div>
       <div
         className={
           'font-mono text-sm font-semibold tabular-nums mt-0.5 ' +
-          (accent ? 'text-(--color-brand-yellow)' : 'text-stone-900 dark:text-(--color-text)')
+          (accent ? 'text-(--color-brand-yellow)' : 'text-stone-900')
         }
       >
         {value ?? '–'}
         {unit && value !== null && (
-          <span className="text-[10px] text-stone-500 dark:text-(--color-text-muted) font-medium ml-0.5">{unit}</span>
+          <span className="text-[10px] text-stone-500 font-medium ml-0.5">{unit}</span>
         )}
       </div>
     </div>

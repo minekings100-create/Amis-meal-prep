@@ -223,7 +223,7 @@ function SubmitForm({
 
 function Card({ children }: { children: React.ReactNode }) {
   return (
-    <section className="rounded-2xl bg-white border border-stone-200 dark:bg-(--color-bg-elevated) dark:border-(--color-border) p-6 mt-6">
+    <section className="rounded-2xl bg-white border border-stone-200 p-6 mt-6">
       {children}
     </section>
   );

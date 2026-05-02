@@ -7,7 +7,6 @@ import { Link, usePathname } from '@/lib/i18n/navigation';
 import { LocaleSwitch } from './locale-switch';
 import { CartIcon } from './cart-icon';
 import { MobileMenu } from './mobile-menu';
-import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils/cn';
 
 export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
@@ -39,7 +38,7 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
           'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
           transparent
             ? 'bg-transparent'
-            : 'bg-white/95 backdrop-blur-md border-b border-stone-200 dark:bg-(--color-bg)/95 dark:border-(--color-border) dark:bg-(--color-bg)/95 dark:border-(--color-border)',
+            : 'bg-white/95 backdrop-blur-md border-b border-stone-200',
         )}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex h-16 items-center justify-between gap-6">
@@ -47,7 +46,7 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
             href="/"
             className={cn(
               'flex items-baseline gap-2 transition-colors',
-              transparent ? 'text-white' : 'text-stone-900 dark:text-(--color-text)',
+              transparent ? 'text-white' : 'text-stone-900',
             )}
           >
             <span className="font-bold text-xl tracking-[-0.04em]">AMIS</span>
@@ -82,8 +81,8 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
                         ? 'text-white'
                         : 'text-white/85 hover:text-white'
                       : active
-                        ? 'text-stone-900 dark:text-(--color-text)'
-                        : 'text-stone-600 hover:text-stone-900 dark:text-(--color-text-soft) dark:hover:text-(--color-text)',
+                        ? 'text-stone-900'
+                        : 'text-stone-600 hover:text-stone-900',
                   )}
                 >
                   {t(item.key)}
@@ -104,7 +103,6 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
           <div className="flex items-center gap-1">
             <div className="hidden md:flex items-center gap-1">
               <LocaleSwitch transparent={transparent} />
-              <ThemeToggle transparent={transparent} />
             </div>
             <Link
               href="/account"
