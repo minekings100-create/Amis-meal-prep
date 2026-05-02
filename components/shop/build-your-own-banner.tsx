@@ -46,27 +46,27 @@ export function BuildYourOwnBanner() {
   }
 
   return (
-    <aside className="rounded-2xl border border-stone-200 bg-gradient-to-br from-(--color-brand-yellow-bright)/8 to-white p-5 md:p-8 mb-6 md:mb-10 relative overflow-hidden">
+    <aside className="rounded-2xl bg-(--color-brand-black) text-white p-5 md:p-8 mb-6 md:mb-10 relative overflow-hidden">
       {/* Decorative plate-circle on the right — subtle on mobile, full on desktop */}
       <div
         aria-hidden
-        className="absolute -right-10 md:-right-12 top-1/2 -translate-y-1/2 h-32 md:h-44 w-32 md:w-44 rounded-full bg-(--color-brand-yellow)/10 ring-4 md:ring-8 ring-(--color-brand-yellow-bright)/15 pointer-events-none"
+        className="absolute -right-10 md:-right-12 top-1/2 -translate-y-1/2 h-32 md:h-44 w-32 md:w-44 rounded-full bg-(--color-brand-yellow)/15 blur-2xl pointer-events-none"
       />
       <div
         aria-hidden
-        className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 h-28 w-28 rounded-full bg-(--color-brand-yellow-bright)/30 pointer-events-none"
+        className="hidden md:block absolute right-6 top-1/2 -translate-y-1/2 h-28 w-28 rounded-full border-2 border-(--color-brand-yellow)/25 pointer-events-none"
       />
 
       <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
         <div className="md:flex-[3] min-w-0">
-          <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-(--color-brand-yellow) mb-2">
+          <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-(--color-brand-yellow) mb-2">
             <Sparkles className="h-3 w-3" />
             {c.eyebrow}
           </div>
-          <h2 className="text-xl md:text-3xl font-bold tracking-[-0.025em] text-stone-900 leading-tight">
+          <h2 className="text-xl md:text-3xl font-bold tracking-[-0.025em] text-white leading-tight">
             {c.title}
           </h2>
-          <p className="mt-2 text-sm md:text-base text-stone-600 leading-relaxed max-w-xl">
+          <p className="mt-2 text-sm md:text-base text-white/80 leading-relaxed max-w-xl">
             {c.body}
           </p>
         </div>
@@ -75,12 +75,12 @@ export function BuildYourOwnBanner() {
           <Link
             href="/shop"
             onClick={handleClick}
-            className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-(--color-brand-black) text-white font-semibold text-sm hover:bg-(--color-brand-yellow) hover:text-(--color-brand-black) active:scale-[0.99] transition-all w-full md:w-auto shadow-[0_8px_24px_-8px_rgba(10,10,10,0.35)]"
+            className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-full bg-(--color-brand-yellow) text-(--color-brand-black) font-semibold text-sm hover:bg-white hover:text-(--color-brand-black) transition-colors duration-[250ms] w-full md:w-auto"
           >
             {pending ? '…' : c.cta}
             <ArrowRight className="h-4 w-4" />
           </Link>
-          <p className="mt-2 text-xs text-stone-500 text-center md:text-right">{c.note}</p>
+          <p className="mt-2 text-xs text-white/60 text-center md:text-right">{c.note}</p>
         </div>
       </div>
     </aside>

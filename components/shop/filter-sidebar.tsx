@@ -29,11 +29,14 @@ export function FilterSidebar({ filters }: { filters: ProductFilters }) {
       className="hidden lg:block w-64 shrink-0 sticky top-24 self-start max-h-[calc(100vh-7rem)] overflow-y-auto pr-4 -mr-4"
     >
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500">
-          {t('title')}
-        </h2>
+        <div className="inline-flex items-center gap-2">
+          <span aria-hidden className="h-3 w-1 rounded-full bg-(--color-brand-black)" />
+          <h2 className="text-[11px] font-bold uppercase tracking-[0.22em] text-stone-700">
+            {t('title')}
+          </h2>
+        </div>
         {count > 0 && (
-          <span className="inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-(--color-brand-yellow-bright)/20 text-(--color-brand-yellow) font-mono text-[10px] tabular-nums font-semibold">
+          <span className="inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-(--color-brand-black) text-white font-mono text-[10px] tabular-nums font-semibold">
             {count}
           </span>
         )}

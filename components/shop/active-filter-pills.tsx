@@ -90,16 +90,16 @@ export function ActiveFilterPills({ filters }: { filters: ProductFilters }) {
           key={p.key}
           type="button"
           onClick={p.onRemove}
-          className="group inline-flex items-center gap-1.5 h-8 pl-3 pr-2 rounded-full bg-stone-100 hover:bg-stone-200 text-sm text-stone-800 transition-colors"
+          className="group inline-flex items-center gap-1.5 h-8 pl-3 pr-2 rounded-full bg-stone-100 text-stone-900 hover:bg-(--color-brand-black) hover:text-white text-sm transition-colors duration-[200ms]"
         >
           <span>{p.label}</span>
-          <X className="h-3.5 w-3.5 text-stone-500 group-hover:text-stone-900 transition-colors" />
+          <X className="h-3.5 w-3.5 text-stone-500 group-hover:text-white transition-colors" />
         </button>
       ))}
       <button
         type="button"
         onClick={clearAll}
-        className="ml-1 text-sm font-medium text-stone-700 hover:text-(--color-brand-black) transition-colors"
+        className="ml-1 text-sm font-medium text-stone-700 hover:text-(--color-brand-black) underline underline-offset-2 transition-colors"
       >
         {t('clearAll')}
       </button>

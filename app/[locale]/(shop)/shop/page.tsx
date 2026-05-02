@@ -46,13 +46,14 @@ export default async function ShopPage({
       <BuildYourOwnBanner />
 
       <header className="mb-10 lg:mb-14">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-500 mb-4">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-(--color-brand-yellow-deep) mb-4">
           Menu
         </p>
         <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] tracking-[-0.035em] font-bold text-stone-900">
           {t('title')}
         </h1>
-        <p className="mt-4 text-base md:text-lg text-stone-600 max-w-xl leading-relaxed">{intro}</p>
+        <span aria-hidden className="block h-1 w-12 rounded-full bg-(--color-brand-yellow) mt-4" />
+        <p className="mt-5 text-base md:text-lg text-stone-600 max-w-xl leading-relaxed">{intro}</p>
         <hr className="mt-10 border-stone-200" />
       </header>
 

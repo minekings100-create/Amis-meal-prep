@@ -212,9 +212,9 @@
     height: 18px;
     width: 18px;
     border-radius: 9999px;
-    background: var(--color-bg);
-    border: 2px solid var(--color-brand-yellow);
-    box-shadow: 0 1px 3px rgba(10, 10, 10, 0.15);
+    background: var(--color-brand-yellow);
+    border: 2px solid var(--color-brand-black);
+    box-shadow: 0 1px 3px rgba(10, 10, 10, 0.2);
     cursor: grab;
   }
   .price-range-thumb::-webkit-slider-thumb:active {
@@ -225,9 +225,9 @@
     height: 18px;
     width: 18px;
     border-radius: 9999px;
-    background: var(--color-bg);
-    border: 2px solid var(--color-brand-yellow);
-    box-shadow: 0 1px 3px rgba(10, 10, 10, 0.15);
+    background: var(--color-brand-yellow);
+    border: 2px solid var(--color-brand-black);
+    box-shadow: 0 1px 3px rgba(10, 10, 10, 0.2);
     cursor: grab;
   }
 }

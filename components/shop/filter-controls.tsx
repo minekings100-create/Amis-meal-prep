@@ -165,7 +165,7 @@ export function FilterControls({
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-500 mb-3">
+      <h3 className="text-[10px] font-semibold uppercase tracking-[0.24em] text-stone-700 mb-3">
         {title}
       </h3>
       {children}
@@ -267,7 +267,7 @@ function PriceRange({
       <div className="relative h-6">
         <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-1 rounded-full bg-stone-200" />
         <div
-          className="absolute top-1/2 -translate-y-1/2 h-1 rounded-full bg-(--color-brand-yellow)"
+          className="absolute top-1/2 -translate-y-1/2 h-1 rounded-full bg-(--color-brand-black)"
           style={{ left: `${loPct}%`, right: `${100 - hiPct}%` }}
         />
         <input
