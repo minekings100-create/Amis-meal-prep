@@ -6,6 +6,7 @@ import { RevealSection } from '@/components/layout/reveal-section';
 import { HeroParallaxImage } from '@/components/layout/hero-parallax-image';
 import { CountUp } from '@/components/layout/count-up';
 import { listProducts } from '@/lib/data/products';
+import { getHomepageFeaturedProducts } from '@/lib/admin/featured';
 import { AmisStandard } from '@/components/home/amis-standard';
 import type { Locale } from '@/lib/i18n/config';
 
@@ -37,7 +38,11 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   const t = await getTranslations('home');
-  const featured = await listProducts({ featuredOnly: true, type: 'meal' });
+  // Try the admin-curated featured selection first; fall back to the type=meal
+  // featured-only query when Supabase isn't configured (mock mode).
+  const curated = await getHomepageFeaturedProducts();
+  const featured =
+    curated.length > 0 ? curated : await listProducts({ featuredOnly: true, type: 'meal' });
 
   const heroPhoto = pickHeroPhoto();
   const heroAlt =
