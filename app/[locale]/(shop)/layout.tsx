@@ -6,11 +6,13 @@ import { CompareModal } from '@/components/shop/compare-modal';
 import { Toaster } from '@/components/ui/toaster';
 import { PageTransition } from '@/components/layout/page-transition';
 import { CookieConsent } from '@/components/legal/cookie-consent';
+import { getCurrentCustomer } from '@/lib/account/auth';
 
-export default function ShopLayout({ children }: { children: React.ReactNode }) {
+export default async function ShopLayout({ children }: { children: React.ReactNode }) {
+  const customer = await getCurrentCustomer();
   return (
     <>
-      <Header />
+      <Header isAuthed={Boolean(customer)} />
       <main className="flex-1">
         <PageTransition>{children}</PageTransition>
       </main>

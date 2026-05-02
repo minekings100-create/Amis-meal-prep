@@ -6,13 +6,15 @@ import { ShoppingBag, User } from 'lucide-react';
 import { Link, usePathname } from '@/lib/i18n/navigation';
 import { LocaleSwitch } from './locale-switch';
 import { CartIcon } from './cart-icon';
+import { MobileMenu } from './mobile-menu';
 import { cn } from '@/lib/utils/cn';
 
-export function Header() {
+export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
   const t = useTranslations('nav');
   const pathname = usePathname();
   const isHero = pathname === '/'; // next-intl Link's pathname is locale-stripped
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -99,7 +101,9 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-1">
-            <LocaleSwitch transparent={transparent} />
+            <div className="hidden md:flex items-center gap-1">
+              <LocaleSwitch transparent={transparent} />
+            </div>
             <Link
               href="/account"
               className={cn(
@@ -116,6 +120,12 @@ export function Header() {
               label={t('cart')}
               icon={<ShoppingBag className="h-4 w-4" />}
               transparent={transparent}
+            />
+            <MobileMenu
+              open={menuOpen}
+              onOpenChange={setMenuOpen}
+              transparent={transparent}
+              isAuthed={isAuthed}
             />
           </div>
         </div>
